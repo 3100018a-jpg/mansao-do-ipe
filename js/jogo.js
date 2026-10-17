@@ -33,6 +33,8 @@
     return i === 0 || completo(MI.CAPITULOS[i - 1].id);
   };
   const nome = () => E.nome || 'investigador(a)';
+  // a última missão encerra o caso e libera o certificado
+  const ultimo = () => MI.CAPITULOS[MI.CAPITULOS.length - 1].id;
   const fmt = (t) => String(t).replace(/\{nome\}/g, nome());
 
   // =========================================================
@@ -155,7 +157,7 @@
     });
     $('#mansao-nome').textContent = nome();
     atualizarContadores();
-    const fim = completo('salao');
+    const fim = completo(ultimo());
     $('#btn-certificado').hidden = !fim;
     // aviso de restauração disponível
     const barata = MI.RESTAURACAO.filter((r) => !E.rest[r.id]).reduce((m, r) => Math.min(m, r.custo), 99);
@@ -671,7 +673,7 @@
       E.novidades.diario = true;
       salvar();
       recompensa(c, resumo, bonus, () => dialogo(c.fim, { fundo: c.cena }, () => {
-        if (id === 'salao') finalJogo();
+        if (id === ultimo()) finalJogo();
         else {
           const prox = MI.CAPITULOS[indiceCap(id) + 1];
           telaMansao(`Novo cômodo liberado: ${prox.comodo}`);
@@ -938,7 +940,7 @@
         const caps = MI.CAPITULOS.filter((c) => E.evidencias[c.id]);
         if (!caps.length) return '<p class="vazio">Conclua o primeiro capítulo para registrar evidências.</p>';
         return caps.map((c) => `<section class="ev-cap"><h4>${c.num}. ${esc(c.comodo)} <small>${esc(c.contexto)}</small></h4><ul>${c.evidencias.map((t) => `<li>${esc(t)}</li>`).join('')}</ul></section>`).join('') +
-          (completo('salao') ? '' : '<p class="vazio">Novas evidências aparecem a cada capítulo.</p>');
+          (completo(ultimo()) ? '' : '<p class="vazio">Novas evidências aparecem a cada capítulo.</p>');
       },
       glossario: () => {
         const n = glos.filter(([k]) => E.glossario[k]).length;
@@ -948,7 +950,7 @@
             ? `<article class="termo" data-ctx="${esc(g.ctx)}"><h4>${esc(g.termo)} <span class="ctx">${esc(g.ctx)}</span></h4><p>${esc(g.def)}</p><p class="ex"><b>Exemplo:</b> ${esc(g.ex)}</p><p class="en">🇬🇧 <i>${esc(g.ingles)}</i></p></article>`
             : `<article class="termo trancado" data-ctx="${esc(g.ctx)}"><h4>? ? ?</h4><p>Termo ainda não descoberto.</p></article>`).join('')}</div>`;
       },
-      cartoes: () => `<p class="glos-cont">${Object.keys(E.cartoes).length} de 12 cartões. Cada área contribui com uma produção para avaliar a mesma aprendizagem: compreender, usar e justificar a linguagem técnica.</p>
+      cartoes: () => `<p class="glos-cont">${Object.keys(E.cartoes).length} de ${Object.keys(MI.CARTOES).length} cartões. Cada área contribui com uma produção para avaliar a mesma aprendizagem: compreender, usar e justificar a linguagem técnica.</p>
         <div class="col-cartoes">${Object.keys(MI.CARTOES).map((k) => E.cartoes[k] ? cartaoHTML(k) : `<div class="cartao trancado"><div class="cartao-sigla">?</div><div class="cartao-area">${esc(MI.CARTOES[k].area)}</div><p>Ainda não conquistado.</p></div>`).join('')}</div>`,
       personagens: () => `<div class="pers-lista">${Object.entries(MI.PERSONAGENS).map(([k, p]) => `<div class="pers">${MI.retrato(k)}<div><b>${esc(p.nome)}</b><span>${esc(p.papel)}</span></div></div>`).join('')}</div>`,
     };
@@ -1029,7 +1031,7 @@
       <h3>Percurso</h3>
       <div class="tabela-rol"><table><thead><tr><th>Cômodo</th><th>Contexto</th><th>Análise</th><th>Cartões</th></tr></thead><tbody>${linhas}</tbody></table></div>
       <h3>O protocolo das quatro decisões</h3>
-      <p>Nos capítulos 2, 3 e 4 (cartões Campo, Escritório e Pesquisa), cada frase é analisada em quatro etapas: <b>termo + contexto</b>, <b>ajuste + justificativa</b>, <b>conexão interdisciplinar</b> e <b>mediação pedagógica</b>. As alternativas incorretas trazem uma explicação, para que o erro vire aprendizagem.</p>
+      <p>Nos capítulos 2, 3 e 4 (cartões 1 a 3: Campo, Escritório e Pesquisa) e 7, 8 e 9 (cartões 4 a 6: amostragem no córrego, mapas e relatório final), cada frase é analisada em quatro etapas: <b>termo + contexto</b>, <b>ajuste + justificativa</b>, <b>conexão interdisciplinar</b> e <b>mediação pedagógica</b>. As alternativas incorretas trazem uma explicação, para que o erro vire aprendizagem.</p>
       <h3>Sugestões de condução</h3>
       <ul>
         <li><b>Virem e conversem:</b> após cada análise, as duplas comparam escolhas e justificativas antes de seguir.</li>
@@ -1061,7 +1063,7 @@
           <p>Certificamos que</p>
           <p class="cert-nome">${esc(nome())}</p>
           <p>concluiu o caso <b>Mistério na Mansão do Ipê</b>, demonstrando rigor no uso do vocabulário técnico ambiental: <b>observar, contextualizar, justificar e comunicar</b>.</p>
-          <div class="cert-dados"><span>${est} de 18 ★ nas cenas</span><span>${acertos}/${totais} decisões certas de primeira</span><span>${Object.keys(E.cartoes).length} cartões interdisciplinares</span></div>
+          <div class="cert-dados"><span>${est} de ${MI.CAPITULOS.length * 3} ★ nas cenas</span><span>${acertos}/${totais} decisões certas de primeira</span><span>${Object.keys(E.cartoes).length} cartões interdisciplinares</span></div>
           <p class="cert-data">${data}</p>
           <div class="cert-ass"><div>${MI.retrato('marta')}<span>Profa. Marta Siqueira</span></div><div>${MI.retrato('helena')}<span>Dona Helena Ipê</span></div></div>
         </div>

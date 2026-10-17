@@ -173,7 +173,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
   flex: none; display: flex; gap: 10px; align-items: stretch; padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
   background: linear-gradient(#3a1520, #220b10); border-top: 3px solid var(--ouro2);
 }
-.cena-lista { list-style: none; margin: 0; padding: 0; flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; min-width: 0; }
+.cena-lista { list-style: none; margin: 0; padding: 0; flex: 1; display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; min-width: 0; }
 .cena-lista .item {
   position: relative; background: linear-gradient(var(--papel), var(--papel2)); color: var(--tinta); border-radius: 9px; border: 2px solid var(--ouro2);
   min-height: 42px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 4px 6px; font-weight: 800; font-size: 14px; line-height: 1.15;
@@ -428,7 +428,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
   .hud { gap: 8px; font-size: 12.5px; }
   .hud span:nth-child(1) { display: none; }
   .mansao-quadro { width: min(100vw, calc((100dvh - 52px) * 16 / 9)); }
-  .cena-lista { gap: 4px; }
+  .cena-lista { gap: 4px; grid-template-columns: repeat(4, 1fr); }
   .cena-lista .item { font-size: 11.5px; min-height: 36px; padding: 3px; border-radius: 7px; }
   .cena-lista.modo-definicoes, .cena-lista.modo-mestre { grid-template-columns: 1fr; }
   .btn-dica { width: 60px; font-size: 12px; }
@@ -454,7 +454,15 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
   #btn-diario, #btn-restaurar { padding: 6px 8px; }
 }
 @media (max-height: 520px) and (orientation: landscape) {
-  .cena-lista .item { min-height: 30px; font-size: 11px; }
+  .barra { height: 44px; }
+  .barra-titulo b { font-size: 15px; }
+  .barra-titulo span { display: none; }
+  .btn-ico { width: 32px; height: 32px; font-size: 15px; }
+  .btn-dica { width: 64px; font-size: 12px; }
+  .btn-dica .lupa { font-size: 18px; }
+  .cena-zoom button { width: 30px; height: 30px; font-size: 18px; }
+  .mansao-quadro { width: min(100vw, calc((100dvh - 44px) * 16 / 9)); }
+  .cena-lista .item { min-height: 26px; font-size: 11px; padding: 2px 4px; }
   .cena-rodape { padding: 4px 8px; }
   .dialogo-retrato { width: 110px; }
   .dialogo-balao { min-height: 100px; }

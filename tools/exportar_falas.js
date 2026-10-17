@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 global.window = global;
 const raiz = path.join(__dirname, '..');
-['js/nucleo.js', 'js/audio.js', 'js/dados.js'].forEach((f) => require(path.join(raiz, f)));
+['js/nucleo.js', 'js/audio.js', 'js/dados.js', 'js/dados2.js'].forEach((f) => require(path.join(raiz, f)));
 const MI = global.MI;
 
 const lista = [];

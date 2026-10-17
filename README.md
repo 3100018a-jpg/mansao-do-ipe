@@ -6,7 +6,7 @@ A água do Lago do Ipê ficou verde, os peixes sumiram e cada morador já tem um
 
 Funciona direto no navegador, no computador ou no celular, sem instalação. É publicado pelo **GitHub Pages**.
 
-## Os seis capítulos
+## Os nove capítulos
 
 | Cômodo | Contexto profissional | Análise | Cartões conquistados |
 |---|---|---|---|
@@ -16,6 +16,9 @@ Funciona direto no navegador, no computador ou no celular, sem instalação. É 
 | 4. Biblioteca | **Pesquisa**: investigação das causas (Cartão 3) | “A eutrofização é a causa comprovada…” | Biologia, Filosofia |
 | 5. Laboratório | Amostras e laudos | Receita, solução e amostra: a mesma palavra em contextos diferentes | Química, Língua Inglesa |
 | 6. Salão de Baile | Comunicação aos moradores | O que pode mudar e o que deve permanecer | Artes, Educação Física |
+| 7. Horta e Córrego | **Campo**: amostragem a montante e a jusante (Cartão 4) | “Achamos o culpado: o esgoto do bairro é a única causa…” | Saneamento Ambiental, Ecologia |
+| 8. Sala de Mapas | **Escritório**: cartografia e uso do solo (Cartão 5) | “O mapa comprova que o bairro poluiu o lago.” | Cartografia e Geoprocessamento, Planejamento e Gestão Ambiental |
+| 9. Sala de Jantar | **Pesquisa**: relatório e encaminhamento ao órgão ambiental (Cartão 6) | “Recomendamos multar os moradores do bairro imediatamente.” | Legislação Ambiental, Educação Ambiental |
 
 Nos cartões Campo, Escritório e Pesquisa, cada frase passa pelo **protocolo das quatro decisões** da pauta:
 
@@ -29,7 +32,7 @@ Cada alternativa errada traz uma explicação (cultura do erro). Só a resposta 
 ## O que tem no jogo
 
 - **Seis cenas desenhadas à mão em SVG**: hall com escadaria, varanda e píer sobre o lago esverdeado, escritório, biblioteca ao luar, laboratório no porão e salão de baile.
-- **Mais de 70 objetos ocultos**, como medidor de oxigênio dissolvido, disco de Secchi, GPS, frasco de coleta, caixa térmica, ficha de cadeia de custódia, pluviômetro e Resolução CONAMA. A cada partida, a lista sorteia 10 objetos.
+- **Mais de 100 objetos ocultos**, como medidor de oxigênio dissolvido, disco de Secchi, sonda multiparâmetro, amostrador de garrafa, escalímetro, teodolito, drone, ficha de cadeia de custódia e relatório técnico. Cada cena tem de 22 a 25 objetos, e cada partida sorteia 12 deles.
 - **Cinco modos de busca**, liberados ao rejogar as cenas (domínio da cena):
   - lista de palavras;
   - silhuetas;
@@ -42,8 +45,8 @@ Cada alternativa errada traz uma explicação (cultura do erro). Só a resposta 
 - **Seis personagens** com retrato e voz própria: Profa. Marta (técnica e orientadora), Dona Helena (proprietária), Seu Benedito (caseiro), Tiago (estudante), Dra. Lúcia (química) e Rafael (repórter).
 - **Diário de investigação** com:
   - evidências registradas a cada capítulo;
-  - **glossário de 33 termos**, com contexto, exemplo e termo em inglês;
-  - coleção dos **12 cartões interdisciplinares**;
+  - **glossário de 51 termos**, com contexto, exemplo e termo em inglês;
+  - coleção de **18 cartões**: 12 das áreas da Formação Geral e 6 dos componentes técnicos do curso;
   - os personagens.
 - **Restauração da mansão** com as estrelas conquistadas: ipê florido, lampiões, fonte, vitrais, coreto, jardim de chuva, estação de monitoramento e mata ciliar. O lago fica mais limpo aos poucos.
 - **Certificado** com o nome do estudante, para imprimir ou salvar em PDF.
@@ -63,6 +66,9 @@ Cada ambiente tem uma trilha suave, criada no próprio navegador, sem arquivos d
 | Biblioteca | Noturno com harpa, cordas e celesta |
 | Laboratório | Minimalismo com marimba e vibrafone |
 | Salão de Baile | Valsa de salão com cordas, piano e violino |
+| Horta e Córrego | Choro ao violão de sete cordas, cavaquinho e flauta |
+| Sala de Mapas | Barroco ao cravo, com violoncelo |
+| Sala de Jantar | Minueto para quarteto de cordas |
 
 A música troca suavemente entre os ambientes e abaixa sozinha enquanto os personagens falam. O volume fica em ⚙ Configurações.
 
@@ -109,9 +115,12 @@ css/estilo.css        visual
 js/nucleo.js          utilitários e armazenamento
 js/audio.js           vozes, nome do jogador e efeitos
 js/musica.js          trilhas sonoras de cada ambiente
-js/dados.js           capítulos, desafios, glossário, cartões e restauração
+js/dados.js           capítulos 1 a 6, desafios, glossário, cartões e restauração
+js/dados2.js          capítulos 7 a 9, perguntas extras, novos termos e cartões
 js/objetos.js         desenhos dos objetos ocultos
+js/objetos2.js        objetos das missões 7 a 9
 js/cenas.js           desenhos dos cômodos e posições dos objetos
+js/cenas2.js          cômodos das missões 7 a 9 e objetos extras
 js/retratos.js        retratos dos personagens
 js/mansao.js          fachada da mansão (mapa principal)
 js/jogo.js            telas, cenas, diálogos, desafios e diário

@@ -16,6 +16,9 @@
     salao: { x: 800, y: 300 },
     laboratorio: { x: 1020, y: 690 },
     pier: { x: 1390, y: 660 },
+    horta: { x: 350, y: 815 },
+    mapas: { x: 1105, y: 168 },
+    jantar: { x: 1115, y: 525 },
   };
 
   function janela(x, y, w, h, acesa, arco, vitral) {
@@ -81,6 +84,9 @@
     // torre esquerda e direita
     s += `<rect x="430" y="210" width="130" height="430" fill="url(#gParede)" ${K}/><path d="M418 214 L495 110 L572 214 Z" fill="url(#gTelhado)" ${K}/><line x1="495" y1="110" x2="495" y2="80" stroke="#2b1d12" stroke-width="3"/><circle cx="495" cy="78" r="5" fill="url(#gOuro)"/>`;
     s += `<rect x="1040" y="210" width="130" height="430" fill="url(#gParede)" ${K}/><path d="M1028 214 L1105 110 L1182 214 Z" fill="url(#gTelhado)" ${K}/><line x1="1105" y1="110" x2="1105" y2="80" stroke="#2b1d12" stroke-width="3"/>`;
+    // janela redonda da sala de mapas (torre direita)
+    s += `<circle cx="1105" cy="250" r="24" fill="${f.mapas ? '#ffd877' : '#3a4a5e'}" stroke="#efe6d2" stroke-width="6"/><path d="M1105 228 L1105 272 M1083 250 L1127 250" stroke="#efe6d2" stroke-width="3"/>`;
+    if (r.mirante) s += `<g transform="translate(1105 104)"><line x1="0" y1="0" x2="0" y2="-40" stroke="#5a3a1c" stroke-width="3"/><path d="M0 -40 L30 -32 L0 -24 Z" fill="#2a8a86"/></g><g transform="translate(1140 300) rotate(-25)"><rect x="-4" y="-4" width="34" height="8" rx="2" fill="#b8902e" stroke="#2b1d12" stroke-width="1.5"/></g>`;
     // corpo central
     s += `<rect x="540" y="240" width="520" height="400" fill="url(#gParede)" ${K}/>`;
     s += `<path d="M520 246 L800 150 L1080 246 Z" fill="url(#gTelhado)" ${K}/>`;
@@ -96,7 +102,7 @@
     s += janela(540, 470, 70, 110, f.escritorio, false);
     s += janela(460, 470, 70, 110, f.escritorio, false);
     s += janela(1000, 470, 70, 110, f.hall, false);
-    s += janela(1080, 470, 70, 110, f.pier, false);
+    s += janela(1080, 470, 70, 110, f.jantar, false);
     // janelas superiores
     s += janela(540, 290, 70, 110, f.biblioteca, true);
     s += janela(460, 290, 70, 110, f.biblioteca, true);
@@ -133,6 +139,16 @@
       [[700, 760], [900, 760], [660, 860], [940, 860]].forEach(([x, y]) => {
         s += `<circle cx="${x}" cy="${y - 64}" r="46" fill="url(#gHalo)"/><rect x="${x - 3}" y="${y - 60}" width="6" height="62" fill="#2b2b2b"/><path d="M${x - 10} ${y - 58} L${x + 10} ${y - 58} L${x + 7} ${y - 78} L${x - 7} ${y - 78} Z" fill="#ffd877" ${K}/><path d="M${x - 9} ${y - 78} L${x} ${y - 88} L${x + 9} ${y - 78} Z" fill="#2b2b2b"/>`;
       });
+    }
+    // horta do Seu Benedito
+    s += `<path d="M262 790 L452 790 L466 840 L248 840 Z" fill="#6b4a2a" ${K}/><path d="M244 850 L470 850 L482 890 L232 890 Z" fill="#6b4a2a" ${K}/>`;
+    for (let i = 0; i < 8; i++) { s += `<circle cx="${272 + i * 24}" cy="815" r="${r.horta_agro ? 9 : 6}" fill="${r.horta_agro ? '#6fbf4a' : '#5f9a3a'}"/><circle cx="${258 + i * 28}" cy="870" r="${r.horta_agro ? 9 : 6}" fill="${r.horta_agro ? '#6fbf4a' : '#5f9a3a'}"/>`; }
+    if (r.horta_agro) {
+      s += `<rect x="470" y="780" width="46" height="40" fill="#8a5a2f" ${K}/><path d="M466 780 L520 780 L514 770 L472 770 Z" fill="#6b4322" ${K}/>`;
+      for (let i = 0; i < 6; i++) s += `<circle cx="${280 + i * 32}" cy="${808 + (i % 2) * 4}" r="4" fill="${['#e86a9a', '#f2c230', '#d23b2e'][i % 3]}"/>`;
+    }
+    if (r.placas) {
+      [[1170, 860], [1230, 640], [1560, 640]].forEach(([x, y]) => { s += `<line x1="${x}" y1="${y}" x2="${x}" y2="${y - 34}" stroke="#5a3a1c" stroke-width="4"/><rect x="${x - 20}" y="${y - 54}" width="40" height="24" rx="3" fill="#f2c230" ${K}/><path d="M${x - 12} ${y - 42} L${x + 12} ${y - 42}" stroke="#2a8a86" stroke-width="3"/>`; });
     }
     // arbustos de primeiro plano
     [[420, 700], [480, 712], [1120, 704], [1180, 716]].forEach(([x, y], i) => { s += `<ellipse cx="${x}" cy="${y}" rx="46" ry="26" fill="${i % 2 ? '#3c7a3a' : '#2f6b3a'}" ${K}/>`; });

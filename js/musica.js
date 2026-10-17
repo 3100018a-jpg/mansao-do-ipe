@@ -20,6 +20,9 @@
     biblioteca: 'Noturno com harpa e cordas',
     laboratorio: 'Minimalismo com marimba e vibrafone',
     salao: 'Valsa de salão com cordas',
+    horta: 'Choro ao violão e flauta',
+    mapas: 'Barroco ao cravo',
+    jantar: 'Minueto para quarteto de cordas',
   };
 
   let ctx = null, saidaGeral = null, revEntrada = null;
@@ -181,6 +184,8 @@
   }
   I.violao = (out, t, m, dur, vel) => dedilhar(out, t, m, vel, 1.8, 0.45, 3200);
   I.harpa = (out, t, m, dur, vel) => dedilhar(out, t, m, vel, 2.6, 0.75, 5200);
+  I.cravo = (out, t, m, dur, vel) => dedilhar(out, t, m, vel, 1.1, 0.95, 6500);
+  I.cavaquinho = (out, t, m, dur, vel) => dedilhar(out, t, m, vel, 0.9, 0.7, 5000);
   function ruido(out, t, dur, vel, tipo, freq, q) {
     const s = ctx.createBufferSource(); s.buffer = ruidoBuf;
     const f = ctx.createBiquadFilter(); f.type = tipo; f.frequency.value = freq; f.Q.value = q || 0.7;
@@ -346,6 +351,63 @@
       voicing(a, 67).forEach((m) => I.cordas(o.molhado, t, m, b * 3, 0.012));
       const ritmos = [[[0, 3]], [[0, 2], [2, 1]], [[0, 1], [1, 1], [2, 1]], [[0, 1.5], [1.5, 0.5], [2, 1]]];
       escolher(ritmos, rnd).forEach(([p, d]) => I.violino(o.molhado, t + p * b, proxNota(st, a, ESC_MAIOR(7), [67, 84], rnd, p === 0), d * b * 0.95, 0.03));
+    },
+  };
+
+  // Choro suave ao violão de sete cordas, cavaquinho e flauta (horta e córrego)
+  E.horta = {
+    ganho: 1.6,
+    bpm: 80, tempos: 4,
+    prog: ['D', 'D', 'A7', 'A7', 'A7', 'A7', 'D', '7', 'G', 'G', 'D', 'B7', 'E7', 'E7', 'A7', 'A7'].map((n, i) => (n === '7' ? ac('D7') : ac(n))),
+    compasso(o, t, n, b, rnd, st) {
+      const a = this.prog[n % this.prog.length], prox = this.prog[(n + 1) % this.prog.length], e = b / 2;
+      // baixaria do violão de sete cordas: tônica, quinta e uma passagem até o próximo acorde
+      const r = 38 + ((a.raiz + 10) % 12);
+      I.violao(o.seco, t, r, b, 0.3);
+      I.violao(o.seco, t + 2 * b, r + 7 <= 50 ? r + 7 : r - 5, b, 0.24);
+      const alvo = 38 + ((prox.raiz + 10) % 12);
+      [alvo + 2, alvo + 1].forEach((m, i) => { if (rnd() < 0.7) I.violao(o.seco, t + 3 * b + i * e, m, e, 0.2); });
+      // cavaquinho com a levada sincopada do choro
+      const v = voicing(a, 67).slice(-3);
+      [0, 0.75, 1.5, 2, 2.75, 3.5].forEach((p, k) => v.forEach((m, i) => I.cavaquinho(o.seco, t + p * b + i * 0.01, m, e, k % 2 ? 0.07 : 0.1)));
+      for (let i = 0; i < 8; i++) I.chocalho(o.seco, t + i * e, 0.05, i % 2 ? 0.014 : 0.009);
+      // flauta com frases em colcheias
+      const esc = ESC_MAIOR(2);
+      for (let i = 0; i < 8; i++) if (rnd() < (i % 2 ? 0.45 : 0.65)) I.flauta(o.molhado, t + i * e, proxNota(st, a, esc, [74, 88], rnd, i % 2 === 0), e * 0.95, 0.035);
+    },
+  };
+
+  // Barroco ao cravo, com violoncelo no baixo contínuo (sala de mapas)
+  E.mapas = {
+    ganho: 2.8,
+    bpm: 72, tempos: 4,
+    prog: ['Am', 'Dm', 'G', 'C', 'F', 'Dm', 'E7', 'Am', 'C', 'G', 'Am', 'Em', 'F', 'C', 'Dm', 'E7'].map(ac),
+    compasso(o, t, n, b, rnd, st) {
+      const a = this.prog[n % this.prog.length], s16 = b / 4;
+      const base = notasDe(a, 57).slice(0, 3);
+      const figura = [0, 2, 1, 2, 0, 2, 1, 2];
+      for (let i = 0; i < 16; i++) {
+        const nota = base[figura[i % 8]] + (i >= 8 ? 12 : 0);
+        I.cravo(o.molhado, t + i * s16, nota, s16, i % 4 === 0 ? 0.12 : 0.075);
+      }
+      const r = 36 + a.raiz;
+      [r, r + 12, r + a.tipo[2], r + 12].forEach((m, i) => I.contrabaixo(o.seco, t + i * b, m, b * 0.85, 0.08));
+      if (n % 2 === 1 && rnd() < 0.8) [0, 1, 2].forEach((p) => I.cravo(o.molhado, t + p * b + b * 0.5, proxNota(st, a, ESC_MENOR(9), [76, 88], rnd, true), b, 0.06));
+    },
+  };
+
+  // Minueto para quarteto de cordas (sala de jantar)
+  E.jantar = {
+    ganho: 2.9,
+    bpm: 104, tempos: 3,
+    prog: ['G', 'D7', 'G', 'C', 'G', 'D', 'Em', 'A7', 'D', 'D7', 'G', 'C', 'G', 'D7', 'G', 'G'].map(ac),
+    compasso(o, t, n, b, rnd, st) {
+      const a = this.prog[n % this.prog.length];
+      I.contrabaixo(o.seco, t, 36 + a.raiz + (a.raiz < 5 ? 12 : 0), b * 1.6, 0.1);
+      voicing(a, 60).forEach((m) => { I.violino(o.molhado, t + b, m, b * 0.8, 0.012); I.violino(o.molhado, t + 2 * b, m, b * 0.8, 0.011); });
+      voicing(a, 64).forEach((m) => I.cordas(o.molhado, t, m, b * 3, 0.008));
+      const ritmos = [[[0, 1], [1, 1], [2, 1]], [[0, 2], [2, 1]], [[0, 1.5], [1.5, 0.5], [2, 1]], [[0, 0.5], [0.5, 0.5], [1, 1], [2, 1]]];
+      escolher(ritmos, rnd).forEach(([p, d]) => I.violino(o.molhado, t + p * b, proxNota(st, a, ESC_MAIOR(7), [69, 86], rnd, p === 0), d * b * 0.92, 0.032));
     },
   };
 
