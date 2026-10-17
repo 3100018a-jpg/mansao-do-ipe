@@ -11,17 +11,45 @@ const raiz = path.join(__dirname, '..');
 ['js/nucleo.js', 'js/audio.js', 'js/dados.js'].forEach((f) => require(path.join(raiz, f)));
 const MI = global.MI;
 
-const lista = MI.listaFalas().map((f) => {
+const lista = [];
+MI.listaFalas().forEach((f) => {
   const perfil = MI.PERSONAGENS[f.p].voz;
-  const limpo = MI.A.limparTexto(f.texto || f.t);
-  const item = { id: MI.A.idFala(limpo, perfil), voz: perfil.edge, rate: perfil.rate || '+0%', genero: perfil.genero, texto: MI.A.textoFalado(limpo) };
-  if (perfil.azure) item.azure = perfil.azure;
-  return item;
+  const add = (limpo) => {
+    const item = { id: MI.A.idFala(limpo, perfil), voz: perfil.edge, rate: perfil.rate || '+0%', genero: perfil.genero, texto: MI.A.textoFalado(limpo) };
+    if (perfil.azure) item.azure = perfil.azure;
+    lista.push(item);
+  };
+  // fala inteira (sem o nome) e, se houver {nome}, os trechos antes e depois do nome
+  add(MI.A.limparTexto(f.t));
+  if (/\{nome\}/.test(f.t)) MI.A.segmentos(f.t).filter((s) => s.tipo === 'texto').forEach((s) => add(s.t));
 });
 const unicos = [...new Map(lista.map((f) => [f.id, f])).values()];
 fs.mkdirSync(path.join(raiz, 'audio', 'vozes'), { recursive: true });
 fs.writeFileSync(path.join(raiz, 'audio', 'falas.json'), JSON.stringify(unicos, null, 1));
 console.log('Falas exportadas:', unicos.length, '·', unicos.reduce((s, f) => s + f.texto.length, 0), 'caracteres');
+
+// ---------- nomes dos jogadores ----------
+// gravados com a voz da Profa. Marta, que é quem chama o jogador pelo nome
+const temAcento = (t) => /[^\u0000-\u007f]/.test(t);
+const nomes = new Map();
+const lerLista = (arq, prioridade) => {
+  const caminho = path.join(raiz, arq);
+  if (!fs.existsSync(caminho)) return;
+  fs.readFileSync(caminho, 'utf8').split(/\r?\n/).map((l) => l.trim()).filter((l) => l && !l.startsWith('#')).forEach((n) => {
+    n = n.replace(/\s+/g, ' ').slice(0, 40);
+    const slug = MI.A.slugNome(n);
+    if (!slug) return;
+    const ja = nomes.get(slug);
+    if (!ja || prioridade || (temAcento(n) && !temAcento(ja))) nomes.set(slug, n);
+  });
+};
+lerLista('tools/nomes-brasileiros.txt', false);
+lerLista('nomes-turma.txt', true);
+const vozNome = MI.PERSONAGENS.marta.voz;
+const listaNomes = [...nomes.entries()].map(([slug, n]) => ({ id: slug, voz: vozNome.edge, rate: '+0%', genero: vozNome.genero, texto: n + '.' }));
+fs.mkdirSync(path.join(raiz, 'audio', 'nomes'), { recursive: true });
+fs.writeFileSync(path.join(raiz, 'audio', 'nomes.json'), JSON.stringify(listaNomes, null, 1));
+console.log('Nomes para gravar:', listaNomes.length);
 
 // ---------- página de amostras ----------
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');

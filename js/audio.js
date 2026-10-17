@@ -151,26 +151,73 @@
   }
 
   const cacheAudio = new Map();
-  function audioDe(id) {
-    let au = cacheAudio.get(id);
+  function audioDe(url) {
+    let au = cacheAudio.get(url);
     if (!au) {
-      au = new Audio('audio/vozes/' + id + '.mp3');
+      au = new Audio(url);
       au.preload = 'auto';
-      cacheAudio.set(id, au);
+      cacheAudio.set(url, au);
       if (cacheAudio.size > 40) cacheAudio.delete(cacheAudio.keys().next().value);
     }
     return au;
   }
+  const urlFala = (id) => 'audio/vozes/' + id + '.mp3';
+  const urlNome = (slug) => 'audio/nomes/' + slug + '.mp3';
+
+  // ---------- nome do jogador ----------
+  // O nome digitado é falado com a mesma voz neural da Profa. Marta (Francisca):
+  // nomes da lista audio/nomes (nomes brasileiros comuns + nomes-turma.txt)
+  // já vêm gravados; para outros nomes, usa a voz natural pt-BR do navegador.
+  A.nomeJogador = '';
+  A.slugNome = function (n) {
+    return String(n || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+      .replace(/[^a-z\s'-]/g, ' ').replace(/['-]/g, ' ').trim().replace(/\s+/g, '-');
+  };
+  // procura o nome completo, os dois primeiros nomes ou o primeiro nome entre os gravados
+  A.chaveNome = function (n) {
+    const partes = A.slugNome(n).split('-').filter(Boolean);
+    const lista = window.MI_NOMES || {};
+    for (const k of [partes.join('-'), partes.slice(0, 2).join('-'), partes[0]]) if (k && lista[k]) return k;
+    return null;
+  };
+  // trecho do nome que será falado pela voz do navegador (até dois nomes)
+  const nomeFalado = (n) => String(n || '').trim().split(/\s+/).slice(0, 2).join(' ');
+  A.comoFalaNome = function (n, perfil) {
+    if (!String(n || '').trim()) return 'nenhum';
+    if (A.chaveNome(n)) return 'gravado';
+    if (A.escolherVoz((perfil || {}).genero || 'F', (perfil || {}).edge)) return 'navegador';
+    return 'nenhum';
+  };
+  async function falarNome(perfil, token) {
+    const n = A.nomeJogador;
+    const k = A.chaveNome(n);
+    if (k && (await tocarMp3(urlNome(k), token, ''))) return true;
+    if (token !== A._token) return true;
+    await falarSintese(nomeFalado(n) + '.', perfil, token);
+    return true;
+  }
+  // divide uma fala nos trechos antes e depois de {nome}
+  A.segmentos = function (texto) {
+    const partes = String(texto).split('{nome}');
+    const out = [];
+    partes.forEach((p, i) => {
+      const t = A.limparTexto(p.replace(/^\s*,\s*/, '').replace(/[,\s]+$/, ''));
+      if (t) out.push({ tipo: 'texto', t });
+      if (i < partes.length - 1) out.push({ tipo: 'nome' });
+    });
+    return out;
+  };
+
   A.precarregar = function (itens) {
     (itens || []).forEach((it) => {
       if (!it || !it.texto) return;
       const id = A.idFala(A.limparTexto(it.texto), it.perfil || {});
-      if (A.temMp3(id)) audioDe(id);
+      if (A.temMp3(id)) audioDe(urlFala(id));
     });
   };
-  function tocarMp3(id, token, texto) {
+  function tocarMp3(url, token, texto) {
     return new Promise((res) => {
-      const au = audioDe(id);
+      const au = audioDe(url);
       let fim = false;
       const ok = () => { if (!fim) { fim = true; res(true); } };
       const falhou = () => { if (!fim) { fim = true; res(false); } };
@@ -179,7 +226,7 @@
       A._audio = au;
       const conferir = () => {
         if (texto && isFinite(au.duration) && au.duration < Math.max(0.6, texto.length / 40)) {
-          cacheAudio.delete(id); try { au.pause(); } catch (e) {} falhou();
+          cacheAudio.delete(url); try { au.pause(); } catch (e) {} falhou();
         }
       };
       au.onloadedmetadata = conferir;
@@ -193,6 +240,12 @@
       }, 120);
     });
   }
+  async function falarTrecho(limpo, perfil, token) {
+    const id = A.idFala(limpo, perfil);
+    let feito = false;
+    if (A.temMp3(id)) feito = await tocarMp3(urlFala(id), token, limpo);
+    if (!feito && token === A._token) await falarSintese(limpo, perfil, token);
+  }
 
   // fala um texto com o perfil do personagem; resolve ao terminar
   A.falar = async function (texto, perfil, opts) {
@@ -201,14 +254,29 @@
     if (!A.vozLigada || !texto) return;
     const token = A._token;
     perfil = perfil || {};
-    const limpo = A.limparTexto(texto);
     A.falando = true;
     A.musicaDuck(true);
-    const id = A.idFala(limpo, perfil);
-    let feito = false;
-    if (A.temMp3(id)) feito = await tocarMp3(id, token, limpo);
-    if (!feito && token === A._token) await falarSintese(limpo, perfil, token);
+    const comNome = /\{nome\}/.test(texto) && A.comoFalaNome(A.nomeJogador, perfil) !== 'nenhum';
+    if (comNome) {
+      // trecho, nome do jogador, trecho...
+      for (const seg of A.segmentos(texto)) {
+        if (token !== A._token) break;
+        if (seg.tipo === 'nome') await falarNome(perfil, token);
+        else await falarTrecho(seg.t, perfil, token);
+      }
+    } else await falarTrecho(A.limparTexto(texto), perfil, token);
     if (token === A._token) { A.falando = false; A.musicaDuck(false); }
+  };
+  // tela inicial: ouvir como o nome digitado será lido
+  A.ouvirNome = async function (n, perfil) {
+    A.parar();
+    const token = A._token;
+    const modo = A.comoFalaNome(n, perfil);
+    const antes = A.nomeJogador;
+    A.nomeJogador = n;
+    if (modo !== 'nenhum') await falarNome(perfil, token);
+    A.nomeJogador = antes;
+    return modo;
   };
 
   A.salvar = function () {
@@ -225,6 +293,7 @@
       busMus = ctx.createGain(); busMus.gain.value = A.volMusica * 0.5; busMus.connect(mestre);
       busFx = ctx.createGain(); busFx.gain.value = A.volEfeitos; busFx.connect(mestre);
     } catch (e) { ctx = null; }
+    if (ctx) MI.bus.emit('audio-pronto');
   };
   A.atualizarVolumes = function () {
     if (!ctx) return;
@@ -286,30 +355,7 @@
     }
   };
 
-  // ---------- trilha suave de mistério (gerada) ----------
-  let musTimer = null;
-  const ESCALAS = {
-    mansao: [220.0, 261.6, 293.7, 329.6, 392.0],
-    lago: [246.9, 293.7, 329.6, 370.0, 440.0],
-    misterio: [196.0, 233.1, 261.6, 293.7, 349.2],
-  };
-  const ACORDES = [[0, 2, 4], [1, 3, 0], [4, 1, 3], [2, 4, 0]];
-  A.musica = function (tema) {
-    if (!ctx) return;
-    if (musTimer) clearInterval(musTimer);
-    let passo = 0;
-    const tocar = () => {
-      if (A.volMusica <= 0.001) return;
-      const esc = ESCALAS[tema] || ESCALAS.mansao;
-      const ac = ACORDES[Math.floor(passo / 6) % ACORDES.length];
-      if (passo % 6 === 0) ac.forEach((g, i) => tom(esc[g] / 2, 3.2, 'sine', 0.045, i * 0.03, busMus));
-      if (passo % 3 !== 1 && Math.random() < 0.6) {
-        const n = esc[ac[Math.floor(Math.random() * 3)]] * (Math.random() < 0.5 ? 1 : 2);
-        tom(n, 0.8, 'triangle', 0.03, 0, busMus);
-      }
-      passo++;
-    };
-    tocar();
-    musTimer = setInterval(tocar, 520);
-  };
+  // ---------- acesso para a trilha (js/musica.js) ----------
+  A.contexto = () => ctx;
+  A.barramentoMusica = () => busMus;
 })();

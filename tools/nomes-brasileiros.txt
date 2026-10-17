@@ -1,0 +1,497 @@
+# Nomes brasileiros comuns gravados com a voz neural da Profa. Marta (Francisca).
+# Um nome por linha, com acentos. Para incluir os nomes da sua turma, use o arquivo nomes-turma.txt.
+Ana
+Maria
+Júlia
+Julia
+Juliana
+Mariana
+Beatriz
+Larissa
+Gabriela
+Gabriele
+Gabrielle
+Gabrielly
+Fernanda
+Amanda
+Bruna
+Camila
+Letícia
+Leticia
+Vitória
+Victória
+Isabela
+Isabella
+Isabelle
+Isabel
+Sofia
+Sophia
+Laura
+Luiza
+Luísa
+Luisa
+Alice
+Manuela
+Valentina
+Helena
+Heloísa
+Heloisa
+Lorena
+Lívia
+Livia
+Giovanna
+Giovana
+Yasmin
+Yasmim
+Jasmine
+Rafaela
+Raphaela
+Carolina
+Caroline
+Carol
+Eduarda
+Clara
+Cecília
+Cecilia
+Lara
+Lavínia
+Lavinia
+Emanuelly
+Emanuele
+Emilly
+Emily
+Kamilly
+Kamila
+Nicole
+Nicolly
+Sarah
+Sara
+Marina
+Melissa
+Mirella
+Mirela
+Esther
+Ester
+Rebeca
+Agatha
+Ágatha
+Catarina
+Bianca
+Pietra
+Antonella
+Elisa
+Eloá
+Lorrane
+Lorraine
+Rayssa
+Raíssa
+Raissa
+Thaís
+Thais
+Taís
+Tais
+Natália
+Natalia
+Patrícia
+Patricia
+Vanessa
+Jéssica
+Jessica
+Aline
+Daniela
+Daniele
+Danielle
+Débora
+Debora
+Priscila
+Tatiane
+Tatiana
+Renata
+Simone
+Cristina
+Cristiane
+Adriana
+Andréa
+Andreia
+Luana
+Kauane
+Kauany
+Kailane
+Ketlyn
+Kethellen
+Stephany
+Stefany
+Milena
+Mayara
+Maiara
+Taynara
+Thayná
+Tainá
+Ingrid
+Evelyn
+Évelyn
+Emanuela
+Graziela
+Gisele
+Giselle
+Paula
+Paola
+Sabrina
+Samara
+Samira
+Michele
+Michelle
+Raquel
+Regina
+Rosa
+Rose
+Sandra
+Silvia
+Sílvia
+Sônia
+Tereza
+Teresa
+Vera
+Yara
+Iara
+Jaqueline
+Joana
+Joyce
+Josiane
+Kelly
+Karen
+Karina
+Kátia
+Lúcia
+Lucia
+Luciana
+Luna
+Maitê
+Maite
+Malu
+Mel
+Lis
+Liz
+Aurora
+Ayla
+Maya
+Maia
+Olívia
+Olivia
+Allana
+Alana
+Ana Clara
+Ana Júlia
+Ana Luiza
+Ana Luísa
+Ana Beatriz
+Ana Carolina
+Ana Laura
+Ana Sofia
+Ana Lívia
+Ana Vitória
+Ana Paula
+Ana Cecília
+Maria Eduarda
+Maria Clara
+Maria Júlia
+Maria Luiza
+Maria Luísa
+Maria Alice
+Maria Fernanda
+Maria Vitória
+Maria Cecília
+Maria Helena
+Maria Laura
+Maria Valentina
+Maria Sofia
+Maria Isabel
+Maria Gabriela
+Maria Beatriz
+Maria Flor
+Maria Cláudia
+Maria Antônia
+Maria José
+Maria Rita
+João
+Pedro
+Lucas
+Gabriel
+Matheus
+Mateus
+Guilherme
+Rafael
+Raphael
+Felipe
+Filipe
+Gustavo
+Daniel
+Bruno
+Leonardo
+Thiago
+Tiago
+Rodrigo
+Diego
+Vinícius
+Vinicius
+Eduardo
+Henrique
+Enzo
+Arthur
+Artur
+Miguel
+Davi
+David
+Heitor
+Bernardo
+Samuel
+Lorenzo
+Théo
+Theo
+Bento
+Benício
+Benicio
+Joaquim
+Nicolas
+Nícolas
+Noah
+Murilo
+Isaac
+Caio
+Cauã
+Kauã
+Kaua
+Kauê
+Kaique
+Caíque
+Kayky
+Ryan
+Rian
+Yuri
+Igor
+Ícaro
+Icaro
+Erick
+Eric
+Érico
+Luan
+Luiz
+Luís
+Luis
+Otávio
+Otavio
+André
+Andre
+Alexandre
+Antônio
+Antonio
+Anderson
+Carlos
+César
+Cesar
+Cristiano
+Danilo
+Douglas
+Emanuel
+Emerson
+Everton
+Fábio
+Fabio
+Fernando
+Francisco
+Geovane
+Giovanni
+Giovane
+Hugo
+Iago
+Ian
+Ivan
+Jean
+Jefferson
+Jonathan
+Jônatas
+Jorge
+José
+Jose
+Josué
+Júlio
+Julio
+Juan
+Kevin
+Leandro
+Luciano
+Marcelo
+Marcos
+Márcio
+Marcio
+Mário
+Mario
+Maurício
+Mauricio
+Nathan
+Natan
+Paulo
+Patrick
+Renan
+Renato
+Ricardo
+Roberto
+Robson
+Rogério
+Ronaldo
+Samuel
+Sérgio
+Sergio
+Thales
+Tales
+Tomás
+Thomas
+Valter
+Victor
+Vitor
+Wallace
+Wesley
+Willian
+William
+Wagner
+Washington
+Wellington
+Yago
+Benjamin
+Augusto
+Bryan
+Breno
+Calebe
+Cauê
+Cauan
+Davi Lucas
+Davi Luiz
+Emanuel
+Ezequiel
+Gael
+Henry
+Joaquim
+Levi
+Lucca
+Luca
+Martin
+Martim
+Raul
+Ravi
+Ruan
+Saulo
+Silas
+Vicente
+Wendel
+Alan
+Allan
+Abner
+Adriano
+Alisson
+Álvaro
+Arnaldo
+Benedito
+Caetano
+Célio
+Cláudio
+Claudio
+Denis
+Diogo
+Edson
+Elias
+Elton
+Fabrício
+Gilberto
+Gilson
+Hélio
+Helio
+Ismael
+Jairo
+Jaime
+Joel
+Juliano
+Kléber
+Manoel
+Manuel
+Moisés
+Nelson
+Osvaldo
+Paulo Henrique
+Pablo
+Reinaldo
+Rubens
+Sandro
+Sebastião
+Severino
+Valdir
+Wilson
+João Pedro
+João Vitor
+João Victor
+João Gabriel
+João Lucas
+João Miguel
+João Guilherme
+João Paulo
+João Felipe
+João Henrique
+João Arthur
+João Davi
+Pedro Henrique
+Pedro Lucas
+Pedro Miguel
+Pedro Arthur
+Pedro Gabriel
+Luiz Felipe
+Luiz Gustavo
+Luiz Henrique
+Luiz Fernando
+Luiz Otávio
+Luís Felipe
+Luís Gustavo
+José Vitor
+José Pedro
+Carlos Eduardo
+Carlos Henrique
+Paulo Vitor
+Marcos Vinícius
+Vitor Hugo
+Victor Hugo
+Kauã Henrique
+Enzo Gabriel
+Enzo Miguel
+Arthur Miguel
+Miguel Henrique
+Gabriel Henrique
+Matheus Henrique
+Lucas Gabriel
+Rafael Augusto
+Antônio Carlos
+Alex
+Akira
+Kenji
+Hiroshi
+Yuki
+Mei
+Aiko
+Haruka
+Iberê
+Jaci
+Jacira
+Moema
+Potira
+Ubiratã
+Ubirajara
+Raoni
+Kaiã
+Tupã
+Araci
+Aruana
+Inaê
+Naiara
+Thainá
+Yanka
+Dandara
+Kayla
+Ketlen
+Wesley Gabriel

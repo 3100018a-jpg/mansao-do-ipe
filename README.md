@@ -36,6 +36,7 @@ Cada alternativa errada traz uma explicação (cultura do erro). Só a resposta 
   - **definições**, em que a lista descreve a função do instrumento;
   - noturno, com lanterna;
   - mestre investigador.
+- **Alternativas com tamanhos parecidos e em ordem aleatória**: a resposta certa não se destaca pelo tamanho e muda de posição a cada partida.
 - **Pontuação com combos**, bônus de tempo e de precisão, lupa de dicas com recarga e trava contra toques ao acaso.
 - **Zoom e arraste**: roda do mouse, botões ou pinça com dois dedos.
 - **Seis personagens** com retrato e voz própria: Profa. Marta (técnica e orientadora), Dona Helena (proprietária), Seu Benedito (caseiro), Tiago (estudante), Dra. Lúcia (química) e Rafael (repórter).
@@ -48,6 +49,31 @@ Cada alternativa errada traz uma explicação (cultura do erro). Só a resposta 
 - **Certificado** com o nome do estudante, para imprimir ou salvar em PDF.
 - Botão **Para o professor**, com o percurso, sugestões de condução (Virem e conversem, Cultura do erro, Certo é certo) e um modo demonstração que libera todos os capítulos.
 - O progresso fica salvo no navegador.
+
+## Trilhas sonoras
+
+Cada ambiente tem uma trilha suave, criada no próprio navegador, sem arquivos de música:
+
+| Ambiente | Estilo |
+|---|---|
+| Tela inicial e mapa da mansão | Valsa de caixinha de música |
+| Hall de Entrada | Jazz de salão dos anos 1920 (piano elétrico, contrabaixo e vassourinha) |
+| Varanda e Píer | Bossa nova ao violão de náilon, com flauta |
+| Escritório | Piano calmo e contemplativo |
+| Biblioteca | Noturno com harpa, cordas e celesta |
+| Laboratório | Minimalismo com marimba e vibrafone |
+| Salão de Baile | Valsa de salão com cordas, piano e violino |
+
+A música troca suavemente entre os ambientes e abaixa sozinha enquanto os personagens falam. O volume fica em ⚙ Configurações.
+
+## O nome do jogador
+
+Na abertura, a Profa. Marta recebe o estudante pelo nome. O nome é falado com a mesma voz neural dela:
+
+- **Cerca de 450 nomes brasileiros comuns já vêm gravados** (`tools/nomes-brasileiros.txt`), inclusive nomes compostos como Ana Júlia, Maria Eduarda e João Pedro. O jogo reconhece o nome com ou sem acento, e também o nome completo, como em “Ana Júlia Souza”.
+- **Nomes da turma:** escreva-os no arquivo `nomes-turma.txt`, um por linha, com acentos. Na próxima publicação, o GitHub grava cada um deles com a voz da Profa. Marta.
+- Se o nome não estiver gravado, o jogo usa a voz natural em português do navegador (no Microsoft Edge, é a mesma voz da Profa. Marta). Se não houver nenhuma, o nome aparece só escrito.
+- O botão 🔊, ao lado do campo do nome, mostra como o nome será lido.
 
 ## Vozes em português do Brasil
 
@@ -81,14 +107,16 @@ python tools/gerar_vozes.py
 index.html            página do jogo
 css/estilo.css        visual
 js/nucleo.js          utilitários e armazenamento
-js/audio.js           vozes, efeitos e trilha
+js/audio.js           vozes, nome do jogador e efeitos
+js/musica.js          trilhas sonoras de cada ambiente
 js/dados.js           capítulos, desafios, glossário, cartões e restauração
 js/objetos.js         desenhos dos objetos ocultos
 js/cenas.js           desenhos dos cômodos e posições dos objetos
 js/retratos.js        retratos dos personagens
 js/mansao.js          fachada da mansão (mapa principal)
 js/jogo.js            telas, cenas, diálogos, desafios e diário
-tools/                exportação das falas e geração das vozes
+tools/                exportação das falas, geração das vozes e lista de nomes
+nomes-turma.txt       nomes da turma que serão gravados com voz neural
 ```
 
 ## Observação

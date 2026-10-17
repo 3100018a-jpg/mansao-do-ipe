@@ -22,7 +22,11 @@
         <h1>Mistério na<br><span>Mansão do Ipê</span></h1>
         <p class="inicio-sub">A água do lago mudou de cor, os peixes sumiram e cada morador tem um culpado. Encontre as pistas, separe observação de conclusão e escolha as palavras certas para cada contexto.</p>
         <label class="inicio-label" for="inicio-nome">Seu nome de investigador</label>
-        <input id="inicio-nome" maxlength="30" autocomplete="off" placeholder="Digite seu nome">
+        <div class="inicio-nome-linha">
+          <input id="inicio-nome" maxlength="30" autocomplete="off" placeholder="Digite seu nome">
+          <button id="btn-ouvir-nome" class="btn-ouvir" type="button" aria-label="Ouvir como o seu nome será lido" title="Ouvir meu nome">🔊</button>
+        </div>
+        <p id="inicio-nome-info" class="inicio-nome-info" aria-live="polite"></p>
         <div class="inicio-botoes">
           <button id="btn-continuar" class="btn grande ouro" hidden>Continuar</button>
           <button id="btn-comecar" class="btn grande">Começar a investigação</button>
@@ -99,12 +103,14 @@
 
   <script src="js/nucleo.js"></script>
   <script src="js/audio.js"></script>
+  <script src="js/musica.js"></script>
   <script src="js/dados.js"></script>
   <script src="js/objetos.js"></script>
   <script src="js/cenas.js"></script>
   <script src="js/retratos.js"></script>
   <script src="js/mansao.js"></script>
   <script src="audio/vozes/manifest.js" onerror="window.MI_VOZES=window.MI_VOZES||{}"></script>
+  <script src="audio/nomes/manifest.js" onerror="window.MI_NOMES=window.MI_NOMES||{}"></script>
   <script src="js/jogo.js"></script>
 </body>
 </html>

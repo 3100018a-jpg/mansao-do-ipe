@@ -1,0 +1,6 @@
+# Nomes da turma
+# Escreva um nome por linha, com acentos, do jeito que o estudante digita no jogo.
+# Na próxima publicação, o GitHub grava esses nomes com a voz neural da Profa. Marta.
+# Exemplos (apague o # da frente para gravar):
+# Maria Eduarda
+# Kauã

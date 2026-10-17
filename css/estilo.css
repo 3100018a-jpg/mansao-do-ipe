@@ -105,6 +105,13 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .inicio-caixa h1 span { color: var(--ouro2); font-style: italic; }
 .inicio-sub { margin: 0 0 18px; color: var(--tinta2); }
 .inicio-label { display: block; font-weight: 800; font-size: 14px; margin-bottom: 6px; }
+.inicio-nome-linha { display: flex; gap: 8px; justify-content: center; align-items: center; }
+.btn-ouvir { flex: none; width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--ouro2); background: linear-gradient(#f7dc8a, #d4a542); font-size: 20px; box-shadow: 0 3px 0 #8e6420; }
+.btn-ouvir:active { transform: translateY(2px); box-shadow: 0 1px 0 #8e6420; }
+.inicio-nome-info { min-height: 1.3em; margin: 6px 0 0; font-size: 13.5px; color: var(--tinta2); }
+.inicio-nome-info.ok { color: var(--certo); font-weight: 700; }
+.dialogo-fundo.transparente { background: rgba(15, 4, 7, .45); }
+.cap-trilha { font-size: 13.5px; color: var(--tinta2); margin: -2px 0 8px; }
 #inicio-nome {
   width: 100%; max-width: 340px; font: inherit; font-size: 18px; padding: 10px 14px; border-radius: 10px; text-align: center;
   border: 2px solid var(--ouro2); background: #fffdf6; color: var(--tinta);

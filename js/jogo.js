@@ -92,6 +92,21 @@
     $('#btn-continuar').hidden = !temJogo;
     $('#btn-comecar').textContent = temJogo ? 'Novo jogo' : 'Começar a investigação';
   }
+  function definirNomeFalado() {
+    A.nomeJogador = E.nome && E.nome !== 'Investigador(a)' ? E.nome : '';
+  }
+  async function ouvirNome() {
+    iniciarAudioUmaVez();
+    const n = $('#inicio-nome').value.trim();
+    const info = $('#inicio-nome-info');
+    if (!n) { info.className = 'inicio-nome-info'; info.textContent = 'Digite o seu nome para ouvir como ele será lido.'; return; }
+    info.className = 'inicio-nome-info';
+    info.textContent = 'Ouvindo…';
+    const modo = await A.ouvirNome(n, MI.PERSONAGENS.marta.voz);
+    if (modo === 'gravado') { info.className = 'inicio-nome-info ok'; info.textContent = 'Seu nome foi gravado com a voz neural da Profa. Marta.'; }
+    else if (modo === 'navegador') info.textContent = 'Seu nome será lido pela voz natural em português do navegador. Para gravá-lo com a voz da Profa. Marta, peça ao professor que o inclua em nomes-turma.txt.';
+    else info.textContent = 'Seu nome aparecerá escrito nas falas. Para ouvi-lo, peça ao professor que o inclua em nomes-turma.txt, ou use o Microsoft Edge.';
+  }
   function iniciarAudioUmaVez() {
     A.iniciarAudio();
     A.musica('mansao');
@@ -104,10 +119,11 @@
     if (n) E.nome = n;
     if (!E.nome) E.nome = 'Investigador(a)';
     salvar();
-    if (novo || !E.caps.hall) {
-      telaMansao();
-      setTimeout(() => abrirCapitulo('hall'), 400);
-    } else telaMansao();
+    definirNomeFalado();
+    const primeiro = novo || !E.caps.hall;
+    telaMansao();
+    // a Profa. Marta recebe o jogador chamando-o pelo nome
+    dialogo([primeiro ? MI.SAUDACAO.novo : MI.SAUDACAO.volta], {}, () => { if (primeiro) setTimeout(() => abrirCapitulo('hall'), 250); });
   }
 
   // =========================================================
@@ -176,6 +192,7 @@
         <div class="cap-rot">Capítulo ${c.num} · ${esc(c.comodo)}${c.cartao ? ` · <b>${esc(c.cartao)}</b>` : ''}</div>
         <h2>${esc(c.titulo)}</h2>
         <p class="cap-ctx">${esc(c.contexto)}</p>
+        <p class="cap-trilha">♪ Trilha: ${esc(MI.TRILHAS[c.musica] || '')}</p>
         <p>${esc(c.resumo)}</p>
         ${completo(id) ? `<div class="cap-info"><span>${estrelasHTML(st.estrelasMelhor)}</span><span>Melhor pontuação: <b>${st.melhor}</b></span>${dominio}</div>` : ''}
         <div class="cap-acoes">${acoes}</div>
@@ -236,8 +253,11 @@
     op = op || {};
     const el = $('#dialogo');
     const fundo = $('#dialogo-fundo');
+    fundo.classList.toggle('transparente', !op.fundo);
     if (op.fundo && MI.CENAS[op.fundo]) {
       const c = MI.CENAS[op.fundo];
+      const capF = MI.CAPITULOS.find((x) => x.cena === op.fundo);
+      if (capF) A.musica(capF.musica);
       fundo.innerHTML = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">${U.isolarIds(c.bg() + c.fg(), 'dlg')}</svg>`;
     } else fundo.innerHTML = '';
     el.classList.add('ativo');
@@ -974,11 +994,12 @@
       <label class="linha chk"><input type="checkbox" id="cfg-alt" ${A.lerAlternativas ? 'checked' : ''}><span>Ler as alternativas dos desafios</span></label>
       <label class="linha"><span>Volume das vozes</span><input type="range" id="cfg-vv" min="0" max="1" step="0.05" value="${A.volVoz}"></label>
       <label class="linha"><span>Volume da música</span><input type="range" id="cfg-vm" min="0" max="1" step="0.05" value="${A.volMusica}"></label>
+      <p class="cfg-info">♪ Tocando agora: ${esc(MI.TRILHAS[A.trilhaAtual && A.trilhaAtual()] || 'nenhuma trilha')}</p>
       <label class="linha"><span>Volume dos efeitos</span><input type="range" id="cfg-ve" min="0" max="1" step="0.05" value="${A.volEfeitos}"></label>
       <p class="cfg-info">${esc(infoVoz)}</p>
       <div class="cfg-acoes"><button class="btn perigo" id="cfg-reset">Apagar progresso</button></div></div>`, { caixa: 'caixa-media' });
     const sv = () => { A.salvar(); A.atualizarVolumes(); };
-    $('#cfg-nome', el).onchange = (e) => { E.nome = e.target.value.trim() || 'Investigador(a)'; salvar(); $('#mansao-nome').textContent = nome(); };
+    $('#cfg-nome', el).onchange = (e) => { E.nome = e.target.value.trim() || 'Investigador(a)'; salvar(); definirNomeFalado(); $('#mansao-nome').textContent = nome(); };
     $('#cfg-voz', el).onchange = (e) => { A.vozLigada = e.target.checked; if (!A.vozLigada) A.parar(); sv(); };
     $('#cfg-alt', el).onchange = (e) => { A.lerAlternativas = e.target.checked; sv(); };
     $('#cfg-vv', el).oninput = (e) => { A.volVoz = +e.target.value; sv(); };
@@ -1066,6 +1087,8 @@
     $('#btn-continuar').onclick = () => { A.sfx('clique'); comecar(false); };
     $('#inicio-nome').onkeydown = (e) => { if (e.key === 'Enter') comecar(!Object.keys(E.caps).length); };
     $('#btn-prof-inicio').onclick = () => { iniciarAudioUmaVez(); professor(); };
+    $('#btn-ouvir-nome').onclick = () => ouvirNome();
+    definirNomeFalado();
     $('#btn-diario').onclick = () => { A.sfx('pagina'); diario(); };
     $('#btn-restaurar').onclick = () => { A.sfx('clique'); restaurar(); };
     $('#btn-config').onclick = () => { A.sfx('clique'); configuracoes(); };

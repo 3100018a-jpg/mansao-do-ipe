@@ -59,10 +59,10 @@
   MI.CAPITULOS = [
     {
       id: 'hall', num: 1, titulo: 'O convite', comodo: 'Hall de Entrada', contexto: 'Relatos e primeiras impressões',
-      cena: 'hall', musica: 'mansao',
+      cena: 'hall', musica: 'hall',
       resumo: 'Dona Helena jura que o lago foi envenenado. Antes de concluir qualquer coisa, reúna o kit de investigação e aprenda a separar relatos, observações e conclusões.',
       intro: [
-        { p: 'marta', t: 'Chegamos ao Solar do Ipê, {nome}. Esta mansão foi construída em 1928, e o lago nos fundos dá nome ao bairro inteiro.' },
+        { p: 'marta', t: '{nome}, chegamos ao Solar do Ipê. Esta mansão foi construída em 1928, e o lago nos fundos dá nome ao bairro inteiro.' },
         { p: 'helena', t: 'Que alívio ver vocês! Meu lago está envenenado, tenho certeza. Os peixes sumiram e o cheiro chega até a varanda.' },
         { p: 'benedito', t: 'Com todo o respeito, Dona Helena, pra mim a culpa é da fábrica do outro lado da estrada.' },
         { p: 'marta', t: 'Cada relato é importante, mas relato ainda não é evidência. Antes de qualquer conclusão, precisamos do nosso material de investigação.' },
@@ -97,18 +97,18 @@
             tipo: 'escolha', rotulo: 'r',
             enunciado: 'Como registrar a fala de Dona Helena no caderno de campo?',
             opcoes: [
-              { t: 'Segundo relato da proprietária, os peixes deixaram de ser vistos há cerca de duas semanas.', ok: true },
-              { t: 'Os peixes do lago morreram há duas semanas, envenenados pela água.', porque: 'Transforma um relato em fato e ainda acrescenta uma causa que ninguém verificou.' },
-              { t: 'A proprietária comprovou que o lago está envenenado e sem peixes.', porque: 'Um relato não comprova. O verbo dá à fala um peso de evidência que ela não tem.' },
-              { t: 'Os peixes sumiram porque a água ficou verde nas últimas semanas.', porque: 'Cria uma relação de causa entre duas informações que ainda não foram investigadas.' },
+              { t: 'Segundo a proprietária, os peixes deixaram de ser vistos há cerca de duas semanas.', ok: true },
+              { t: 'Os peixes do lago morreram há duas semanas, envenenados pela água contaminada.', porque: 'Transforma um relato em fato e ainda acrescenta uma causa que ninguém verificou.' },
+              { t: 'A proprietária comprovou que o lago está envenenado e que não há mais peixes.', porque: 'Um relato não comprova. O verbo dá à fala um peso de evidência que ela não tem.' },
+              { t: 'Os peixes sumiram do lago porque a água ficou verde nas últimas duas semanas.', porque: 'Cria uma relação de causa entre duas informações que ainda não foram investigadas.' },
             ],
             justificativa: {
               enunciado: 'Por que essa é a melhor forma de registro?',
               opcoes: [
                 { t: 'Atribui a informação a quem a relatou e não a transforma em fato comprovado.', ok: true },
-                { t: 'Usa mais palavras, e textos mais longos são sempre mais técnicos.', porque: 'O tamanho não define a precisão. O que importa é citar a fonte e não extrapolar.' },
-                { t: 'Evita citar Dona Helena, para que o texto fique impessoal.', porque: 'Pelo contrário: a frase cita a fonte, segundo relato da proprietária.' },
-                { t: 'Confirma a hipótese de envenenamento de um jeito educado.', porque: 'Não confirma nada: registra o relato sem julgar se ele é verdadeiro.' },
+                { t: 'Usa mais palavras, e um texto mais longo é sempre mais técnico e mais preciso.', porque: 'O tamanho não define a precisão. O que importa é citar a fonte e não extrapolar.' },
+                { t: 'Evita citar o nome de Dona Helena, para que o registro fique impessoal e neutro.', porque: 'Pelo contrário: a frase cita a fonte, segundo relato da proprietária.' },
+                { t: 'Confirma a hipótese de envenenamento, mas de um jeito mais educado e respeitoso.', porque: 'Não confirma nada: registra o relato sem julgar se ele é verdadeiro.' },
               ],
             },
           },
@@ -117,9 +117,9 @@
             enunciado: 'Seu Benedito insiste que a fábrica é a culpada. Que pergunta faz a conversa avançar sem desrespeitar o relato dele?',
             opcoes: [
               { t: 'O que o senhor observou que o faz pensar na fábrica? Podemos anotar e investigar.', ok: true },
-              { t: 'O senhor não estudou química, então como pode saber disso?', porque: 'Desqualifica a pessoa. Relatos de moradores são valiosos e devem ser acolhidos.' },
-              { t: 'Se o senhor diz, então vamos registrar que foi a fábrica.', porque: 'Acolher não é aceitar como fato: a opinião vira registro de relato, não conclusão.' },
-              { t: 'Por que o senhor não fala com a prefeitura em vez de falar conosco?', porque: 'Encerra a conversa e desperdiça uma informação que pode orientar a investigação.' },
+              { t: 'O senhor não estudou química, então como pode ter certeza de que foi a fábrica?', porque: 'Desqualifica a pessoa. Relatos de moradores são valiosos e devem ser acolhidos.' },
+              { t: 'Se o senhor tem certeza, então vamos registrar no relatório que foi a fábrica.', porque: 'Acolher não é aceitar como fato: a opinião vira registro de relato, não conclusão.' },
+              { t: 'Por que o senhor não leva essa reclamação à prefeitura em vez de falar conosco?', porque: 'Encerra a conversa e desperdiça uma informação que pode orientar a investigação.' },
             ],
           },
         ],
@@ -140,7 +140,7 @@
 
     {
       id: 'pier', num: 2, titulo: 'À beira do lago', comodo: 'Varanda e Píer', contexto: 'Campo — registro de observação',
-      cena: 'pier', musica: 'lago', cartao: 'Cartão 1 · Campo',
+      cena: 'pier', musica: 'pier', cartao: 'Cartão 1 · Campo',
       resumo: 'No campo, a regra é observar, medir e registrar sem antecipar conclusões. Encontre os equipamentos, faça a medição e revise o registro do Tiago.',
       intro: [
         { p: 'benedito', t: 'Foi aqui no píer que senti o cheiro mais forte. A água ficou verde que nem sopa de ervilha!' },
@@ -160,10 +160,10 @@
             tipo: 'escolha', rotulo: 'c',
             enunciado: 'Antes de tudo: o que significa o registro de 2,1 mg/L de OD no ponto P1?',
             opcoes: [
-              { t: 'Havia 2,1 miligramas de oxigênio dissolvido em cada litro de água, naquele ponto e momento.', ok: true },
-              { t: 'O lago inteiro tem 2,1 miligramas de oxigênio, em qualquer lugar e horário.', porque: 'A medição vale para um ponto e um momento. O oxigênio varia com o local, a profundidade e a hora do dia.' },
-              { t: 'A água tem 2,1 litros de oxigênio para cada miligrama de algas no lago.', porque: 'A unidade mg/L significa miligramas por litro de água. Não envolve algas.' },
-              { t: 'O oxigênio dissolvido caiu 2,1 miligramas desde a semana passada.', porque: 'Não houve medição anterior: o número é um valor medido, não uma variação.' },
+              { t: 'Havia 2,1 miligramas de oxigênio dissolvido por litro, naquele ponto e naquele momento.', ok: true },
+              { t: 'O lago inteiro tem 2,1 miligramas de oxigênio dissolvido, em qualquer ponto e horário.', porque: 'A medição vale para um ponto e um momento. O oxigênio varia com o local, a profundidade e a hora do dia.' },
+              { t: 'A água do lago tem 2,1 litros de oxigênio dissolvido para cada miligrama de algas.', porque: 'A unidade mg/L significa miligramas por litro de água. Não envolve algas.' },
+              { t: 'O oxigênio dissolvido no ponto P1 caiu 2,1 miligramas por litro desde a semana passada.', porque: 'Não houve medição anterior: o número é um valor medido, não uma variação.' },
             ],
           },
           {
@@ -178,18 +178,18 @@
             tipo: 'escolha', rotulo: 2,
             enunciado: 'Como reescrever o registro de campo?',
             opcoes: [
-              { t: 'A água apresentava coloração esverdeada e odor perceptível junto ao píer (ponto P1), às 9h15.', ok: true },
-              { t: 'A água do lago está poluída, esverdeada e com um mau cheiro muito forte.', porque: 'Troca contaminada por poluída, mas continua afirmando um diagnóstico sem análise.' },
-              { t: 'O lago parece contaminado, pois a água estava muito verde e fedida.', porque: 'Parece contaminado ainda sugere conclusão, e fedida é vago para um registro técnico.' },
-              { t: 'A cor esverdeada e o odor comprovam a contaminação no ponto P1.', porque: 'Cor e odor são indícios, não comprovação. O verbo comprovam extrapola os dados.' },
+              { t: 'A água apresentava cor esverdeada e odor perceptível junto ao píer (ponto P1), às 9h15.', ok: true },
+              { t: 'A água do lago está poluída, esverdeada e com um mau cheiro muito forte junto ao píer.', porque: 'Troca contaminada por poluída, mas continua afirmando um diagnóstico sem análise.' },
+              { t: 'O lago parece contaminado, pois a água estava muito verde e fedida perto do píer, às 9h15.', porque: 'Parece contaminado ainda sugere conclusão, e fedida é vago para um registro técnico.' },
+              { t: 'A cor esverdeada e o odor observados às 9h15 comprovam a contaminação no ponto P1.', porque: 'Cor e odor são indícios, não comprovação. O verbo comprovam extrapola os dados.' },
             ],
             justificativa: {
               enunciado: 'Que evidência sustenta essa decisão?',
               opcoes: [
-                { t: 'A frase descreve o que foi percebido, com local e horário, sem afirmar causa ou diagnóstico.', ok: true },
-                { t: 'A frase evita falar do cheiro, que não pode ser medido no campo.', porque: 'Ela registra o odor, sim. Observações sensoriais entram no registro, descritas com cuidado.' },
-                { t: 'A frase é mais curta e usa palavras mais difíceis que a original.', porque: 'Precisão não é usar palavras difíceis: é dizer exatamente o que os dados permitem.' },
-                { t: 'A frase confirma a contaminação de um jeito mais elegante.', porque: 'Ela não confirma contaminação: apenas descreve a observação.' },
+                { t: 'Descreve o que foi percebido, com local e horário, sem afirmar causa ou diagnóstico.', ok: true },
+                { t: 'Evita falar do cheiro, porque um odor não pode ser medido nem registrado no campo.', porque: 'Ela registra o odor, sim. Observações sensoriais entram no registro, descritas com cuidado.' },
+                { t: 'É mais curta que a original e usa palavras mais difíceis, o que a torna mais técnica.', porque: 'Precisão não é usar palavras difíceis: é dizer exatamente o que os dados permitem.' },
+                { t: 'Confirma a contaminação da água, só que de um jeito mais elegante e mais técnico.', porque: 'Ela não confirma contaminação: apenas descreve a observação.' },
               ],
             },
           },
@@ -198,9 +198,9 @@
             enunciado: 'Quais duas áreas mais contribuem para melhorar esse registro? Escolha duas.',
             opcoes: [
               { t: 'Geografia: localizar e descrever o trecho observado, com coordenadas e pontos de referência.', ok: true },
-              { t: 'Língua Portuguesa: distinguir verbos de descrição, como apresentava, de verbos de conclusão, como comprova.', ok: true },
-              { t: 'Matemática: calcular a média usando apenas a medição de 2,1 mg/L.', porque: 'Uma média com um único valor não acrescenta informação.' },
-              { t: 'Artes: enfeitar o caderno de campo para chamar a atenção de quem lê.', porque: 'Recursos visuais ajudam quando comunicam dados sem distorcer, não como enfeite.' },
+              { t: 'Língua Portuguesa: diferenciar verbos que descrevem, como apresentava, de verbos que concluem.', ok: true },
+              { t: 'Matemática: calcular a média do oxigênio dissolvido usando apenas a medição de 2,1 mg/L.', porque: 'Uma média com um único valor não acrescenta informação.' },
+              { t: 'Artes: enfeitar o caderno de campo com desenhos coloridos para chamar a atenção de quem lê.', porque: 'Recursos visuais ajudam quando comunicam dados sem distorcer, não como enfeite.' },
             ],
           },
           {
@@ -208,9 +208,9 @@
             enunciado: 'Que pergunta você faria ao Tiago para que ele mesmo revise a frase?',
             opcoes: [
               { t: 'Que evidência permitiria passar da observação para a afirmação de contaminação?', ok: true },
-              { t: 'Você não sabia que contaminado é uma palavra proibida no relatório?', porque: 'Nenhuma palavra é proibida; ela só precisa de evidências. A pergunta constrange e não ensina.' },
-              { t: 'Por que você não copiou a frase pronta do livro de consulta?', porque: 'Copiar sem discutir o significado foi justamente uma das dificuldades da turma.' },
-              { t: 'Qual palavra soa mais bonita e técnica para colocar no lugar?', porque: 'O critério é a precisão em relação aos dados, não a sonoridade.' },
+              { t: 'Você não sabia que contaminado é uma palavra proibida em qualquer relatório técnico?', porque: 'Nenhuma palavra é proibida; ela só precisa de evidências. A pergunta constrange e não ensina.' },
+              { t: 'Por que você não copiou a frase pronta do livro de consulta, que já está correta?', porque: 'Copiar sem discutir o significado foi justamente uma das dificuldades da turma.' },
+              { t: 'Qual palavra soa mais bonita e mais técnica para colocar no lugar de contaminado?', porque: 'O critério é a precisão em relação aos dados, não a sonoridade.' },
             ],
           },
         ],
@@ -230,7 +230,7 @@
 
     {
       id: 'escritorio', num: 3, titulo: 'Os números do escritório', comodo: 'Escritório', contexto: 'Escritório — sistematização de dados',
-      cena: 'escritorio', musica: 'mansao', cartao: 'Cartão 2 · Escritório',
+      cena: 'escritorio', musica: 'escritorio', cartao: 'Cartão 2 · Escritório',
       resumo: 'Organizar informações é separar dados de interpretações. Encontre os registros antigos e descubra se uma única medição pode mostrar uma tendência.',
       intro: [
         { p: 'helena', t: 'Este era o escritório do meu pai. Ele anotava tudo: a chuva, a temperatura e até a cor do lago!' },
@@ -261,18 +261,18 @@
             tipo: 'escolha', rotulo: 2,
             enunciado: 'Como reescrever a frase da tabela?',
             opcoes: [
-              { t: 'No ponto P1, em 14/10, às 9h15, registrou-se 2,1 mg/L de OD. Para avaliar tendência, são necessárias medições periódicas.', ok: true },
-              { t: 'O oxigênio dissolvido caiu para 2,1 mg/L e vai continuar caindo nas próximas semanas.', porque: 'Afirma uma queda e ainda faz uma previsão, sem medições anteriores ou posteriores.' },
-              { t: 'As medições indicam que o oxigênio dissolvido está diminuindo, mas devagar.', porque: 'Troca comprovam por indicam, mas continua falando em diminuição com um único dado.' },
-              { t: 'O oxigênio dissolvido está baixo, o que comprova a queda semanal no lago.', porque: 'Mistura um dado, o valor baixo, com uma tendência, a queda semanal, que não foi medida.' },
+              { t: 'No P1, em 14/10, às 9h15, registrou-se 2,1 mg/L de OD. Avaliar tendência exige medições periódicas.', ok: true },
+              { t: 'No P1, o oxigênio dissolvido caiu para 2,1 mg/L em 14/10 e vai continuar caindo nas próximas semanas.', porque: 'Afirma uma queda e ainda faz uma previsão, sem medições anteriores ou posteriores.' },
+              { t: 'As medições do ponto P1 indicam que o oxigênio dissolvido está diminuindo, mas de forma lenta e gradual.', porque: 'Troca comprovam por indicam, mas continua falando em diminuição com um único dado.' },
+              { t: 'Em 14/10, o oxigênio dissolvido estava baixo no P1, o que comprova a queda semanal registrada no lago.', porque: 'Mistura um dado, o valor baixo, com uma tendência, a queda semanal, que não foi medida.' },
             ],
             justificativa: {
               enunciado: 'Por que essa versão é mais rigorosa?',
               opcoes: [
-                { t: 'Preserva valor, unidade, local e momento, e reconhece que um único dado não mostra variação no tempo.', ok: true },
-                { t: 'Esconde o valor medido para não assustar quem lê a tabela.', porque: 'Ela mostra o valor. Ocultar dados nunca é a solução.' },
-                { t: 'Usa a sigla OD, o que deixa a frase automaticamente técnica.', porque: 'Siglas ajudam, mas a precisão vem de dados, unidades e limites claros.' },
-                { t: 'Afirma a tendência de uma forma mais discreta e cuidadosa.', porque: 'Ela não afirma tendência: indica o que seria preciso para avaliá-la.' },
+                { t: 'Mantém valor, unidade, local e momento, e reconhece que um dado só não mostra variação.', ok: true },
+                { t: 'Esconde o valor exato da medição para não assustar quem vai ler a tabela de dados.', porque: 'Ela mostra o valor. Ocultar dados nunca é a solução.' },
+                { t: 'Usa a sigla OD e a unidade mg/L, o que deixa a frase automaticamente mais técnica.', porque: 'Siglas ajudam, mas a precisão vem de dados, unidades e limites claros.' },
+                { t: 'Afirma que há uma tendência de queda, mas de uma forma mais discreta e cuidadosa.', porque: 'Ela não afirma tendência: indica o que seria preciso para avaliá-la.' },
               ],
             },
           },
@@ -280,30 +280,30 @@
             tipo: 'escolha', rotulo: 'c',
             enunciado: 'A Resolução CONAMA 357/2005 prevê, para águas doces de classe 2, OD não inferior a 5 mg/L. Qual frase usa essa referência com rigor?',
             opcoes: [
-              { t: 'O valor medido, 2,1 mg/L, é inferior ao previsto para águas doces de classe 2, de 5 mg/L, mas a classe do lago ainda não foi verificada.', ok: true },
-              { t: 'O lago está ilegal, pois a Resolução CONAMA exige no mínimo 5 mg/L de oxigênio em qualquer água.', porque: 'A referência depende da classe do corpo d’água, que ainda não conhecemos. E ilegal é um julgamento que vai além dos dados.' },
-              { t: 'Como 2,1 é menor que 5, a água é imprópria para qualquer uso, segundo a Resolução CONAMA.', porque: 'Generaliza demais: a comparação foi de um parâmetro, num ponto, com uma classe ainda hipotética.' },
-              { t: 'A Resolução CONAMA comprova que a fábrica contaminou o lago com seus resíduos industriais.', porque: 'Uma norma estabelece referências de qualidade; ela não identifica causas nem responsáveis.' },
+              { t: 'O valor medido (2,1 mg/L) é menor que o previsto para a classe 2 (5 mg/L), mas a classe do lago não foi verificada.', ok: true },
+              { t: 'O lago está ilegal, pois a Resolução CONAMA exige ao menos 5 mg/L de oxigênio dissolvido em qualquer água doce.', porque: 'A referência depende da classe do corpo d’água, que ainda não conhecemos. E ilegal é um julgamento que vai além dos dados.' },
+              { t: 'Como 2,1 mg/L é menor que 5 mg/L, a água do lago é imprópria para qualquer tipo de uso, segundo a Resolução CONAMA.', porque: 'Generaliza demais: a comparação foi de um parâmetro, num ponto, com uma classe ainda hipotética.' },
+              { t: 'Comparado à classe 2, o valor de 2,1 mg/L comprova que a fábrica vizinha contaminou o lago com resíduos industriais.', porque: 'Uma norma estabelece referências de qualidade; ela não identifica causas nem responsáveis.' },
             ],
           },
           {
             tipo: 'multi', rotulo: 3, n: 2,
             enunciado: 'Quais duas áreas ajudam a turma a organizar e interpretar esses dados? Escolha duas.',
             opcoes: [
-              { t: 'Matemática: organizar medições em tabela e gráfico e explicar por que um único ponto não forma tendência.', ok: true },
+              { t: 'Matemática: organizar medições em tabela e gráfico e mostrar que um ponto só não forma tendência.', ok: true },
               { t: 'Física: identificar grandezas, unidades e condições de medição, como hora, temperatura e profundidade.', ok: true },
-              { t: 'História: usar os cadernos de 1958 para provar que o lago sempre foi poluído.', porque: 'Os cadernos são registros valiosos, mas descrições antigas não provam a situação atual.' },
-              { t: 'Educação Física: cronometrar quanto tempo a turma leva para chegar até o lago.', porque: 'Não contribui para organizar ou interpretar os dados ambientais.' },
+              { t: 'História: usar os cadernos do pai de Dona Helena, de 1958, para provar que o lago sempre foi poluído.', porque: 'Os cadernos são registros valiosos, mas descrições antigas não provam a situação atual.' },
+              { t: 'Educação Física: cronometrar quanto tempo a turma leva para caminhar do escritório até o lago.', porque: 'Não contribui para organizar ou interpretar os dados ambientais.' },
             ],
           },
           {
             tipo: 'escolha', rotulo: 4,
             enunciado: 'Que pergunta ajudaria a turma a revisar a tabela?',
             opcoes: [
-              { t: 'Quantas medições, em quais datas e pontos, seriam necessárias para afirmar que existe uma tendência?', ok: true },
-              { t: 'Quem errou a tabela e precisa refazer tudo sozinho em casa?', porque: 'Buscar culpados inibe a escrita. A cultura do erro trata o equívoco como oportunidade de aprender.' },
-              { t: 'Vocês concordam que o oxigênio está mesmo diminuindo, não é?', porque: 'A pergunta já traz a resposta e induz a turma a confirmar a afirmação.' },
-              { t: 'Qual programa de computador faz os gráficos mais bonitos?', porque: 'A ferramenta importa menos que o raciocínio sobre os dados.' },
+              { t: 'Quantas medições, em que datas e pontos, permitiriam afirmar que há uma tendência?', ok: true },
+              { t: 'Quem foi o responsável pelo erro na tabela e vai precisar refazer tudo em casa?', porque: 'Buscar culpados inibe a escrita. A cultura do erro trata o equívoco como oportunidade de aprender.' },
+              { t: 'Vocês concordam que o oxigênio dissolvido está mesmo diminuindo toda semana, não é?', porque: 'A pergunta já traz a resposta e induz a turma a confirmar a afirmação.' },
+              { t: 'Qual programa de computador faz os gráficos mais bonitos para colocar no relatório?', porque: 'A ferramenta importa menos que o raciocínio sobre os dados.' },
             ],
           },
         ],
@@ -325,7 +325,7 @@
 
     {
       id: 'biblioteca', num: 4, titulo: 'Hipóteses na biblioteca', comodo: 'Biblioteca', contexto: 'Pesquisa — investigação das causas',
-      cena: 'biblioteca', musica: 'misterio', cartao: 'Cartão 3 · Pesquisa',
+      cena: 'biblioteca', musica: 'biblioteca', cartao: 'Cartão 3 · Pesquisa',
       resumo: 'Na pesquisa, formulamos hipóteses e deixamos claro o que ainda precisa ser investigado. Encontre o material de consulta e transforme uma certeza apressada em hipótese testável.',
       intro: [
         { p: 'benedito', t: 'Preciso confessar uma coisa: eu uso adubo na horta, perto da margem. Será que fui eu que estraguei o lago?' },
@@ -353,18 +353,18 @@
             tipo: 'escolha', rotulo: 2,
             enunciado: 'Como reescrever a frase da pesquisa?',
             opcoes: [
-              { t: 'A eutrofização é uma hipótese compatível com a cor esverdeada e o OD baixo; é preciso analisar fósforo e nitrogênio em laboratório.', ok: true },
-              { t: 'A eutrofização é provavelmente a causa comprovada das alterações, segundo o livro da biblioteca.', porque: 'Provavelmente e comprovada se contradizem, e o livro explica o fenômeno em geral, não o caso deste lago.' },
-              { t: 'A eutrofização causada pelo adubo da horta é a responsável pelas alterações observadas no lago.', porque: 'Aponta a causa e ainda a origem dos nutrientes, sem nenhuma análise.' },
-              { t: 'Não é possível dizer absolutamente nada sobre o lago enquanto não houver um laudo final.', porque: 'Exagera no sentido oposto: as observações permitem, sim, formular hipóteses.' },
+              { t: 'A eutrofização é uma hipótese compatível com a água verde e o OD baixo; falta analisar fósforo e nitrogênio.', ok: true },
+              { t: 'A eutrofização é provavelmente a causa comprovada da água verde e do OD baixo, segundo o livro da biblioteca.', porque: 'Provavelmente e comprovada se contradizem, e o livro explica o fenômeno em geral, não o caso deste lago.' },
+              { t: 'A eutrofização causada pelo adubo da horta do Seu Benedito é a responsável pelas alterações no lago.', porque: 'Aponta a causa e ainda a origem dos nutrientes, sem nenhuma análise.' },
+              { t: 'Não é possível dizer absolutamente nada sobre a água verde e o OD baixo antes de haver um laudo final.', porque: 'Exagera no sentido oposto: as observações permitem, sim, formular hipóteses.' },
             ],
             justificativa: {
               enunciado: 'Por que essa versão é a mais adequada para a pesquisa?',
               opcoes: [
-                { t: 'Apresenta a hipótese, cita as evidências disponíveis e indica o que ainda precisa ser investigado.', ok: true },
-                { t: 'Evita usar a palavra eutrofização, que é complicada demais.', porque: 'Ela usa o termo, corretamente, como hipótese. O termo técnico não é o problema.' },
-                { t: 'Concorda com o livro, que é uma fonte confiável sobre este lago.', porque: 'O livro é confiável sobre o conceito, mas não traz dados deste lago.' },
-                { t: 'Deixa a conclusão para depois, sem dizer o que fazer agora.', porque: 'Ela diz o que fazer: analisar fósforo e nitrogênio.' },
+                { t: 'Apresenta a hipótese, cita as evidências e indica o que ainda precisa ser investigado.', ok: true },
+                { t: 'Evita usar a palavra eutrofização, que é complicada demais para um relatório escolar.', porque: 'Ela usa o termo, corretamente, como hipótese. O termo técnico não é o problema.' },
+                { t: 'Concorda com o livro da biblioteca, que é uma fonte confiável sobre este lago em especial.', porque: 'O livro é confiável sobre o conceito, mas não traz dados deste lago.' },
+                { t: 'Deixa a conclusão para depois, sem dizer o que a equipe precisa fazer a partir de agora.', porque: 'Ela diz o que fazer: analisar fósforo e nitrogênio.' },
               ],
             },
           },
@@ -372,20 +372,20 @@
             tipo: 'escolha', rotulo: 'c',
             enunciado: 'Qual destas é uma hipótese bem formulada, que pode ser testada?',
             opcoes: [
-              { t: 'Se o fósforo chega pelo córrego, sua concentração deve ser maior perto da foz do que no centro do lago.', ok: true },
-              { t: 'O lago está doente porque a natureza está pedindo socorro aos moradores do bairro.', porque: 'É uma metáfora, não uma hipótese: não indica o que medir nem onde.' },
-              { t: 'A fábrica polui o lago, e qualquer análise de laboratório vai confirmar isso.', porque: 'Uma hipótese precisa poder ser refutada. Esta já decide o resultado antes da análise.' },
-              { t: 'Talvez alguma coisa tenha acontecido com a água em algum momento recente.', porque: 'É vaga demais: não diz o quê, onde nem como seria verificado.' },
+              { t: 'Se o fósforo vem do córrego, sua concentração deve ser maior perto da foz do que no centro do lago.', ok: true },
+              { t: 'O lago ficou verde e sem peixes porque a natureza está pedindo socorro aos moradores do entorno.', porque: 'É uma metáfora, não uma hipótese: não indica o que medir nem onde.' },
+              { t: 'A fábrica do outro lado da estrada polui o lago, e qualquer análise de laboratório vai confirmar isso.', porque: 'Uma hipótese precisa poder ser refutada. Esta já decide o resultado antes da análise.' },
+              { t: 'Talvez alguma coisa tenha acontecido com a água do lago em algum momento das últimas semanas.', porque: 'É vaga demais: não diz o quê, onde nem como seria verificado.' },
             ],
           },
           {
             tipo: 'multi', rotulo: 3, n: 2,
             enunciado: 'Quais duas áreas ajudam a separar o que se sabe do que se supõe? Escolha duas.',
             opcoes: [
-              { t: 'Biologia: explicar por que o oxigênio dissolvido importa para os organismos aquáticos, separando teoria e dado coletado.', ok: true },
+              { t: 'Biologia: explicar a importância do OD para os seres aquáticos, separando teoria e dado coletado.', ok: true },
               { t: 'Filosofia: montar um quadro com afirmação, evidência e justificativa para avaliar cada conclusão.', ok: true },
-              { t: 'Língua Inglesa: traduzir eutrophication palavra por palavra, sem checar o sentido técnico.', porque: 'Traduções literais podem alterar o significado; o glossário precisa ser contextualizado.' },
-              { t: 'Geografia: decorar o nome de todos os lagos do estado para a próxima prova.', porque: 'Memorizar nomes não ajuda a distinguir hipóteses de evidências.' },
+              { t: 'Língua Inglesa: traduzir eutrophication palavra por palavra, sem checar o sentido técnico do termo.', porque: 'Traduções literais podem alterar o significado; o glossário precisa ser contextualizado.' },
+              { t: 'Geografia: decorar o nome e a localização de todos os lagos do estado para a próxima prova.', porque: 'Memorizar nomes não ajuda a distinguir hipóteses de evidências.' },
             ],
           },
           {
@@ -393,9 +393,9 @@
             enunciado: 'Que pergunta você faria à turma para organizar a pesquisa?',
             opcoes: [
               { t: 'O que já sabemos, o que suspeitamos e o que ainda precisamos investigar?', ok: true },
-              { t: 'Quem acha que a culpa é do Seu Benedito levanta a mão?', porque: 'Transforma a investigação em julgamento e expõe uma pessoa sem evidências.' },
-              { t: 'Vocês podem copiar a conclusão do livro, já que ele é confiável?', porque: 'Reproduzir sem discutir foi uma das dificuldades observadas na turma.' },
-              { t: 'Qual é a resposta certa que eu quero ouvir agora?', porque: 'A mediação deve tornar o raciocínio visível, não fazer a turma adivinhar a resposta do professor.' },
+              { t: 'Quem acha que a culpa é do adubo do Seu Benedito pode levantar a mão?', porque: 'Transforma a investigação em julgamento e expõe uma pessoa sem evidências.' },
+              { t: 'Vocês podem copiar a conclusão do livro, já que ele é uma fonte confiável?', porque: 'Reproduzir sem discutir foi uma das dificuldades observadas na turma.' },
+              { t: 'Qual é a resposta certa que eu, professor, quero ouvir de vocês agora?', porque: 'A mediação deve tornar o raciocínio visível, não fazer a turma adivinhar a resposta do professor.' },
             ],
           },
         ],
@@ -416,7 +416,7 @@
 
     {
       id: 'laboratorio', num: 5, titulo: 'O laboratório do porão', comodo: 'Laboratório', contexto: 'Laboratório — amostras e laudos',
-      cena: 'laboratorio', musica: 'misterio',
+      cena: 'laboratorio', musica: 'laboratorio',
       resumo: 'Solução, concentração, amostra: palavras do dia a dia que, no laboratório, ganham sentido preciso. Prepare as amostras e registre o laudo sem extrapolar.',
       intro: [
         { p: 'lucia', t: 'Bem na hora! Antes de qualquer análise, preciso conferir a etiqueta, a ficha de coleta e a cadeia de custódia de cada frasco.' },
@@ -435,10 +435,10 @@
             tipo: 'escolha', rotulo: 'p',
             enunciado: 'Uma receita de bolo e uma receita médica usam a mesma palavra. O que muda quando a receita orienta uma decisão profissional?',
             opcoes: [
-              { t: 'A informação precisa ser exata e inequívoca: quantidade, unidade, frequência e para quem se destina.', ok: true },
-              { t: 'Nada muda: em qualquer receita, uma pitada ou a gosto funcionam muito bem.', porque: 'Na receita médica, uma medida vaga pode causar dano. O contexto exige precisão.' },
-              { t: 'A receita médica pode usar qualquer palavra, desde que o médico a entenda.', porque: 'Ela precisa ser compreendida por quem vai usá-la: paciente, farmácia e equipe de enfermagem.' },
-              { t: 'Só muda o tamanho do texto, porque as receitas médicas são mais curtas.', porque: 'O tamanho não é o ponto: é a precisão necessária para decidir com segurança.' },
+              { t: 'A informação precisa ser exata: quantidade, unidade, frequência e para quem se destina.', ok: true },
+              { t: 'Nada muda: em qualquer tipo de receita, medidas como uma pitada ou a gosto funcionam bem.', porque: 'Na receita médica, uma medida vaga pode causar dano. O contexto exige precisão.' },
+              { t: 'A receita médica pode usar qualquer palavra ou abreviação, desde que o médico entenda.', porque: 'Ela precisa ser compreendida por quem vai usá-la: paciente, farmácia e equipe de enfermagem.' },
+              { t: 'Só muda o tamanho do texto, porque as receitas médicas costumam ser bem mais curtas.', porque: 'O tamanho não é o ponto: é a precisão necessária para decidir com segurança.' },
             ],
           },
           {
@@ -478,10 +478,10 @@
             tipo: 'escolha', rotulo: 'r',
             enunciado: 'Qual etiqueta de frasco está completa e rastreável?',
             opcoes: [
-              { t: 'Lago do Ipê · P2 (foz do córrego) · 14/10/2026 · 9h40 · água superficial · fósforo total · coleta: equipe 3', ok: true },
-              { t: 'Água do lago · coletada de manhã · cor muito verde · para analisar tudo · urgente', porque: 'Sem ponto, data, hora exata e parâmetro, o resultado não pode ser rastreado nem comparado.' },
-              { t: 'Amostra nº 2 · Lago do Ipê · fósforo · resultado esperado: alto · equipe 3', porque: 'Falta local, data e hora; e anotar o resultado esperado pode enviesar a análise.' },
-              { t: 'P2 · 14/10 · contaminada pela horta · prioridade máxima · coleta: equipe 3', porque: 'Etiqueta não é lugar de conclusão, e ainda faltam o local completo, a hora e o parâmetro.' },
+              { t: 'Lago do Ipê · P2 (foz do córrego) · 14/10/2026 · 9h40 · água superficial · fósforo total · equipe 3', ok: true },
+              { t: 'Água do Lago do Ipê · coletada de manhã · cor muito verde · analisar tudo · urgente · equipe 3', porque: 'Sem ponto, data, hora exata e parâmetro, o resultado não pode ser rastreado nem comparado.' },
+              { t: 'Amostra nº 2 · Lago do Ipê · outubro de 2026 · fósforo · resultado esperado: alto · coleta: equipe 3', porque: 'Faltam o ponto, o dia e a hora; e anotar o resultado esperado pode enviesar a análise.' },
+              { t: 'P2 · 14/10 · água contaminada pela horta · fósforo total · prioridade máxima · coleta: equipe 3', porque: 'Etiqueta não é lugar de conclusão, e ainda faltam o nome do lago, o ano e a hora da coleta.' },
             ],
           },
           {
@@ -489,19 +489,19 @@
             enunciado: 'Como registrar o resultado do laudo no relatório?',
             opcoes: [
               { t: 'Na amostra coletada no ponto P2, em 14/10, a concentração de fósforo total foi de 0,15 mg/L.', ok: true },
-              { t: 'O lago tem 0,15 de fósforo, o que é muito, de acordo com a análise do laboratório.', porque: 'Faltam a unidade, o ponto e a data; e muito é uma avaliação sem referência.' },
-              { t: 'O fósforo de 0,15 mg/L comprova que a horta é a fonte do problema do lago.', porque: 'O resultado mostra concentração, não origem. Para isso seriam necessárias outras coletas.' },
-              { t: 'Há uma solução de fósforo dissolvida no lago inteiro, em grande quantidade.', porque: 'Generaliza um ponto para o lago inteiro e usa solução de forma imprecisa.' },
+              { t: 'O lago inteiro tem 0,15 de fósforo, o que é muito, de acordo com a análise do laboratório.', porque: 'Faltam a unidade, o ponto e a data; e muito é uma avaliação sem referência.' },
+              { t: 'O fósforo total de 0,15 mg/L no ponto P2 comprova que a horta é a fonte do problema do lago.', porque: 'O resultado mostra concentração, não origem. Para isso seriam necessárias outras coletas.' },
+              { t: 'Em 14/10, havia uma solução de fósforo dissolvida no lago inteiro, em grande quantidade.', porque: 'Generaliza um ponto para o lago inteiro e usa solução de forma imprecisa.' },
             ],
           },
           {
             tipo: 'multi', rotulo: 3, n: 2,
             enunciado: 'Quais duas áreas ajudam a construir o glossário do laboratório? Escolha duas.',
             opcoes: [
-              { t: 'Química: explicar concentração, amostra e solução com exemplos do próprio laudo.', ok: true },
-              { t: 'Língua Inglesa: montar um glossário bilíngue, como dissolved oxygen e sample, sem traduções literais.', ok: true },
-              { t: 'Artes: escolher cores aleatórias para cada frasco, sem nenhuma legenda.', porque: 'Cores ajudam quando têm significado e legenda; aleatórias confundem.' },
-              { t: 'História: pesquisar a data de invenção do microscópio para colocar no laudo.', porque: 'É curioso, mas não ajuda a compreender os termos do laudo.' },
+              { t: 'Química: explicar concentração, amostra e solução usando exemplos tirados do próprio laudo.', ok: true },
+              { t: 'Língua Inglesa: glossário bilíngue, como dissolved oxygen e sample, sem traduções literais.', ok: true },
+              { t: 'Artes: escolher cores aleatórias para cada frasco e cada gráfico, sem nenhuma legenda.', porque: 'Cores ajudam quando têm significado e legenda; aleatórias confundem.' },
+              { t: 'História: pesquisar a data de invenção do microscópio para colocar no início do laudo.', porque: 'É curioso, mas não ajuda a compreender os termos do laudo.' },
             ],
           },
         ],
@@ -521,7 +521,7 @@
 
     {
       id: 'salao', num: 6, titulo: 'A reunião no salão', comodo: 'Salão de Baile', contexto: 'Comunicação aos moradores',
-      cena: 'salao', musica: 'mansao',
+      cena: 'salao', musica: 'salao',
       resumo: 'Os moradores querem respostas e o jornal quer uma manchete. Mude a linguagem, mas não os dados, os limites e as incertezas.',
       intro: [
         { p: 'helena', t: 'Convidei os moradores do entorno para uma reunião aqui no salão. Eles querem saber o que está acontecendo com o lago.' },
@@ -559,19 +559,19 @@
             enunciado: 'Qual manchete o Rafael deveria publicar?',
             opcoes: [
               { t: 'Lago do Ipê tem pouco oxigênio em ponto medido; técnicos investigam as causas', ok: true },
-              { t: 'Lago do Ipê envenenado: fábrica é a culpada, afirmam os técnicos', porque: 'Atribui aos técnicos uma conclusão que eles não fizeram e acusa sem evidências.' },
-              { t: 'Lago do Ipê está ótimo, garante relatório feito por estudantes', porque: 'Minimiza os dados: o OD medido foi baixo, e isso não pode ser omitido.' },
-              { t: 'Horta do caseiro mata os peixes do Lago do Ipê, revela laudo', porque: 'O laudo mediu concentrações; não identificou fonte nem relacionou os peixes à horta.' },
+              { t: 'Lago do Ipê envenenado: fábrica é a culpada pela água verde, afirmam os técnicos', porque: 'Atribui aos técnicos uma conclusão que eles não fizeram e acusa sem evidências.' },
+              { t: 'Lago do Ipê está ótimo e não corre perigo, garante relatório feito por estudantes', porque: 'Minimiza os dados: o OD medido foi baixo, e isso não pode ser omitido.' },
+              { t: 'Horta do caseiro mata os peixes do Lago do Ipê com adubo, revela laudo técnico', porque: 'O laudo mediu concentrações; não identificou fonte nem relacionou os peixes à horta.' },
             ],
           },
           {
             tipo: 'escolha', rotulo: 2,
             enunciado: 'Qual texto comunica melhor os resultados aos moradores?',
             opcoes: [
-              { t: 'Medimos o oxigênio dissolvido, aquele que os peixes usam para respirar. Perto do píer havia 2,1 mg/L, um valor baixo. A água verde pode indicar excesso de nutrientes, e novas coletas vão investigar de onde eles vêm.', ok: true },
-              { t: 'Foi aferida concentração de OD de 2,1 mg/L no P1, inferior ao padrão para classe 2 da Resolução CONAMA 357/2005, compatível com processo de eutrofização em curso no corpo hídrico.', porque: 'Mantém os dados, mas copia o relatório técnico: siglas e termos sem explicação afastam os moradores.' },
-              { t: 'A água está um pouco ruim, mas não é nada grave. Logo tudo volta ao normal, então todos podem ficar tranquilos e continuar usando o lago como sempre.', porque: 'Perde os dados e faz promessas sem base. Também omite os limites da investigação.' },
-              { t: 'Cuidado! O lago está morrendo e é perigoso chegar perto da água. A culpa é de quem jogou sujeira nele, e isso precisa ser punido imediatamente.', porque: 'É alarmista e afirma perigo e culpa sem evidências. Comunicar não é assustar.' },
+              { t: 'Medimos o oxigênio dissolvido, que os peixes usam para respirar. Perto do píer havia 2,1 mg/L, um valor baixo. A água verde pode indicar excesso de nutrientes, e novas coletas vão investigar a origem deles.', ok: true },
+              { t: 'Foi aferida concentração de OD de 2,1 mg/L no P1, inferior ao padrão para classe 2 da Resolução CONAMA 357/2005, compatível com processo de eutrofização em curso no corpo hídrico, conforme análise de fósforo total.', porque: 'Mantém os dados, mas copia o relatório técnico: siglas e termos sem explicação afastam os moradores.' },
+              { t: 'A água do lago está um pouco ruim, mas não é nada grave. Logo tudo volta ao normal sozinho, então todos podem ficar tranquilos e continuar pescando e usando o lago como sempre. Não há motivo para preocupação.', porque: 'Perde os dados e faz promessas sem base. Também omite os limites da investigação.' },
+              { t: 'Cuidado! O lago está morrendo, a água verde é venenosa e é perigoso chegar perto dela. A culpa é de quem jogou sujeira no lago, e os responsáveis precisam ser encontrados e punidos imediatamente.', porque: 'É alarmista e afirma perigo e culpa sem evidências. Comunicar não é assustar.' },
             ],
           },
           {
@@ -579,9 +579,9 @@
             enunciado: 'Quais duas áreas ajudam a preparar a reunião com os moradores? Escolha duas.',
             opcoes: [
               { t: 'Artes: criar um infográfico em que cores e símbolos tornem os dados claros, sem distorcê-los.', ok: true },
-              { t: 'Educação Física: orientar caminhadas no entorno, separando observações, recomendações preventivas e afirmações técnicas.', ok: true },
-              { t: 'Matemática: arredondar 2,1 mg/L para zero, para simplificar a conversa.', porque: 'Arredondar assim distorce o dado. Simplificar a linguagem não é alterar números.' },
-              { t: 'Sociologia: registrar apenas as opiniões que concordam com o relatório.', porque: 'Um bom roteiro de entrevista registra percepções diversas, sem transformá-las em fatos.' },
+              { t: 'Educação Física: orientar caminhadas no entorno, separando observação, recomendação e laudo.', ok: true },
+              { t: 'Matemática: arredondar 2,1 mg/L para zero, para simplificar a conversa com os moradores.', porque: 'Arredondar assim distorce o dado. Simplificar a linguagem não é alterar números.' },
+              { t: 'Sociologia: entrevistar moradores e registrar só as opiniões que concordam com o relatório.', porque: 'Um bom roteiro de entrevista registra percepções diversas, sem transformá-las em fatos.' },
             ],
           },
           {
@@ -589,9 +589,9 @@
             enunciado: 'Antes de publicar, que pergunta a turma deve se fazer?',
             opcoes: [
               { t: 'A linguagem mudou, mas os dados, o local, os limites e as incertezas continuam lá?', ok: true },
-              { t: 'O texto está chamativo o suficiente para ser bastante compartilhado?', porque: 'Alcance não substitui precisão. Uma manchete chamativa pode espalhar uma conclusão falsa.' },
-              { t: 'Conseguimos tirar todos os números para ninguém se confundir?', porque: 'Os números podem ser explicados, mas não eliminados: eles sustentam a informação.' },
-              { t: 'Todo mundo vai concordar com a nossa opinião sobre a fábrica?', porque: 'A comunicação técnica apresenta evidências, não opiniões sobre culpados.' },
+              { t: 'O texto está chamativo o suficiente para ser bastante compartilhado nas redes sociais?', porque: 'Alcance não substitui precisão. Uma manchete chamativa pode espalhar uma conclusão falsa.' },
+              { t: 'Conseguimos tirar todos os números e unidades para que ninguém se confunda na reunião?', porque: 'Os números podem ser explicados, mas não eliminados: eles sustentam a informação.' },
+              { t: 'Todo mundo vai concordar com a nossa opinião sobre a culpa da fábrica e da horta?', porque: 'A comunicação técnica apresenta evidências, não opiniões sobre culpados.' },
             ],
           },
         ],
@@ -600,7 +600,7 @@
         { p: 'rafael', t: 'Tudo bem, vocês venceram: técnicos investigam as causas. Menos explosivo, mas é a verdade. E verdade também vende jornal.' },
         { p: 'helena', t: 'Pela primeira vez eu entendi o que está acontecendo com o meu lago. E sem ninguém ser acusado à toa.' },
         { p: 'marta', t: 'Próximos passos: medir o oxigênio todo mês em três pontos, coletar no córrego antes e depois da horta e do bairro, e só então concluir.' },
-        { p: 'marta', t: 'Observar, contextualizar, justificar e comunicar. Você fez tudo isso, {nome}. O caso do Lago do Ipê está em boas mãos.' },
+        { p: 'marta', t: 'Observar, contextualizar, justificar e comunicar. {nome}, você fez tudo isso. O caso do Lago do Ipê está em boas mãos.' },
       ],
       cartoes: ['artes', 'educacao_fisica'],
       glossario: ['destinatario', 'linguagem_acessivel', 'incerteza', 'limites', 'monitoramento', 'mata_ciliar'],
@@ -708,8 +708,14 @@
     MI.FALAS_EXTRA.forEach((l) => add(l.p, l.t));
     return out;
   };
+  // saudação na abertura do jogo: o nome do jogador é falado pela Profa. Marta
+  MI.SAUDACAO = {
+    novo: { p: 'marta', t: '{nome}, que bom ter você aqui! Prepare a lupa e o caderno de campo: a investigação no Solar do Ipê vai começar.' },
+    volta: { p: 'marta', t: '{nome}, que bom ver você de volta! Vamos continuar a investigação no Solar do Ipê.' },
+  };
   // falas curtas do sistema (narradora)
   MI.FALAS_EXTRA = [
+    MI.SAUDACAO.novo, MI.SAUDACAO.volta,
     { p: 'marta', t: 'Muito bem! Todos os objetos foram encontrados.' },
     { p: 'marta', t: 'Boa! Agora justifique a sua escolha.' },
     { p: 'marta', t: 'Certo é certo: resposta precisa e justificada.' },
