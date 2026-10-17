@@ -1,0 +1,3166 @@
+[
+ {
+  "id": "ana",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ana."
+ },
+ {
+  "id": "maria",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria."
+ },
+ {
+  "id": "julia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Júlia."
+ },
+ {
+  "id": "juliana",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Juliana."
+ },
+ {
+  "id": "mariana",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Mariana."
+ },
+ {
+  "id": "beatriz",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Beatriz."
+ },
+ {
+  "id": "larissa",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Larissa."
+ },
+ {
+  "id": "gabriela",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Gabriela."
+ },
+ {
+  "id": "gabriele",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Gabriele."
+ },
+ {
+  "id": "gabrielle",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Gabrielle."
+ },
+ {
+  "id": "gabrielly",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Gabrielly."
+ },
+ {
+  "id": "fernanda",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Fernanda."
+ },
+ {
+  "id": "amanda",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Amanda."
+ },
+ {
+  "id": "bruna",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Bruna."
+ },
+ {
+  "id": "camila",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Camila."
+ },
+ {
+  "id": "leticia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Letícia."
+ },
+ {
+  "id": "vitoria",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Vitória."
+ },
+ {
+  "id": "victoria",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Victória."
+ },
+ {
+  "id": "isabela",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Isabela."
+ },
+ {
+  "id": "isabella",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Isabella."
+ },
+ {
+  "id": "isabelle",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Isabelle."
+ },
+ {
+  "id": "isabel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Isabel."
+ },
+ {
+  "id": "sofia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Sofia."
+ },
+ {
+  "id": "sophia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Sophia."
+ },
+ {
+  "id": "laura",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Laura."
+ },
+ {
+  "id": "luiza",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luiza."
+ },
+ {
+  "id": "luisa",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luísa."
+ },
+ {
+  "id": "alice",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Alice."
+ },
+ {
+  "id": "manuela",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Manuela."
+ },
+ {
+  "id": "valentina",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Valentina."
+ },
+ {
+  "id": "helena",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Helena."
+ },
+ {
+  "id": "heloisa",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Heloísa."
+ },
+ {
+  "id": "lorena",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Lorena."
+ },
+ {
+  "id": "livia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Lívia."
+ },
+ {
+  "id": "giovanna",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Giovanna."
+ },
+ {
+  "id": "giovana",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Giovana."
+ },
+ {
+  "id": "yasmin",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Yasmin."
+ },
+ {
+  "id": "yasmim",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Yasmim."
+ },
+ {
+  "id": "jasmine",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Jasmine."
+ },
+ {
+  "id": "rafaela",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Rafaela."
+ },
+ {
+  "id": "raphaela",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Raphaela."
+ },
+ {
+  "id": "carolina",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Carolina."
+ },
+ {
+  "id": "caroline",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Caroline."
+ },
+ {
+  "id": "carol",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Carol."
+ },
+ {
+  "id": "eduarda",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Eduarda."
+ },
+ {
+  "id": "clara",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Clara."
+ },
+ {
+  "id": "cecilia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Cecília."
+ },
+ {
+  "id": "lara",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Lara."
+ },
+ {
+  "id": "lavinia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Lavínia."
+ },
+ {
+  "id": "emanuelly",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Emanuelly."
+ },
+ {
+  "id": "emanuele",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Emanuele."
+ },
+ {
+  "id": "emilly",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Emilly."
+ },
+ {
+  "id": "emily",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Emily."
+ },
+ {
+  "id": "kamilly",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kamilly."
+ },
+ {
+  "id": "kamila",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kamila."
+ },
+ {
+  "id": "nicole",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Nicole."
+ },
+ {
+  "id": "nicolly",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Nicolly."
+ },
+ {
+  "id": "sarah",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Sarah."
+ },
+ {
+  "id": "sara",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Sara."
+ },
+ {
+  "id": "marina",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Marina."
+ },
+ {
+  "id": "melissa",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Melissa."
+ },
+ {
+  "id": "mirella",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Mirella."
+ },
+ {
+  "id": "mirela",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Mirela."
+ },
+ {
+  "id": "esther",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Esther."
+ },
+ {
+  "id": "ester",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ester."
+ },
+ {
+  "id": "rebeca",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Rebeca."
+ },
+ {
+  "id": "agatha",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ágatha."
+ },
+ {
+  "id": "catarina",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Catarina."
+ },
+ {
+  "id": "bianca",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Bianca."
+ },
+ {
+  "id": "pietra",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Pietra."
+ },
+ {
+  "id": "antonella",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Antonella."
+ },
+ {
+  "id": "elisa",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Elisa."
+ },
+ {
+  "id": "eloa",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Eloá."
+ },
+ {
+  "id": "lorrane",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Lorrane."
+ },
+ {
+  "id": "lorraine",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Lorraine."
+ },
+ {
+  "id": "rayssa",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Rayssa."
+ },
+ {
+  "id": "raissa",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Raíssa."
+ },
+ {
+  "id": "thais",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Thaís."
+ },
+ {
+  "id": "tais",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Taís."
+ },
+ {
+  "id": "natalia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Natália."
+ },
+ {
+  "id": "patricia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Patrícia."
+ },
+ {
+  "id": "vanessa",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Vanessa."
+ },
+ {
+  "id": "jessica",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Jéssica."
+ },
+ {
+  "id": "aline",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Aline."
+ },
+ {
+  "id": "daniela",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Daniela."
+ },
+ {
+  "id": "daniele",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Daniele."
+ },
+ {
+  "id": "danielle",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Danielle."
+ },
+ {
+  "id": "debora",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Débora."
+ },
+ {
+  "id": "priscila",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Priscila."
+ },
+ {
+  "id": "tatiane",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Tatiane."
+ },
+ {
+  "id": "tatiana",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Tatiana."
+ },
+ {
+  "id": "renata",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Renata."
+ },
+ {
+  "id": "simone",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Simone."
+ },
+ {
+  "id": "cristina",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Cristina."
+ },
+ {
+  "id": "cristiane",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Cristiane."
+ },
+ {
+  "id": "adriana",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Adriana."
+ },
+ {
+  "id": "andrea",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Andréa."
+ },
+ {
+  "id": "andreia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Andreia."
+ },
+ {
+  "id": "luana",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luana."
+ },
+ {
+  "id": "kauane",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kauane."
+ },
+ {
+  "id": "kauany",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kauany."
+ },
+ {
+  "id": "kailane",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kailane."
+ },
+ {
+  "id": "ketlyn",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ketlyn."
+ },
+ {
+  "id": "kethellen",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kethellen."
+ },
+ {
+  "id": "stephany",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Stephany."
+ },
+ {
+  "id": "stefany",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Stefany."
+ },
+ {
+  "id": "milena",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Milena."
+ },
+ {
+  "id": "mayara",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Mayara."
+ },
+ {
+  "id": "maiara",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maiara."
+ },
+ {
+  "id": "taynara",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Taynara."
+ },
+ {
+  "id": "thayna",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Thayná."
+ },
+ {
+  "id": "taina",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Tainá."
+ },
+ {
+  "id": "ingrid",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ingrid."
+ },
+ {
+  "id": "evelyn",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Évelyn."
+ },
+ {
+  "id": "emanuela",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Emanuela."
+ },
+ {
+  "id": "graziela",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Graziela."
+ },
+ {
+  "id": "gisele",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Gisele."
+ },
+ {
+  "id": "giselle",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Giselle."
+ },
+ {
+  "id": "paula",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Paula."
+ },
+ {
+  "id": "paola",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Paola."
+ },
+ {
+  "id": "sabrina",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Sabrina."
+ },
+ {
+  "id": "samara",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Samara."
+ },
+ {
+  "id": "samira",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Samira."
+ },
+ {
+  "id": "michele",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Michele."
+ },
+ {
+  "id": "michelle",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Michelle."
+ },
+ {
+  "id": "raquel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Raquel."
+ },
+ {
+  "id": "regina",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Regina."
+ },
+ {
+  "id": "rosa",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Rosa."
+ },
+ {
+  "id": "rose",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Rose."
+ },
+ {
+  "id": "sandra",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Sandra."
+ },
+ {
+  "id": "silvia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Sílvia."
+ },
+ {
+  "id": "sonia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Sônia."
+ },
+ {
+  "id": "tereza",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Tereza."
+ },
+ {
+  "id": "teresa",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Teresa."
+ },
+ {
+  "id": "vera",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Vera."
+ },
+ {
+  "id": "yara",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Yara."
+ },
+ {
+  "id": "iara",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Iara."
+ },
+ {
+  "id": "jaqueline",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Jaqueline."
+ },
+ {
+  "id": "joana",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Joana."
+ },
+ {
+  "id": "joyce",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Joyce."
+ },
+ {
+  "id": "josiane",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Josiane."
+ },
+ {
+  "id": "kelly",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kelly."
+ },
+ {
+  "id": "karen",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Karen."
+ },
+ {
+  "id": "karina",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Karina."
+ },
+ {
+  "id": "katia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kátia."
+ },
+ {
+  "id": "lucia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Lúcia."
+ },
+ {
+  "id": "luciana",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luciana."
+ },
+ {
+  "id": "luna",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luna."
+ },
+ {
+  "id": "maite",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maitê."
+ },
+ {
+  "id": "malu",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Malu."
+ },
+ {
+  "id": "mel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Mel."
+ },
+ {
+  "id": "lis",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Lis."
+ },
+ {
+  "id": "liz",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Liz."
+ },
+ {
+  "id": "aurora",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Aurora."
+ },
+ {
+  "id": "ayla",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ayla."
+ },
+ {
+  "id": "maya",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maya."
+ },
+ {
+  "id": "maia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maia."
+ },
+ {
+  "id": "olivia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Olívia."
+ },
+ {
+  "id": "allana",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Allana."
+ },
+ {
+  "id": "alana",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Alana."
+ },
+ {
+  "id": "ana-clara",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ana Clara."
+ },
+ {
+  "id": "ana-julia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ana Júlia."
+ },
+ {
+  "id": "ana-luiza",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ana Luiza."
+ },
+ {
+  "id": "ana-luisa",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ana Luísa."
+ },
+ {
+  "id": "ana-beatriz",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ana Beatriz."
+ },
+ {
+  "id": "ana-carolina",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ana Carolina."
+ },
+ {
+  "id": "ana-laura",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ana Laura."
+ },
+ {
+  "id": "ana-sofia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ana Sofia."
+ },
+ {
+  "id": "ana-livia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ana Lívia."
+ },
+ {
+  "id": "ana-vitoria",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ana Vitória."
+ },
+ {
+  "id": "ana-paula",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ana Paula."
+ },
+ {
+  "id": "ana-cecilia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ana Cecília."
+ },
+ {
+  "id": "maria-eduarda",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Eduarda."
+ },
+ {
+  "id": "maria-clara",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Clara."
+ },
+ {
+  "id": "maria-julia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Júlia."
+ },
+ {
+  "id": "maria-luiza",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Luiza."
+ },
+ {
+  "id": "maria-luisa",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Luísa."
+ },
+ {
+  "id": "maria-alice",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Alice."
+ },
+ {
+  "id": "maria-fernanda",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Fernanda."
+ },
+ {
+  "id": "maria-vitoria",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Vitória."
+ },
+ {
+  "id": "maria-cecilia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Cecília."
+ },
+ {
+  "id": "maria-helena",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Helena."
+ },
+ {
+  "id": "maria-laura",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Laura."
+ },
+ {
+  "id": "maria-valentina",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Valentina."
+ },
+ {
+  "id": "maria-sofia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Sofia."
+ },
+ {
+  "id": "maria-isabel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Isabel."
+ },
+ {
+  "id": "maria-gabriela",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Gabriela."
+ },
+ {
+  "id": "maria-beatriz",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Beatriz."
+ },
+ {
+  "id": "maria-flor",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Flor."
+ },
+ {
+  "id": "maria-claudia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Cláudia."
+ },
+ {
+  "id": "maria-antonia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Antônia."
+ },
+ {
+  "id": "maria-jose",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria José."
+ },
+ {
+  "id": "maria-rita",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maria Rita."
+ },
+ {
+  "id": "joao",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "João."
+ },
+ {
+  "id": "pedro",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Pedro."
+ },
+ {
+  "id": "lucas",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Lucas."
+ },
+ {
+  "id": "gabriel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Gabriel."
+ },
+ {
+  "id": "matheus",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Matheus."
+ },
+ {
+  "id": "mateus",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Mateus."
+ },
+ {
+  "id": "guilherme",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Guilherme."
+ },
+ {
+  "id": "rafael",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Rafael."
+ },
+ {
+  "id": "raphael",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Raphael."
+ },
+ {
+  "id": "felipe",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Felipe."
+ },
+ {
+  "id": "filipe",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Filipe."
+ },
+ {
+  "id": "gustavo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Gustavo."
+ },
+ {
+  "id": "daniel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Daniel."
+ },
+ {
+  "id": "bruno",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Bruno."
+ },
+ {
+  "id": "leonardo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Leonardo."
+ },
+ {
+  "id": "thiago",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Thiago."
+ },
+ {
+  "id": "tiago",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Tiago."
+ },
+ {
+  "id": "rodrigo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Rodrigo."
+ },
+ {
+  "id": "diego",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Diego."
+ },
+ {
+  "id": "vinicius",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Vinícius."
+ },
+ {
+  "id": "eduardo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Eduardo."
+ },
+ {
+  "id": "henrique",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Henrique."
+ },
+ {
+  "id": "enzo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Enzo."
+ },
+ {
+  "id": "arthur",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Arthur."
+ },
+ {
+  "id": "artur",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Artur."
+ },
+ {
+  "id": "miguel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Miguel."
+ },
+ {
+  "id": "davi",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Davi."
+ },
+ {
+  "id": "david",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "David."
+ },
+ {
+  "id": "heitor",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Heitor."
+ },
+ {
+  "id": "bernardo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Bernardo."
+ },
+ {
+  "id": "samuel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Samuel."
+ },
+ {
+  "id": "lorenzo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Lorenzo."
+ },
+ {
+  "id": "theo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Théo."
+ },
+ {
+  "id": "bento",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Bento."
+ },
+ {
+  "id": "benicio",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Benício."
+ },
+ {
+  "id": "joaquim",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Joaquim."
+ },
+ {
+  "id": "nicolas",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Nícolas."
+ },
+ {
+  "id": "noah",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Noah."
+ },
+ {
+  "id": "murilo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Murilo."
+ },
+ {
+  "id": "isaac",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Isaac."
+ },
+ {
+  "id": "caio",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Caio."
+ },
+ {
+  "id": "caua",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Cauã."
+ },
+ {
+  "id": "kaua",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kauã."
+ },
+ {
+  "id": "kaue",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kauê."
+ },
+ {
+  "id": "kaique",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kaique."
+ },
+ {
+  "id": "caique",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Caíque."
+ },
+ {
+  "id": "kayky",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kayky."
+ },
+ {
+  "id": "ryan",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ryan."
+ },
+ {
+  "id": "rian",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Rian."
+ },
+ {
+  "id": "yuri",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Yuri."
+ },
+ {
+  "id": "igor",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Igor."
+ },
+ {
+  "id": "icaro",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ícaro."
+ },
+ {
+  "id": "erick",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Erick."
+ },
+ {
+  "id": "eric",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Eric."
+ },
+ {
+  "id": "erico",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Érico."
+ },
+ {
+  "id": "luan",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luan."
+ },
+ {
+  "id": "luiz",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luiz."
+ },
+ {
+  "id": "luis",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luís."
+ },
+ {
+  "id": "otavio",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Otávio."
+ },
+ {
+  "id": "andre",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "André."
+ },
+ {
+  "id": "alexandre",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Alexandre."
+ },
+ {
+  "id": "antonio",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Antônio."
+ },
+ {
+  "id": "anderson",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Anderson."
+ },
+ {
+  "id": "carlos",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Carlos."
+ },
+ {
+  "id": "cesar",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "César."
+ },
+ {
+  "id": "cristiano",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Cristiano."
+ },
+ {
+  "id": "danilo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Danilo."
+ },
+ {
+  "id": "douglas",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Douglas."
+ },
+ {
+  "id": "emanuel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Emanuel."
+ },
+ {
+  "id": "emerson",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Emerson."
+ },
+ {
+  "id": "everton",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Everton."
+ },
+ {
+  "id": "fabio",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Fábio."
+ },
+ {
+  "id": "fernando",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Fernando."
+ },
+ {
+  "id": "francisco",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Francisco."
+ },
+ {
+  "id": "geovane",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Geovane."
+ },
+ {
+  "id": "giovanni",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Giovanni."
+ },
+ {
+  "id": "giovane",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Giovane."
+ },
+ {
+  "id": "hugo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Hugo."
+ },
+ {
+  "id": "iago",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Iago."
+ },
+ {
+  "id": "ian",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ian."
+ },
+ {
+  "id": "ivan",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ivan."
+ },
+ {
+  "id": "jean",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Jean."
+ },
+ {
+  "id": "jefferson",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Jefferson."
+ },
+ {
+  "id": "jonathan",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Jonathan."
+ },
+ {
+  "id": "jonatas",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Jônatas."
+ },
+ {
+  "id": "jorge",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Jorge."
+ },
+ {
+  "id": "jose",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "José."
+ },
+ {
+  "id": "josue",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Josué."
+ },
+ {
+  "id": "julio",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Júlio."
+ },
+ {
+  "id": "juan",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Juan."
+ },
+ {
+  "id": "kevin",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kevin."
+ },
+ {
+  "id": "leandro",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Leandro."
+ },
+ {
+  "id": "luciano",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luciano."
+ },
+ {
+  "id": "marcelo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Marcelo."
+ },
+ {
+  "id": "marcos",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Marcos."
+ },
+ {
+  "id": "marcio",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Márcio."
+ },
+ {
+  "id": "mario",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Mário."
+ },
+ {
+  "id": "mauricio",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Maurício."
+ },
+ {
+  "id": "nathan",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Nathan."
+ },
+ {
+  "id": "natan",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Natan."
+ },
+ {
+  "id": "paulo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Paulo."
+ },
+ {
+  "id": "patrick",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Patrick."
+ },
+ {
+  "id": "renan",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Renan."
+ },
+ {
+  "id": "renato",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Renato."
+ },
+ {
+  "id": "ricardo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ricardo."
+ },
+ {
+  "id": "roberto",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Roberto."
+ },
+ {
+  "id": "robson",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Robson."
+ },
+ {
+  "id": "rogerio",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Rogério."
+ },
+ {
+  "id": "ronaldo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ronaldo."
+ },
+ {
+  "id": "sergio",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Sérgio."
+ },
+ {
+  "id": "thales",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Thales."
+ },
+ {
+  "id": "tales",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Tales."
+ },
+ {
+  "id": "tomas",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Tomás."
+ },
+ {
+  "id": "thomas",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Thomas."
+ },
+ {
+  "id": "valter",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Valter."
+ },
+ {
+  "id": "victor",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Victor."
+ },
+ {
+  "id": "vitor",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Vitor."
+ },
+ {
+  "id": "wallace",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Wallace."
+ },
+ {
+  "id": "wesley",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Wesley."
+ },
+ {
+  "id": "willian",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Willian."
+ },
+ {
+  "id": "william",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "William."
+ },
+ {
+  "id": "wagner",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Wagner."
+ },
+ {
+  "id": "washington",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Washington."
+ },
+ {
+  "id": "wellington",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Wellington."
+ },
+ {
+  "id": "yago",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Yago."
+ },
+ {
+  "id": "benjamin",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Benjamin."
+ },
+ {
+  "id": "augusto",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Augusto."
+ },
+ {
+  "id": "bryan",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Bryan."
+ },
+ {
+  "id": "breno",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Breno."
+ },
+ {
+  "id": "calebe",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Calebe."
+ },
+ {
+  "id": "caue",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Cauê."
+ },
+ {
+  "id": "cauan",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Cauan."
+ },
+ {
+  "id": "davi-lucas",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Davi Lucas."
+ },
+ {
+  "id": "davi-luiz",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Davi Luiz."
+ },
+ {
+  "id": "ezequiel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ezequiel."
+ },
+ {
+  "id": "gael",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Gael."
+ },
+ {
+  "id": "henry",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Henry."
+ },
+ {
+  "id": "levi",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Levi."
+ },
+ {
+  "id": "lucca",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Lucca."
+ },
+ {
+  "id": "luca",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luca."
+ },
+ {
+  "id": "martin",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Martin."
+ },
+ {
+  "id": "martim",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Martim."
+ },
+ {
+  "id": "raul",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Raul."
+ },
+ {
+  "id": "ravi",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ravi."
+ },
+ {
+  "id": "ruan",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ruan."
+ },
+ {
+  "id": "saulo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Saulo."
+ },
+ {
+  "id": "silas",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Silas."
+ },
+ {
+  "id": "vicente",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Vicente."
+ },
+ {
+  "id": "wendel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Wendel."
+ },
+ {
+  "id": "alan",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Alan."
+ },
+ {
+  "id": "allan",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Allan."
+ },
+ {
+  "id": "abner",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Abner."
+ },
+ {
+  "id": "adriano",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Adriano."
+ },
+ {
+  "id": "alisson",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Alisson."
+ },
+ {
+  "id": "alvaro",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Álvaro."
+ },
+ {
+  "id": "arnaldo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Arnaldo."
+ },
+ {
+  "id": "benedito",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Benedito."
+ },
+ {
+  "id": "caetano",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Caetano."
+ },
+ {
+  "id": "celio",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Célio."
+ },
+ {
+  "id": "claudio",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Cláudio."
+ },
+ {
+  "id": "denis",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Denis."
+ },
+ {
+  "id": "diogo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Diogo."
+ },
+ {
+  "id": "edson",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Edson."
+ },
+ {
+  "id": "elias",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Elias."
+ },
+ {
+  "id": "elton",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Elton."
+ },
+ {
+  "id": "fabricio",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Fabrício."
+ },
+ {
+  "id": "gilberto",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Gilberto."
+ },
+ {
+  "id": "gilson",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Gilson."
+ },
+ {
+  "id": "helio",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Hélio."
+ },
+ {
+  "id": "ismael",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ismael."
+ },
+ {
+  "id": "jairo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Jairo."
+ },
+ {
+  "id": "jaime",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Jaime."
+ },
+ {
+  "id": "joel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Joel."
+ },
+ {
+  "id": "juliano",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Juliano."
+ },
+ {
+  "id": "kleber",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kléber."
+ },
+ {
+  "id": "manoel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Manoel."
+ },
+ {
+  "id": "manuel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Manuel."
+ },
+ {
+  "id": "moises",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Moisés."
+ },
+ {
+  "id": "nelson",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Nelson."
+ },
+ {
+  "id": "osvaldo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Osvaldo."
+ },
+ {
+  "id": "paulo-henrique",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Paulo Henrique."
+ },
+ {
+  "id": "pablo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Pablo."
+ },
+ {
+  "id": "reinaldo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Reinaldo."
+ },
+ {
+  "id": "rubens",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Rubens."
+ },
+ {
+  "id": "sandro",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Sandro."
+ },
+ {
+  "id": "sebastiao",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Sebastião."
+ },
+ {
+  "id": "severino",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Severino."
+ },
+ {
+  "id": "valdir",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Valdir."
+ },
+ {
+  "id": "wilson",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Wilson."
+ },
+ {
+  "id": "joao-pedro",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "João Pedro."
+ },
+ {
+  "id": "joao-vitor",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "João Vitor."
+ },
+ {
+  "id": "joao-victor",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "João Victor."
+ },
+ {
+  "id": "joao-gabriel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "João Gabriel."
+ },
+ {
+  "id": "joao-lucas",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "João Lucas."
+ },
+ {
+  "id": "joao-miguel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "João Miguel."
+ },
+ {
+  "id": "joao-guilherme",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "João Guilherme."
+ },
+ {
+  "id": "joao-paulo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "João Paulo."
+ },
+ {
+  "id": "joao-felipe",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "João Felipe."
+ },
+ {
+  "id": "joao-henrique",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "João Henrique."
+ },
+ {
+  "id": "joao-arthur",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "João Arthur."
+ },
+ {
+  "id": "joao-davi",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "João Davi."
+ },
+ {
+  "id": "pedro-henrique",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Pedro Henrique."
+ },
+ {
+  "id": "pedro-lucas",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Pedro Lucas."
+ },
+ {
+  "id": "pedro-miguel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Pedro Miguel."
+ },
+ {
+  "id": "pedro-arthur",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Pedro Arthur."
+ },
+ {
+  "id": "pedro-gabriel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Pedro Gabriel."
+ },
+ {
+  "id": "luiz-felipe",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luiz Felipe."
+ },
+ {
+  "id": "luiz-gustavo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luiz Gustavo."
+ },
+ {
+  "id": "luiz-henrique",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luiz Henrique."
+ },
+ {
+  "id": "luiz-fernando",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luiz Fernando."
+ },
+ {
+  "id": "luiz-otavio",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luiz Otávio."
+ },
+ {
+  "id": "luis-felipe",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luís Felipe."
+ },
+ {
+  "id": "luis-gustavo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Luís Gustavo."
+ },
+ {
+  "id": "jose-vitor",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "José Vitor."
+ },
+ {
+  "id": "jose-pedro",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "José Pedro."
+ },
+ {
+  "id": "carlos-eduardo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Carlos Eduardo."
+ },
+ {
+  "id": "carlos-henrique",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Carlos Henrique."
+ },
+ {
+  "id": "paulo-vitor",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Paulo Vitor."
+ },
+ {
+  "id": "marcos-vinicius",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Marcos Vinícius."
+ },
+ {
+  "id": "vitor-hugo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Vitor Hugo."
+ },
+ {
+  "id": "victor-hugo",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Victor Hugo."
+ },
+ {
+  "id": "kaua-henrique",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kauã Henrique."
+ },
+ {
+  "id": "enzo-gabriel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Enzo Gabriel."
+ },
+ {
+  "id": "enzo-miguel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Enzo Miguel."
+ },
+ {
+  "id": "arthur-miguel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Arthur Miguel."
+ },
+ {
+  "id": "miguel-henrique",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Miguel Henrique."
+ },
+ {
+  "id": "gabriel-henrique",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Gabriel Henrique."
+ },
+ {
+  "id": "matheus-henrique",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Matheus Henrique."
+ },
+ {
+  "id": "lucas-gabriel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Lucas Gabriel."
+ },
+ {
+  "id": "rafael-augusto",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Rafael Augusto."
+ },
+ {
+  "id": "antonio-carlos",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Antônio Carlos."
+ },
+ {
+  "id": "alex",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Alex."
+ },
+ {
+  "id": "akira",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Akira."
+ },
+ {
+  "id": "kenji",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kenji."
+ },
+ {
+  "id": "hiroshi",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Hiroshi."
+ },
+ {
+  "id": "yuki",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Yuki."
+ },
+ {
+  "id": "mei",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Mei."
+ },
+ {
+  "id": "aiko",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Aiko."
+ },
+ {
+  "id": "haruka",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Haruka."
+ },
+ {
+  "id": "ibere",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Iberê."
+ },
+ {
+  "id": "jaci",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Jaci."
+ },
+ {
+  "id": "jacira",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Jacira."
+ },
+ {
+  "id": "moema",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Moema."
+ },
+ {
+  "id": "potira",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Potira."
+ },
+ {
+  "id": "ubirata",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ubiratã."
+ },
+ {
+  "id": "ubirajara",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ubirajara."
+ },
+ {
+  "id": "raoni",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Raoni."
+ },
+ {
+  "id": "kaia",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kaiã."
+ },
+ {
+  "id": "tupa",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Tupã."
+ },
+ {
+  "id": "araci",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Araci."
+ },
+ {
+  "id": "aruana",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Aruana."
+ },
+ {
+  "id": "inae",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Inaê."
+ },
+ {
+  "id": "naiara",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Naiara."
+ },
+ {
+  "id": "thaina",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Thainá."
+ },
+ {
+  "id": "yanka",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Yanka."
+ },
+ {
+  "id": "dandara",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Dandara."
+ },
+ {
+  "id": "kayla",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Kayla."
+ },
+ {
+  "id": "ketlen",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Ketlen."
+ },
+ {
+  "id": "wesley-gabriel",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Wesley Gabriel."
+ }
+]

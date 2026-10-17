@@ -7,6 +7,13 @@
   "texto": "Chegamos ao Solar do Ipê. Esta mansão foi construída em 1928, e o lago nos fundos dá nome ao bairro inteiro."
  },
  {
+  "id": "36552d9b",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "chegamos ao Solar do Ipê. Esta mansão foi construída em 1928, e o lago nos fundos dá nome ao bairro inteiro."
+ },
+ {
   "id": "93d28f89",
   "voz": "pt-BR-ThalitaNeural",
   "rate": "-8%",
@@ -34,6 +41,13 @@
   "rate": "+0%",
   "genero": "F",
   "texto": "O kit de campo ficou espalhado pelo hall. Encontre os objetos da lista tocando neles na cena."
+ },
+ {
+  "id": "18ca69a7",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "o kit de campo ficou espalhado pelo hall. Encontre os objetos da lista tocando neles na cena."
  },
  {
   "id": "72501bb2",
@@ -177,18 +191,18 @@
   "texto": "Como registrar a fala de Dona Helena no caderno de campo?"
  },
  {
-  "id": "4d343874",
+  "id": "a3fdb243",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Segundo relato da proprietária, os peixes deixaram de ser vistos há cerca de duas semanas."
+  "texto": "Segundo a proprietária, os peixes deixaram de ser vistos há cerca de duas semanas."
  },
  {
-  "id": "bf559015",
+  "id": "a11be460",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Os peixes do lago morreram há duas semanas, envenenados pela água."
+  "texto": "Os peixes do lago morreram há duas semanas, envenenados pela água contaminada."
  },
  {
   "id": "b717dfb5",
@@ -198,11 +212,11 @@
   "texto": "Transforma um relato em fato e ainda acrescenta uma causa que ninguém verificou."
  },
  {
-  "id": "284daefe",
+  "id": "1a0688df",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A proprietária comprovou que o lago está envenenado e sem peixes."
+  "texto": "A proprietária comprovou que o lago está envenenado e que não há mais peixes."
  },
  {
   "id": "9d55ba7a",
@@ -212,11 +226,11 @@
   "texto": "Um relato não comprova. O verbo dá à fala um peso de evidência que ela não tem."
  },
  {
-  "id": "90aaf245",
+  "id": "5859618c",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Os peixes sumiram porque a água ficou verde nas últimas semanas."
+  "texto": "Os peixes sumiram do lago porque a água ficou verde nas últimas duas semanas."
  },
  {
   "id": "2d16c099",
@@ -240,11 +254,11 @@
   "texto": "Atribui a informação a quem a relatou e não a transforma em fato comprovado."
  },
  {
-  "id": "b0938844",
+  "id": "90b0393b",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Usa mais palavras, e textos mais longos são sempre mais técnicos."
+  "texto": "Usa mais palavras, e um texto mais longo é sempre mais técnico e mais preciso."
  },
  {
   "id": "04c955d5",
@@ -254,11 +268,11 @@
   "texto": "O tamanho não define a precisão. O que importa é citar a fonte e não extrapolar."
  },
  {
-  "id": "68d515d4",
+  "id": "9e84c00e",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Evita citar Dona Helena, para que o texto fique impessoal."
+  "texto": "Evita citar o nome de Dona Helena, para que o registro fique impessoal e neutro."
  },
  {
   "id": "71d47a40",
@@ -268,11 +282,11 @@
   "texto": "Pelo contrário: a frase cita a fonte, segundo relato da proprietária."
  },
  {
-  "id": "73938b06",
+  "id": "0fbc668f",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Confirma a hipótese de envenenamento de um jeito educado."
+  "texto": "Confirma a hipótese de envenenamento, mas de um jeito mais educado e respeitoso."
  },
  {
   "id": "391ee848",
@@ -296,11 +310,11 @@
   "texto": "O que o senhor observou que o faz pensar na fábrica? Podemos anotar e investigar."
  },
  {
-  "id": "34ce4807",
+  "id": "a5ee5f02",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "O senhor não estudou química, então como pode saber disso?"
+  "texto": "O senhor não estudou química, então como pode ter certeza de que foi a fábrica?"
  },
  {
   "id": "3ff2cb5f",
@@ -310,11 +324,11 @@
   "texto": "Desqualifica a pessoa. Relatos de moradores são valiosos e devem ser acolhidos."
  },
  {
-  "id": "8691af83",
+  "id": "87141c4a",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Se o senhor diz, então vamos registrar que foi a fábrica."
+  "texto": "Se o senhor tem certeza, então vamos registrar no relatório que foi a fábrica."
  },
  {
   "id": "33f7d7e0",
@@ -324,11 +338,11 @@
   "texto": "Acolher não é aceitar como fato: a opinião vira registro de relato, não conclusão."
  },
  {
-  "id": "41bac858",
+  "id": "7d909b1c",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Por que o senhor não fala com a prefeitura em vez de falar conosco?"
+  "texto": "Por que o senhor não leva essa reclamação à prefeitura em vez de falar conosco?"
  },
  {
   "id": "77a87230",
@@ -358,6 +372,13 @@
   "rate": "+0%",
   "genero": "F",
   "texto": "Encontre o medidor de oxigênio, o disco de Secchi, o GPS e os outros itens espalhados pela varanda e pelo píer."
+ },
+ {
+  "id": "5d20ff45",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "encontre o medidor de oxigênio, o disco de Secchi, o GPS e os outros itens espalhados pela varanda e pelo píer."
  },
  {
   "id": "63f3f73d",
@@ -404,18 +425,18 @@
   "texto": "Antes de tudo: o que significa o registro de 2,1 miligramas por litro de ó dê no ponto pê 1?"
  },
  {
-  "id": "1c455189",
+  "id": "c6fd6f3d",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Havia 2,1 miligramas de oxigênio dissolvido em cada litro de água, naquele ponto e momento."
+  "texto": "Havia 2,1 miligramas de oxigênio dissolvido por litro, naquele ponto e naquele momento."
  },
  {
-  "id": "b5f9ca6f",
+  "id": "92f45556",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "O lago inteiro tem 2,1 miligramas de oxigênio, em qualquer lugar e horário."
+  "texto": "O lago inteiro tem 2,1 miligramas de oxigênio dissolvido, em qualquer ponto e horário."
  },
  {
   "id": "d5a77a2e",
@@ -425,11 +446,11 @@
   "texto": "A medição vale para um ponto e um momento. O oxigênio varia com o local, a profundidade e a hora do dia."
  },
  {
-  "id": "32d3e950",
+  "id": "5ad52d5e",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A água tem 2,1 litros de oxigênio para cada miligrama de algas no lago."
+  "texto": "A água do lago tem 2,1 litros de oxigênio dissolvido para cada miligrama de algas."
  },
  {
   "id": "cf4bd7d4",
@@ -439,11 +460,11 @@
   "texto": "A unidade miligramas por litro significa miligramas por litro de água. Não envolve algas."
  },
  {
-  "id": "5dbabf1f",
+  "id": "b3caecea",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "O oxigênio dissolvido caiu 2,1 miligramas desde a semana passada."
+  "texto": "O oxigênio dissolvido no ponto pê 1 caiu 2,1 miligramas por litro desde a semana passada."
  },
  {
   "id": "8d15440d",
@@ -481,18 +502,18 @@
   "texto": "Como reescrever o registro de campo?"
  },
  {
-  "id": "74bbab7e",
+  "id": "2580dedd",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A água apresentava coloração esverdeada e odor perceptível junto ao píer (ponto pê 1), às 9 e 15."
+  "texto": "A água apresentava cor esverdeada e odor perceptível junto ao píer (ponto pê 1), às 9 e 15."
  },
  {
-  "id": "27c684e9",
+  "id": "f27162d9",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A água do lago está poluída, esverdeada e com um mau cheiro muito forte."
+  "texto": "A água do lago está poluída, esverdeada e com um mau cheiro muito forte junto ao píer."
  },
  {
   "id": "18f228f8",
@@ -502,11 +523,11 @@
   "texto": "Troca contaminada por poluída, mas continua afirmando um diagnóstico sem análise."
  },
  {
-  "id": "28b07b27",
+  "id": "f27b9134",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "O lago parece contaminado, pois a água estava muito verde e fedida."
+  "texto": "O lago parece contaminado, pois a água estava muito verde e fedida perto do píer, às 9 e 15."
  },
  {
   "id": "a7ab590a",
@@ -516,11 +537,11 @@
   "texto": "Parece contaminado ainda sugere conclusão, e fedida é vago para um registro técnico."
  },
  {
-  "id": "fb8f2f4b",
+  "id": "2d9596c3",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A cor esverdeada e o odor comprovam a contaminação no ponto pê 1."
+  "texto": "A cor esverdeada e o odor observados às 9 e 15 comprovam a contaminação no ponto pê 1."
  },
  {
   "id": "4ea66cca",
@@ -537,18 +558,18 @@
   "texto": "Que evidência sustenta essa decisão?"
  },
  {
-  "id": "bfd7c71f",
+  "id": "d22e3d3f",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A frase descreve o que foi percebido, com local e horário, sem afirmar causa ou diagnóstico."
+  "texto": "Descreve o que foi percebido, com local e horário, sem afirmar causa ou diagnóstico."
  },
  {
-  "id": "605393cc",
+  "id": "d7900add",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A frase evita falar do cheiro, que não pode ser medido no campo."
+  "texto": "Evita falar do cheiro, porque um odor não pode ser medido nem registrado no campo."
  },
  {
   "id": "68286af6",
@@ -558,11 +579,11 @@
   "texto": "Ela registra o odor, sim. Observações sensoriais entram no registro, descritas com cuidado."
  },
  {
-  "id": "386a92df",
+  "id": "3959e3d7",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A frase é mais curta e usa palavras mais difíceis que a original."
+  "texto": "É mais curta que a original e usa palavras mais difíceis, o que a torna mais técnica."
  },
  {
   "id": "7f55478b",
@@ -572,11 +593,11 @@
   "texto": "Precisão não é usar palavras difíceis: é dizer exatamente o que os dados permitem."
  },
  {
-  "id": "713a4204",
+  "id": "560fc0a8",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A frase confirma a contaminação de um jeito mais elegante."
+  "texto": "Confirma a contaminação da água, só que de um jeito mais elegante e mais técnico."
  },
  {
   "id": "58c649e7",
@@ -600,18 +621,18 @@
   "texto": "Geografia: localizar e descrever o trecho observado, com coordenadas e pontos de referência."
  },
  {
-  "id": "d996168d",
+  "id": "9996ba7e",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Língua Portuguesa: distinguir verbos de descrição, como apresentava, de verbos de conclusão, como comprova."
+  "texto": "Língua Portuguesa: diferenciar verbos que descrevem, como apresentava, de verbos que concluem."
  },
  {
-  "id": "b26c2262",
+  "id": "3b469250",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Matemática: calcular a média usando apenas a medição de 2,1 miligramas por litro."
+  "texto": "Matemática: calcular a média do oxigênio dissolvido usando apenas a medição de 2,1 miligramas por litro."
  },
  {
   "id": "c8fb1bf3",
@@ -621,11 +642,11 @@
   "texto": "Uma média com um único valor não acrescenta informação."
  },
  {
-  "id": "95331fd4",
+  "id": "f2c6c72e",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Artes: enfeitar o caderno de campo para chamar a atenção de quem lê."
+  "texto": "Artes: enfeitar o caderno de campo com desenhos coloridos para chamar a atenção de quem lê."
  },
  {
   "id": "5b3c92b1",
@@ -649,11 +670,11 @@
   "texto": "Que evidência permitiria passar da observação para a afirmação de contaminação?"
  },
  {
-  "id": "cf2c4c2c",
+  "id": "3a396276",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Você não sabia que contaminado é uma palavra proibida no relatório?"
+  "texto": "Você não sabia que contaminado é uma palavra proibida em qualquer relatório técnico?"
  },
  {
   "id": "d4dc947b",
@@ -663,11 +684,11 @@
   "texto": "Nenhuma palavra é proibida; ela só precisa de evidências. A pergunta constrange e não ensina."
  },
  {
-  "id": "435ee4a5",
+  "id": "d5baf100",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Por que você não copiou a frase pronta do livro de consulta?"
+  "texto": "Por que você não copiou a frase pronta do livro de consulta, que já está correta?"
  },
  {
   "id": "08211d3f",
@@ -677,11 +698,11 @@
   "texto": "Copiar sem discutir o significado foi justamente uma das dificuldades da turma."
  },
  {
-  "id": "09f3ae4c",
+  "id": "f9fe5ab8",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Qual palavra soa mais bonita e técnica para colocar no lugar?"
+  "texto": "Qual palavra soa mais bonita e mais técnica para colocar no lugar de contaminado?"
  },
  {
   "id": "689b131a",
@@ -710,6 +731,13 @@
   "rate": "+0%",
   "genero": "F",
   "texto": "Procure os cadernos antigos, a calculadora, o pluviômetro e o material para montar a tabela."
+ },
+ {
+  "id": "5aba3b0e",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "procure os cadernos antigos, a calculadora, o pluviômetro e o material para montar a tabela."
  },
  {
   "id": "84bc3369",
@@ -813,18 +841,18 @@
   "texto": "Como reescrever a frase da tabela?"
  },
  {
-  "id": "c211716e",
+  "id": "1e64b210",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "No ponto pê 1, em 14 de outubro, às 9 e 15, registrou-se 2,1 miligramas por litro de ó dê. Para avaliar tendência, são necessárias medições periódicas."
+  "texto": "No pê 1, em 14 de outubro, às 9 e 15, registrou-se 2,1 miligramas por litro de ó dê. Avaliar tendência exige medições periódicas."
  },
  {
-  "id": "08fad6cb",
+  "id": "75b2a52e",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "O oxigênio dissolvido caiu para 2,1 miligramas por litro e vai continuar caindo nas próximas semanas."
+  "texto": "No pê 1, o oxigênio dissolvido caiu para 2,1 miligramas por litro em 14 de outubro e vai continuar caindo nas próximas semanas."
  },
  {
   "id": "43904df9",
@@ -834,11 +862,11 @@
   "texto": "Afirma uma queda e ainda faz uma previsão, sem medições anteriores ou posteriores."
  },
  {
-  "id": "b58dcb65",
+  "id": "e154e732",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "As medições indicam que o oxigênio dissolvido está diminuindo, mas devagar."
+  "texto": "As medições do ponto pê 1 indicam que o oxigênio dissolvido está diminuindo, mas de forma lenta e gradual."
  },
  {
   "id": "51fe7b3c",
@@ -848,11 +876,11 @@
   "texto": "Troca comprovam por indicam, mas continua falando em diminuição com um único dado."
  },
  {
-  "id": "46b2ec21",
+  "id": "a2f91f31",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "O oxigênio dissolvido está baixo, o que comprova a queda semanal no lago."
+  "texto": "Em 14 de outubro, o oxigênio dissolvido estava baixo no pê 1, o que comprova a queda semanal registrada no lago."
  },
  {
   "id": "d1b64994",
@@ -869,18 +897,18 @@
   "texto": "Por que essa versão é mais rigorosa?"
  },
  {
-  "id": "20c28ff8",
+  "id": "6e22b28f",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Preserva valor, unidade, local e momento, e reconhece que um único dado não mostra variação no tempo."
+  "texto": "Mantém valor, unidade, local e momento, e reconhece que um dado só não mostra variação."
  },
  {
-  "id": "0f215caa",
+  "id": "684c4b59",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Esconde o valor medido para não assustar quem lê a tabela."
+  "texto": "Esconde o valor exato da medição para não assustar quem vai ler a tabela de dados."
  },
  {
   "id": "f1af4479",
@@ -890,11 +918,11 @@
   "texto": "Ela mostra o valor. Ocultar dados nunca é a solução."
  },
  {
-  "id": "b2799114",
+  "id": "b3af1f25",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Usa a sigla ó dê, o que deixa a frase automaticamente técnica."
+  "texto": "Usa a sigla ó dê e a unidade miligramas por litro, o que deixa a frase automaticamente mais técnica."
  },
  {
   "id": "e0e38c6c",
@@ -904,11 +932,11 @@
   "texto": "Siglas ajudam, mas a precisão vem de dados, unidades e limites claros."
  },
  {
-  "id": "d5a85c7b",
+  "id": "a110e6e1",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Afirma a tendência de uma forma mais discreta e cuidadosa."
+  "texto": "Afirma que há uma tendência de queda, mas de uma forma mais discreta e cuidadosa."
  },
  {
   "id": "cfe544b7",
@@ -925,18 +953,18 @@
   "texto": "A Resolução Conama 357 de 2005 prevê, para águas doces de classe 2, ó dê não inferior a 5 miligramas por litro. Qual frase usa essa referência com rigor?"
  },
  {
-  "id": "48fe4198",
+  "id": "2ce8412e",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "O valor medido, 2,1 miligramas por litro, é inferior ao previsto para águas doces de classe 2, de 5 miligramas por litro, mas a classe do lago ainda não foi verificada."
+  "texto": "O valor medido (2,1 miligramas por litro) é menor que o previsto para a classe 2 (5 miligramas por litro), mas a classe do lago não foi verificada."
  },
  {
-  "id": "7f83182b",
+  "id": "3feb1154",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "O lago está ilegal, pois a Resolução Conama exige no mínimo 5 miligramas por litro de oxigênio em qualquer água."
+  "texto": "O lago está ilegal, pois a Resolução Conama exige ao menos 5 miligramas por litro de oxigênio dissolvido em qualquer água doce."
  },
  {
   "id": "3e6fd567",
@@ -946,11 +974,11 @@
   "texto": "A referência depende da classe do corpo d’água, que ainda não conhecemos. E ilegal é um julgamento que vai além dos dados."
  },
  {
-  "id": "9dfa8dd7",
+  "id": "7761b584",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Como 2,1 é menor que 5, a água é imprópria para qualquer uso, segundo a Resolução Conama."
+  "texto": "Como 2,1 miligramas por litro é menor que 5 miligramas por litro, a água do lago é imprópria para qualquer tipo de uso, segundo a Resolução Conama."
  },
  {
   "id": "bc679a8d",
@@ -960,11 +988,11 @@
   "texto": "Generaliza demais: a comparação foi de um parâmetro, num ponto, com uma classe ainda hipotética."
  },
  {
-  "id": "7a46ea01",
+  "id": "418cabbe",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A Resolução Conama comprova que a fábrica contaminou o lago com seus resíduos industriais."
+  "texto": "Comparado à classe 2, o valor de 2,1 miligramas por litro comprova que a fábrica vizinha contaminou o lago com resíduos industriais."
  },
  {
   "id": "dadf024d",
@@ -981,11 +1009,11 @@
   "texto": "Quais duas áreas ajudam a turma a organizar e interpretar esses dados? Escolha duas."
  },
  {
-  "id": "9ebb8f2e",
+  "id": "ceff657a",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Matemática: organizar medições em tabela e gráfico e explicar por que um único ponto não forma tendência."
+  "texto": "Matemática: organizar medições em tabela e gráfico e mostrar que um ponto só não forma tendência."
  },
  {
   "id": "9babeba4",
@@ -995,11 +1023,11 @@
   "texto": "Física: identificar grandezas, unidades e condições de medição, como hora, temperatura e profundidade."
  },
  {
-  "id": "ddfd467a",
+  "id": "6a3f22e3",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "História: usar os cadernos de 1958 para provar que o lago sempre foi poluído."
+  "texto": "História: usar os cadernos do pai de Dona Helena, de 1958, para provar que o lago sempre foi poluído."
  },
  {
   "id": "e14f91f8",
@@ -1009,11 +1037,11 @@
   "texto": "Os cadernos são registros valiosos, mas descrições antigas não provam a situação atual."
  },
  {
-  "id": "9b38a613",
+  "id": "b569c952",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Educação Física: cronometrar quanto tempo a turma leva para chegar até o lago."
+  "texto": "Educação Física: cronometrar quanto tempo a turma leva para caminhar do escritório até o lago."
  },
  {
   "id": "7d312522",
@@ -1030,18 +1058,18 @@
   "texto": "Que pergunta ajudaria a turma a revisar a tabela?"
  },
  {
-  "id": "9164dcb1",
+  "id": "4386611d",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Quantas medições, em quais datas e pontos, seriam necessárias para afirmar que existe uma tendência?"
+  "texto": "Quantas medições, em que datas e pontos, permitiriam afirmar que há uma tendência?"
  },
  {
-  "id": "e2c40881",
+  "id": "cac55b03",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Quem errou a tabela e precisa refazer tudo sozinho em casa?"
+  "texto": "Quem foi o responsável pelo erro na tabela e vai precisar refazer tudo em casa?"
  },
  {
   "id": "56442248",
@@ -1051,11 +1079,11 @@
   "texto": "Buscar culpados inibe a escrita. A cultura do erro trata o equívoco como oportunidade de aprender."
  },
  {
-  "id": "96f8b516",
+  "id": "67644d55",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Vocês concordam que o oxigênio está mesmo diminuindo, não é?"
+  "texto": "Vocês concordam que o oxigênio dissolvido está mesmo diminuindo toda semana, não é?"
  },
  {
   "id": "d4147e14",
@@ -1065,11 +1093,11 @@
   "texto": "A pergunta já traz a resposta e induz a turma a confirmar a afirmação."
  },
  {
-  "id": "9f7f9c11",
+  "id": "d9dd40b0",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Qual programa de computador faz os gráficos mais bonitos?"
+  "texto": "Qual programa de computador faz os gráficos mais bonitos para colocar no relatório?"
  },
  {
   "id": "ef3f6b1c",
@@ -1099,6 +1127,13 @@
   "rate": "+0%",
   "genero": "F",
   "texto": "A biblioteca guarda livros de limnologia e uma cópia da Resolução Conama. Encontre o material de pesquisa."
+ },
+ {
+  "id": "107ed049",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "a biblioteca guarda livros de limnologia e uma cópia da Resolução Conama. Encontre o material de pesquisa."
  },
  {
   "id": "29a650b1",
@@ -1173,18 +1208,18 @@
   "texto": "Como reescrever a frase da pesquisa?"
  },
  {
-  "id": "8bfd8628",
+  "id": "2d5d99de",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A eutrofização é uma hipótese compatível com a cor esverdeada e o ó dê baixo; é preciso analisar fósforo e nitrogênio em laboratório."
+  "texto": "A eutrofização é uma hipótese compatível com a água verde e o ó dê baixo; falta analisar fósforo e nitrogênio."
  },
  {
-  "id": "10557e0c",
+  "id": "368ab664",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A eutrofização é provavelmente a causa comprovada das alterações, segundo o livro da biblioteca."
+  "texto": "A eutrofização é provavelmente a causa comprovada da água verde e do ó dê baixo, segundo o livro da biblioteca."
  },
  {
   "id": "ec1d4f72",
@@ -1194,11 +1229,11 @@
   "texto": "Provavelmente e comprovada se contradizem, e o livro explica o fenômeno em geral, não o caso deste lago."
  },
  {
-  "id": "4f1ac4b1",
+  "id": "5247b65f",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A eutrofização causada pelo adubo da horta é a responsável pelas alterações observadas no lago."
+  "texto": "A eutrofização causada pelo adubo da horta do Seu Benedito é a responsável pelas alterações no lago."
  },
  {
   "id": "63d7d7ac",
@@ -1208,11 +1243,11 @@
   "texto": "Aponta a causa e ainda a origem dos nutrientes, sem nenhuma análise."
  },
  {
-  "id": "c1383422",
+  "id": "4e648b81",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Não é possível dizer absolutamente nada sobre o lago enquanto não houver um laudo final."
+  "texto": "Não é possível dizer absolutamente nada sobre a água verde e o ó dê baixo antes de haver um laudo final."
  },
  {
   "id": "4e16582e",
@@ -1229,18 +1264,18 @@
   "texto": "Por que essa versão é a mais adequada para a pesquisa?"
  },
  {
-  "id": "d8b7d429",
+  "id": "667f94fc",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Apresenta a hipótese, cita as evidências disponíveis e indica o que ainda precisa ser investigado."
+  "texto": "Apresenta a hipótese, cita as evidências e indica o que ainda precisa ser investigado."
  },
  {
-  "id": "259094a4",
+  "id": "c4c4ee16",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Evita usar a palavra eutrofização, que é complicada demais."
+  "texto": "Evita usar a palavra eutrofização, que é complicada demais para um relatório escolar."
  },
  {
   "id": "40300b4c",
@@ -1250,11 +1285,11 @@
   "texto": "Ela usa o termo, corretamente, como hipótese. O termo técnico não é o problema."
  },
  {
-  "id": "90ba74e2",
+  "id": "5b721b5b",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Concorda com o livro, que é uma fonte confiável sobre este lago."
+  "texto": "Concorda com o livro da biblioteca, que é uma fonte confiável sobre este lago em especial."
  },
  {
   "id": "4604333c",
@@ -1264,11 +1299,11 @@
   "texto": "O livro é confiável sobre o conceito, mas não traz dados deste lago."
  },
  {
-  "id": "414bf59e",
+  "id": "8c5546a9",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Deixa a conclusão para depois, sem dizer o que fazer agora."
+  "texto": "Deixa a conclusão para depois, sem dizer o que a equipe precisa fazer a partir de agora."
  },
  {
   "id": "93a95b54",
@@ -1285,18 +1320,18 @@
   "texto": "Qual destas é uma hipótese bem formulada, que pode ser testada?"
  },
  {
-  "id": "01b70845",
+  "id": "9a7a2e74",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Se o fósforo chega pelo córrego, sua concentração deve ser maior perto da foz do que no centro do lago."
+  "texto": "Se o fósforo vem do córrego, sua concentração deve ser maior perto da foz do que no centro do lago."
  },
  {
-  "id": "cfbba6fd",
+  "id": "8b0a2bc1",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "O lago está doente porque a natureza está pedindo socorro aos moradores do bairro."
+  "texto": "O lago ficou verde e sem peixes porque a natureza está pedindo socorro aos moradores do entorno."
  },
  {
   "id": "fa0f4ad0",
@@ -1306,11 +1341,11 @@
   "texto": "É uma metáfora, não uma hipótese: não indica o que medir nem onde."
  },
  {
-  "id": "2a5b6fe0",
+  "id": "f860b253",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A fábrica polui o lago, e qualquer análise de laboratório vai confirmar isso."
+  "texto": "A fábrica do outro lado da estrada polui o lago, e qualquer análise de laboratório vai confirmar isso."
  },
  {
   "id": "5a5ef1b0",
@@ -1320,11 +1355,11 @@
   "texto": "Uma hipótese precisa poder ser refutada. Esta já decide o resultado antes da análise."
  },
  {
-  "id": "23251ba0",
+  "id": "febacbc4",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Talvez alguma coisa tenha acontecido com a água em algum momento recente."
+  "texto": "Talvez alguma coisa tenha acontecido com a água do lago em algum momento das últimas semanas."
  },
  {
   "id": "1fa1c3b3",
@@ -1341,11 +1376,11 @@
   "texto": "Quais duas áreas ajudam a separar o que se sabe do que se supõe? Escolha duas."
  },
  {
-  "id": "aabddcad",
+  "id": "39eb208a",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Biologia: explicar por que o oxigênio dissolvido importa para os organismos aquáticos, separando teoria e dado coletado."
+  "texto": "Biologia: explicar a importância do ó dê para os seres aquáticos, separando teoria e dado coletado."
  },
  {
   "id": "b15420c7",
@@ -1355,11 +1390,11 @@
   "texto": "Filosofia: montar um quadro com afirmação, evidência e justificativa para avaliar cada conclusão."
  },
  {
-  "id": "8b640d5a",
+  "id": "e327e874",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Língua Inglesa: traduzir eutrophication palavra por palavra, sem checar o sentido técnico."
+  "texto": "Língua Inglesa: traduzir eutrophication palavra por palavra, sem checar o sentido técnico do termo."
  },
  {
   "id": "f43da92a",
@@ -1369,11 +1404,11 @@
   "texto": "Traduções literais podem alterar o significado; o glossário precisa ser contextualizado."
  },
  {
-  "id": "0aa317b9",
+  "id": "f5abbbc3",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Geografia: decorar o nome de todos os lagos do estado para a próxima prova."
+  "texto": "Geografia: decorar o nome e a localização de todos os lagos do estado para a próxima prova."
  },
  {
   "id": "04e35b89",
@@ -1397,11 +1432,11 @@
   "texto": "O que já sabemos, o que suspeitamos e o que ainda precisamos investigar?"
  },
  {
-  "id": "7a8262cd",
+  "id": "56866e7f",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Quem acha que a culpa é do Seu Benedito levanta a mão?"
+  "texto": "Quem acha que a culpa é do adubo do Seu Benedito pode levantar a mão?"
  },
  {
   "id": "fa6aed64",
@@ -1411,11 +1446,11 @@
   "texto": "Transforma a investigação em julgamento e expõe uma pessoa sem evidências."
  },
  {
-  "id": "dd367cc4",
+  "id": "00f837c3",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Vocês podem copiar a conclusão do livro, já que ele é confiável?"
+  "texto": "Vocês podem copiar a conclusão do livro, já que ele é uma fonte confiável?"
  },
  {
   "id": "420dfe46",
@@ -1425,11 +1460,11 @@
   "texto": "Reproduzir sem discutir foi uma das dificuldades observadas na turma."
  },
  {
-  "id": "0bec0ec8",
+  "id": "cee03b61",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Qual é a resposta certa que eu quero ouvir agora?"
+  "texto": "Qual é a resposta certa que eu, professor, quero ouvir de vocês agora?"
  },
  {
   "id": "17656825",
@@ -1458,6 +1493,13 @@
   "rate": "+0%",
   "genero": "F",
   "texto": "Encontre a vidraria, a caixa térmica com as amostras e as fichas para a Dra. Lúcia."
+ },
+ {
+  "id": "13ab369a",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "encontre a vidraria, a caixa térmica com as amostras e as fichas para a Dra. Lúcia."
  },
  {
   "id": "bcc7b674",
@@ -1502,18 +1544,18 @@
   "texto": "Uma receita de bolo e uma receita médica usam a mesma palavra. O que muda quando a receita orienta uma decisão profissional?"
  },
  {
-  "id": "5aa039c6",
+  "id": "33aef4f5",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A informação precisa ser exata e inequívoca: quantidade, unidade, frequência e para quem se destina."
+  "texto": "A informação precisa ser exata: quantidade, unidade, frequência e para quem se destina."
  },
  {
-  "id": "2fd23bbf",
+  "id": "d69a1601",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Nada muda: em qualquer receita, uma pitada ou a gosto funcionam muito bem."
+  "texto": "Nada muda: em qualquer tipo de receita, medidas como uma pitada ou a gosto funcionam bem."
  },
  {
   "id": "67042e8d",
@@ -1523,11 +1565,11 @@
   "texto": "Na receita médica, uma medida vaga pode causar dano. O contexto exige precisão."
  },
  {
-  "id": "94e661c5",
+  "id": "62af1be3",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A receita médica pode usar qualquer palavra, desde que o médico a entenda."
+  "texto": "A receita médica pode usar qualquer palavra ou abreviação, desde que o médico entenda."
  },
  {
   "id": "b62ad7f7",
@@ -1537,11 +1579,11 @@
   "texto": "Ela precisa ser compreendida por quem vai usá-la: paciente, farmácia e equipe de enfermagem."
  },
  {
-  "id": "5208b282",
+  "id": "c5032888",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Só muda o tamanho do texto, porque as receitas médicas são mais curtas."
+  "texto": "Só muda o tamanho do texto, porque as receitas médicas costumam ser bem mais curtas."
  },
  {
   "id": "63d70ac7",
@@ -1726,18 +1768,18 @@
   "texto": "Qual etiqueta de frasco está completa e rastreável?"
  },
  {
-  "id": "1900bd21",
+  "id": "70d34e09",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Lago do Ipê, pê 2 (foz do córrego), 14 de outubro de 2026, 9 e 40, água superficial, fósforo total, coleta: equipe 3"
+  "texto": "Lago do Ipê, pê 2 (foz do córrego), 14 de outubro de 2026, 9 e 40, água superficial, fósforo total, equipe 3"
  },
  {
-  "id": "684eb260",
+  "id": "dd26a65b",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Água do lago, coletada de manhã, cor muito verde, para analisar tudo, urgente"
+  "texto": "Água do Lago do Ipê, coletada de manhã, cor muito verde, analisar tudo, urgente, equipe 3"
  },
  {
   "id": "43ece270",
@@ -1747,32 +1789,32 @@
   "texto": "Sem ponto, data, hora exata e parâmetro, o resultado não pode ser rastreado nem comparado."
  },
  {
-  "id": "a8d94c90",
+  "id": "817aea36",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Amostra número 2, Lago do Ipê, fósforo, resultado esperado: alto, equipe 3"
+  "texto": "Amostra número 2, Lago do Ipê, outubro de 2026, fósforo, resultado esperado: alto, coleta: equipe 3"
  },
  {
-  "id": "8da0c695",
+  "id": "b592b2fe",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Falta local, data e hora; e anotar o resultado esperado pode enviesar a análise."
+  "texto": "Faltam o ponto, o dia e a hora; e anotar o resultado esperado pode enviesar a análise."
  },
  {
-  "id": "a1757f88",
+  "id": "e3da4785",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "pê 2, 14 de outubro, contaminada pela horta, prioridade máxima, coleta: equipe 3"
+  "texto": "pê 2, 14 de outubro, água contaminada pela horta, fósforo total, prioridade máxima, coleta: equipe 3"
  },
  {
-  "id": "bf31c0dd",
+  "id": "2d1b8981",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Etiqueta não é lugar de conclusão, e ainda faltam o local completo, a hora e o parâmetro."
+  "texto": "Etiqueta não é lugar de conclusão, e ainda faltam o nome do lago, o ano e a hora da coleta."
  },
  {
   "id": "05b2a3e8",
@@ -1789,11 +1831,11 @@
   "texto": "Na amostra coletada no ponto pê 2, em 14 de outubro, a concentração de fósforo total foi de 0,15 miligramas por litro."
  },
  {
-  "id": "d032245d",
+  "id": "046d4489",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "O lago tem 0,15 de fósforo, o que é muito, de acordo com a análise do laboratório."
+  "texto": "O lago inteiro tem 0,15 de fósforo, o que é muito, de acordo com a análise do laboratório."
  },
  {
   "id": "e4d1a682",
@@ -1803,11 +1845,11 @@
   "texto": "Faltam a unidade, o ponto e a data; e muito é uma avaliação sem referência."
  },
  {
-  "id": "0bab8bcd",
+  "id": "39f9eca8",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "O fósforo de 0,15 miligramas por litro comprova que a horta é a fonte do problema do lago."
+  "texto": "O fósforo total de 0,15 miligramas por litro no ponto pê 2 comprova que a horta é a fonte do problema do lago."
  },
  {
   "id": "1f982440",
@@ -1817,11 +1859,11 @@
   "texto": "O resultado mostra concentração, não origem. Para isso seriam necessárias outras coletas."
  },
  {
-  "id": "ddc672de",
+  "id": "276c7499",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Há uma solução de fósforo dissolvida no lago inteiro, em grande quantidade."
+  "texto": "Em 14 de outubro, havia uma solução de fósforo dissolvida no lago inteiro, em grande quantidade."
  },
  {
   "id": "072b53a1",
@@ -1838,25 +1880,25 @@
   "texto": "Quais duas áreas ajudam a construir o glossário do laboratório? Escolha duas."
  },
  {
-  "id": "57fcefd8",
+  "id": "e259257f",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Química: explicar concentração, amostra e solução com exemplos do próprio laudo."
+  "texto": "Química: explicar concentração, amostra e solução usando exemplos tirados do próprio laudo."
  },
  {
-  "id": "35a78ca8",
+  "id": "c5983b51",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Língua Inglesa: montar um glossário bilíngue, como dissolved oxygen e sample, sem traduções literais."
+  "texto": "Língua Inglesa: glossário bilíngue, como dissolved oxygen e sample, sem traduções literais."
  },
  {
-  "id": "7bd61769",
+  "id": "4987f198",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Artes: escolher cores aleatórias para cada frasco, sem nenhuma legenda."
+  "texto": "Artes: escolher cores aleatórias para cada frasco e cada gráfico, sem nenhuma legenda."
  },
  {
   "id": "0e7f4a87",
@@ -1866,11 +1908,11 @@
   "texto": "Cores ajudam quando têm significado e legenda; aleatórias confundem."
  },
  {
-  "id": "205fe8be",
+  "id": "9a9b19be",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "História: pesquisar a data de invenção do microscópio para colocar no laudo."
+  "texto": "História: pesquisar a data de invenção do microscópio para colocar no início do laudo."
  },
  {
   "id": "56f116a6",
@@ -1900,6 +1942,20 @@
   "rate": "+0%",
   "genero": "F",
   "texto": "Rafael, os dados não dizem isso. Vamos preparar o salão e a apresentação. Encontre o microfone, o infográfico e o restante do material."
+ },
+ {
+  "id": "73b7937d",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Rafael, os dados não dizem isso."
+ },
+ {
+  "id": "7dc7c639",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "vamos preparar o salão e a apresentação. Encontre o microfone, o infográfico e o restante do material."
  },
  {
   "id": "3482bab7",
@@ -1951,6 +2007,20 @@
   "rate": "+0%",
   "genero": "F",
   "texto": "Observar, contextualizar, justificar e comunicar. Você fez tudo isso. O caso do Lago do Ipê está em boas mãos."
+ },
+ {
+  "id": "7e812ccd",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Observar, contextualizar, justificar e comunicar."
+ },
+ {
+  "id": "45cf04f8",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "você fez tudo isso. O caso do Lago do Ipê está em boas mãos."
  },
  {
   "id": "9d18e500",
@@ -2086,11 +2156,11 @@
   "texto": "Lago do Ipê tem pouco oxigênio em ponto medido; técnicos investigam as causas"
  },
  {
-  "id": "4847b82b",
+  "id": "94e98793",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Lago do Ipê envenenado: fábrica é a culpada, afirmam os técnicos"
+  "texto": "Lago do Ipê envenenado: fábrica é a culpada pela água verde, afirmam os técnicos"
  },
  {
   "id": "9be7a068",
@@ -2100,11 +2170,11 @@
   "texto": "Atribui aos técnicos uma conclusão que eles não fizeram e acusa sem evidências."
  },
  {
-  "id": "83bbb9fd",
+  "id": "2f66707f",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Lago do Ipê está ótimo, garante relatório feito por estudantes"
+  "texto": "Lago do Ipê está ótimo e não corre perigo, garante relatório feito por estudantes"
  },
  {
   "id": "2337cac4",
@@ -2114,11 +2184,11 @@
   "texto": "Minimiza os dados: o ó dê medido foi baixo, e isso não pode ser omitido."
  },
  {
-  "id": "8cf95e1a",
+  "id": "ba419a33",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Horta do caseiro mata os peixes do Lago do Ipê, revela laudo"
+  "texto": "Horta do caseiro mata os peixes do Lago do Ipê com adubo, revela laudo técnico"
  },
  {
   "id": "29a36796",
@@ -2135,18 +2205,18 @@
   "texto": "Qual texto comunica melhor os resultados aos moradores?"
  },
  {
-  "id": "88c1ec6a",
+  "id": "932997b1",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Medimos o oxigênio dissolvido, aquele que os peixes usam para respirar. Perto do píer havia 2,1 miligramas por litro, um valor baixo. A água verde pode indicar excesso de nutrientes, e novas coletas vão investigar de onde eles vêm."
+  "texto": "Medimos o oxigênio dissolvido, que os peixes usam para respirar. Perto do píer havia 2,1 miligramas por litro, um valor baixo. A água verde pode indicar excesso de nutrientes, e novas coletas vão investigar a origem deles."
  },
  {
-  "id": "7723efed",
+  "id": "6120e7d0",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Foi aferida concentração de ó dê de 2,1 miligramas por litro no pê 1, inferior ao padrão para classe 2 da Resolução Conama 357 de 2005, compatível com processo de eutrofização em curso no corpo hídrico."
+  "texto": "Foi aferida concentração de ó dê de 2,1 miligramas por litro no pê 1, inferior ao padrão para classe 2 da Resolução Conama 357 de 2005, compatível com processo de eutrofização em curso no corpo hídrico, conforme análise de fósforo total."
  },
  {
   "id": "ebed35fa",
@@ -2156,11 +2226,11 @@
   "texto": "Mantém os dados, mas copia o relatório técnico: siglas e termos sem explicação afastam os moradores."
  },
  {
-  "id": "12cad4a6",
+  "id": "f0909077",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "A água está um pouco ruim, mas não é nada grave. Logo tudo volta ao normal, então todos podem ficar tranquilos e continuar usando o lago como sempre."
+  "texto": "A água do lago está um pouco ruim, mas não é nada grave. Logo tudo volta ao normal sozinho, então todos podem ficar tranquilos e continuar pescando e usando o lago como sempre. Não há motivo para preocupação."
  },
  {
   "id": "6fc0d617",
@@ -2170,11 +2240,11 @@
   "texto": "Perde os dados e faz promessas sem base. Também omite os limites da investigação."
  },
  {
-  "id": "f2972b1f",
+  "id": "835578b4",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Cuidado! O lago está morrendo e é perigoso chegar perto da água. A culpa é de quem jogou sujeira nele, e isso precisa ser punido imediatamente."
+  "texto": "Cuidado! O lago está morrendo, a água verde é venenosa e é perigoso chegar perto dela. A culpa é de quem jogou sujeira no lago, e os responsáveis precisam ser encontrados e punidos imediatamente."
  },
  {
   "id": "bda420ab",
@@ -2198,18 +2268,18 @@
   "texto": "Artes: criar um infográfico em que cores e símbolos tornem os dados claros, sem distorcê-los."
  },
  {
-  "id": "39cc667e",
+  "id": "3e725548",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Educação Física: orientar caminhadas no entorno, separando observações, recomendações preventivas e afirmações técnicas."
+  "texto": "Educação Física: orientar caminhadas no entorno, separando observação, recomendação e laudo."
  },
  {
-  "id": "d8d27967",
+  "id": "51ec695c",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Matemática: arredondar 2,1 miligramas por litro para zero, para simplificar a conversa."
+  "texto": "Matemática: arredondar 2,1 miligramas por litro para zero, para simplificar a conversa com os moradores."
  },
  {
   "id": "b5cce36e",
@@ -2219,11 +2289,11 @@
   "texto": "Arredondar assim distorce o dado. Simplificar a linguagem não é alterar números."
  },
  {
-  "id": "d49e221c",
+  "id": "74496ee4",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Sociologia: registrar apenas as opiniões que concordam com o relatório."
+  "texto": "Sociologia: entrevistar moradores e registrar só as opiniões que concordam com o relatório."
  },
  {
   "id": "e93b5651",
@@ -2247,11 +2317,11 @@
   "texto": "A linguagem mudou, mas os dados, o local, os limites e as incertezas continuam lá?"
  },
  {
-  "id": "dc9a91e8",
+  "id": "27fb9c30",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "O texto está chamativo o suficiente para ser bastante compartilhado?"
+  "texto": "O texto está chamativo o suficiente para ser bastante compartilhado nas redes sociais?"
  },
  {
   "id": "c413a07c",
@@ -2261,11 +2331,11 @@
   "texto": "Alcance não substitui precisão. Uma manchete chamativa pode espalhar uma conclusão falsa."
  },
  {
-  "id": "f35287c1",
+  "id": "832c20bc",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Conseguimos tirar todos os números para ninguém se confundir?"
+  "texto": "Conseguimos tirar todos os números e unidades para que ninguém se confunda na reunião?"
  },
  {
   "id": "2d28a9cc",
@@ -2275,11 +2345,11 @@
   "texto": "Os números podem ser explicados, mas não eliminados: eles sustentam a informação."
  },
  {
-  "id": "24eab3b0",
+  "id": "e428d1de",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
-  "texto": "Todo mundo vai concordar com a nossa opinião sobre a fábrica?"
+  "texto": "Todo mundo vai concordar com a nossa opinião sobre a culpa da fábrica e da horta?"
  },
  {
   "id": "b158c653",
@@ -2287,6 +2357,34 @@
   "rate": "+0%",
   "genero": "F",
   "texto": "A comunicação técnica apresenta evidências, não opiniões sobre culpados."
+ },
+ {
+  "id": "f62a6530",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Que bom ter você aqui! Prepare a lupa e o caderno de campo: a investigação no Solar do Ipê vai começar."
+ },
+ {
+  "id": "530498d0",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "que bom ter você aqui! Prepare a lupa e o caderno de campo: a investigação no Solar do Ipê vai começar."
+ },
+ {
+  "id": "28ae2dd5",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Que bom ver você de volta! Vamos continuar a investigação no Solar do Ipê."
+ },
+ {
+  "id": "64d3f075",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "que bom ver você de volta! Vamos continuar a investigação no Solar do Ipê."
  },
  {
   "id": "06ca108f",
