@@ -1,0 +1,96 @@
+# Mistério na Mansão do Ipê
+
+Jogo de **objetos ocultos**, no estilo de June's Journey, para estudantes do **Técnico em Meio Ambiente**. Foi criado a partir da **Pauta Formativa 9 — Vocabulário em diferentes contextos profissionais**.
+
+A água do Lago do Ipê ficou verde, os peixes sumiram e cada morador já tem um culpado. Nos cômodos de uma mansão de 1928, o estudante encontra os instrumentos da investigação e analisa frases técnicas. O objetivo é **escolher e justificar os termos** adequados a cada contexto profissional, preservando dados, métodos e incertezas.
+
+Funciona direto no navegador, no computador ou no celular, sem instalação. É publicado pelo **GitHub Pages**.
+
+## Os seis capítulos
+
+| Cômodo | Contexto profissional | Análise | Cartões conquistados |
+|---|---|---|---|
+| 1. Hall de Entrada | Relatos e primeiras impressões | Relato, observação ou conclusão? | História, Sociologia |
+| 2. Varanda e Píer | **Campo**: registro de observação (Cartão 1) | “O lago está contaminado porque a água estava esverdeada…” | Geografia, Língua Portuguesa |
+| 3. Escritório | **Escritório**: sistematização de dados (Cartão 2) | “As medições comprovam que o OD está diminuindo a cada semana.” | Matemática, Física |
+| 4. Biblioteca | **Pesquisa**: investigação das causas (Cartão 3) | “A eutrofização é a causa comprovada…” | Biologia, Filosofia |
+| 5. Laboratório | Amostras e laudos | Receita, solução e amostra: a mesma palavra em contextos diferentes | Química, Língua Inglesa |
+| 6. Salão de Baile | Comunicação aos moradores | O que pode mudar e o que deve permanecer | Artes, Educação Física |
+
+Nos cartões Campo, Escritório e Pesquisa, cada frase passa pelo **protocolo das quatro decisões** da pauta:
+
+1. **Termo + contexto**: o estudante toca na expressão que merece atenção.
+2. **Ajuste + justificativa**: escolhe a reescrita e a evidência que a sustenta.
+3. **Conexão interdisciplinar**: escolhe as duas áreas que mais contribuem.
+4. **Mediação pedagógica**: escolhe a pergunta que ajuda um colega a revisar sem constrangimento.
+
+Cada alternativa errada traz uma explicação (cultura do erro). Só a resposta precisa e justificada avança (certo é certo).
+
+## O que tem no jogo
+
+- **Seis cenas desenhadas à mão em SVG**: hall com escadaria, varanda e píer sobre o lago esverdeado, escritório, biblioteca ao luar, laboratório no porão e salão de baile.
+- **Mais de 70 objetos ocultos**, como medidor de oxigênio dissolvido, disco de Secchi, GPS, frasco de coleta, caixa térmica, ficha de cadeia de custódia, pluviômetro e Resolução CONAMA. A cada partida, a lista sorteia 10 objetos.
+- **Cinco modos de busca**, liberados ao rejogar as cenas (domínio da cena):
+  - lista de palavras;
+  - silhuetas;
+  - **definições**, em que a lista descreve a função do instrumento;
+  - noturno, com lanterna;
+  - mestre investigador.
+- **Pontuação com combos**, bônus de tempo e de precisão, lupa de dicas com recarga e trava contra toques ao acaso.
+- **Zoom e arraste**: roda do mouse, botões ou pinça com dois dedos.
+- **Seis personagens** com retrato e voz própria: Profa. Marta (técnica e orientadora), Dona Helena (proprietária), Seu Benedito (caseiro), Tiago (estudante), Dra. Lúcia (química) e Rafael (repórter).
+- **Diário de investigação** com:
+  - evidências registradas a cada capítulo;
+  - **glossário de 33 termos**, com contexto, exemplo e termo em inglês;
+  - coleção dos **12 cartões interdisciplinares**;
+  - os personagens.
+- **Restauração da mansão** com as estrelas conquistadas: ipê florido, lampiões, fonte, vitrais, coreto, jardim de chuva, estação de monitoramento e mata ciliar. O lago fica mais limpo aos poucos.
+- **Certificado** com o nome do estudante, para imprimir ou salvar em PDF.
+- Botão **Para o professor**, com o percurso, sugestões de condução (Virem e conversem, Cultura do erro, Certo é certo) e um modo demonstração que libera todos os capítulos.
+- O progresso fica salvo no navegador.
+
+## Vozes em português do Brasil
+
+As falas são gravadas com **vozes neurais da Microsoft em português do Brasil** pelo fluxo automático do GitHub (biblioteca `edge-tts`, serviço gratuito, sem chave):
+
+- Só são usadas vozes pt-BR monolíngues. Vozes multilíngues e de outros países são descartadas.
+- Não há ajuste artificial de tom.
+- Cada personagem tem uma voz do mesmo gênero. Hoje o serviço gratuito oferece Francisca e Thalita (personagens femininas) e Antonio (masculinos).
+- Se ainda não houver gravação, o jogo só usa vozes naturais do navegador. Se não houver nenhuma, mostra a fala só em texto.
+
+A página `amostras-vozes.html` mostra a primeira fala de cada personagem e a voz usada.
+
+## Como publicar ou atualizar
+
+1. Envie os arquivos para a branch `main` do repositório.
+2. Em **Settings → Pages → Build and deployment**, escolha **GitHub Actions** como origem.
+3. Acompanhe o fluxo **Publicar jogo** na aba **Actions**. Ele grava as vozes que faltam e publica o site.
+4. Abra o endereço `https://<seu-usuário>.github.io/mansao-do-ipe/`. Se aparecer uma versão antiga, recarregue sem cache (Ctrl + F5).
+
+Para gerar as vozes no próprio computador:
+
+```bash
+node tools/exportar_falas.js
+pip install edge-tts
+python tools/gerar_vozes.py
+```
+
+## Estrutura
+
+```
+index.html            página do jogo
+css/estilo.css        visual
+js/nucleo.js          utilitários e armazenamento
+js/audio.js           vozes, efeitos e trilha
+js/dados.js           capítulos, desafios, glossário, cartões e restauração
+js/objetos.js         desenhos dos objetos ocultos
+js/cenas.js           desenhos dos cômodos e posições dos objetos
+js/retratos.js        retratos dos personagens
+js/mansao.js          fachada da mansão (mapa principal)
+js/jogo.js            telas, cenas, diálogos, desafios e diário
+tools/                exportação das falas e geração das vozes
+```
+
+## Observação
+
+O Lago do Ipê e os dados da investigação são fictícios. A referência à Resolução CONAMA 357/2005 (águas doces de classe 2: oxigênio dissolvido não inferior a 5 mg/L) aparece só como comparação, como na pauta formativa.

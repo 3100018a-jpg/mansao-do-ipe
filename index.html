@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mistério na Mansão do Ipê</title>
+  <meta name="description" content="Jogo de objetos ocultos para o Técnico em Meio Ambiente: investigue o Lago do Ipê e aprenda a escolher e justificar o vocabulário técnico em diferentes contextos profissionais.">
+  <meta name="theme-color" content="#2a1016">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='42' cy='42' r='28' fill='%23f6ecd6' stroke='%23c99a3a' stroke-width='10'/%3E%3Cpath d='M62 62 L88 88' stroke='%236b3f1f' stroke-width='14' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <div id="app">
+    <!-- ================= Tela inicial ================= -->
+    <section id="tela-inicio" class="tela ativa">
+      <div id="inicio-fundo" class="inicio-fundo"></div>
+      <div class="inicio-caixa">
+        <p class="inicio-sup">Técnico em Meio Ambiente · Vocabulário em diferentes contextos profissionais</p>
+        <h1>Mistério na<br><span>Mansão do Ipê</span></h1>
+        <p class="inicio-sub">A água do lago mudou de cor, os peixes sumiram e cada morador tem um culpado. Encontre as pistas, separe observação de conclusão e escolha as palavras certas para cada contexto.</p>
+        <label class="inicio-label" for="inicio-nome">Seu nome de investigador</label>
+        <input id="inicio-nome" maxlength="30" autocomplete="off" placeholder="Digite seu nome">
+        <div class="inicio-botoes">
+          <button id="btn-continuar" class="btn grande ouro" hidden>Continuar</button>
+          <button id="btn-comecar" class="btn grande">Começar a investigação</button>
+        </div>
+        <button id="btn-prof-inicio" class="link">Para o professor</button>
+      </div>
+    </section>
+
+    <!-- ================= Mansão ================= -->
+    <section id="tela-mansao" class="tela">
+      <header class="barra">
+        <button id="btn-sair-mansao" class="btn-ico" aria-label="Voltar ao início" title="Início">⌂</button>
+        <div class="barra-titulo"><b>Solar do Ipê</b><span>Investigação de <span id="mansao-nome"></span></span></div>
+        <div class="barra-dir">
+          <span class="contador" title="Estrelas para restaurar a mansão">★ <b class="cont-estrelas">0</b></span>
+          <button id="btn-restaurar" class="btn-barra">Restaurar</button>
+          <button id="btn-diario" class="btn-barra">Diário</button>
+          <button id="btn-certificado" class="btn-barra ouro" hidden>Certificado</button>
+          <button id="btn-prof" class="btn-ico" aria-label="Para o professor" title="Para o professor">?</button>
+          <button id="btn-config" class="btn-ico" aria-label="Configurações" title="Configurações">⚙</button>
+        </div>
+      </header>
+      <div class="mansao-palco">
+        <div class="mansao-quadro">
+          <div id="mansao-svg"></div>
+          <div id="mansao-pontos"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Cena de objetos ocultos ================= -->
+    <section id="tela-cena" class="tela">
+      <header class="barra barra-cena">
+        <button id="btn-sair-cena" class="btn-ico" aria-label="Sair da cena" title="Sair">←</button>
+        <div class="barra-titulo"><b id="cena-titulo"></b><span id="cena-modo"></span></div>
+        <div class="hud">
+          <span title="Tempo">⏱ <b id="hud-tempo">0:00</b></span>
+          <span title="Pontos">◆ <b id="hud-pontos">0</b></span>
+          <span title="Objetos encontrados">✓ <b id="hud-achados">0/10</b></span>
+        </div>
+        <button id="btn-ajuda-cena" class="btn-ico" aria-label="Ajuda" title="Ajuda">?</button>
+      </header>
+      <div class="cena-palco">
+        <div id="cena-area" class="cena-area"></div>
+        <div class="cena-zoom">
+          <button id="btn-zoom-mais" aria-label="Aproximar">+</button>
+          <span id="cena-zoom-nivel">100%</span>
+          <button id="btn-zoom-menos" aria-label="Afastar">−</button>
+        </div>
+        <div id="cena-trava" class="cena-trava"><div>Calma, investigador!<br><small>Toques ao acaso atrapalham a investigação.</small><b id="trava-seg">6</b></div></div>
+      </div>
+      <footer class="cena-rodape">
+        <ul id="cena-lista" class="cena-lista"></ul>
+        <button id="btn-dica" class="btn-dica" aria-label="Dica: mostrar um objeto"><span class="lupa">🔍</span><span>Dica</span></button>
+      </footer>
+    </section>
+  </div>
+
+  <!-- ================= Diálogo ================= -->
+  <div id="dialogo" class="dialogo" aria-live="polite">
+    <div id="dialogo-fundo" class="dialogo-fundo"></div>
+    <div id="dialogo-caixa" class="dialogo-caixa">
+      <div id="dialogo-retrato" class="dialogo-retrato"></div>
+      <div class="dialogo-balao">
+        <div id="dialogo-nome" class="dialogo-nome"></div>
+        <p id="dialogo-texto" class="dialogo-texto"></p>
+        <div class="dialogo-rodape"><span id="dialogo-prog"></span><span class="dialogo-dica">toque para continuar ▸</span><button id="dialogo-pular" class="link">Pular ▸▸</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal" class="modal"></div>
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <script src="js/nucleo.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/dados.js"></script>
+  <script src="js/objetos.js"></script>
+  <script src="js/cenas.js"></script>
+  <script src="js/retratos.js"></script>
+  <script src="js/mansao.js"></script>
+  <script src="audio/vozes/manifest.js" onerror="window.MI_VOZES=window.MI_VOZES||{}"></script>
+  <script src="js/jogo.js"></script>
+</body>
+</html>
