@@ -697,6 +697,8 @@
 
     const corpo = $('#des-corpo', el);
     const narra = (t) => A.falar(t, MI.PERSONAGENS[MI.NARRADOR].voz);
+    // interrompe a narração em andamento (enunciado e leitura das alternativas)
+    const calar = () => A.parar();
     const narraLista = async (textos) => {
       A.parar();
       const tok = A._token;
@@ -719,7 +721,7 @@
       const b = $('.des-cont', corpo);
       b.hidden = false;
       b.textContent = rotulo || 'Continuar';
-      b.onclick = () => { A.sfx('clique'); acao(); };
+      b.onclick = () => { A.sfx('clique'); calar(); acao(); };
       b.focus({ preventScroll: true });
       setTimeout(() => b.scrollIntoView({ block: 'nearest', behavior: 'smooth' }), 50);
     }
@@ -764,6 +766,7 @@
       $$('.opcao', corpo).forEach((b) => (b.onclick = () => {
         const o = opcoes[+b.dataset.k];
         if (b.disabled) return;
+        calar(); // a leitura das alternativas para assim que o jogador responde
         if (o.ok) {
           A.sfx('certo');
           total++; if (primeira) acertos++;
@@ -789,6 +792,7 @@
       $$('.opcao', corpo).forEach((b) => (b.onclick = () => {
         const o = p.opcoes[+b.dataset.k];
         if (b.disabled) return;
+        calar();
         b.disabled = true;
         if (o.ok) {
           A.sfx('certo'); b.classList.add('certa'); certas++;
@@ -815,6 +819,7 @@
       $$('.chip', corpo).forEach((b) => (b.onclick = () => {
         const i = +b.dataset.i;
         if (b.disabled) return;
+        calar();
         if (faltam.has(i)) {
           A.sfx('certo'); b.classList.add('certa'); b.disabled = true; faltam.delete(i);
           if (!faltam.size) {
@@ -846,6 +851,7 @@
         let primeira = true;
         $$('.cat', box).forEach((b) => (b.onclick = () => {
           if (box.classList.contains('ok') || b.disabled) return;
+          calar();
           if (b.dataset.c === o.c) {
             A.sfx('certo');
             total++; if (primeira) acertos++;

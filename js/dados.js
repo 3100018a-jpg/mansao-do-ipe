@@ -125,7 +125,7 @@
         ],
       },
       fim: [
-        { p: 'helena', t: 'Então o meu envenenado virou relato da proprietária? Confesso que soa mais justo.' },
+        { p: 'helena', t: 'Então, em vez de escrever que o lago está envenenado, vocês vão anotar que essa é a minha suspeita? Confesso que soa mais justo.' },
         { p: 'marta', t: 'Exatamente, Dona Helena. A senhora pode estar certa ou não. É isso que vamos investigar.' },
         { p: 'marta', t: 'Próxima parada: o píer. Lá, nosso trabalho é observar, medir e registrar.' },
       ],
