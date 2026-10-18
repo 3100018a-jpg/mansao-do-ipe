@@ -46,7 +46,7 @@ const lerLista = (arq, prioridade) => {
 lerLista('tools/nomes-brasileiros.txt', false);
 lerLista('nomes-turma.txt', true);
 const vozNome = MI.PERSONAGENS.marta.voz;
-const listaNomes = [...nomes.entries()].map(([slug, n]) => ({ id: slug, voz: vozNome.edge, rate: '+0%', genero: vozNome.genero, texto: n + '.' }));
+const listaNomes = [...nomes.entries()].map(([slug, n]) => ({ id: slug, voz: vozNome.edge, rate: '+0%', genero: vozNome.genero, texto: n + ',' }));  // vírgula: entonação de chamamento, que emenda no resto da frase
 fs.mkdirSync(path.join(raiz, 'audio', 'nomes'), { recursive: true });
 fs.writeFileSync(path.join(raiz, 'audio', 'nomes.json'), JSON.stringify(listaNomes, null, 1));
 console.log('Nomes para gravar:', listaNomes.length);

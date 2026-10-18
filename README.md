@@ -111,6 +111,7 @@ Na abertura, a Profa. Marta recebe o estudante pelo nome. O nome é falado com a
 - **Nomes da turma:** escreva-os no arquivo `nomes-turma.txt`, um por linha, com acentos. Na próxima publicação, o GitHub grava cada um deles com a voz da Profa. Marta.
 - Se o nome não estiver gravado, o jogo usa a voz natural em português do navegador (no Microsoft Edge, é a mesma voz da Profa. Marta). Se não houver nenhuma, o nome aparece só escrito.
 - O botão 🔊, ao lado do campo do nome, mostra como o nome será lido.
+- **Sem pausas:** o nome e o resto da frase são gravações separadas. O jogo apara o silêncio do começo e do fim de cada gravação e encadeia os trechos no relógio do áudio, para que soem como uma frase só. Os nomes são gravados com vírgula (“Ana Júlia,”), na entonação de quem chama alguém. Se o nome não estiver gravado, a frase inteira é lida pela voz natural do navegador, sem emendas.
 
 ## Vozes em português do Brasil
 

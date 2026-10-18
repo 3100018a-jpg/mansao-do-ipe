@@ -108,6 +108,7 @@
     A._token++;
     A.falando = false;
     try { if (A._audio) { A._audio.pause(); A._audio = null; } } catch (e) {}
+    pararEmendas();
     try { if ('speechSynthesis' in window) speechSynthesis.cancel(); } catch (e) {}
     A.musicaDuck(false);
   };
@@ -211,6 +212,12 @@
   A.precarregar = function (itens) {
     (itens || []).forEach((it) => {
       if (!it || !it.texto) return;
+      // falas com o nome: já decodifica e apara as gravações para emendar sem atraso
+      if (/\{nome\}/.test(it.texto) && ctx) {
+        const pecas = pecasEmenda(it.texto, it.perfil || {});
+        if (pecas) pecas.forEach((p) => carregarBuf(p.url).catch(() => {}));
+        return;
+      }
       const id = A.idFala(A.limparTexto(it.texto), it.perfil || {});
       if (A.temMp3(id)) audioDe(urlFala(id));
     });
@@ -247,6 +254,89 @@
     if (!feito && token === A._token) await falarSintese(limpo, perfil, token);
   }
 
+  // ---------- falas com o nome do jogador, sem pausas ----------
+  // O nome e os trechos da frase são gravações separadas. Para que soem como uma
+  // frase só, cada gravação é decodificada, o silêncio do começo e do fim é
+  // aparado e os trechos são encadeados no relógio do áudio, sem intervalo.
+  const cacheBuf = new Map();
+  let fontesEmenda = [];
+  function pararEmendas() {
+    fontesEmenda.forEach((f) => { try { f.stop(); } catch (e) {} });
+    fontesEmenda = [];
+  }
+  // posição do primeiro e do último trecho com voz (janelas de 5 ms)
+  function aparar(buf) {
+    const d = buf.getChannelData(0), n = d.length, jan = Math.max(1, Math.floor(buf.sampleRate * 0.005));
+    let pico = 0;
+    for (let i = 0; i < n; i++) { const a = Math.abs(d[i]); if (a > pico) pico = a; }
+    const limiar = Math.max(0.004, pico * 0.02);
+    const temVoz = (i0) => { let s = 0; const fim = Math.min(n, i0 + jan); for (let i = i0; i < fim; i++) s += d[i] * d[i]; return Math.sqrt(s / Math.max(1, fim - i0)) > limiar; };
+    let a = 0; while (a < n && !temVoz(a)) a += jan;
+    let b = n - jan; while (b > a && !temVoz(b)) b -= jan;
+    const sr = buf.sampleRate;
+    const ini = Math.max(0, a / sr - 0.012), fim = Math.min(buf.duration, (b + jan) / sr + 0.03);
+    return fim > ini + 0.05 ? { buf, ini, fim } : { buf, ini: 0, fim: buf.duration };
+  }
+  function carregarBuf(url) {
+    if (cacheBuf.has(url)) return cacheBuf.get(url);
+    const p = fetch(url).then((r) => { if (!r.ok) throw new Error(r.status); return r.arrayBuffer(); })
+      .then((ab) => new Promise((ok, erro) => ctx.decodeAudioData(ab, ok, erro)))
+      .then(aparar)
+      .catch((e) => { cacheBuf.delete(url); throw e; });
+    cacheBuf.set(url, p);
+    if (cacheBuf.size > 40) cacheBuf.delete(cacheBuf.keys().next().value);
+    return p;
+  }
+  // lista de gravações de uma fala com {nome}, ou null se faltar alguma
+  function pecasEmenda(texto, perfil) {
+    const k = A.chaveNome(A.nomeJogador);
+    if (!k) return null;
+    const partes = String(texto).split('{nome}');
+    const pecas = [];
+    for (let i = 0; i < partes.length; i++) {
+      const bruto = partes[i];
+      const t = A.limparTexto(bruto.replace(/^\s*,\s*/, '').replace(/[,\s]+$/, ''));
+      if (t) {
+        const id = A.idFala(t, perfil);
+        if (!A.temMp3(id)) return null;
+        pecas.push({ url: urlFala(id), fimFrase: /[.!?:;]\s*$/.test(bruto) });
+      }
+      if (i < partes.length - 1) pecas.push({ url: urlNome(k), nome: true });
+    }
+    return pecas;
+  }
+  function falarEmendado(texto, perfil, token) {
+    if (!ctx || !busVoz) return Promise.resolve(false);
+    const pecas = pecasEmenda(texto, perfil);
+    if (!pecas) return Promise.resolve(false);
+    if (ctx.state === 'suspended') { try { ctx.resume(); } catch (e) {} }
+    const limite = new Promise((ok) => setTimeout(() => ok(null), 5000));
+    return Promise.race([Promise.all(pecas.map((p) => carregarBuf(p.url))), limite]).then((bufs) => {
+      if (!bufs) return false;
+      if (token !== A._token) return true;
+      if (ctx.state !== 'running') return false;
+      pararEmendas();
+      A._emenda = bufs.map((b) => [+b.buf.duration.toFixed(3), +b.ini.toFixed(3), +b.fim.toFixed(3)]); // para os testes
+      let t = ctx.currentTime + 0.04;
+      bufs.forEach((b, i) => {
+        const src = ctx.createBufferSource();
+        src.buffer = b.buf;
+        src.connect(busVoz);
+        src.start(t, b.ini, b.fim - b.ini);
+        fontesEmenda.push(src);
+        t += b.fim - b.ini;
+        const prox = pecas[i + 1];
+        // emenda: o nome cola no resto da frase; só depois de um ponto final fica um respiro curto
+        if (prox) t += pecas[i].nome ? 0.035 : prox.nome && pecas[i].fimFrase ? 0.16 : 0.025;
+      });
+      return new Promise((ok) => {
+        const espera = Math.max(0, (t - ctx.currentTime) * 1000) + 60;
+        const verif = setInterval(() => { if (token !== A._token) { clearInterval(verif); clearTimeout(fim); ok(true); } }, 120);
+        const fim = setTimeout(() => { clearInterval(verif); ok(true); }, espera);
+      });
+    }).catch(() => false);
+  }
+
   // fala um texto com o perfil do personagem; resolve ao terminar
   A.falar = async function (texto, perfil, opts) {
     opts = opts || {};
@@ -256,8 +346,14 @@
     perfil = perfil || {};
     A.falando = true;
     A.musicaDuck(true);
-    const comNome = /\{nome\}/.test(texto) && A.comoFalaNome(A.nomeJogador, perfil) !== 'nenhum';
-    if (comNome) {
+    const modoNome = /\{nome\}/.test(texto) ? A.comoFalaNome(A.nomeJogador, perfil) : 'nenhum';
+    // 1) nome gravado: trechos encadeados sem pausa
+    if (modoNome === 'gravado' && (await falarEmendado(texto, perfil, token))) {
+      // já falou
+    } else if (modoNome === 'navegador') {
+      // 2) nome sem gravação: a frase inteira com a voz natural do navegador, sem emendas
+      await falarSintese(String(texto).replace(/\{nome\}/g, nomeFalado(A.nomeJogador)), perfil, token);
+    } else if (modoNome === 'gravado') {
       // trecho, nome do jogador, trecho...
       for (const seg of A.segmentos(texto)) {
         if (token !== A._token) break;
@@ -284,7 +380,7 @@
   };
 
   // ---------- efeitos sonoros sintetizados ----------
-  let ctx = null, mestre = null, busMus = null, busFx = null;
+  let ctx = null, mestre = null, busMus = null, busFx = null, busVoz = null;
   A.iniciarAudio = function () {
     if (ctx) { if (ctx.state === 'suspended') ctx.resume(); return; }
     try {
@@ -294,6 +390,7 @@
       mestre = ctx.createGain(); mestre.gain.value = 0.9; mestre.connect(ctx.destination);
       busMus = ctx.createGain(); busMus.gain.value = A.volMusica * 0.5; busMus.connect(mestre);
       busFx = ctx.createGain(); busFx.gain.value = A.volEfeitos; busFx.connect(mestre);
+      busVoz = ctx.createGain(); busVoz.gain.value = A.volVoz; busVoz.connect(ctx.destination);
     } catch (e) { ctx = null; }
     if (ctx) MI.bus.emit('audio-pronto');
   };
@@ -301,6 +398,7 @@
     if (!ctx) return;
     busMus.gain.setTargetAtTime(A.volMusica * (A._duck ? 0.15 : 0.5), ctx.currentTime, 0.2);
     busFx.gain.setTargetAtTime(A.volEfeitos, ctx.currentTime, 0.05);
+    if (busVoz) busVoz.gain.setTargetAtTime(A.volVoz, ctx.currentTime, 0.05);
   };
   A.musicaDuck = function (on) { A._duck = on; A.atualizarVolumes(); };
 
