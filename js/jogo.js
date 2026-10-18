@@ -73,6 +73,34 @@
   }
   function fecharModal() { const m = $('#modal'); m.className = 'modal'; m.innerHTML = ''; fecharModalAtual = null; }
 
+  // ---------- tela cheia (celular e tablet) ----------
+  const toqueGrosso = () => window.matchMedia && matchMedia('(pointer: coarse)').matches;
+  const telaCheiaPossivel = () => !!(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+  const emTelaCheia = () => !!(document.fullscreenElement || document.webkitFullscreenElement);
+  function alternarTelaCheia(ligar) {
+    if (!telaCheiaPossivel()) return;
+    if (ligar == null) ligar = !emTelaCheia();
+    try {
+      const el = document.documentElement;
+      const r = ligar
+        ? (el.requestFullscreen ? el.requestFullscreen({ navigationUI: 'hide' }) : el.webkitRequestFullscreen())
+        : (document.exitFullscreen ? document.exitFullscreen() : document.webkitExitFullscreen());
+      if (r && r.catch) r.catch(() => {});
+    } catch (e) { /* o navegador recusou */ }
+  }
+  function telaCheiaAutomatica() {
+    if (toqueGrosso() && telaCheiaPossivel() && !emTelaCheia() && MI.S.get('telaCheia', true)) alternarTelaCheia(true);
+  }
+  function atualizarBotoesTelaCheia() {
+    const ok = telaCheiaPossivel();
+    $$('#btn-tela-cheia, #btn-tela-cheia-inicio').forEach((b) => { b.hidden = !ok; });
+    const on = emTelaCheia();
+    const b = $('#btn-tela-cheia');
+    if (b) { b.textContent = on ? '🗗' : '⛶'; b.title = on ? 'Sair da tela cheia' : 'Tela cheia'; b.setAttribute('aria-label', b.title); }
+    const bi = $('#btn-tela-cheia-inicio');
+    if (bi) bi.textContent = on ? '🗗 Sair da tela cheia' : '⛶ Tela cheia';
+  }
+
   function estrelasHTML(n, max, classe) {
     max = max || 3;
     let s = '';
@@ -115,6 +143,7 @@
   }
   function comecar(novo) {
     iniciarAudioUmaVez();
+    telaCheiaAutomatica();
     const n = $('#inicio-nome').value.trim().slice(0, 30);
     if (novo && Object.keys(E.caps).length && !confirm('Começar um novo jogo apaga o progresso atual. Deseja continuar?')) return;
     if (novo) { const prof = E.professor; E = ESTADO_PADRAO(); E.professor = prof; }
@@ -163,6 +192,22 @@
     const barata = MI.RESTAURACAO.filter((r) => !E.rest[r.id]).reduce((m, r) => Math.min(m, r.custo), 99);
     $('#btn-restaurar').classList.toggle('pulsar', E.estrelas >= barata);
     if (destaque) toast(destaque, 'ouro');
+    centralizarPontoAtual();
+  }
+  // no celular em pé, a fachada fica larga e desliza para os lados:
+  // começa mostrando o próximo cômodo a investigar
+  let avisouDeslize = false;
+  function centralizarPontoAtual() {
+    requestAnimationFrame(() => {
+      const palco = $('.mansao-palco');
+      if (!palco || palco.scrollWidth <= palco.clientWidth + 4) return;
+      const alvo = $('.ponto.aberto', palco) || $$('.ponto.feito', palco).pop();
+      if (alvo) {
+        const r = alvo.getBoundingClientRect(), pr = palco.getBoundingClientRect();
+        palco.scrollLeft += (r.left + r.width / 2) - (pr.left + pr.width / 2);
+      }
+      if (!avisouDeslize) setTimeout(() => { if (!avisouDeslize && $('#tela-mansao').classList.contains('ativa') && !$('#dialogo').classList.contains('ativo') && !$('#modal').classList.contains('ativo')) { avisouDeslize = true; toast('Deslize para os lados para ver toda a mansão.'); } }, 400);
+    });
   }
 
   // ---------- cartão do capítulo ----------
@@ -364,7 +409,7 @@
       E.tutorial = true; salvar();
       ajudaCena(true);
     } else if (modo.id !== 'palavras') toast(`<b>${esc(modo.nome)}</b>: ${esc(modo.desc)}`);
-    if (window.innerHeight > window.innerWidth && window.innerWidth < 700) toast('Dica: gire o celular para ver a cena maior. Também dá para aproximar com dois dedos.');
+    if (J.vistaParcial() && !avisouArrasto) { avisouArrasto = true; toast('Arraste para os lados para ver o cômodo inteiro. Com dois dedos, você aproxima ou afasta.'); }
   }
 
   function ajudaCena(primeira) {
@@ -373,7 +418,7 @@
         <li><b>Toque nos objetos da lista</b> quando encontrá-los na cena.</li>
         <li>Achados seguidos e rápidos valem <b>combo</b>. Toques ao acaso tiram pontos e podem travar a busca por alguns segundos.</li>
         <li>A <b>lupa</b> mostra onde está um objeto, mas custa pontos e precisa recarregar.</li>
-        <li>Use a <b>roda do mouse</b>, os botões <b>+</b> e <b>−</b> ou <b>dois dedos</b> para aproximar; arraste para mover a cena.</li>
+        <li>Use a <b>roda do mouse</b>, os botões <b>+</b> e <b>−</b> ou <b>dois dedos</b> para aproximar. Arraste ou toque nas <b>setas das bordas</b> para ver o resto do cômodo.</li>
         <li>Rejogue as cenas para ganhar estrelas, subir o <b>domínio</b> e liberar novos modos: silhuetas, definições e lanterna.</li>
       </ul>
       <button class="btn grande ouro" id="ok-ajuda">Entendi</button>`, { caixa: 'caixa-media' });
@@ -413,6 +458,7 @@
   }
 
   // ---------- zoom, arraste e toques ----------
+  let roCena = null, avisouArrasto = false;
   function configurarEntrada() {
     const area = $('#cena-area');
     const svg = $('#cena-svg');
@@ -426,26 +472,68 @@
       const ox = r.left + (r.width - J.vb.w * esc) / 2, oy = r.top + (r.height - J.vb.h * esc) / 2;
       return { x: J.vb.x + (cx - ox) / esc, y: J.vb.y + (cy - oy) / esc, esc };
     };
+    // A janela de visão acompanha o formato da tela. Em telas largas, o cômodo
+    // aparece inteiro; em celulares em pé, ocupa toda a altura e se arrasta para os lados.
+    const geometria = () => {
+      const r = area.getBoundingClientRect();
+      const a = r.width > 20 && r.height > 20 ? r.width / r.height : 16 / 9;
+      const wMax = Math.max(1600, 900 * a);          // cômodo inteiro (com margens)
+      const wIni = a < 1.42 ? 900 * a : wMax;        // em pé: preenche a altura
+      const wMin = Math.min(wIni, 315 * a);          // aproximação máxima
+      return { a, wMax, wIni, wMin, real: r.width > 20 && r.height > 20 };
+    };
+    let G = geometria();
+    const podeMover = () => J.vb.w < 1599 || J.vb.h < 899;
     const aplicarVb = () => {
       const v = J.vb;
-      v.w = U.clamp(v.w, 560, 1600); v.h = v.w * 900 / 1600;
-      v.x = U.clamp(v.x, 0, 1600 - v.w); v.y = U.clamp(v.y, 0, 900 - v.h);
+      v.w = U.clamp(v.w, G.wMin, G.wMax); v.h = v.w / G.a;
+      v.x = v.w <= 1600 ? U.clamp(v.x, 0, 1600 - v.w) : (1600 - v.w) / 2;
+      v.y = v.h <= 900 ? U.clamp(v.y, 0, 900 - v.h) : (900 - v.h) / 2;
       svg.setAttribute('viewBox', `${v.x.toFixed(1)} ${v.y.toFixed(1)} ${v.w.toFixed(1)} ${v.h.toFixed(1)}`);
-      $('#cena-zoom-nivel').textContent = Math.round((1600 / v.w) * 100) + '%';
+      $('#cena-zoom-nivel').textContent = Math.round((G.wIni / v.w) * 100) + '%';
+      // setas que mostram que o cômodo continua fora da tela
+      const mostra = { esq: v.x > 2, dir: v.x + v.w < 1598, cima: v.y > 2, baixo: v.y + v.h < 898 };
+      $$('.cena-seta').forEach((b) => b.classList.toggle('ativa', !!mostra[b.dataset.dir]));
+      area.classList.toggle('movel', podeMover());
+    };
+    const vistaInicial = () => {
+      const v = J.vb;
+      v.w = G.wIni; v.h = v.w / G.a;
+      v.x = (1600 - v.w) / 2; v.y = (900 - v.h) / 2;
+      aplicarVb();
     };
     J.zoom = (fator, cx, cy) => {
       const v = J.vb;
       const p = cx == null ? { x: v.x + v.w / 2, y: v.y + v.h / 2 } : paraSvg(cx, cy);
-      const nw = U.clamp(v.w / fator, 560, 1600);
+      const nw = U.clamp(v.w / fator, G.wMin, G.wMax);
       const k = nw / v.w;
       v.x = p.x - (p.x - v.x) * k; v.y = p.y - (p.y - v.y) * k; v.w = nw;
       aplicarVb();
     };
     J.irPara = (x, y) => {
       const v = J.vb;
-      if (v.w >= 1600) return;
+      if (!podeMover()) return;
       v.x = x - v.w / 2; v.y = y - v.h / 2; aplicarVb();
     };
+    J.mover = (dx, dy) => {
+      const v = J.vb;
+      v.x += dx * v.w * 0.6; v.y += dy * v.h * 0.6; aplicarVb();
+    };
+    J.vistaParcial = () => G.wIni < 1599;
+    // girar o celular ou redimensionar a janela recalcula a vista
+    if (roCena) roCena.disconnect();
+    roCena = new ResizeObserver(() => {
+      if (!J || !document.body.contains(svg)) return;
+      const antes = G;
+      G = geometria();
+      if (Math.abs(G.a - antes.a) < 0.01 && antes.real) return;
+      if (!antes.real) { vistaInicial(); return; }
+      const v = J.vb, cx = v.x + v.w / 2, cy = v.y + v.h / 2;
+      v.w = G.wIni * (v.w / antes.wIni); v.h = v.w / G.a;
+      v.x = cx - v.w / 2; v.y = cy - v.h / 2;
+      aplicarVb();
+    });
+    roCena.observe(area);
     const moverLuz = (cx, cy) => {
       const luz = $('#luz');
       if (!luz) return;
@@ -456,7 +544,7 @@
     area.onwheel = (e) => { e.preventDefault(); J.zoom(e.deltaY < 0 ? 1.15 : 1 / 1.15, e.clientX, e.clientY); };
     area.onpointerdown = (e) => {
       if (J.fim) return;
-      area.setPointerCapture(e.pointerId);
+      try { area.setPointerCapture(e.pointerId); } catch (err) { /* ponteiro sintético */ }
       ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
       if (ptrs.size === 1) {
         inicioToque = { x: e.clientX, y: e.clientY, t: performance.now() };
@@ -476,13 +564,13 @@
       if (pinca && ptrs.size === 2) {
         const [a, b] = [...ptrs.values()];
         const d = Math.hypot(a.x - b.x, a.y - b.y);
-        const alvoW = U.clamp(pinca.w * (pinca.d / d), 560, 1600);
+        const alvoW = U.clamp(pinca.w * (pinca.d / d), G.wMin, G.wMax);
         J.zoom(J.vb.w / alvoW, pinca.cx, pinca.cy);
       } else if (arrasto && ptrs.size === 1) {
         moverLuz(e.clientX, e.clientY);
         const dx = e.clientX - arrasto.x, dy = e.clientY - arrasto.y;
         if (inicioToque && Math.hypot(dx, dy) > 10) inicioToque = null;
-        if (!inicioToque && J.vb.w < 1600) {
+        if (!inicioToque && podeMover()) {
           const r = svg.getBoundingClientRect();
           const k = Math.min(r.width / J.vb.w, r.height / J.vb.h);
           J.vb.x = arrasto.vx - dx / k; J.vb.y = arrasto.vy - dy / k; aplicarVb();
@@ -500,7 +588,7 @@
     };
     area.onpointerup = soltar;
     area.onpointercancel = (e) => { ptrs.delete(e.pointerId); inicioToque = null; pinca = null; arrasto = null; };
-    aplicarVb();
+    vistaInicial();
   }
 
   function tocar(p) {
@@ -740,6 +828,12 @@
       marcarPasso();
       const p = passos[atual];
       corpo.scrollTop = 0;
+      // em telas pequenas a janela inteira rola: volta ao início da nova pergunta
+      const jan = $('#modal');
+      if (jan && jan.scrollTop > 0) {
+        const topo = corpo.getBoundingClientRect().top - jan.getBoundingClientRect().top + jan.scrollTop - 8;
+        if (jan.scrollTop > topo) jan.scrollTop = Math.max(0, topo);
+      }
       if (p.tipo === 'marcar') return rMarcar(p);
       if (p.tipo === 'classificar') return rClassificar(p);
       if (p.tipo === 'multi') return rMulti(p);
@@ -1005,11 +1099,14 @@
       <p class="cfg-info">♪ Tocando agora: ${esc(MI.TRILHAS[A.trilhaAtual && A.trilhaAtual()] || 'nenhuma trilha')}</p>
       <label class="linha"><span>Volume dos efeitos</span><input type="range" id="cfg-ve" min="0" max="1" step="0.05" value="${A.volEfeitos}"></label>
       <p class="cfg-info">${esc(infoVoz)}</p>
+      ${telaCheiaPossivel() ? `<label class="linha chk"><input type="checkbox" id="cfg-tc" ${MI.S.get('telaCheia', true) ? 'checked' : ''}><span>Abrir em tela cheia no celular e no tablet</span></label>` : ''}
       <div class="cfg-acoes"><button class="btn perigo" id="cfg-reset">Apagar progresso</button></div></div>`, { caixa: 'caixa-media' });
     const sv = () => { A.salvar(); A.atualizarVolumes(); };
     $('#cfg-nome', el).onchange = (e) => { E.nome = e.target.value.trim() || 'Investigador(a)'; salvar(); definirNomeFalado(); $('#mansao-nome').textContent = nome(); };
     $('#cfg-voz', el).onchange = (e) => { A.vozLigada = e.target.checked; if (!A.vozLigada) A.parar(); sv(); };
     $('#cfg-alt', el).onchange = (e) => { A.lerAlternativas = e.target.checked; sv(); };
+    const tc = $('#cfg-tc', el);
+    if (tc) tc.onchange = (e) => { MI.S.set('telaCheia', e.target.checked); alternarTelaCheia(e.target.checked && toqueGrosso() ? true : e.target.checked ? undefined : false); };
     $('#cfg-vv', el).oninput = (e) => { A.volVoz = +e.target.value; sv(); };
     $('#cfg-vm', el).oninput = (e) => { A.volMusica = +e.target.value; sv(); };
     $('#cfg-ve', el).oninput = (e) => { A.volEfeitos = +e.target.value; sv(); A.sfx('clique'); };
@@ -1108,6 +1205,14 @@
     $('#btn-ajuda-cena').onclick = () => ajudaCena(false);
     $('#btn-zoom-mais').onclick = () => J && J.zoom(1.3);
     $('#btn-zoom-menos').onclick = () => J && J.zoom(1 / 1.3);
+    const dirs = { esq: [-1, 0], dir: [1, 0], cima: [0, -1], baixo: [0, 1] };
+    $$('.cena-seta').forEach((b) => { b.onclick = () => { if (J && !J.fim) { A.sfx('clique'); J.mover(...dirs[b.dataset.dir]); } }; });
+    $('#btn-tela-cheia').onclick = () => { A.sfx('clique'); alternarTelaCheia(); };
+    $('#btn-tela-cheia-inicio').onclick = () => alternarTelaCheia();
+    ['fullscreenchange', 'webkitfullscreenchange'].forEach((ev) => document.addEventListener(ev, () => { atualizarBotoesTelaCheia(); if ($('#tela-mansao').classList.contains('ativa')) centralizarPontoAtual(); }));
+    atualizarBotoesTelaCheia();
+    // ao girar o aparelho, a fachada volta a mostrar o cômodo atual
+    window.addEventListener('orientationchange', () => setTimeout(() => { if ($('#tela-mansao').classList.contains('ativa')) centralizarPontoAtual(); }, 350));
     $('#dialogo').onclick = (e) => { if (e.target.closest('#dialogo-pular')) return; proxFala(); };
     $('#dialogo-pular').onclick = (e) => { e.stopPropagation(); A.sfx('clique'); encerrarDialogo(); };
     document.addEventListener('keydown', (e) => {

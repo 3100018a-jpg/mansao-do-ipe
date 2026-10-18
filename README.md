@@ -4,7 +4,7 @@ Jogo de **objetos ocultos**, no estilo de June's Journey, para estudantes do **T
 
 A água do Lago do Ipê ficou verde, os peixes sumiram e cada morador já tem um culpado. Nos cômodos de uma mansão de 1928, o estudante encontra os instrumentos da investigação e analisa frases técnicas. O objetivo é **escolher e justificar os termos** adequados a cada contexto profissional, preservando dados, métodos e incertezas.
 
-Funciona direto no navegador, no computador ou no celular, sem instalação. É publicado pelo **GitHub Pages**.
+Funciona direto no navegador, sem instalação, no computador, no notebook, no tablet e no celular (em pé ou deitado). É publicado pelo **GitHub Pages**.
 
 ## Os nove capítulos
 
@@ -41,7 +41,7 @@ Cada alternativa errada traz uma explicação (cultura do erro). Só a resposta 
   - mestre investigador.
 - **Alternativas com tamanhos parecidos e em ordem aleatória**: a resposta certa não se destaca pelo tamanho e muda de posição a cada partida.
 - **Pontuação com combos**, bônus de tempo e de precisão, lupa de dicas com recarga e trava contra toques ao acaso.
-- **Zoom e arraste**: roda do mouse, botões ou pinça com dois dedos.
+- **Zoom e arraste**: roda do mouse, botões, setas nas bordas ou pinça com dois dedos.
 - **Seis personagens** com retrato e voz própria: Profa. Marta (técnica e orientadora), Dona Helena (proprietária), Seu Benedito (caseiro), Tiago (estudante), Dra. Lúcia (química) e Rafael (repórter).
 - **Diário de investigação** com:
   - evidências registradas a cada capítulo;
@@ -52,6 +52,21 @@ Cada alternativa errada traz uma explicação (cultura do erro). Só a resposta 
 - **Certificado** com o nome do estudante, para imprimir ou salvar em PDF.
 - Botão **Para o professor**, com o percurso, sugestões de condução (Virem e conversem, Cultura do erro, Certo é certo) e um modo demonstração que libera todos os capítulos.
 - O progresso fica salvo no navegador.
+
+## Computador, notebook, tablet e celular
+
+A tela se ajusta ao aparelho:
+
+- **Computador e notebook:** o cômodo aparece inteiro. Dá para aproximar com a roda do mouse ou com os botões + e −. Em monitores grandes, textos e janelas ficam maiores.
+- **Celular em pé:** o cômodo ocupa toda a altura da tela, e os objetos ficam cerca de três vezes maiores. Para ver o resto, basta arrastar para os lados ou tocar nas setas das bordas. A fachada da mansão também desliza para os lados e já começa no próximo cômodo a investigar.
+- **Celular deitado:** a lista de objetos vai para a lateral, e a cena fica maior.
+- **Tablet:** a cena preenche a tela, com a lista embaixo.
+- **Toques:** sem zoom acidental por toque duplo. A pinça com dois dedos aproxima e afasta.
+- **Recortes de tela:** os botões respeitam o entalhe (notch) e as bordas arredondadas dos celulares.
+- **Tela cheia:** no celular e no tablet, o jogo abre em tela cheia ao começar. Para desligar, use ⚙ Configurações. O botão ⛶ liga e desliga a tela cheia a qualquer momento.
+- **Instalar como aplicativo:** no Chrome ou no Edge do Android, use **Adicionar à tela inicial**. No iPhone, use **Compartilhar → Adicionar à Tela de Início**. O jogo ganha ícone próprio e abre em tela cheia.
+
+Se a tela girar no meio de uma cena, a vista se recalcula sozinha.
 
 ## Trilhas sonoras
 
@@ -111,6 +126,8 @@ python tools/gerar_vozes.py
 
 ```
 index.html            página do jogo
+manifest.webmanifest  instalação como aplicativo (ícone e tela cheia)
+img/                  ícones do aplicativo
 css/estilo.css        visual
 js/nucleo.js          utilitários e armazenamento
 js/audio.js           vozes, nome do jogador e efeitos

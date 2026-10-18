@@ -6,6 +6,12 @@
   <title>Mistério na Mansão do Ipê</title>
   <meta name="description" content="Jogo de objetos ocultos para o Técnico em Meio Ambiente: investigue o Lago do Ipê e aprenda a escolher e justificar o vocabulário técnico em diferentes contextos profissionais.">
   <meta name="theme-color" content="#2a1016">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mansão do Ipê">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="img/icone-180.png">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='42' cy='42' r='28' fill='%23f6ecd6' stroke='%23c99a3a' stroke-width='10'/%3E%3Cpath d='M62 62 L88 88' stroke='%236b3f1f' stroke-width='14' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +37,10 @@
           <button id="btn-continuar" class="btn grande ouro" hidden>Continuar</button>
           <button id="btn-comecar" class="btn grande">Começar a investigação</button>
         </div>
-        <button id="btn-prof-inicio" class="link">Para o professor</button>
+        <div class="inicio-links">
+          <button id="btn-prof-inicio" class="link">Para o professor</button>
+          <button id="btn-tela-cheia-inicio" class="link" hidden>⛶ Tela cheia</button>
+        </div>
       </div>
     </section>
 
@@ -46,6 +55,7 @@
           <button id="btn-diario" class="btn-barra">Diário</button>
           <button id="btn-certificado" class="btn-barra ouro" hidden>Certificado</button>
           <button id="btn-prof" class="btn-ico" aria-label="Para o professor" title="Para o professor">?</button>
+          <button id="btn-tela-cheia" class="btn-ico" aria-label="Tela cheia" title="Tela cheia" hidden>⛶</button>
           <button id="btn-config" class="btn-ico" aria-label="Configurações" title="Configurações">⚙</button>
         </div>
       </header>
@@ -71,6 +81,10 @@
       </header>
       <div class="cena-palco">
         <div id="cena-area" class="cena-area"></div>
+        <button class="cena-seta" data-dir="esq" aria-label="Mover a cena para a esquerda">‹</button>
+        <button class="cena-seta" data-dir="dir" aria-label="Mover a cena para a direita">›</button>
+        <button class="cena-seta" data-dir="cima" aria-label="Mover a cena para cima">‹</button>
+        <button class="cena-seta" data-dir="baixo" aria-label="Mover a cena para baixo">›</button>
         <div class="cena-zoom">
           <button id="btn-zoom-mais" aria-label="Aproximar">+</button>
           <span id="cena-zoom-nivel">100%</span>
