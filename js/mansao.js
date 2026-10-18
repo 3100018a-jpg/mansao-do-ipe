@@ -21,9 +21,11 @@
     jantar: { x: 1115, y: 525 },
   };
 
+  let brilhos = [];
   function janela(x, y, w, h, acesa, arco, vitral) {
     const vidro = vitral ? 'url(#gVitral)' : acesa ? '#ffd877' : '#3a4a5e';
     const topo = arco ? `M${x} ${y + h} L${x} ${y + w / 2} Q${x} ${y} ${x + w / 2} ${y} Q${x + w} ${y} ${x + w} ${y + w / 2} L${x + w} ${y + h} Z` : `M${x} ${y} L${x + w} ${y} L${x + w} ${y + h} L${x} ${y + h} Z`;
+    if (acesa || vitral) brilhos.push({ topo, cx: x + w / 2, cy: y + h / 2, r: Math.max(w, h) * 0.9, vitral });
     return `<path d="${topo}" fill="${vidro}" ${K}/>
       ${acesa && !vitral ? `<path d="${topo}" fill="url(#gLuzJanela)"/>` : ''}
       <path d="M${x + w / 2} ${y + (arco ? 4 : 0)} L${x + w / 2} ${y + h} M${x} ${y + h * 0.55} L${x + w} ${y + h * 0.55}" stroke="#efe6d2" stroke-width="5"/>
@@ -33,6 +35,9 @@
 
   MI.desenharMansao = function (estado) {
     const f = estado.feitos || {};
+    const periodo = estado.periodo || 'entardecer';
+    const P = (MI.PERIODOS && MI.PERIODOS[periodo]) || null;
+    brilhos = [];
     const r = estado.rest || {};
     const recuperado = (r.mata_ciliar ? 1 : 0) + (r.jardim_chuva ? 1 : 0);
     const corLago = ['#6f9a5a', '#679e72', '#5fa08a'][recuperado];
@@ -48,14 +53,19 @@
       <linearGradient id="gOuro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d27a"/><stop offset=".5" stop-color="#c99a3a"/><stop offset="1" stop-color="#8e6420"/></linearGradient>
       <linearGradient id="gVitral"x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e2533e"/><stop offset=".33" stop-color="#f2c230"/><stop offset=".66" stop-color="#3f86c8"/><stop offset="1" stop-color="#3c8a3f"/></linearGradient>
     </defs>`;
-    // céu e estrelas
-    s += `<rect width="1600" height="900" fill="url(#gCeuM)"/>`;
+    // céu do período: aurora, dia, entardecer ou noite
     const rnd = U.semente(5);
-    for (let i = 0; i < 40; i++) s += `<circle cx="${(rnd() * 1600).toFixed(0)}" cy="${(rnd() * 220).toFixed(0)}" r="${(0.8 + rnd() * 1.6).toFixed(1)}" fill="#fff" opacity="${(0.4 + rnd() * 0.6).toFixed(2)}"/>`;
-    s += `<circle cx="1320" cy="120" r="34" fill="#fbf3d6" opacity=".9"/>`;
+    if (P) {
+      s += `<rect width="1600" height="900" fill="${P.ceu[P.ceu.length - 1]}"/><svg width="1600" height="560" viewBox="0 0 1600 560">${MI.ceuSVG(1600, 560, periodo, { nuvens: 4, cintilar: true, astroX: periodo === 'dia' ? 0.84 : P.astro.x, astroY: periodo === 'noite' ? 0.2 : P.astro.y * 0.86, semente: 13 })}</svg>`;
+    } else {
+      s += `<rect width="1600" height="900" fill="url(#gCeuM)"/>`;
+      for (let i = 0; i < 40; i++) s += `<circle cx="${(rnd() * 1600).toFixed(0)}" cy="${(rnd() * 220).toFixed(0)}" r="${(0.8 + rnd() * 1.6).toFixed(1)}" fill="#fff" opacity="${(0.4 + rnd() * 0.6).toFixed(2)}"/>`;
+      s += `<circle cx="1320" cy="120" r="34" fill="#fbf3d6" opacity=".9"/>`;
+    }
     // morros
-    s += `<path d="M0 470 Q260 380 520 440 Q800 360 1080 430 Q1340 370 1600 420 L1600 600 L0 600 Z" fill="#4a6a5a"/>
-      <path d="M0 520 Q300 460 600 510 Q900 450 1200 500 Q1420 470 1600 490 L1600 640 L0 640 Z" fill="#3f6048"/>`;
+    const morros = P ? P.morros : ['#4a6a5a', '#3f6048'];
+    s += `<path d="M0 470 Q260 380 520 440 Q800 360 1080 430 Q1340 370 1600 420 L1600 600 L0 600 Z" fill="${morros[0]}"/>
+      <path d="M0 520 Q300 460 600 510 Q900 450 1200 500 Q1420 470 1600 490 L1600 640 L0 640 Z" fill="${morros[1]}"/>`;
     // gramado
     s += `<rect y="600" width="1600" height="300" fill="url(#gGrama)"/>`;
     // lago à direita
@@ -134,12 +144,6 @@
     s += `<g transform="translate(640 770)"><ellipse cx="0" cy="20" rx="70" ry="20" fill="#cfc4ac" ${K}/><ellipse cx="0" cy="16" rx="58" ry="14" fill="${r.fonte ? '#7fb6df' : '#9a8a6a'}"/>
       <rect x="-8" y="-40" width="16" height="56" fill="#cfc4ac" ${K}/><ellipse cx="0" cy="-40" rx="26" ry="8" fill="#cfc4ac" ${K}/>
       ${r.fonte ? `<path d="M0 -48 Q-20 -70 -36 -20 M0 -48 Q20 -70 36 -20 M0 -48 L0 -76" stroke="#bfe0f2" stroke-width="4" fill="none" opacity=".9"><animate attributeName="opacity" values=".9;.5;.9" dur="1.6s" repeatCount="indefinite"/></path>` : ''}</g>`;
-    // lampiões
-    if (r.lampioes) {
-      [[700, 760], [900, 760], [660, 860], [940, 860]].forEach(([x, y]) => {
-        s += `<circle cx="${x}" cy="${y - 64}" r="46" fill="url(#gHalo)"/><rect x="${x - 3}" y="${y - 60}" width="6" height="62" fill="#2b2b2b"/><path d="M${x - 10} ${y - 58} L${x + 10} ${y - 58} L${x + 7} ${y - 78} L${x - 7} ${y - 78} Z" fill="#ffd877" ${K}/><path d="M${x - 9} ${y - 78} L${x} ${y - 88} L${x + 9} ${y - 78} Z" fill="#2b2b2b"/>`;
-      });
-    }
     // horta do Seu Benedito
     s += `<path d="M262 790 L452 790 L466 840 L248 840 Z" fill="#6b4a2a" ${K}/><path d="M244 850 L470 850 L482 890 L232 890 Z" fill="#6b4a2a" ${K}/>`;
     for (let i = 0; i < 8; i++) { s += `<circle cx="${272 + i * 24}" cy="815" r="${r.horta_agro ? 9 : 6}" fill="${r.horta_agro ? '#6fbf4a' : '#5f9a3a'}"/><circle cx="${258 + i * 28}" cy="870" r="${r.horta_agro ? 9 : 6}" fill="${r.horta_agro ? '#6fbf4a' : '#5f9a3a'}"/>`; }
@@ -152,6 +156,22 @@
     }
     // arbustos de primeiro plano
     [[420, 700], [480, 712], [1120, 704], [1180, 716]].forEach(([x, y], i) => { s += `<ellipse cx="${x}" cy="${y}" rx="46" ry="26" fill="${i % 2 ? '#3c7a3a' : '#2f6b3a'}" ${K}/>`; });
+    // luz do período sobre a paisagem e a casa (o céu fica livre)
+    if (P && P.tinta.length) {
+      s += `<defs><linearGradient id="gTintaM" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".42" stop-color="#fff" stop-opacity="0"/><stop offset=".6" stop-color="#fff" stop-opacity="1"/></linearGradient><mask id="mTintaM"><rect width="1600" height="900" fill="url(#gTintaM)"/><g fill="#fff"><rect x="428" y="208" width="134" height="440"/><rect x="1038" y="208" width="134" height="440"/><path d="M416 216 L495 106 L574 216 Z M1026 216 L1105 106 L1184 216 Z M518 248 L800 146 L1082 248 Z"/><rect x="538" y="238" width="524" height="410"/><rect x="491" y="70" width="8" height="40"/><rect x="1101" y="70" width="8" height="40"/><path d="M200 400 Q310 380 420 420 L420 720 L200 720 Z"/></g></mask></defs><g mask="url(#mTintaM)">${P.tinta.map(([c, o]) => `<rect width="1600" height="900" fill="${c}" opacity="${o}"/>`).join('')}</g>`;
+    }
+    // janelas acesas brilham mais ao entardecer e à noite
+    const forca = P ? P.luzes : 0.6;
+    if (forca > 0) brilhos.forEach((b) => {
+      s += `<circle cx="${b.cx}" cy="${b.cy}" r="${b.r.toFixed(0)}" fill="url(#gHalo)" opacity="${(0.55 * forca).toFixed(2)}"/>`;
+      if (!b.vitral) s += `<path d="${b.topo}" fill="#ffd877" opacity="${(0.55 * forca).toFixed(2)}"/><path d="${b.topo}" fill="url(#gLuzJanela)" opacity="${forca.toFixed(2)}"/>`;
+    });
+    // lampiões
+    if (r.lampioes) {
+      [[700, 760], [900, 760], [660, 860], [940, 860]].forEach(([x, y]) => {
+        s += `<circle cx="${x}" cy="${y - 64}" r="46" fill="url(#gHalo)"/><rect x="${x - 3}" y="${y - 60}" width="6" height="62" fill="#2b2b2b"/><path d="M${x - 10} ${y - 58} L${x + 10} ${y - 58} L${x + 7} ${y - 78} L${x - 7} ${y - 78} Z" fill="#ffd877" ${K}/><path d="M${x - 9} ${y - 78} L${x} ${y - 88} L${x + 9} ${y - 78} Z" fill="#2b2b2b"/>`;
+      });
+    }
     return s;
   };
 })();

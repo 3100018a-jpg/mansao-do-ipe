@@ -1,11 +1,12 @@
 /* =========================================================
-   Trilhas sonoras suaves, geradas no navegador (Web Audio).
-   Cada ambiente da mansão tem um estilo próprio:
-   mansão: valsa de caixinha de música · hall: jazz de salão
-   dos anos 1920 · píer: bossa nova ao violão · escritório:
-   piano calmo · biblioteca: noturno com harpa e cordas ·
-   laboratório: minimalismo com marimba e vibrafone ·
-   salão: valsa de salão com cordas.
+   Ambientes sonoros da mansão: tons muito suaves e sons da
+   natureza (vento, folhas, pássaros, grilos, água, céu noturno).
+
+   Cada ambiente é sintetizado UMA vez, fora do tempo real
+   (OfflineAudioContext), num trecho de 32 s que emenda sem
+   costura. Depois toca como um único som em laço. Assim o
+   celular não precisa calcular centenas de notas ao vivo, o que
+   causava chiados e estalos em aparelhos mais modestos.
    ========================================================= */
 (function () {
   'use strict';
@@ -13,454 +14,450 @@
   const A = MI.A;
 
   MI.TRILHAS = {
-    mansao: 'Valsa de caixinha de música',
-    hall: 'Jazz de salão dos anos 1920',
-    pier: 'Bossa nova ao violão',
-    escritorio: 'Piano calmo',
-    biblioteca: 'Noturno com harpa e cordas',
-    laboratorio: 'Minimalismo com marimba e vibrafone',
-    salao: 'Valsa de salão com cordas',
-    horta: 'Choro ao violão e flauta',
-    mapas: 'Barroco ao cravo',
-    jantar: 'Minueto para quarteto de cordas',
+    mansao: 'Jardim da mansão: brisa e sinos suaves',
+    hall: 'Sinos suaves e o jardim pela porta',
+    pier: 'Marolas no lago e vento nas árvores',
+    escritorio: 'Tons calmos e folhas lá fora',
+    biblioteca: 'Sinos suaves no silêncio da leitura',
+    laboratorio: 'Porão: gotas d’água e tom grave',
+    salao: 'Notas de harpa e brisa do jardim',
+    horta: 'Córrego, folhagem e pássaros',
+    mapas: 'Vento no alto da torre',
+    jantar: 'Harpa suave e brisa',
+  };
+  // sons da natureza de cada período do dia
+  MI.SONS_PERIODO = {
+    aurora: { desc: 'coro de pássaros ao amanhecer e últimos grilos', passaros: 0.75, rolinhas: 0.35, grilos: 0.22, vento: 0.22, folhas: 0.15 },
+    dia: { desc: 'sabiás, pardais e vento nas folhas', passaros: 0.8, vento: 0.3, folhas: 0.3 },
+    entardecer: { desc: 'rolinhas, primeiros grilos e brisa', rolinhas: 0.55, passaros: 0.28, grilos: 0.4, vento: 0.25 },
+    noite: { desc: 'grilos, coruja ao longe e céu noturno', grilos: 1, coruja: 0.6, vento: 0.25 },
   };
 
-  let ctx = null, saidaGeral = null, revEntrada = null;
-  const hz = (m) => 440 * Math.pow(2, (m - 69) / 12);
-  const cacheKS = new Map();
-  let ruidoBuf = null;
+  // ---------- receitas de cada cômodo ----------
+  // pad: acordes (MIDI) do tom suave de fundo · brilho: notas soltas (sino ou harpa)
+  // nat: quanto da natureza de fora chega ao cômodo · os demais números: sons próprios do lugar
+  const R = {
+    mansao: { semente: 11, nat: 1, pad: [[53, 57, 60, 64], [50, 57, 60, 65], [46, 53, 57, 62], [48, 55, 60, 62]], padVol: 0.75, brilho: { escala: [65, 67, 69, 72, 74, 77], cada: 7, timbre: 'sino', vol: 0.45 }, folhas: 0.1 },
+    hall: { semente: 23, interior: true, nat: 0.7, pad: [[51, 55, 58, 62], [48, 55, 58, 63], [44, 51, 55, 60], [46, 53, 58, 62]], padVol: 0.9, brilho: { escala: [63, 65, 67, 70, 72, 75], cada: 6, timbre: 'sino', vol: 0.45 } },
+    pier: { semente: 37, nat: 1.1, pad: [[50, 57, 62, 66], [47, 54, 59, 62], [43, 50, 55, 59], [45, 52, 57, 61]], padVol: 0.5, brilho: { escala: [66, 69, 71, 74, 76], cada: 9, timbre: 'harpa', vol: 0.32 }, agua: 0.95, folhas: 0.2 },
+    escritorio: { semente: 41, interior: true, nat: 0.8, pad: [[50, 54, 57, 61], [47, 54, 57, 62], [43, 50, 54, 59], [45, 52, 57, 61]], padVol: 0.85, brilho: { escala: [62, 66, 69, 71, 74], cada: 8, timbre: 'sino', vol: 0.35 } },
+    biblioteca: { semente: 53, interior: true, nat: 0.8, pad: [[45, 52, 57, 60], [41, 48, 57, 60], [43, 50, 55, 59], [40, 47, 55, 59]], padVol: 0.85, brilho: { escala: [69, 72, 74, 76, 79, 81], cada: 6, timbre: 'sino', vol: 0.5 } },
+    laboratorio: { semente: 67, interior: true, nat: 0.35, pad: [[38, 45, 50, 53], [38, 46, 50, 53], [36, 43, 48, 52], [37, 45, 49, 52]], padVol: 1, filtroPad: 650, brilho: { escala: [62, 65, 69, 72], cada: 11, timbre: 'sino', vol: 0.3 }, gotas: 0.9 },
+    salao: { semente: 71, interior: true, nat: 0.65, pad: [[48, 55, 60, 64], [45, 52, 57, 60], [41, 48, 57, 60], [43, 50, 55, 59]], padVol: 0.8, brilho: { escala: [60, 64, 67, 69, 72, 76, 79], cada: 3.5, timbre: 'harpa', vol: 0.45 } },
+    horta: { semente: 83, nat: 1.2, pad: [[43, 50, 55, 59], [40, 47, 55, 59], [36, 43, 52, 55], [38, 45, 50, 54]], padVol: 0.45, brilho: { escala: [67, 69, 71, 74, 76], cada: 10, timbre: 'harpa', vol: 0.3 }, corrego: 0.9, folhas: 0.35 },
+    mapas: { semente: 97, interior: true, nat: 0.75, pad: [[45, 52, 57, 60], [41, 48, 53, 57], [43, 50, 55, 62], [40, 47, 52, 56]], padVol: 0.8, brilho: { escala: [69, 71, 72, 76, 77], cada: 8, timbre: 'sino', vol: 0.35 }, vento: 0.55, assobio: 0.5, andorinhas: 0.6 },
+    jantar: { semente: 101, interior: true, nat: 0.75, pad: [[43, 50, 55, 59], [48, 52, 55, 60], [45, 52, 57, 60], [50, 54, 57, 62]], padVol: 0.85, brilho: { escala: [67, 71, 74, 76, 79], cada: 6, timbre: 'harpa', vol: 0.35 } },
+  };
+  // junta os sons do cômodo com os do período do dia
+  function receita(nome, periodo) {
+    const base = R[nome], camada = MI.SONS_PERIODO[periodo] || MI.SONS_PERIODO.dia;
+    const rec = Object.assign({}, base);
+    ['passaros', 'rolinhas', 'grilos', 'coruja', 'vento', 'folhas'].forEach((k) => { if (camada[k]) rec[k] = (base[k] || 0) + camada[k] * (base.nat || 1); });
+    if (periodo === 'noite') { rec.andorinhas = 0; rec.filtroPad = Math.min(rec.filtroPad || 1100, 900); }
+    if (periodo === 'dia') rec.filtroPad = rec.filtroPad || 1300;
+    rec.semente = base.semente + ({ aurora: 1, dia: 2, entardecer: 3, noite: 4 }[periodo] || 0) * 1000;
+    return rec;
+  }
 
-  function preparar() {
-    ctx = A.contexto();
-    if (!ctx || saidaGeral) return !!ctx;
-    saidaGeral = ctx.createGain();
-    saidaGeral.gain.value = 1;
-    saidaGeral.connect(A.barramentoMusica());
-    // reverberação suave (resposta ao impulso gerada)
-    const dur = 2.6, n = Math.floor(ctx.sampleRate * dur);
-    const ir = ctx.createBuffer(2, n, ctx.sampleRate);
+  const LACO = 32;        // duração do trecho em laço (s)
+  const EMENDA = 4;       // trecho extra usado para a emenda sem costura (s)
+  const TAXA = 24000;     // taxa de amostragem da síntese
+  const RMS_ALVO = 0.085; // volume médio igual em todos os ambientes
+  const PICO_MAX = 0.45;  // margem segura: nunca satura
+
+  const hz = (m) => 440 * Math.pow(2, (m - 69) / 12);
+
+  // ---------- síntese de um ambiente ----------
+  function sintetizar(nome, periodo) {
+    const rec = receita(nome, periodo);
+    const dur = LACO + EMENDA;
+    const OAC = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+    const oc = new OAC(2, Math.ceil(dur * TAXA), TAXA);
+    let s = rec.semente * 7919 + 1;
+    const rnd = () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; };
+    const entre = (a, b) => a + rnd() * (b - a);
+
+    // barramentos: seco, reverberação e natureza (filtrada quando o som vem de fora)
+    const saida = oc.createGain(); saida.connect(oc.destination);
+    const ir = oc.createBuffer(2, Math.floor(TAXA * 3.2), TAXA);
     for (let c = 0; c < 2; c++) {
       const d = ir.getChannelData(c);
-      for (let i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / n, 3.2);
+      for (let i = 0; i < d.length; i++) d[i] = (rnd() * 2 - 1) * Math.pow(1 - i / d.length, 3.5);
     }
-    const conv = ctx.createConvolver();
-    conv.buffer = ir;
-    revEntrada = ctx.createGain();
-    revEntrada.gain.value = 1;
-    const revSaida = ctx.createGain();
-    revSaida.gain.value = 0.32;
-    revEntrada.connect(conv); conv.connect(revSaida); revSaida.connect(saidaGeral);
-    ruidoBuf = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
-    const r = ruidoBuf.getChannelData(0);
-    for (let i = 0; i < r.length; i++) r[i] = Math.random() * 2 - 1;
-    return true;
-  }
+    const conv = oc.createConvolver(); conv.buffer = ir;
+    const rev = oc.createGain(); rev.gain.value = 0.55; conv.connect(rev); rev.connect(saida);
+    // a natureza passa por um filtro que corta o chiado agudo (mais forte quando o som vem de fora da janela)
+    const natureza = oc.createGain(); natureza.gain.value = rec.interior ? 0.6 : 1;
+    const janela = oc.createBiquadFilter(); janela.type = 'lowpass'; janela.frequency.value = rec.interior ? 3000 : 5200; janela.Q.value = 0.4;
+    const janela2 = oc.createBiquadFilter(); janela2.type = 'lowpass'; janela2.frequency.value = rec.interior ? 4200 : 7000; janela2.Q.value = 0.4;
+    natureza.connect(janela); janela.connect(janela2); janela2.connect(saida);
 
-  // ---------- instrumentos ----------
-  function env(g, t, ataque, pico, dur, sustento) {
-    g.gain.setValueAtTime(0.0001, t);
-    g.gain.linearRampToValueAtTime(pico, t + ataque);
-    if (sustento) {
-      g.gain.setValueAtTime(pico, t + Math.max(ataque, dur - sustento));
-      g.gain.linearRampToValueAtTime(0.0001, t + dur);
-    } else g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
-  }
-  function osc(tipo, f, t, fim, destino, ganho) {
-    const o = ctx.createOscillator();
-    o.type = tipo; o.frequency.setValueAtTime(f, t);
-    if (ganho != null && ganho !== 1) { const g = ctx.createGain(); g.gain.value = ganho; o.connect(g); g.connect(destino); }
-    else o.connect(destino);
-    o.start(t); o.stop(fim);
-    return o;
-  }
-  const I = {};
-  I.piano = (out, t, m, dur, vel) => {
-    const f = hz(m), fim = t + dur + 0.9;
-    const g = ctx.createGain(), lp = ctx.createBiquadFilter();
-    lp.type = 'lowpass';
-    lp.frequency.setValueAtTime(Math.min(7000, f * 7), t);
-    lp.frequency.exponentialRampToValueAtTime(Math.max(400, f * 1.6), t + dur + 0.6);
-    lp.connect(g); g.connect(out);
-    g.gain.setValueAtTime(0.0001, t);
-    g.gain.linearRampToValueAtTime(vel, t + 0.006);
-    g.gain.exponentialRampToValueAtTime(vel * 0.45, t + 0.3);
-    g.gain.exponentialRampToValueAtTime(0.0001, fim);
-    osc('triangle', f, t, fim, lp, 1); osc('sine', f * 2, t, fim, lp, 0.22); osc('sine', f * 3.01, t, t + 0.5, lp, 0.06);
-  };
-  I.rhodes = (out, t, m, dur, vel) => {
-    const f = hz(m), fim = t + dur + 0.6;
-    const g = ctx.createGain(); g.connect(out);
-    env(g, t, 0.01, vel, dur + 0.6);
-    const trem = ctx.createGain(); trem.gain.value = 1; trem.connect(g);
-    const lfo = ctx.createOscillator(), lg = ctx.createGain(); lfo.frequency.value = 4.5; lg.gain.value = 0.18;
-    lfo.connect(lg); lg.connect(trem.gain); lfo.start(t); lfo.stop(fim);
-    osc('sine', f, t, fim, trem, 1); osc('sine', f * 2, t, t + 0.4, trem, 0.12); osc('triangle', f, t, fim, trem, 0.25);
-  };
-  I.celesta = (out, t, m, dur, vel) => {
-    const f = hz(m), fim = t + Math.max(1.2, dur) + 0.4;
-    const g = ctx.createGain(); g.connect(out);
-    env(g, t, 0.004, vel, fim - t);
-    osc('sine', f, t, fim, g, 1); osc('sine', f * 4, t, t + 0.35, g, 0.12); osc('triangle', f * 2, t, t + 0.6, g, 0.1);
-  };
-  I.vibrafone = (out, t, m, dur, vel) => {
-    const f = hz(m), fim = t + Math.max(2.2, dur) + 0.3;
-    const g = ctx.createGain(); g.connect(out);
-    env(g, t, 0.005, vel, fim - t);
-    const trem = ctx.createGain(); trem.gain.value = 1; trem.connect(g);
-    const lfo = ctx.createOscillator(), lg = ctx.createGain(); lfo.frequency.value = 5.2; lg.gain.value = 0.25;
-    lfo.connect(lg); lg.connect(trem.gain); lfo.start(t); lfo.stop(fim);
-    osc('sine', f, t, fim, trem, 1); osc('sine', f * 4, t, t + 0.8, trem, 0.08);
-  };
-  I.marimba = (out, t, m, dur, vel) => {
-    const f = hz(m), fim = t + 0.7;
-    const g = ctx.createGain(); g.connect(out);
-    env(g, t, 0.003, vel, 0.7);
-    osc('sine', f, t, fim, g, 1); osc('sine', f * 4, t, t + 0.12, g, 0.18); osc('sine', f * 10, t, t + 0.04, g, 0.05);
-  };
-  I.contrabaixo = (out, t, m, dur, vel) => {
-    const f = hz(m), fim = t + dur + 0.25;
-    const g = ctx.createGain(), lp = ctx.createBiquadFilter();
-    lp.type = 'lowpass'; lp.frequency.value = 650; lp.connect(g); g.connect(out);
-    g.gain.setValueAtTime(0.0001, t);
-    g.gain.linearRampToValueAtTime(vel, t + 0.012);
-    g.gain.exponentialRampToValueAtTime(vel * 0.35, t + dur * 0.7);
-    g.gain.exponentialRampToValueAtTime(0.0001, fim);
-    osc('triangle', f, t, fim, lp, 1); osc('sine', f, t, fim, lp, 0.6);
-  };
-  I.cordas = (out, t, m, dur, vel) => {
-    const f = hz(m), fim = t + dur + 1.2;
-    const g = ctx.createGain(), lp = ctx.createBiquadFilter();
-    lp.type = 'lowpass'; lp.frequency.value = 1300; lp.Q.value = 0.4; lp.connect(g); g.connect(out);
-    g.gain.setValueAtTime(0.0001, t);
-    g.gain.linearRampToValueAtTime(vel, t + 0.9);
-    g.gain.setValueAtTime(vel, t + dur);
-    g.gain.linearRampToValueAtTime(0.0001, fim);
-    [-7, 6].forEach((c) => { const o = osc('sawtooth', f, t, fim, lp, 0.5); o.detune.value = c; });
-  };
-  I.violino = (out, t, m, dur, vel) => {
-    const f = hz(m), fim = t + dur + 0.35;
-    const g = ctx.createGain(), lp = ctx.createBiquadFilter();
-    lp.type = 'lowpass'; lp.frequency.value = 2400; lp.connect(g); g.connect(out);
-    g.gain.setValueAtTime(0.0001, t);
-    g.gain.linearRampToValueAtTime(vel, t + 0.14);
-    g.gain.setValueAtTime(vel * 0.9, t + dur);
-    g.gain.linearRampToValueAtTime(0.0001, fim);
-    const o = osc('sawtooth', f, t, fim, lp, 0.7);
-    const o2 = osc('triangle', f, t, fim, lp, 0.5);
-    const lfo = ctx.createOscillator(), lg = ctx.createGain(); lfo.frequency.value = 5.4; lg.gain.setValueAtTime(0, t); lg.gain.linearRampToValueAtTime(9, t + 0.35);
-    lfo.connect(lg); lg.connect(o.detune); lg.connect(o2.detune); lfo.start(t); lfo.stop(fim);
-  };
-  I.flauta = (out, t, m, dur, vel) => {
-    const f = hz(m), fim = t + dur + 0.25;
-    const g = ctx.createGain(); g.connect(out);
-    g.gain.setValueAtTime(0.0001, t);
-    g.gain.linearRampToValueAtTime(vel, t + 0.09);
-    g.gain.setValueAtTime(vel * 0.85, t + dur);
-    g.gain.linearRampToValueAtTime(0.0001, fim);
-    const o = osc('sine', f, t, fim, g, 1); osc('triangle', f * 2, t, fim, g, 0.06);
-    const lfo = ctx.createOscillator(), lg = ctx.createGain(); lfo.frequency.value = 5; lg.gain.setValueAtTime(0, t); lg.gain.linearRampToValueAtTime(7, t + 0.4);
-    lfo.connect(lg); lg.connect(o.detune); lfo.start(t); lfo.stop(fim);
-  };
-  // cordas dedilhadas (Karplus-Strong): violão de náilon e harpa
-  function bufferKS(m, dur, brilho) {
-    const chave = m + ':' + brilho;
-    if (cacheKS.has(chave)) return cacheKS.get(chave);
-    const sr = ctx.sampleRate, f = hz(m), N = Math.max(2, Math.round(sr / f)), len = Math.floor(sr * dur);
-    const buf = ctx.createBuffer(1, len, sr), d = buf.getChannelData(0);
-    let ant = 0;
-    for (let i = 0; i < N; i++) { const r = Math.random() * 2 - 1; ant = ant + brilho * (r - ant); d[i] = ant; }
-    const amort = 0.5 * (0.9985 - (m > 72 ? 0.002 : 0));
-    for (let i = N; i < len; i++) d[i] = amort * (d[i - N] + d[i - N + 1]);
-    let pico = 0; for (let i = 0; i < N * 4 && i < len; i++) pico = Math.max(pico, Math.abs(d[i]));
-    if (pico > 0) for (let i = 0; i < len; i++) d[i] /= pico;
-    cacheKS.set(chave, buf);
-    return buf;
-  }
-  function dedilhar(out, t, m, vel, dur, brilho, corte) {
-    const s = ctx.createBufferSource(); s.buffer = bufferKS(m, dur, brilho);
-    const g = ctx.createGain(); g.gain.value = vel;
-    const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = corte;
-    s.connect(lp); lp.connect(g); g.connect(out); s.start(t);
-  }
-  I.violao = (out, t, m, dur, vel) => dedilhar(out, t, m, vel, 1.8, 0.45, 3200);
-  I.harpa = (out, t, m, dur, vel) => dedilhar(out, t, m, vel, 2.6, 0.75, 5200);
-  I.cravo = (out, t, m, dur, vel) => dedilhar(out, t, m, vel, 1.1, 0.95, 6500);
-  I.cavaquinho = (out, t, m, dur, vel) => dedilhar(out, t, m, vel, 0.9, 0.7, 5000);
-  function ruido(out, t, dur, vel, tipo, freq, q) {
-    const s = ctx.createBufferSource(); s.buffer = ruidoBuf;
-    const f = ctx.createBiquadFilter(); f.type = tipo; f.frequency.value = freq; f.Q.value = q || 0.7;
-    const g = ctx.createGain(); env(g, t, Math.min(0.03, dur / 3), vel, dur);
-    s.connect(f); f.connect(g); g.connect(out);
-    s.start(t, Math.random() * 0.5); s.stop(t + dur + 0.05);
-  }
-  I.escovinha = (out, t, dur, vel) => ruido(out, t, dur, vel, 'bandpass', 4200, 0.6);
-  I.chocalho = (out, t, dur, vel) => ruido(out, t, dur, vel, 'highpass', 7000, 0.7);
-
-  // ---------- harmonia e melodia ----------
-  const TIPOS = {
-    maj: [0, 4, 7], min: [0, 3, 7], m: [0, 3, 7], maj7: [0, 4, 7, 11], m7: [0, 3, 7, 10], 7: [0, 4, 7, 10], m9: [0, 3, 7, 10, 14],
-    maj9: [0, 4, 7, 11, 14], 69: [0, 4, 7, 9, 14], '7b9': [0, 4, 7, 10, 13], 9: [0, 4, 7, 10, 14], add9: [0, 4, 7, 14], madd9: [0, 3, 7, 14], 6: [0, 4, 7, 9],
-  };
-  const NOTAS = { C: 0, Db: 1, D: 2, Eb: 3, E: 4, F: 5, Gb: 6, G: 7, Ab: 8, A: 9, Bb: 10, B: 11 };
-  function ac(nome) {
-    const mm = nome.match(/^([A-G]b?)(.*)$/);
-    return { raiz: NOTAS[mm[1]], tipo: TIPOS[mm[2] || 'maj'] };
-  }
-  const notasDe = (a, base) => a.tipo.map((iv) => base + a.raiz + iv);
-  const classes = (a) => a.tipo.map((iv) => (a.raiz + iv) % 12);
-  const voicing = (a, centro) => a.tipo.map((iv) => { let m = a.raiz + iv; while (m < centro - 6) m += 12; while (m > centro + 6) m -= 12; return m; }).sort((x, y) => x - y);
-  function escolher(arr, rnd) { return arr[Math.floor(rnd() * arr.length)]; }
-  // próxima nota da melodia: passos curtos, notas do acorde nos tempos fortes
-  function proxNota(st, a, escala, faixa, rnd, forte) {
-    const alvo = classes(a);
-    let soma = 0;
-    const cand = [];
-    for (let m = faixa[0]; m <= faixa[1]; m++) {
-      const pc = ((m % 12) + 12) % 12;
-      if (!escala.includes(pc) && !alvo.includes(pc)) continue;
-      let w = 1 / Math.pow(1 + Math.abs(m - st.ult), 1.6);
-      if (alvo.includes(pc)) w *= forte ? 4 : 1.5;
-      if (m === st.ult) w *= 0.35;
-      cand.push([m, w]); soma += w;
+    // ruído rosa (mais macio que o ruído branco, sem chiado)
+    const ruido = oc.createBuffer(1, TAXA * 4, TAXA);
+    const rd = ruido.getChannelData(0);
+    let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+    for (let i = 0; i < rd.length; i++) {
+      const w = rnd() * 2 - 1;
+      b0 = 0.99886 * b0 + w * 0.0555179; b1 = 0.99332 * b1 + w * 0.0750759; b2 = 0.969 * b2 + w * 0.153852;
+      b3 = 0.8665 * b3 + w * 0.3104856; b4 = 0.55 * b4 + w * 0.5329522; b5 = -0.7616 * b5 - w * 0.016898;
+      rd[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + w * 0.5362) * 0.11; b6 = w * 0.115926;
     }
-    let r = rnd() * soma;
-    for (const [m, w] of cand) { r -= w; if (r <= 0) { st.ult = m; return m; } }
-    st.ult = cand.length ? cand[0][0] : st.ult;
-    return st.ult;
+    const fonteRuido = () => { const n = oc.createBufferSource(); n.buffer = ruido; n.loop = true; n.loopStart = 0; n.loopEnd = 4; return n; };
+    const panor = (v, destino) => { const p = oc.createStereoPanner ? oc.createStereoPanner() : null; if (!p) return destino; p.pan.value = v; p.connect(destino); return p; };
+    // curva suave e aleatória entre 0 e 1 (soma de ondas lentas)
+    function curvaLenta(pontosPorSeg, periodos, base) {
+      const n = Math.ceil(dur * pontosPorSeg), c = new Float32Array(n);
+      const ondas = periodos.map((p) => ({ f: 1 / entre(p[0], p[1]), fase: rnd() * 6.283 }));
+      for (let i = 0; i < n; i++) {
+        const t = i / pontosPorSeg;
+        let v = 0;
+        ondas.forEach((o) => { v += Math.sin(6.283 * o.f * t + o.fase); });
+        c[i] = Math.max(0, base + (1 - base) * (0.5 + 0.5 * v / ondas.length));
+      }
+      return c;
+    }
+
+    // ----- tom de fundo (pad muito suave) -----
+    if (rec.pad) {
+      const lp = oc.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = rec.filtroPad || 1100; lp.Q.value = 0.3;
+      const padG = oc.createGain(); padG.gain.value = 0.05 * rec.padVol;
+      lp.connect(padG); padG.connect(saida);
+      const envia = oc.createGain(); envia.gain.value = 0.5; padG.connect(envia); envia.connect(conv);
+      const C = LACO / rec.pad.length;
+      for (let k = 0; k * C < dur; k++) {
+        const t0 = k * C, t1 = t0 + C + 3; // acordes se sobrepõem 3 s
+        rec.pad[k % rec.pad.length].forEach((m, j) => {
+          const g = oc.createGain();
+          g.gain.setValueAtTime(0.0001, t0);
+          g.gain.linearRampToValueAtTime(j === 0 ? 0.9 : 0.6, t0 + 3);
+          g.gain.setValueAtTime(j === 0 ? 0.9 : 0.6, t1 - 3);
+          g.gain.linearRampToValueAtTime(0.0001, t1);
+          g.connect(panor((j - 1.5) * 0.25, lp));
+          [['sine', 1, 1], ['triangle', 1.0025, 0.3], ['sine', 2.002, 0.12]].forEach(([tipo, mult, vol]) => {
+            const o = oc.createOscillator(); o.type = tipo; o.frequency.value = hz(m) * mult;
+            const gv = oc.createGain(); gv.gain.value = vol; o.connect(gv); gv.connect(g);
+            o.start(t0); o.stop(t1 + 0.05);
+          });
+        });
+      }
+    }
+
+    // ----- notas soltas: sino suave ou harpa -----
+    if (rec.brilho) {
+      const b = rec.brilho;
+      let t = entre(0.5, b.cada);
+      while (t < dur - 0.5) {
+        const m = b.escala[Math.floor(rnd() * b.escala.length)];
+        const g = oc.createGain();
+        const pico = 0.028 * b.vol * entre(0.7, 1);
+        const decai = b.timbre === 'sino' ? 3.5 : 2.2;
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.linearRampToValueAtTime(pico, t + (b.timbre === 'sino' ? 0.02 : 0.008));
+        g.gain.exponentialRampToValueAtTime(0.0001, t + decai);
+        const destino = panor(entre(-0.5, 0.5), g);
+        const parciais = b.timbre === 'sino' ? [[1, 1], [2.76, 0.12], [5.4, 0.04]] : [[1, 1], [2, 0.25], [3, 0.08]];
+        parciais.forEach(([mult, vol]) => {
+          const o = oc.createOscillator(); o.type = 'sine'; o.frequency.value = hz(m) * mult;
+          const gv = oc.createGain(); gv.gain.value = vol; o.connect(gv); gv.connect(destino);
+          o.start(t); o.stop(t + decai + 0.05);
+        });
+        g.connect(saida);
+        const env = oc.createGain(); env.gain.value = 0.9; g.connect(env); env.connect(conv);
+        // às vezes, uma segunda nota responde
+        t += rnd() < 0.3 ? entre(0.35, 0.9) : entre(b.cada * 0.6, b.cada * 1.5);
+      }
+    }
+
+    // ----- vento -----
+    if (rec.vento) {
+      const n = fonteRuido();
+      const bp = oc.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 0.6;
+      const fc = curvaLenta(20, [[7, 13], [11, 19], [17, 29]], 0);
+      for (let i = 0; i < fc.length; i++) fc[i] = 260 + fc[i] * 420;
+      bp.frequency.setValueCurveAtTime(fc, 0, dur);
+      const g = oc.createGain();
+      const amp = curvaLenta(20, [[6, 12], [9, 17], [15, 25]], 0.25);
+      for (let i = 0; i < amp.length; i++) amp[i] *= 0.16 * rec.vento;
+      g.gain.setValueCurveAtTime(amp, 0, dur);
+      n.connect(bp); bp.connect(g); g.connect(natureza);
+      n.start(0);
+    }
+    // assobio do vento na torre
+    if (rec.assobio) {
+      const n = fonteRuido();
+      const bp = oc.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 9;
+      const fc = curvaLenta(20, [[9, 15], [13, 21]], 0);
+      for (let i = 0; i < fc.length; i++) fc[i] = 700 + fc[i] * 500;
+      bp.frequency.setValueCurveAtTime(fc, 0, dur);
+      const g = oc.createGain();
+      const amp = curvaLenta(20, [[7, 11], [10, 16]], 0);
+      for (let i = 0; i < amp.length; i++) amp[i] = Math.pow(amp[i], 2.5) * 0.12 * rec.assobio;
+      g.gain.setValueCurveAtTime(amp, 0, dur);
+      n.connect(bp); bp.connect(g); g.connect(panor(0.3, natureza));
+      n.start(0);
+    }
+    // ----- folhas ao vento -----
+    if (rec.folhas) {
+      [-0.45, 0.45].forEach((pan, k) => {
+        const n = fonteRuido();
+        const hp = oc.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 1300 + k * 400;
+        const lp = oc.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 4200;
+        const g = oc.createGain();
+        const rajada = curvaLenta(60, [[5, 9], [8, 14], [12, 20]], 0);
+        let tremor = 0.5;
+        for (let i = 0; i < rajada.length; i++) {
+          tremor += (rnd() - 0.5) * 0.5; tremor = Math.min(1, Math.max(0, tremor));
+          rajada[i] = Math.pow(rajada[i], 2.2) * (0.45 + 0.55 * tremor) * 0.09 * rec.folhas;
+        }
+        g.gain.setValueCurveAtTime(rajada, 0, dur);
+        n.connect(hp); hp.connect(lp); lp.connect(g); g.connect(panor(pan, natureza));
+        n.start(0, k * 1.7);
+      });
+    }
+
+    // ----- marolas no lago -----
+    if (rec.agua) {
+      const ondas = [];
+      let t = entre(0, 1.5);
+      while (t < dur) { ondas.push([t, entre(0.6, 1)]); t += entre(2.4, 4.6); }
+      const pps = 50, nPts = Math.ceil(dur * pps);
+      const env = new Float32Array(nPts);
+      for (let i = 0; i < nPts; i++) {
+        const tt = i / pps; let v = 0.18;
+        ondas.forEach(([t0, a]) => { const d = tt - t0; if (d > 0 && d < 3) v += a * (d < 0.7 ? Math.sin((d / 0.7) * 1.5708) : Math.exp(-(d - 0.7) * 1.6)); });
+        env[i] = v;
+      }
+      [[480, 0.6, 0.2, -0.2], [1100, 1.2, 0.04, 0.25]].forEach(([f, q, vol, pan]) => {
+        const n = fonteRuido();
+        const fl = oc.createBiquadFilter(); fl.type = f < 1000 ? 'lowpass' : 'bandpass'; fl.frequency.value = f; fl.Q.value = q;
+        const g = oc.createGain();
+        g.gain.setValueCurveAtTime(env.map((v) => v * vol * rec.agua), 0, dur);
+        n.connect(fl); fl.connect(g); g.connect(panor(pan, natureza));
+        n.start(0, f < 1000 ? 0 : 2.1);
+      });
+    }
+    // ----- córrego: correnteza e borbulhas -----
+    if (rec.corrego) {
+      const n = fonteRuido();
+      const bp = oc.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 1100; bp.Q.value = 0.5;
+      const g = oc.createGain();
+      const amp = curvaLenta(30, [[2, 4], [3, 6]], 0.6);
+      for (let i = 0; i < amp.length; i++) amp[i] *= 0.1 * rec.corrego;
+      g.gain.setValueCurveAtTime(amp, 0, dur);
+      n.connect(bp); bp.connect(g); g.connect(panor(-0.3, natureza));
+      n.start(0);
+      let t = 0.1;
+      while (t < dur - 0.2) {
+        const o = oc.createOscillator(); o.type = 'sine';
+        const f = entre(500, 1300);
+        o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * entre(1.4, 1.9), t + 0.045);
+        const gb = oc.createGain();
+        gb.gain.setValueAtTime(0.0001, t); gb.gain.linearRampToValueAtTime(0.012 * rec.corrego * entre(0.4, 1), t + 0.006); gb.gain.exponentialRampToValueAtTime(0.0001, t + 0.06);
+        o.connect(gb); gb.connect(panor(entre(-0.7, 0.1), natureza));
+        o.start(t); o.stop(t + 0.08);
+        t += entre(0.08, 0.45);
+      }
+    }
+    // ----- gotas no porão -----
+    if (rec.gotas) {
+      let t = entre(0.5, 2);
+      while (t < dur - 0.3) {
+        const o = oc.createOscillator(); o.type = 'sine';
+        const f = entre(850, 1500);
+        o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * 2.1, t + 0.035);
+        const g = oc.createGain();
+        g.gain.setValueAtTime(0.0001, t); g.gain.linearRampToValueAtTime(0.05 * rec.gotas * entre(0.5, 1), t + 0.004); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.09);
+        o.connect(g);
+        const p = panor(entre(-0.6, 0.6), saida); g.connect(p);
+        const e = oc.createGain(); e.gain.value = 1.4; g.connect(e); e.connect(conv);
+        o.start(t); o.stop(t + 0.12);
+        t += rnd() < 0.25 ? entre(0.25, 0.5) : entre(2.2, 5.5);
+      }
+    }
+
+    // ----- grilos (céu noturno) -----
+    if (rec.grilos) {
+      const qtd = rec.grilos > 0.7 ? 3 : 2;
+      for (let k = 0; k < qtd; k++) {
+        const pps = 500, nPts = Math.ceil(dur * pps), c = new Float32Array(nPts);
+        const periodo = entre(0.62, 1.05), pulsos = 2 + Math.floor(rnd() * 3), vol = 0.022 * rec.grilos * entre(0.5, 1) / (k + 1) * (k === 0 ? 1 : 1.6);
+        let t = entre(0, periodo);
+        while (t < dur) {
+          if (rnd() > 0.12) {
+            for (let p = 0; p < pulsos; p++) {
+              const a = Math.floor((t + p * 0.045) * pps), b = a + Math.floor(0.028 * pps);
+              for (let i = a; i < b && i < nPts; i++) c[i] = vol * Math.sin(((i - a) / (b - a)) * Math.PI);
+            }
+          }
+          t += periodo * entre(0.95, 1.05);
+        }
+        const o = oc.createOscillator(); o.type = 'sine'; o.frequency.value = entre(3900, 4700);
+        const o2 = oc.createOscillator(); o2.type = 'sine'; o2.frequency.value = o.frequency.value * 2;
+        const g = oc.createGain(); g.gain.setValueCurveAtTime(c, 0, dur);
+        const g2 = oc.createGain(); g2.gain.value = 0.06;
+        o.connect(g); o2.connect(g2); g2.connect(g);
+        g.connect(panor([-0.6, 0.55, -0.1][k], natureza));
+        o.start(0); o2.start(0);
+      }
+    }
+    // ----- coruja ao longe -----
+    if (rec.coruja) {
+      let t = entre(3, 8);
+      while (t < dur - 2) {
+        [[0, 0.5, 380], [0.75, 0.22, 400], [1.05, 0.6, 370]].forEach(([d, l, f]) => {
+          const t0 = t + d;
+          const o = oc.createOscillator(); o.type = 'sine';
+          o.frequency.setValueAtTime(f, t0); o.frequency.linearRampToValueAtTime(f * 0.93, t0 + l);
+          const g = oc.createGain();
+          g.gain.setValueAtTime(0.0001, t0); g.gain.linearRampToValueAtTime(0.03 * rec.coruja, t0 + 0.08);
+          g.gain.setValueAtTime(0.03 * rec.coruja, t0 + l - 0.12); g.gain.linearRampToValueAtTime(0.0001, t0 + l);
+          o.connect(g); g.connect(panor(0.5, natureza));
+          const e = oc.createGain(); e.gain.value = 0.8; g.connect(e); e.connect(conv);
+          o.start(t0); o.stop(t0 + l + 0.05);
+        });
+        t += entre(11, 17);
+      }
+    }
+
+    // ----- pássaros -----
+    function assobio(t, notas, pan, vol, harm) {
+      const o = oc.createOscillator(); o.type = 'sine';
+      const g = oc.createGain(); g.gain.setValueAtTime(0.0001, t);
+      let tt = t;
+      notas.forEach(([f0, f1, d, pausa]) => {
+        o.frequency.setValueAtTime(f0, tt); o.frequency.exponentialRampToValueAtTime(f1, tt + d);
+        g.gain.setValueAtTime(0.0001, tt);
+        g.gain.linearRampToValueAtTime(vol, tt + Math.min(0.012, d / 3));
+        g.gain.setValueAtTime(vol, tt + d * 0.7);
+        g.gain.linearRampToValueAtTime(0.0001, tt + d);
+        tt += d + pausa;
+      });
+      const destino = panor(pan, natureza);
+      o.connect(g); g.connect(destino);
+      const e = oc.createGain(); e.gain.value = 0.25; g.connect(e); e.connect(conv);
+      o.start(t); o.stop(tt + 0.05);
+      return tt;
+    }
+    const sabia = (t, pan, vol) => {
+      const n = 4 + Math.floor(rnd() * 4), notas = [];
+      let f = entre(1900, 2800);
+      for (let i = 0; i < n; i++) {
+        const f1 = f * entre(0.82, 1.25);
+        notas.push([f, f1, entre(0.09, 0.24), entre(0.05, 0.14)]);
+        f = Math.min(3600, Math.max(1600, f1 * entre(0.9, 1.15)));
+      }
+      return assobio(t, notas, pan, vol);
+    };
+    const pardal = (t, pan, vol, alto) => {
+      const n = 3 + Math.floor(rnd() * 6), notas = [], f = entre(alto ? 5200 : 4200, alto ? 6400 : 5200);
+      for (let i = 0; i < n; i++) notas.push([f, f * 0.7, 0.04, entre(0.04, 0.08)]);
+      return assobio(t, notas, pan, vol * 0.7);
+    };
+    const rolinha = (t, pan, vol) => {
+      const o = oc.createOscillator(); o.type = 'triangle';
+      const lp = oc.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 900;
+      const g = oc.createGain(); g.gain.setValueAtTime(0.0001, t);
+      let tt = t;
+      for (let i = 0; i < 2 + Math.floor(rnd() * 2); i++) {
+        o.frequency.setValueAtTime(560, tt); o.frequency.linearRampToValueAtTime(500, tt + 0.32);
+        g.gain.linearRampToValueAtTime(vol, tt + 0.06); g.gain.setValueAtTime(vol, tt + 0.22); g.gain.linearRampToValueAtTime(0.0001, tt + 0.34);
+        tt += 0.55;
+      }
+      o.connect(lp); lp.connect(g); g.connect(panor(pan, natureza));
+      o.start(t); o.stop(tt + 0.05);
+      return tt;
+    };
+    function revoada(nivel, tipos, intervalo) {
+      let t = entre(0.3, 2);
+      while (t < dur - 2) {
+        const tipo = tipos[Math.floor(rnd() * tipos.length)];
+        const pan = entre(-0.8, 0.8), vol = 0.05 * nivel * entre(0.35, 1);
+        if (tipo === 'sabia') sabia(t, pan, vol);
+        else if (tipo === 'pardal') pardal(t, pan, vol, false);
+        else if (tipo === 'andorinha') pardal(t, pan, vol, true);
+        else rolinha(t, pan, vol * 1.4);
+        // às vezes outro pássaro responde do outro lado
+        if (rnd() < 0.35 && tipo === 'sabia') sabia(t + entre(1.2, 2.2), -pan, vol * 0.6);
+        t += entre(intervalo[0], intervalo[1]) / Math.max(0.4, nivel);
+      }
+    }
+    if (rec.passaros) revoada(rec.passaros, ['sabia', 'sabia', 'pardal'], [2.2, 5]);
+    if (rec.andorinhas) revoada(rec.andorinhas, ['andorinha', 'andorinha', 'sabia'], [3, 6]);
+    if (rec.rolinhas) revoada(rec.rolinhas, ['rolinha', 'rolinha', 'sabia'], [5, 9]);
+
+    return oc.startRendering().then((buf) => emendar(buf));
   }
-  const ESC_MAIOR = (t) => [0, 2, 4, 5, 7, 9, 11].map((x) => (x + t) % 12);
-  const ESC_MENOR = (t) => [0, 2, 3, 5, 7, 8, 10].map((x) => (x + t) % 12);
 
-  // ---------- estilos ----------
-  const E = {};
-
-  // Valsa de caixinha de música (mansão / tela inicial)
-  E.mansao = {
-    ganho: 5.5,
-    bpm: 84, tempos: 3,
-    prog: ['C', 'Am', 'F', 'G7', 'C', 'Em', 'Dm7', 'G7', 'F', 'G', 'Em', 'Am', 'Dm7', 'G7', 'C', 'C'].map(ac),
-    compasso(o, t, n, b, rnd, st) {
-      const a = this.prog[n % this.prog.length];
-      I.piano(o.seco, t, notasDe(a, 36)[0], b * 2.8, 0.07);
-      voicing(a, 60).forEach((m) => { I.piano(o.seco, t + b, m, b * 0.8, 0.028); I.piano(o.seco, t + 2 * b, m, b * 0.8, 0.024); });
-      const ritmos = [[0, 1, 2], [0, 2], [0, 1.5, 2], [0], [0, 1, 1.5, 2]];
-      escolher(ritmos, rnd).forEach((p, i) => I.celesta(o.molhado, t + p * b, proxNota(st, a, ESC_MAIOR(0), [76, 91], rnd, p === 0), b, 0.05));
-    },
-  };
-
-  // Jazz de salão dos anos 1920, balada com swing (hall)
-  E.hall = {
-    ganho: 2.2,
-    bpm: 72, tempos: 4,
-    prog: ['Fmaj7', 'Dm7', 'Gm7', 'C7', 'Am7', 'D7b9', 'Gm7', 'C9'].map(ac),
-    compasso(o, t, n, b, rnd, st) {
-      const a = this.prog[n % this.prog.length], prox = this.prog[(n + 1) % this.prog.length];
-      const r = 36 + a.raiz;
-      const andando = [r, r + a.tipo[1], r + a.tipo[2], 36 + prox.raiz + (rnd() < 0.5 ? 1 : -1)];
-      andando.forEach((m, i) => I.contrabaixo(o.seco, t + i * b, m, b * 0.9, 0.11));
-      const v = voicing(a, 62).slice(-4);
-      v.forEach((m) => I.rhodes(o.molhado, t + 0.02, m, b * 1.6, 0.03));
-      if (rnd() < 0.6) v.forEach((m) => I.rhodes(o.molhado, t + b * 2.66, m, b * 0.7, 0.022));
-      for (let i = 0; i < 4; i++) { I.escovinha(o.seco, t + i * b, b * 0.6, i % 2 ? 0.035 : 0.022); I.escovinha(o.seco, t + i * b + b * 0.66, 0.08, 0.012); }
-      const esc = ESC_MAIOR(5);
-      [0, 0.66, 1, 1.66, 2, 2.66, 3, 3.66].forEach((p) => { if (rnd() < (p % 1 ? 0.25 : 0.4)) I.piano(o.molhado, t + p * b, proxNota(st, a, esc, [65, 81], rnd, p % 1 === 0), b * 0.7, 0.045); });
-    },
-  };
-
-  // Bossa nova ao violão de náilon, com flauta (píer)
-  E.pier = {
-    ganho: 1.1,
-    bpm: 118, tempos: 4,
-    prog: ['Fmaj7', 'Fmaj7', 'G9', 'G9', 'Gm7', 'C7', 'Fmaj7', 'C9', 'Am7', 'D7b9', 'Gm7', 'C7'].map(ac),
-    compasso(o, t, n, b, rnd, st) {
-      const a = this.prog[n % this.prog.length], e = b / 2;
-      const raiz = 40 + ((a.raiz + 8) % 12);
-      I.violao(o.seco, t, raiz, b, 0.32);
-      I.violao(o.seco, t + 4 * e, raiz + 7 <= 52 ? raiz + 7 : raiz - 5, b, 0.26);
-      const v = voicing(a, 60).slice(-4);
-      const padrao = n % 2 ? [2, 4, 7] : [0, 3, 6];
-      padrao.forEach((p) => v.forEach((m, i) => I.violao(o.seco, t + p * e + i * 0.012, m, b, 0.13)));
-      for (let i = 0; i < 8; i++) I.chocalho(o.seco, t + i * e, 0.06, i % 2 ? 0.02 : 0.011);
-      if (n % 4 < 2) {
-        const esc = ESC_MAIOR(5);
-        [0, 3, 5, 6].forEach((p) => { if (rnd() < 0.55) I.flauta(o.molhado, t + p * e, proxNota(st, a, esc, [72, 86], rnd, p === 0), e * (p === 6 ? 3 : 1.8), 0.04); });
+  // Emenda sem costura: o começo do laço mistura (com potência igual)
+  // o início da síntese com o trecho que vem logo depois do fim.
+  function emendar(buf) {
+    const L = Math.floor(LACO * TAXA), F = Math.floor(EMENDA * TAXA);
+    const canais = [];
+    let soma = 0, pico = 0;
+    for (let c = 0; c < 2; c++) {
+      const d = buf.getChannelData(c), o = new Float32Array(L);
+      for (let i = 0; i < L; i++) {
+        let v = d[i];
+        if (i < F) { const x = i / F; v = d[i] * Math.sin(x * 1.5708) + d[L + i] * Math.cos(x * 1.5708); }
+        o[i] = v; soma += v * v; const a = Math.abs(v); if (a > pico) pico = a;
       }
-    },
-  };
-
-  // Piano calmo e contemplativo, em compasso ternário (escritório)
-  E.escritorio = {
-    ganho: 7,
-    bpm: 68, tempos: 3,
-    prog: ['Gmaj7', 'Dmaj7', 'Gmaj7', 'Dmaj7', 'Em7', 'Bm7', 'Cmaj7', 'D'].map(ac),
-    compasso(o, t, n, b, rnd, st) {
-      const a = this.prog[n % this.prog.length];
-      I.piano(o.molhado, t, notasDe(a, 36)[0], b * 3, 0.07);
-      voicing(a, 62).slice(-3).forEach((m) => I.piano(o.molhado, t + b, m, b * 2, 0.03));
-      if (rnd() < 0.8) {
-        const m = proxNota(st, a, ESC_MAIOR(7), [69, 81], rnd, true);
-        I.piano(o.molhado, t + (rnd() < 0.5 ? 0 : b), m, b * 2.5, 0.05);
-        if (rnd() < 0.35) I.piano(o.molhado, t + 2 * b, proxNota(st, a, ESC_MAIOR(7), [69, 81], rnd, false), b, 0.04);
-      }
-    },
-  };
-
-  // Noturno com harpa, cordas e celesta (biblioteca)
-  E.biblioteca = {
-    ganho: 4.2,
-    bpm: 58, tempos: 4,
-    prog: ['Dmadd9', 'Bbmaj7', 'Gm7', 'A7', 'Dm', 'F', 'C', 'A7'].map(ac),
-    compasso(o, t, n, b, rnd, st) {
-      const a = this.prog[n % this.prog.length], e = b / 2;
-      const base = notasDe(a, 48).slice(0, 4);
-      const arp = base.concat(base.slice(0, 3).map((m) => m + 12));
-      const seq = arp.slice(0, 4).concat(arp.slice(4, 6), arp.slice(2, 4).reverse());
-      seq.forEach((m, i) => I.harpa(o.molhado, t + i * e, m, e, i === 0 ? 0.13 : 0.08));
-      voicing(a, 64).forEach((m) => I.cordas(o.molhado, t, m, b * 4, 0.016));
-      I.cordas(o.molhado, t, notasDe(a, 36)[0], b * 4, 0.02);
-      if (n % 2 === 1) [1, 2.5].forEach((p) => { if (rnd() < 0.7) I.celesta(o.molhado, t + p * b, proxNota(st, a, ESC_MENOR(2), [74, 86], rnd, true), b, 0.04); });
-    },
-  };
-
-  // Minimalismo com marimba e vibrafone (laboratório)
-  E.laboratorio = {
-    ganho: 5,
-    bpm: 96, tempos: 4,
-    prog: ['Am9', 'Am9', 'Fmaj9', 'Fmaj9', 'Cmaj9', 'Cmaj9', 'G6', 'G6'].map(ac),
-    padrao: [0, 2, 1, 3, 2, 4, 1, 3],
-    compasso(o, t, n, b, rnd, st) {
-      const a = this.prog[n % this.prog.length], e = b / 2;
-      const notas = voicing(a, 68);
-      this.padrao.forEach((k, i) => I.marimba(o.molhado, t + i * e, notas[k % notas.length] + (k >= notas.length ? 12 : 0), e, i % 4 === 0 ? 0.075 : 0.05));
-      I.marimba(o.seco, t, notasDe(a, 36)[0], b, 0.09);
-      I.marimba(o.seco, t + 2 * b, notasDe(a, 36)[0] + 7, b, 0.06);
-      if (n % 2 === 0) voicing(a, 76).slice(-2).forEach((m) => I.vibrafone(o.molhado, t, m, b * 4, 0.035));
-      voicing(a, 57).forEach((m) => I.cordas(o.molhado, t, m, b * 4, 0.01));
-    },
-  };
-
-  // Valsa de salão com cordas, piano e violino (salão de baile)
-  E.salao = {
-    ganho: 4.8,
-    bpm: 100, tempos: 3,
-    prog: ['G', 'G', 'Em', 'Em', 'Am7', 'D7', 'G', 'D7', 'G', 'B7', 'Em', 'A7', 'Am7', 'D7', 'G', 'G'].map(ac),
-    compasso(o, t, n, b, rnd, st) {
-      const a = this.prog[n % this.prog.length];
-      I.piano(o.molhado, t, notasDe(a, 36)[0] + (a.raiz > 6 ? -12 : 0) + 12, b * 0.9, 0.08);
-      voicing(a, 62).forEach((m) => { I.piano(o.molhado, t + b, m, b * 0.5, 0.026); I.piano(o.molhado, t + 2 * b, m, b * 0.5, 0.022); });
-      voicing(a, 67).forEach((m) => I.cordas(o.molhado, t, m, b * 3, 0.012));
-      const ritmos = [[[0, 3]], [[0, 2], [2, 1]], [[0, 1], [1, 1], [2, 1]], [[0, 1.5], [1.5, 0.5], [2, 1]]];
-      escolher(ritmos, rnd).forEach(([p, d]) => I.violino(o.molhado, t + p * b, proxNota(st, a, ESC_MAIOR(7), [67, 84], rnd, p === 0), d * b * 0.95, 0.03));
-    },
-  };
-
-  // Choro suave ao violão de sete cordas, cavaquinho e flauta (horta e córrego)
-  E.horta = {
-    ganho: 1.6,
-    bpm: 80, tempos: 4,
-    prog: ['D', 'D', 'A7', 'A7', 'A7', 'A7', 'D', '7', 'G', 'G', 'D', 'B7', 'E7', 'E7', 'A7', 'A7'].map((n, i) => (n === '7' ? ac('D7') : ac(n))),
-    compasso(o, t, n, b, rnd, st) {
-      const a = this.prog[n % this.prog.length], prox = this.prog[(n + 1) % this.prog.length], e = b / 2;
-      // baixaria do violão de sete cordas: tônica, quinta e uma passagem até o próximo acorde
-      const r = 38 + ((a.raiz + 10) % 12);
-      I.violao(o.seco, t, r, b, 0.3);
-      I.violao(o.seco, t + 2 * b, r + 7 <= 50 ? r + 7 : r - 5, b, 0.24);
-      const alvo = 38 + ((prox.raiz + 10) % 12);
-      [alvo + 2, alvo + 1].forEach((m, i) => { if (rnd() < 0.7) I.violao(o.seco, t + 3 * b + i * e, m, e, 0.2); });
-      // cavaquinho com a levada sincopada do choro
-      const v = voicing(a, 67).slice(-3);
-      [0, 0.75, 1.5, 2, 2.75, 3.5].forEach((p, k) => v.forEach((m, i) => I.cavaquinho(o.seco, t + p * b + i * 0.01, m, e, k % 2 ? 0.07 : 0.1)));
-      for (let i = 0; i < 8; i++) I.chocalho(o.seco, t + i * e, 0.05, i % 2 ? 0.014 : 0.009);
-      // flauta com frases em colcheias
-      const esc = ESC_MAIOR(2);
-      for (let i = 0; i < 8; i++) if (rnd() < (i % 2 ? 0.45 : 0.65)) I.flauta(o.molhado, t + i * e, proxNota(st, a, esc, [74, 88], rnd, i % 2 === 0), e * 0.95, 0.035);
-    },
-  };
-
-  // Barroco ao cravo, com violoncelo no baixo contínuo (sala de mapas)
-  E.mapas = {
-    ganho: 2.8,
-    bpm: 72, tempos: 4,
-    prog: ['Am', 'Dm', 'G', 'C', 'F', 'Dm', 'E7', 'Am', 'C', 'G', 'Am', 'Em', 'F', 'C', 'Dm', 'E7'].map(ac),
-    compasso(o, t, n, b, rnd, st) {
-      const a = this.prog[n % this.prog.length], s16 = b / 4;
-      const base = notasDe(a, 57).slice(0, 3);
-      const figura = [0, 2, 1, 2, 0, 2, 1, 2];
-      for (let i = 0; i < 16; i++) {
-        const nota = base[figura[i % 8]] + (i >= 8 ? 12 : 0);
-        I.cravo(o.molhado, t + i * s16, nota, s16, i % 4 === 0 ? 0.12 : 0.075);
-      }
-      const r = 36 + a.raiz;
-      [r, r + 12, r + a.tipo[2], r + 12].forEach((m, i) => I.contrabaixo(o.seco, t + i * b, m, b * 0.85, 0.08));
-      if (n % 2 === 1 && rnd() < 0.8) [0, 1, 2].forEach((p) => I.cravo(o.molhado, t + p * b + b * 0.5, proxNota(st, a, ESC_MENOR(9), [76, 88], rnd, true), b, 0.06));
-    },
-  };
-
-  // Minueto para quarteto de cordas (sala de jantar)
-  E.jantar = {
-    ganho: 2.9,
-    bpm: 104, tempos: 3,
-    prog: ['G', 'D7', 'G', 'C', 'G', 'D', 'Em', 'A7', 'D', 'D7', 'G', 'C', 'G', 'D7', 'G', 'G'].map(ac),
-    compasso(o, t, n, b, rnd, st) {
-      const a = this.prog[n % this.prog.length];
-      I.contrabaixo(o.seco, t, 36 + a.raiz + (a.raiz < 5 ? 12 : 0), b * 1.6, 0.1);
-      voicing(a, 60).forEach((m) => { I.violino(o.molhado, t + b, m, b * 0.8, 0.012); I.violino(o.molhado, t + 2 * b, m, b * 0.8, 0.011); });
-      voicing(a, 64).forEach((m) => I.cordas(o.molhado, t, m, b * 3, 0.008));
-      const ritmos = [[[0, 1], [1, 1], [2, 1]], [[0, 2], [2, 1]], [[0, 1.5], [1.5, 0.5], [2, 1]], [[0, 0.5], [0.5, 0.5], [1, 1], [2, 1]]];
-      escolher(ritmos, rnd).forEach(([p, d]) => I.violino(o.molhado, t + p * b, proxNota(st, a, ESC_MAIOR(7), [69, 86], rnd, p === 0), d * b * 0.92, 0.032));
-    },
-  };
-
-  // ---------- sequenciador ----------
-  const M = { nome: null, est: null, saida: null, prox: 0, n: 0, st: null, timer: null, pendente: null };
-  let semente = 12345;
-  const rnd = () => { semente = (semente * 1664525 + 1013904223) >>> 0; return semente / 4294967296; };
-
-  function criarSaida() {
-    const seco = ctx.createGain(), molhado = ctx.createGain();
-    seco.gain.value = 0; molhado.gain.value = 0;
-    seco.connect(saidaGeral);
-    molhado.connect(saidaGeral); molhado.connect(revEntrada);
-    return { seco, molhado };
+      canais.push(o);
+    }
+    const rms = Math.sqrt(soma / (2 * L)) || 1e-6;
+    const k = Math.min(RMS_ALVO / rms, PICO_MAX / (pico || 1e-6));
+    canais.forEach((o) => { for (let i = 0; i < L; i++) o[i] *= k; });
+    return canais;
   }
-  function rampa(saida, alvo, dur) {
+
+  // ---------- reprodução ----------
+  const cache = new Map();   // nome -> Promise<[Float32Array, Float32Array]>
+  const MAX_CACHE = 3;       // poupa memória nos celulares
+  const M = { nome: null, periodo: null, pendente: null, fonte: null, ganho: null, ped: 0 };
+
+  function obter(nome, periodo) {
+    const chave = nome + '|' + periodo;
+    if (cache.has(chave)) { const p = cache.get(chave); cache.delete(chave); cache.set(chave, p); return p; }
+    const p = sintetizar(nome, periodo).catch((e) => { cache.delete(chave); throw e; });
+    cache.set(chave, p);
+    while (cache.size > MAX_CACHE) cache.delete(cache.keys().next().value);
+    return p;
+  }
+  function tocar(nome, canais) {
+    const ctx = A.contexto();
+    const buf = ctx.createBuffer(2, canais[0].length, TAXA);
+    buf.getChannelData(0).set(canais[0]); buf.getChannelData(1).set(canais[1]);
+    const fonte = ctx.createBufferSource(); fonte.buffer = buf; fonte.loop = true;
+    const g = ctx.createGain(); g.gain.value = 0;
+    fonte.connect(g); g.connect(A.barramentoMusica());
     const t = ctx.currentTime;
-    [saida.seco, saida.molhado].forEach((g) => { g.gain.cancelScheduledValues(t); g.gain.setValueAtTime(g.gain.value, t); g.gain.linearRampToValueAtTime(alvo, t + dur); });
-  }
-  function agendar() {
-    if (!M.est || !ctx) return;
-    const agora = ctx.currentTime;
-    if (M.prox < agora - 0.2) M.prox = agora + 0.05; // aba voltou do segundo plano
-    if (A.volMusica <= 0.001) { M.prox = agora + 0.1; return; }
-    const b = 60 / M.est.bpm;
-    while (M.prox < agora + 0.5) {
-      try { M.est.compasso(M.saida, M.prox, M.n, b, rnd, M.st); } catch (e) { console.error(e); }
-      M.prox += b * M.est.tempos;
-      M.n++;
+    // começa num ponto diferente a cada vez, para não soar repetitivo
+    fonte.start(t + 0.02, Math.random() * LACO);
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(1, t + 2.5);
+    if (M.fonte) {
+      const velha = M.fonte, gv = M.ganho;
+      gv.gain.cancelScheduledValues(t); gv.gain.setValueAtTime(gv.gain.value, t); gv.gain.linearRampToValueAtTime(0, t + 2);
+      try { velha.stop(t + 2.1); } catch (e) {}
+      setTimeout(() => { try { gv.disconnect(); } catch (e) {} }, 2400);
     }
+    M.fonte = fonte; M.ganho = g;
+    MI.bus.emit('trilha', nome);
   }
 
-  A.musica = function (nome) {
-    nome = E[nome] ? nome : 'mansao';
-    M.pendente = nome;
-    if (!preparar()) return;
-    if (M.nome === nome) return;
-    if (M.saida) { const velha = M.saida; rampa(velha, 0, 1.4); setTimeout(() => { try { velha.seco.disconnect(); velha.molhado.disconnect(); } catch (e) {} }, 1700); }
-    M.nome = nome;
-    M.est = E[nome];
-    M.saida = criarSaida();
-    rampa(M.saida, M.est.ganho || 1, 1.8); // ganho iguala o volume entre os estilos
-    M.n = 0;
-    M.st = { ult: 76 };
-    M.prox = ctx.currentTime + 0.12;
-    if (!M.timer) M.timer = setInterval(agendar, 60);
-    agendar();
-    MI.bus.emit('trilha', nome);
+  A.musica = function (nome, periodo) {
+    nome = R[nome] ? nome : 'mansao';
+    periodo = MI.SONS_PERIODO[periodo] ? periodo : (M.periodo || 'dia');
+    M.pendente = [nome, periodo];
+    const ctx = A.contexto();
+    if (!ctx || (M.nome === nome && M.periodo === periodo)) return;
+    M.nome = nome; M.periodo = periodo;
+    const pedido = ++M.ped;
+    obter(nome, periodo).then((canais) => { if (pedido === M.ped) tocar(nome, canais); }).catch((e) => console.error('ambiente', nome, e));
   };
   A.trilhaAtual = () => M.nome;
-  MI.bus.on('audio-pronto', () => { if (M.pendente) { const p = M.pendente; M.nome = null; A.musica(p); } });
+  A.periodoAtual = () => M.periodo;
+  MI.bus.on('audio-pronto', () => { if (M.pendente) { const [n, p] = M.pendente; M.nome = null; A.musica(n, p); } });
 
-  // ganchos para testes automatizados (renderização fora do tempo real)
-  MI._estilosMusica = E;
-  MI._agendarCompassos = (n) => { const b = 60 / M.est.bpm; for (let i = 0; i < n; i++) { M.est.compasso(M.saida, M.prox, M.n, b, rnd, M.st); M.prox += b * M.est.tempos; M.n++; } };
+  // ganchos para testes e para gerar amostras
+  MI._ambientes = R;
+  MI._sintetizarAmbiente = (nome, periodo) => sintetizar(nome, periodo || 'dia');
 })();

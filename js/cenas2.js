@@ -18,10 +18,7 @@
     s += `<linearGradient id="gCeuH" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fc3e8"/><stop offset="1" stop-color="#e9f3e0"/></linearGradient>
       <linearGradient id="gAguaH" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fa9a0"/><stop offset="1" stop-color="#4f8a7c"/></linearGradient>
       <linearGradient id="gGramaH" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8ab45a"/><stop offset="1" stop-color="#5f8f3a"/></linearGradient>`;
-    s += `<rect width="${W}" height="400" fill="url(#gCeuH)"/>`;
-    [[260, 90, 1], [900, 60, 1.3], [1380, 120, 0.9]].forEach(([x, y, e]) => {
-      s += `<g transform="translate(${x} ${y}) scale(${e})" fill="#fff" opacity=".9"><ellipse cx="0" cy="0" rx="70" ry="24"/><ellipse cx="-40" cy="8" rx="44" ry="18"/><ellipse cx="44" cy="10" rx="50" ry="18"/></g>`;
-    });
+    s += `<rect width="${W}" height="400" fill="url(#gCeuH)"/>${D.vista(0, 0, W, 400, { horizonte: false, nuvens: 3, semente: 71 })}`;
     s += `<path d="M0 330 Q240 250 520 300 Q820 240 1100 300 Q1360 250 1600 290 L1600 420 L0 420 Z" fill="#7aa36a"/>`;
     const rnd = U.semente(91);
     for (let i = 0; i < 26; i++) { const x = i * 64 + rnd() * 20, y = 330 - (i % 3) * 8; s += `<ellipse cx="${x}" cy="${y}" rx="${34 + rnd() * 14}" ry="${40 + rnd() * 14}" fill="${i % 2 ? '#3f6b3c' : '#4f7f45'}"/>`; }
@@ -85,7 +82,7 @@
       <path d="M0 380 L800 20 L1600 380" fill="none" stroke="#7a4a24" stroke-width="18"/>
       <rect x="0" y="380" width="${W}" height="22" fill="#5e3a1f" ${K}/>`;
     // óculo (janela redonda)
-    s += `<circle cx="800" cy="210" r="110" fill="#5e3a1f" ${K}/><circle cx="800" cy="210" r="92" fill="url(#gVidroDia)"/>
+    s += `<circle cx="800" cy="210" r="110" fill="#5e3a1f" ${K}/><circle cx="800" cy="210" r="92" fill="url(#gVidroDia)"/>${MI.ceuEm ? MI.ceuEm('<circle cx="800" cy="210" r="92"/>', 708, 118, 184, 184, D.periodo, { horizonte: 0.74, nuvens: 1, astroX: 0.66, semente: 5 }) : ''}<circle cx="800" cy="210" r="92" fill="url(#gReflexo)"/>
       <path d="M708 230 Q760 190 800 214 Q850 190 892 222 L892 300 L708 300 Z" fill="#5f8a4c"/><ellipse cx="820" cy="250" rx="40" ry="12" fill="#6f9a8a"/>
       <path d="M800 118 L800 302 M708 210 L892 210" stroke="#5e3a1f" stroke-width="8"/>`;
     // mapa da bacia emoldurado (esquerda)
@@ -139,7 +136,7 @@
     for (let x = 24; x < W; x += 140) s += `<rect x="${x}" y="480" width="116" height="110" rx="3" fill="none" stroke="#3a2414" stroke-width="3"/>`;
     // janelas com cortinas
     [[90, 200], [1310, 200]].forEach(([x, w]) => {
-      s += `<rect x="${x}" y="110" width="${w}" height="330" fill="url(#gVidroDia)" ${K}/><svg x="${x}" y="110" width="${w}" height="330" viewBox="0 0 ${w} 330"><rect y="200" width="${w}" height="130" fill="#6f9a5a"/><ellipse cx="${w / 2}" cy="250" rx="${w / 3}" ry="18" fill="#6fa8a0"/></svg>
+      s += `<rect x="${x}" y="110" width="${w}" height="330" fill="url(#gVidroDia)" ${K}/>${D.vista(x, 110, w, 330, { horizonte: 0.58, nuvens: 1, semente: x })}<svg x="${x}" y="110" width="${w}" height="330" viewBox="0 0 ${w} 330"><rect y="200" width="${w}" height="130" fill="#6f9a5a"/><ellipse cx="${w / 2}" cy="250" rx="${w / 3}" ry="18" fill="#6fa8a0"/></svg>
         <path d="M${x + w / 2} 110 L${x + w / 2} 440 M${x} 270 L${x + w} 270" stroke="#efe6d2" stroke-width="9"/>`;
       s += D.cortina(x - 40, 90, 90, 380, 'esq') + D.cortina(x + w - 50, 90, 90, 380, 'dir');
     });
@@ -183,7 +180,7 @@
   // ---------- novas cenas ----------
   Object.assign(MI.CENAS, {
     horta: {
-      nome: 'Horta e Córrego', bg: hortaBg, fg: hortaFg, alvos: 12,
+      nome: 'Horta e Córrego', bg: hortaBg, fg: hortaFg, alvos: 12, luzes: [],
       slots: [
         { o: 'enxada', x: 300, y: 452, s: 0.62, r: 6 },
         { o: 'sacoAdubo', x: 300, y: 420, s: 0.62, sb: 26 },
@@ -211,7 +208,7 @@
       ],
     },
     mapas: {
-      nome: 'Sala de Mapas', bg: mapasBg, fg: mapasFg, alvos: 12,
+      nome: 'Sala de Mapas', bg: mapasBg, fg: mapasFg, alvos: 12, luzes: [[800, 400, 440], [800, 210, 160]],
       slots: [
         { o: 'escalimetro', x: 860, y: 540, s: 0.48 },
         { o: 'compassoDesenho', x: 960, y: 520, s: 0.42, r: 20 },
@@ -238,7 +235,7 @@
       ],
     },
     jantar: {
-      nome: 'Sala de Jantar', bg: jantarBg, fg: jantarFg, alvos: 12,
+      nome: 'Sala de Jantar', bg: jantarBg, fg: jantarFg, alvos: 12, luzes: [[800, 80, 440], [290, 448, 140]],
       slots: [
         { o: 'notebook', x: 800, y: 600, s: 0.6 },
         { o: 'pendrive', x: 900, y: 640, s: 0.34 },

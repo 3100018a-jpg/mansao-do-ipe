@@ -31,7 +31,7 @@ Cada alternativa errada traz uma explicação (cultura do erro). Só a resposta 
 
 ## O que tem no jogo
 
-- **Seis cenas desenhadas à mão em SVG**: hall com escadaria, varanda e píer sobre o lago esverdeado, escritório, biblioteca ao luar, laboratório no porão e salão de baile.
+- **Nove cenas desenhadas à mão em SVG**: hall com escadaria, varanda e píer sobre o lago esverdeado, escritório, biblioteca, laboratório no porão, salão de baile, horta e córrego, sala de mapas e sala de jantar. Os quadros têm moldura entalhada, verniz e textura de tela. As estantes têm livros de couro com nervuras, pilhas deitadas e prateleiras com sombra. As cortinas têm dobras e borlas.
 - **Mais de 100 objetos ocultos**, como medidor de oxigênio dissolvido, disco de Secchi, sonda multiparâmetro, amostrador de garrafa, escalímetro, teodolito, drone, ficha de cadeia de custódia e relatório técnico. Cada cena tem de 22 a 25 objetos, e cada partida sorteia 12 deles.
 - **Cinco modos de busca**, liberados ao rejogar as cenas (domínio da cena):
   - lista de palavras;
@@ -68,24 +68,40 @@ A tela se ajusta ao aparelho:
 
 Se a tela girar no meio de uma cena, a vista se recalcula sozinha.
 
-## Trilhas sonoras
+## Aurora, dia, entardecer e noite
 
-Cada ambiente tem uma trilha suave, criada no próprio navegador, sem arquivos de música:
+A investigação dura três dias, e cada capítulo acontece num período do dia:
 
-| Ambiente | Estilo |
+| Capítulo | Período |
 |---|---|
-| Tela inicial e mapa da mansão | Valsa de caixinha de música |
-| Hall de Entrada | Jazz de salão dos anos 1920 (piano elétrico, contrabaixo e vassourinha) |
-| Varanda e Píer | Bossa nova ao violão de náilon, com flauta |
-| Escritório | Piano calmo e contemplativo |
-| Biblioteca | Noturno com harpa, cordas e celesta |
-| Laboratório | Minimalismo com marimba e vibrafone |
-| Salão de Baile | Valsa de salão com cordas, piano e violino |
-| Horta e Córrego | Choro ao violão de sete cordas, cavaquinho e flauta |
-| Sala de Mapas | Barroco ao cravo, com violoncelo |
-| Sala de Jantar | Minueto para quarteto de cordas |
+| 1. Hall de Entrada · 2. Varanda e Píer | ☀️ Dia |
+| 3. Escritório | 🌇 Entardecer |
+| 4. Biblioteca · 5. Laboratório | 🌙 Noite |
+| 6. Salão de Baile (reunião com os moradores) | 🌇 Entardecer |
+| 7. Horta e Córrego (coleta ao amanhecer, quando o oxigênio dissolvido costuma estar mais baixo) | 🌅 Aurora |
+| 8. Sala de Mapas | ☀️ Dia |
+| 9. Sala de Jantar | 🌙 Noite |
 
-A música troca suavemente entre os ambientes e abaixa sozinha enquanto os personagens falam. O volume fica em ⚙ Configurações.
+O período muda:
+
+- o céu das janelas, com sol, nuvens, lua e estrelas;
+- a luz dos cômodos, com lustres, velas e lâmpadas acesas ao entardecer e à noite, e feixes de luz entrando pelas janelas;
+- a fachada da mansão, que mostra o período do próximo capítulo. Quando o caso termina, um novo dia amanhece.
+
+## Sons de cada ambiente
+
+No lugar de músicas, cada cômodo tem **tons muito suaves** (acordes longos, sinos e notas de harpa) misturados com **sons da natureza** que mudam com o período do dia:
+
+| Período | Sons da natureza |
+|---|---|
+| 🌅 Aurora | Coro de pássaros ao amanhecer e os últimos grilos |
+| ☀️ Dia | Sabiás, pardais e vento nas folhas |
+| 🌇 Entardecer | Rolinhas, primeiros grilos e brisa |
+| 🌙 Noite | Grilos, coruja ao longe e céu noturno |
+
+Cada lugar também tem sons próprios: marolas no píer, córrego e borbulhas na horta, gotas d’água no porão e vento assobiando na torre dos mapas. Dentro de casa, a natureza chega abafada, como se viesse pela janela.
+
+**Sem chiados no celular:** cada ambiente é sintetizado uma única vez, em segundo plano, num trecho de 32 segundos que emenda sem costura. Depois toca como um único som em laço. O aparelho não precisa calcular centenas de notas ao vivo, e o ruído do vento e das folhas é filtrado para não chiar. O volume fica igual em todos os ambientes, com margem para nunca saturar. Ele abaixa sozinho enquanto os personagens falam e pode ser ajustado em ⚙ Configurações.
 
 ## O nome do jogador
 
@@ -131,7 +147,8 @@ img/                  ícones do aplicativo
 css/estilo.css        visual
 js/nucleo.js          utilitários e armazenamento
 js/audio.js           vozes, nome do jogador e efeitos
-js/musica.js          trilhas sonoras de cada ambiente
+js/musica.js          sons de cada ambiente (tons suaves e natureza)
+js/periodos.js        aurora, dia, entardecer e noite (céu, luz e período de cada capítulo)
 js/dados.js           capítulos 1 a 6, desafios, glossário, cartões e restauração
 js/dados2.js          capítulos 7 a 9, perguntas extras, novos termos e cartões
 js/objetos.js         desenhos dos objetos ocultos

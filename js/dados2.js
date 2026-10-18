@@ -180,6 +180,7 @@
       intro: [
         { p: 'benedito', t: 'Bom dia, pessoal! Desde a reunião, passei a adubar a horta só com composto, e na medida certa.' },
         { p: 'marta', t: 'Que ótima notícia, Seu Benedito! Hoje vamos coletar água em três pontos do córrego: antes da horta, depois da horta e depois da galeria pluvial do bairro.' },
+        { p: 'marta', t: 'Viemos ao amanhecer de propósito: é nessa hora que o oxigênio dissolvido costuma estar mais baixo, porque durante a noite as algas não fazem fotossíntese e só consomem oxigênio.' },
         { p: 'marta', t: '{nome}, encontre o amostrador, as fitas de pH, a sonda e o restante do material de campo espalhado pela horta e pelas margens.' },
       ],
       meio: [
@@ -403,7 +404,7 @@
       resumo: 'A analista da Secretaria de Meio Ambiente vem ler o relatório técnico. Separar resultados, discussão e recomendações, declarar os limites e respeitar quem fiscaliza e decide: esse é o último desafio.',
       intro: [
         { p: 'helena', t: 'Pus a mesa de jantar para uma reunião importante: a analista da Secretaria de Meio Ambiente veio ler o nosso relatório.' },
-        { p: 'joana', t: 'Boa tarde. Um relatório técnico precisa separar o que foi medido, o que se interpreta e o que se recomenda. É isso que vou avaliar.' },
+        { p: 'joana', t: 'Boa noite. Um relatório técnico precisa separar o que foi medido, o que se interpreta e o que se recomenda. É isso que vou avaliar.' },
         { p: 'marta', t: '{nome}, vamos organizar a mesa e os documentos: relatório, mapas, laudos, a agenda das próximas coletas e o restante do material.' },
       ],
       meio: [
@@ -557,5 +558,4 @@
   );
 
   // ---------- trilhas das novas missões ----------
-  if (MI.TRILHAS) Object.assign(MI.TRILHAS, { horta: 'Choro ao violão e flauta', mapas: 'Barroco ao cravo', jantar: 'Minueto para quarteto de cordas' });
 })();

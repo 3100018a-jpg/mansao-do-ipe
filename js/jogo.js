@@ -26,7 +26,7 @@
   const cap = (id) => (E.caps[id] = E.caps[id] || { fase: 0, dominio: 0, melhor: 0, estrelasMelhor: 0, desafio: null });
   const capDados = (id) => MI.CAPITULOS.find((c) => c.id === id);
   const indiceCap = (id) => MI.CAPITULOS.findIndex((c) => c.id === id);
-  const completo = (id) => cap(id).fase >= 3;
+  const completo = (id) => !!(E.caps[id] && E.caps[id].fase >= 3);
   const liberado = (id) => {
     if (E.professor) return true;
     const i = indiceCap(id);
@@ -36,6 +36,9 @@
   // a última missão encerra o caso e libera o certificado
   const ultimo = () => MI.CAPITULOS[MI.CAPITULOS.length - 1].id;
   const fmt = (t) => String(t).replace(/\{nome\}/g, nome());
+  // período do dia na fachada: o do próximo capítulo; com o caso encerrado, um novo dia amanhece
+  const periodoMansao = () => { const prox = MI.CAPITULOS.find((c) => !completo(c.id)); return prox ? MI.periodoDe(prox.id) : 'aurora'; };
+  const rotuloPeriodo = (p) => { const P = MI.PERIODOS[p]; return P ? `${P.icone} ${P.nome}` : ''; };
 
   // =========================================================
   // Utilidades de interface
@@ -116,7 +119,7 @@
   // =========================================================
   function telaInicio() {
     trocarTela('tela-inicio');
-    $('#inicio-fundo').innerHTML = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">${U.isolarIds(MI.desenharMansao({ feitos: {}, rest: { lampioes: true } }), 'ini')}</svg>`;
+    $('#inicio-fundo').innerHTML = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">${U.isolarIds(MI.desenharMansao({ feitos: {}, rest: { lampioes: true }, periodo: 'noite' }), 'ini')}</svg>`;
     const temJogo = Object.keys(E.caps).length > 0;
     $('#inicio-nome').value = E.nome || '';
     $('#btn-continuar').hidden = !temJogo;
@@ -139,7 +142,7 @@
   }
   function iniciarAudioUmaVez() {
     A.iniciarAudio();
-    A.musica('mansao');
+    A.musica('mansao', periodoMansao());
   }
   function comecar(novo) {
     iniciarAudioUmaVez();
@@ -163,10 +166,11 @@
   function telaMansao(destaque) {
     trocarTela('tela-mansao');
     $('#inicio-fundo').innerHTML = '';
-    A.musica('mansao');
+    const per = periodoMansao();
+    A.musica('mansao', per);
     const feitos = {};
     MI.CAPITULOS.forEach((c) => { if (completo(c.id)) feitos[c.id] = true; });
-    $('#mansao-svg').innerHTML = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Fachada da Mansão do Ipê">${U.isolarIds(MI.desenharMansao({ feitos, rest: E.rest }), 'man')}</svg>`;
+    $('#mansao-svg').innerHTML = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Fachada da Mansão do Ipê">${U.isolarIds(MI.desenharMansao({ feitos, rest: E.rest, periodo: per }), 'man')}</svg>`;
     // medalhões dos capítulos
     const box = $('#mansao-pontos');
     box.innerHTML = '';
@@ -232,14 +236,14 @@
         <div class="acoes-sec"><button class="btn" data-a="desafio">Refazer a análise</button><button class="btn" data-a="rever">Rever a história</button></div>`;
     }
     const dominio = `<div class="dominio" title="Domínio da cena">${Array.from({ length: 5 }, (_, i) => `<span class="${i < st.dominio ? 'on' : ''}"></span>`).join('')}<em>Domínio ${st.dominio}/5</em></div>`;
-    const prev = `<div class="cap-prev"><svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">${U.isolarIds(MI.CENAS[c.cena].bg() + MI.CENAS[c.cena].fg(), 'prev')}</svg></div>`;
+    const prev = `<div class="cap-prev"><svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">${U.isolarIds(MI.cenaCompleta(c.cena, MI.periodoDe(id)), 'prev')}</svg></div>`;
     const { el, fechar } = abrirModal(`
       ${prev}
       <div class="cap-corpo">
         <div class="cap-rot">Capítulo ${c.num} · ${esc(c.comodo)}${c.cartao ? ` · <b>${esc(c.cartao)}</b>` : ''}</div>
         <h2>${esc(c.titulo)}</h2>
         <p class="cap-ctx">${esc(c.contexto)}</p>
-        <p class="cap-trilha">♪ Trilha: ${esc(MI.TRILHAS[c.musica] || '')}</p>
+        <p class="cap-trilha"><b>${rotuloPeriodo(MI.periodoDe(id))}</b> · ♪ ${esc(MI.TRILHAS[c.musica] || '')}, com ${esc((MI.SONS_PERIODO[MI.periodoDe(id)] || {}).desc || '')}</p>
         <p>${esc(c.resumo)}</p>
         ${completo(id) ? `<div class="cap-info"><span>${estrelasHTML(st.estrelasMelhor)}</span><span>Melhor pontuação: <b>${st.melhor}</b></span>${dominio}</div>` : ''}
         <div class="cap-acoes">${acoes}</div>
@@ -304,8 +308,9 @@
     if (op.fundo && MI.CENAS[op.fundo]) {
       const c = MI.CENAS[op.fundo];
       const capF = MI.CAPITULOS.find((x) => x.cena === op.fundo);
-      if (capF) A.musica(capF.musica);
-      fundo.innerHTML = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">${U.isolarIds(c.bg() + c.fg(), 'dlg')}</svg>`;
+      const perF = capF ? MI.periodoDe(capF.id) : 'dia';
+      if (capF) A.musica(capF.musica, perF);
+      fundo.innerHTML = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">${U.isolarIds(MI.cenaCompleta(op.fundo, perF), 'dlg')}</svg>`;
     } else fundo.innerHTML = '';
     el.classList.add('ativo');
     dlg = { linhas, i: -1, aoFim, digitando: false, timer: null };
@@ -371,7 +376,8 @@
     const cena = MI.CENAS[c.cena];
     const modo = MI.MODOS[modoIdx] || MI.MODOS[0];
     trocarTela('tela-cena');
-    A.musica(c.musica);
+    const periodo = MI.periodoDe(capId);
+    A.musica(c.musica, periodo);
     const slots = cena.slots.map((s, i) => Object.assign({ i, achado: false }, s, { se: ESC_OBJ(s.s) }));
     const alvos = U.embaralhar(slots).slice(0, cena.alvos).map((s) => s.i);
     J = {
@@ -382,7 +388,7 @@
       luz: { x: 800, y: 450 },
     };
     $('#cena-titulo').textContent = `${c.num}. ${cena.nome}`;
-    $('#cena-modo').textContent = modo.nome;
+    $('#cena-modo').textContent = `${modo.nome} · ${rotuloPeriodo(periodo)}`;
     // monta o SVG
     let objs = '';
     slots.forEach((s) => {
@@ -394,7 +400,7 @@
     const raioLuz = modo.id === 'mestre' ? 150 : 175;
     $('#cena-area').innerHTML = `<svg id="cena-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Cena: ${esc(cena.nome)}">
       <defs><clipPath id="clipCena"><rect width="1600" height="900"/></clipPath></defs>
-      <g clip-path="url(#clipCena)">${U.isolarIds(cena.bg(), 'cena')}<g id="c-obj">${U.isolarIds(objs, 'cena')}</g><g id="c-fg" pointer-events="none">${U.isolarIds(cena.fg(), 'cena')}</g></g>
+      <g clip-path="url(#clipCena)">${U.isolarIds(MI.comPeriodo(periodo, () => cena.bg()), 'cena')}<g id="c-obj">${U.isolarIds(objs, 'cena')}</g><g id="c-fg" pointer-events="none">${U.isolarIds(MI.comPeriodo(periodo, () => cena.fg()), 'cena')}</g>${noturno ? '' : `<g id="c-periodo" pointer-events="none">${U.isolarIds(MI.luzPeriodo(periodo, cena.luzes), 'cena')}</g>`}</g>
       <g id="c-fx" pointer-events="none"></g>
       ${noturno ? `<defs><radialGradient id="gMascLuz"><stop offset="0" stop-color="#000"/><stop offset=".62" stop-color="#000"/><stop offset="1" stop-color="#fff"/></radialGradient>
         <mask id="mNoite" maskUnits="userSpaceOnUse" x="0" y="0" width="1600" height="900"><rect width="1600" height="900" fill="#fff"/><circle id="luz" cx="800" cy="450" r="${raioLuz}" fill="url(#gMascLuz)"/></mask></defs>
@@ -1096,7 +1102,7 @@
       <label class="linha chk"><input type="checkbox" id="cfg-alt" ${A.lerAlternativas ? 'checked' : ''}><span>Ler as alternativas dos desafios</span></label>
       <label class="linha"><span>Volume das vozes</span><input type="range" id="cfg-vv" min="0" max="1" step="0.05" value="${A.volVoz}"></label>
       <label class="linha"><span>Volume da música</span><input type="range" id="cfg-vm" min="0" max="1" step="0.05" value="${A.volMusica}"></label>
-      <p class="cfg-info">♪ Tocando agora: ${esc(MI.TRILHAS[A.trilhaAtual && A.trilhaAtual()] || 'nenhuma trilha')}</p>
+      <p class="cfg-info">♪ Tocando agora: ${esc(MI.TRILHAS[A.trilhaAtual && A.trilhaAtual()] || 'nenhum ambiente')}${A.periodoAtual && A.periodoAtual() ? ' · ' + rotuloPeriodo(A.periodoAtual()) : ''}</p>
       <label class="linha"><span>Volume dos efeitos</span><input type="range" id="cfg-ve" min="0" max="1" step="0.05" value="${A.volEfeitos}"></label>
       <p class="cfg-info">${esc(infoVoz)}</p>
       ${telaCheiaPossivel() ? `<label class="linha chk"><input type="checkbox" id="cfg-tc" ${MI.S.get('telaCheia', true) ? 'checked' : ''}><span>Abrir em tela cheia no celular e no tablet</span></label>` : ''}

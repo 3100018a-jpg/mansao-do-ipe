@@ -288,7 +288,9 @@
   A.iniciarAudio = function () {
     if (ctx) { if (ctx.state === 'suspended') ctx.resume(); return; }
     try {
-      ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const AC = window.AudioContext || window.webkitAudioContext;
+      // 'balanced' usa um buffer um pouco maior: evita estalos nos celulares sem atrasar os efeitos
+      try { ctx = new AC({ latencyHint: 'balanced' }); } catch (e) { ctx = new AC(); }
       mestre = ctx.createGain(); mestre.gain.value = 0.9; mestre.connect(ctx.destination);
       busMus = ctx.createGain(); busMus.gain.value = A.volMusica * 0.5; busMus.connect(mestre);
       busFx = ctx.createGain(); busFx.gain.value = A.volEfeitos; busFx.connect(mestre);

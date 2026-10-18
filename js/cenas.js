@@ -13,14 +13,26 @@
   // ---------- auxiliares de desenho ----------
   const D = (MI.DESENHO = {});
 
+  D.periodo = 'dia';
+  const PER = () => (MI.PERIODOS && MI.PERIODOS[D.periodo]) || { ceu: ['#cfe6f2', '#cfe6f2', '#a7cfe0', '#cfe6f2'], vidroBase: '#8fbf8a' };
   D.defs = function () {
+    const P = PER();
     return `<defs>
       <linearGradient id="gMadeira" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8a5a33"/><stop offset="1" stop-color="#5e3a1f"/></linearGradient>
       <linearGradient id="gMadeiraClara" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b98654"/><stop offset="1" stop-color="#8a5f38"/></linearGradient>
       <linearGradient id="gOuro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d27a"/><stop offset=".5" stop-color="#c99a3a"/><stop offset="1" stop-color="#8e6420"/></linearGradient>
       <linearGradient id="gCortina" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5a1424"/><stop offset=".25" stop-color="#8e2a3c"/><stop offset=".5" stop-color="#5a1424"/><stop offset=".75" stop-color="#8e2a3c"/><stop offset="1" stop-color="#5a1424"/></linearGradient>
-      <linearGradient id="gVidroDia" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe6f2"/><stop offset=".6" stop-color="#a7cfe0"/><stop offset="1" stop-color="#8fbf8a"/></linearGradient>
-      <linearGradient id="gVidroNoite" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#101b3a"/><stop offset="1" stop-color="#2c3f6e"/></linearGradient>
+      <linearGradient id="gVidroDia" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${P.ceu[1]}"/><stop offset=".6" stop-color="${P.ceu[2]}"/><stop offset="1" stop-color="${P.vidroBase}"/></linearGradient>
+      <linearGradient id="gVidroNoite" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${P.ceu[0]}"/><stop offset="1" stop-color="${P.ceu[2]}"/></linearGradient>
+      <linearGradient id="gReflexo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".35" stop-color="#fff" stop-opacity="0"/><stop offset=".55" stop-color="#fff" stop-opacity=".12"/><stop offset=".62" stop-color="#fff" stop-opacity="0"/></linearGradient>
+      <linearGradient id="gSombraPrat" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity="0"/></linearGradient>
+      <linearGradient id="gSombraTeto" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#140a04" stop-opacity=".45"/><stop offset="1" stop-color="#140a04" stop-opacity="0"/></linearGradient>
+      <linearGradient id="gSombraPiso" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#140a04" stop-opacity=".4"/><stop offset="1" stop-color="#140a04" stop-opacity="0"/></linearGradient>
+      <linearGradient id="gLombada" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".25" stop-color="#fff" stop-opacity=".05"/><stop offset=".7" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></linearGradient>
+      <linearGradient id="gPilastra" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#4a2c16"/><stop offset=".35" stop-color="#9a6a3c"/><stop offset=".65" stop-color="#7a4a24"/><stop offset="1" stop-color="#3a2414"/></linearGradient>
+      <linearGradient id="gFundoEstante" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a180c"/><stop offset="1" stop-color="#3e2716"/></linearGradient>
+      <pattern id="pTela" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 4 L4 0" stroke="#fff" stroke-opacity=".035" stroke-width=".8"/></pattern>
+      <pattern id="pVeio" width="160" height="40" patternUnits="userSpaceOnUse"><path d="M0 10 Q40 4 80 12 T160 10 M0 28 Q50 22 100 30 T160 26" stroke="#000" stroke-opacity=".12" stroke-width="2" fill="none"/></pattern>
       <radialGradient id="gLuz" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff2c4" stop-opacity=".55"/><stop offset="1" stop-color="#fff2c4" stop-opacity="0"/></radialGradient>
       <radialGradient id="gVinheta" cx=".5" cy=".45" r=".75"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#140a04" stop-opacity=".55"/></radialGradient>
       <radialGradient id="gSombra" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
@@ -70,47 +82,131 @@
   // fileira de livros numa prateleira
   D.livros = function (x, y, w, h, seed, paleta) {
     const rnd = U.semente(seed);
-    paleta = paleta || ['#7a2335', '#2f5d7a', '#3f6b3c', '#8a5a2f', '#c9a03a', '#4a3a6a', '#a8471f', '#1f4a4a', '#6b2a1f', '#2b3a5a'];
+    paleta = paleta || ['#7a2335', '#2f5d7a', '#3f6b3c', '#8a5a2f', '#b8902e', '#4a3a6a', '#a8471f', '#1f4a4a', '#6b2a1f', '#2b3a5a', '#5a3a28', '#3a5a4a'];
+    const cor = () => paleta[Math.floor(rnd() * paleta.length)];
     let s = '';
     let cx = x;
     while (cx < x + w - 8) {
-      const bw = 9 + rnd() * 13;
+      const r = rnd();
+      // pilha de livros deitados
+      if (r < 0.06 && cx + 70 < x + w) {
+        let py = y;
+        const n = 2 + Math.floor(rnd() * 3);
+        for (let i = 0; i < n; i++) {
+          const lw = 54 + rnd() * 16, lh = 9 + rnd() * 5, c = cor();
+          const lx = cx + (rnd() * 8 - 4);
+          s += `<rect x="${lx.toFixed(1)}" y="${(py - lh).toFixed(1)}" width="${lw.toFixed(1)}" height="${lh.toFixed(1)}" rx="1.5" fill="${c}" stroke="#1a120b" stroke-width="1.1"/>`;
+          s += `<rect x="${(lx + lw - 6).toFixed(1)}" y="${(py - lh + 1.5).toFixed(1)}" width="5" height="${(lh - 3).toFixed(1)}" fill="#efe2c4" fill-opacity=".85"/>`;
+          s += `<rect x="${(lx + 6).toFixed(1)}" y="${(py - lh / 2 - 1).toFixed(1)}" width="${(lw * 0.4).toFixed(1)}" height="2" fill="#e8c46a" fill-opacity=".75"/>`;
+          py -= lh;
+        }
+        cx += 74;
+        continue;
+      }
+      const bw = 9 + rnd() * 14;
       if (cx + bw > x + w) break;
-      const bh = h * (0.62 + rnd() * 0.34);
-      const cor = paleta[Math.floor(rnd() * paleta.length)];
-      if (rnd() < 0.07 && cx + 30 < x + w) {
-        // livro inclinado
-        s += `<rect x="${cx + 4}" y="${y - bh}" width="${bw}" height="${bh}" fill="${cor}" stroke="#1a120b" stroke-width="1.2" transform="rotate(14 ${cx + 4} ${y})"/>`;
+      const bh = h * (0.6 + rnd() * 0.36);
+      const c = cor();
+      const top = y - bh;
+      // livro inclinado
+      if (r > 0.94 && cx + 30 < x + w) {
+        s += `<g transform="rotate(14 ${(cx + 4).toFixed(1)} ${y})"><rect x="${(cx + 4).toFixed(1)}" y="${top.toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" rx="1.5" fill="${c}" stroke="#1a120b" stroke-width="1.2"/><rect x="${(cx + 4).toFixed(1)}" y="${top.toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" fill="url(#gLombada)"/></g>`;
         cx += bw + 14;
         continue;
       }
-      s += `<rect x="${cx.toFixed(1)}" y="${(y - bh).toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" fill="${cor}" stroke="#1a120b" stroke-width="1.2"/>`;
-      if (rnd() < 0.7) s += `<rect x="${(cx + 1).toFixed(1)}" y="${(y - bh + 8).toFixed(1)}" width="${(bw - 2).toFixed(1)}" height="3" fill="#e8c46a" fill-opacity=".8"/>`;
-      if (rnd() < 0.5) s += `<rect x="${(cx + 1).toFixed(1)}" y="${(y - 14).toFixed(1)}" width="${(bw - 2).toFixed(1)}" height="2.5" fill="#e8c46a" fill-opacity=".7"/>`;
-      cx += bw + 0.5;
+      s += `<rect x="${cx.toFixed(1)}" y="${top.toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" rx="1.5" fill="${c}" stroke="#1a120b" stroke-width="1.2"/>`;
+      s += `<rect x="${cx.toFixed(1)}" y="${top.toFixed(1)}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" rx="1.5" fill="url(#gLombada)"/>`;
+      const estilo = rnd();
+      if (estilo < 0.35) {
+        // encadernação de couro com nervuras
+        for (let k = 0; k < 4; k++) { const ny = top + 8 + k * (bh - 16) / 3; s += `<rect x="${(cx + 0.8).toFixed(1)}" y="${ny.toFixed(1)}" width="${(bw - 1.6).toFixed(1)}" height="2.2" fill="#000" fill-opacity=".25"/><rect x="${(cx + 0.8).toFixed(1)}" y="${(ny - 1.2).toFixed(1)}" width="${(bw - 1.6).toFixed(1)}" height="1.2" fill="#e8c46a" fill-opacity=".6"/>`; }
+      } else if (estilo < 0.7) {
+        // faixas douradas e etiqueta do título
+        s += `<rect x="${(cx + 1).toFixed(1)}" y="${(top + 6).toFixed(1)}" width="${(bw - 2).toFixed(1)}" height="2.6" fill="#e8c46a" fill-opacity=".85"/>`;
+        s += `<rect x="${(cx + 1).toFixed(1)}" y="${(y - 12).toFixed(1)}" width="${(bw - 2).toFixed(1)}" height="2.4" fill="#e8c46a" fill-opacity=".7"/>`;
+        if (bw > 12) s += `<rect x="${(cx + 2.5).toFixed(1)}" y="${(top + bh * 0.28).toFixed(1)}" width="${(bw - 5).toFixed(1)}" height="${(bh * 0.18).toFixed(1)}" rx="1" fill="#1a120b" fill-opacity=".45"/><rect x="${(cx + 4).toFixed(1)}" y="${(top + bh * 0.33).toFixed(1)}" width="${(bw - 8).toFixed(1)}" height="1.6" fill="#e8c46a" fill-opacity=".8"/>`;
+      } else {
+        // capa de tecido com rótulo claro
+        if (bw > 11) s += `<rect x="${(cx + 2).toFixed(1)}" y="${(top + bh * 0.2).toFixed(1)}" width="${(bw - 4).toFixed(1)}" height="${(bh * 0.14).toFixed(1)}" rx="1" fill="#efe2c4" fill-opacity=".85"/><line x1="${(cx + 3.5).toFixed(1)}" y1="${(top + bh * 0.27).toFixed(1)}" x2="${(cx + bw - 3.5).toFixed(1)}" y2="${(top + bh * 0.27).toFixed(1)}" stroke="#3a2a1a" stroke-width="1"/>`;
+      }
+      cx += bw + 0.6;
     }
     return s;
   };
 
   D.estante = function (x, y, w, h, prateleiras, seed, op) {
     op = op || {};
+    const lado = 16;
     let s = `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#gMadeira)" ${K}/>`;
-    s += `<rect x="${x + 14}" y="${y + 14}" width="${w - 28}" height="${h - 28}" fill="#3a2414"/>`;
+    // fundo de tábuas verticais
+    s += `<rect x="${x + lado}" y="${y + 14}" width="${w - lado * 2}" height="${h - 28}" fill="url(#gFundoEstante)"/>`;
+    for (let px = x + lado + 38; px < x + w - lado; px += 38) s += `<line x1="${px}" y1="${y + 14}" x2="${px}" y2="${y + h - 14}" stroke="#1e1108" stroke-width="2" stroke-opacity=".7"/>`;
     const passo = (h - 28) / prateleiras;
     for (let i = 1; i <= prateleiras; i++) {
       const py = y + 14 + passo * i;
-      if (!(op.vazias || []).includes(i)) s += D.livros(x + 18 + (op.recuo && op.recuo[i] ? op.recuo[i] : 0), py - 6, w - 36 - (op.corte && op.corte[i] ? op.corte[i] : 0), passo - 14, seed + i * 31);
-      s += `<rect x="${x + 8}" y="${py - 6}" width="${w - 16}" height="12" fill="#6e4524" stroke="#2b1d12" stroke-width="1.5"/>`;
+      // sombra da prateleira de cima sobre os livros
+      s += `<rect x="${x + lado}" y="${(py - passo + 6).toFixed(1)}" width="${w - lado * 2}" height="${Math.min(26, passo * 0.3).toFixed(1)}" fill="url(#gSombraPrat)"/>`;
+      if (!(op.vazias || []).includes(i)) s += D.livros(x + lado + 4 + (op.recuo && op.recuo[i] ? op.recuo[i] : 0), py - 6, w - lado * 2 - 8 - (op.corte && op.corte[i] ? op.corte[i] : 0), passo - 14, seed + i * 31);
+      s += `<rect x="${x + 8}" y="${(py - 6).toFixed(1)}" width="${w - 16}" height="13" fill="#6e4524" stroke="#2b1d12" stroke-width="1.5"/>`;
+      s += `<rect x="${x + 9}" y="${(py - 5).toFixed(1)}" width="${w - 18}" height="2.5" fill="#b07a48" fill-opacity=".7"/>`;
     }
-    s += `<rect x="${x - 8}" y="${y - 16}" width="${w + 16}" height="22" fill="#6e4524" ${K}/>`;
+    // laterais com caneluras
+    [x, x + w - lado].forEach((lx) => {
+      s += `<rect x="${lx}" y="${y}" width="${lado}" height="${h}" fill="url(#gPilastra)" stroke="#2b1d12" stroke-width="1.5"/>`;
+      s += `<line x1="${lx + 5}" y1="${y + 30}" x2="${lx + 5}" y2="${y + h - 40}" stroke="#2b1d12" stroke-opacity=".5" stroke-width="1.5"/><line x1="${lx + 11}" y1="${y + 30}" x2="${lx + 11}" y2="${y + h - 40}" stroke="#2b1d12" stroke-opacity=".5" stroke-width="1.5"/>`;
+    });
+    // cornija com dentículos e rodapé
+    s += `<rect x="${x - 8}" y="${y - 16}" width="${w + 16}" height="22" fill="#6e4524" ${K}/><rect x="${x - 14}" y="${y - 28}" width="${w + 28}" height="14" fill="#7a4e2a" ${K}/>`;
+    s += `<rect x="${x - 13}" y="${y - 27}" width="${w + 26}" height="3" fill="#c08850" fill-opacity=".6"/>`;
+    for (let dx = x - 2; dx < x + w + 2; dx += 16) s += `<rect x="${dx}" y="${y - 12}" width="8" height="8" fill="#5a3a1c"/>`;
+    s += `<rect x="${x - 4}" y="${y + h - 16}" width="${w + 8}" height="18" fill="#5a3a1c" ${K}/>`;
     return s;
   };
 
-  D.quadro = function (x, y, w, h, conteudo, moldura) {
-    return `<rect x="${x - 14}" y="${y - 14}" width="${w + 28}" height="${h + 28}" fill="${moldura || 'url(#gOuro)'}" ${K}/>
-      <rect x="${x - 4}" y="${y - 4}" width="${w + 8}" height="${h + 8}" fill="#5a3a1c"/>
-      <svg x="${x}" y="${y}" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">${conteudo}</svg>`;
+  // quadro com moldura entalhada, passe-partout, textura de tela e reflexo
+  D.quadro = function (x, y, w, h, conteudo, moldura, op) {
+    op = op || {};
+    const m = Math.max(10, Math.min(18, Math.min(w, h) * 0.09));
+    const ouro = !moldura || moldura.indexOf('gOuro') >= 0;
+    const X0 = x - m, Y0 = y - m, X1 = x + w + m, Y1 = y + h + m;
+    let s = '';
+    // fio, prego e sombra na parede
+    if (!op.semFio) s += `<path d="M${x + w * 0.22} ${Y0 + 2} L${x + w / 2} ${Y0 - 30} L${x + w * 0.78} ${Y0 + 2}" stroke="#3a2a1a" stroke-width="1.6" fill="none"/><circle cx="${x + w / 2}" cy="${Y0 - 30}" r="3.5" fill="#c99a3a" stroke="#2b1d12" stroke-width="1"/>`;
+    s += `<rect x="${X0 + 7}" y="${Y0 + 9}" width="${w + 2 * m}" height="${h + 2 * m}" fill="#000" opacity=".28"/>`;
+    s += `<rect x="${X0}" y="${Y0}" width="${w + 2 * m}" height="${h + 2 * m}" fill="${moldura || 'url(#gOuro)'}" ${K}/>`;
+    // chanfro: luz no alto e à esquerda, sombra embaixo e à direita
+    s += `<path d="M${X0} ${Y0} L${X1} ${Y0} L${X1 - m} ${Y0 + m} L${X0 + m} ${Y0 + m} L${X0 + m} ${Y1 - m} L${X0} ${Y1} Z" fill="#fff" opacity=".2"/>`;
+    s += `<path d="M${X1} ${Y1} L${X0} ${Y1} L${X0 + m} ${Y1 - m} L${X1 - m} ${Y1 - m} L${X1 - m} ${Y0 + m} L${X1} ${Y0} Z" fill="#000" opacity=".22"/>`;
+    s += `<rect x="${X0 + m * 0.42}" y="${Y0 + m * 0.42}" width="${w + m * 1.16}" height="${h + m * 1.16}" fill="none" stroke="#2b1d12" stroke-opacity=".55" stroke-width="1.6"/>`;
+    s += `<rect x="${X0 + m * 0.42 + 2}" y="${Y0 + m * 0.42 + 2}" width="${w + m * 1.16 - 4}" height="${h + m * 1.16 - 4}" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1"/>`;
+    // ornamentos nos cantos
+    if (ouro) [[X0, Y0], [X1, Y0], [X0, Y1], [X1, Y1]].forEach(([cx, cy]) => {
+      const dx = cx === X0 ? m * 0.5 : -m * 0.5, dy = cy === Y0 ? m * 0.5 : -m * 0.5;
+      s += `<circle cx="${cx + dx}" cy="${cy + dy}" r="${m * 0.42}" fill="#f6dc8a" stroke="#8e6420" stroke-width="1.4"/><circle cx="${cx + dx}" cy="${cy + dy}" r="${m * 0.16}" fill="#8e6420"/>`;
+    });
+    else [[X0, Y0], [X1, Y0], [X0, Y1], [X1, Y1]].forEach(([cx, cy]) => { s += `<rect x="${cx + (cx === X0 ? 2 : -m + 2)}" y="${cy + (cy === Y0 ? 2 : -m + 2)}" width="${m - 4}" height="${m - 4}" fill="none" stroke="#2b1d12" stroke-opacity=".4"/>`; });
+    // filete escuro (passe-partout) e a pintura
+    s += `<rect x="${x - 4}" y="${y - 4}" width="${w + 8}" height="${h + 8}" fill="#3a2414"/>`;
+    s += `<svg x="${x}" y="${y}" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">${conteudo}<rect width="${w}" height="${h}" fill="url(#pTela)"/></svg>`;
+    // verniz: reflexo diagonal e sombra interna
+    s += `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#gReflexo)"/>`;
+    s += `<rect x="${x}" y="${y}" width="${w}" height="${Math.min(14, h * 0.08)}" fill="#000" opacity=".18"/>`;
+    // placa com o título
+    if (op.placa) s += `<rect x="${x + w / 2 - 50}" y="${Y1 + 8}" width="100" height="18" rx="3" fill="url(#gOuro)" ${K}/><text x="${x + w / 2}" y="${Y1 + 21}" font-size="10.5" text-anchor="middle" font-family="Georgia,serif" fill="#3a2414">${op.placa}</text>`;
+    return s;
   };
+
+  // feixe de luz entrando por uma janela (cor conforme o período)
+  D.feixe = function (pontos) {
+    const P = { aurora: ['#ffc0a0', 0.14], dia: ['#fff6d8', 0.13], entardecer: ['#ffb060', 0.2], noite: ['#bcd0ff', 0.05] }[D.periodo] || ['#fff6d8', 0.12];
+    const id = 'gFeixe' + Math.floor(Math.random() * 1e6);
+    const ys = pontos.map((p) => p[1]);
+    return `<defs><linearGradient id="${id}" x1="0" y1="${Math.min(...ys)}" x2="0" y2="${Math.max(...ys)}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="${P[0]}" stop-opacity="${P[1]}"/><stop offset="1" stop-color="${P[0]}" stop-opacity="0"/></linearGradient></defs><path d="M${pontos.map((p) => p.join(' ')).join(' L')} Z" fill="url(#${id})"/>`;
+  };
+  // sombras de canto: junto ao teto e ao piso dão profundidade ao cômodo
+  D.cantos = (yTeto, yPiso) => `<rect y="${yTeto}" width="${W}" height="70" fill="url(#gSombraTeto)"/><rect y="${yPiso - 60}" width="${W}" height="60" fill="url(#gSombraPiso)"/>`;
+  // céu visto por uma janela retangular, com morros ao longe
+  D.vista = (x, y, w, h, op) => (MI.ceuSVG ? `<svg x="${x}" y="${y}" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${MI.ceuSVG(w, h, D.periodo, Object.assign({ horizonte: 0.62, nuvens: 1 }, op || {}))}</svg>` : '');
 
   D.lustre = function (cx, y, esc) {
     esc = esc || 1;
@@ -148,27 +244,44 @@
     const dir = lado === 'dir' ? -1 : 1;
     const x2 = x + w;
     return `<path d="M${x} ${y} L${x2} ${y} Q${x2 - dir * 10} ${y + h * 0.4} ${dir > 0 ? x + w * 0.45 : x + w * 0.55} ${y + h * 0.55} Q${dir > 0 ? x + w * 0.8 : x + w * 0.2} ${y + h * 0.75} ${dir > 0 ? x + w * 0.7 : x + w * 0.3} ${y + h} L${dir > 0 ? x : x2} ${y + h} Z" fill="url(#gCortina)" ${K}/>
-      <path d="M${dir > 0 ? x + w * 0.42 : x + w * 0.58} ${y + h * 0.5} q${dir * 20} 14 ${dir * 30} 4" stroke="url(#gOuro)" stroke-width="7" fill="none"/>`;
+      ${[0.22, 0.5, 0.78].map((f) => { const xt = x + w * f, xb = dir > 0 ? x + w * f * 0.7 : x2 - w * (1 - f) * 0.7; return `<path d="M${xt.toFixed(0)} ${y + 4} Q${(xt + (xb - xt) * 0.3).toFixed(0)} ${(y + h * 0.35).toFixed(0)} ${(x + w / 2 + (xt - x - w / 2) * 0.3).toFixed(0)} ${(y + h * 0.52).toFixed(0)} M${(x + w / 2 + (xt - x - w / 2) * 0.3).toFixed(0)} ${(y + h * 0.56).toFixed(0)} Q${((xt + xb) / 2).toFixed(0)} ${(y + h * 0.8).toFixed(0)} ${xb.toFixed(0)} ${y + h - 2}" stroke="#2a0810" stroke-opacity=".35" stroke-width="2.5" fill="none"/>`; }).join('')}
+      <path d="M${x} ${y} L${x2} ${y} L${x2} ${y + 14} L${x} ${y + 14} Z" fill="#4a0f1c" opacity=".55"/>
+      <path d="M${dir > 0 ? x + w * 0.42 : x + w * 0.58} ${y + h * 0.5} q${dir * 20} 14 ${dir * 30} 4" stroke="url(#gOuro)" stroke-width="7" fill="none"/>
+      <path d="M${dir > 0 ? x + w * 0.42 + dir * 30 : x + w * 0.58 + dir * 30} ${y + h * 0.5 + 4} l${dir * 4} 26 l${dir * -8} 0 Z" fill="url(#gOuro)" stroke="#5a3a1c" stroke-width="1"/>`;
   };
 
   // sombra suave sob objetos apoiados
   D.sombra = (x, y, rx, ry) => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry || rx * 0.22}" fill="url(#gSombra)"/>`;
 
   // ---------- retrato pendurado (pai de Dona Helena) ----------
-  const retratoAntigo = (w, h) => `<rect width="${w}" height="${h}" fill="#3a3024"/>
-    <ellipse cx="${w / 2}" cy="${h * 0.95}" rx="${w * 0.42}" ry="${h * 0.32}" fill="#1f1a16"/>
-    <path d="M${w * 0.44} ${h * 0.62} L${w / 2} ${h * 0.78} L${w * 0.56} ${h * 0.62} Z" fill="#efe6d2"/>
+  const retratoAntigo = (w, h) => `<defs><radialGradient id="gFundoRet" cx=".45" cy=".35" r=".8"><stop offset="0" stop-color="#6a5a40"/><stop offset="1" stop-color="#241c14"/></radialGradient></defs>
+    <rect width="${w}" height="${h}" fill="url(#gFundoRet)"/>
+    <path d="M0 0 L${w * 0.32} 0 Q${w * 0.2} ${h * 0.5} ${w * 0.3} ${h} L0 ${h} Z" fill="#5a1c24" opacity=".75"/>
+    <path d="M${w * 0.12} 0 Q${w * 0.06} ${h * 0.5} ${w * 0.14} ${h}" stroke="#3a0e16" stroke-width="3" fill="none" opacity=".6"/>
+    <path d="M${w * 0.06} ${h} Q${w * 0.12} ${h * 0.7} ${w * 0.32} ${h * 0.64} L${w * 0.68} ${h * 0.64} Q${w * 0.88} ${h * 0.7} ${w * 0.94} ${h} Z" fill="#1f1a16"/>
+    <path d="M${w * 0.4} ${h * 0.64} L${w / 2} ${h * 0.86} L${w * 0.6} ${h * 0.64} Z" fill="#efe6d2"/>
+    <path d="M${w * 0.46} ${h * 0.66} L${w / 2} ${h * 0.74} L${w * 0.54} ${h * 0.66} L${w / 2} ${h * 0.7} Z" fill="#5a1c24"/>
+    <path d="M${w * 0.32} ${h * 0.66} L${w * 0.44} ${h * 0.9} M${w * 0.68} ${h * 0.66} L${w * 0.56} ${h * 0.9}" stroke="#0e0b09" stroke-width="2"/>
+    <circle cx="${w * 0.62}" cy="${h * 0.8}" r="2.5" fill="#c99a3a"/><path d="M${w * 0.62} ${h * 0.8} Q${w * 0.7} ${h * 0.84} ${w * 0.66} ${h * 0.9}" stroke="#c99a3a" stroke-width="1.4" fill="none"/>
+    <rect x="${w * 0.44}" y="${h * 0.54}" width="${w * 0.12}" height="${h * 0.1}" fill="#c9a07c"/>
     <ellipse cx="${w / 2}" cy="${h * 0.42}" rx="${w * 0.17}" ry="${h * 0.16}" fill="#d9b08c"/>
-    <path d="M${w * 0.33} ${h * 0.36} Q${w / 2} ${h * 0.16} ${w * 0.67} ${h * 0.36} Q${w / 2} ${h * 0.28} ${w * 0.33} ${h * 0.36} Z" fill="#cfcac2"/>
-    <path d="M${w * 0.43} ${h * 0.5} Q${w / 2} ${h * 0.47} ${w * 0.57} ${h * 0.5}" stroke="#8a8278" stroke-width="5" fill="none"/>
-    <circle cx="${w * 0.44}" cy="${h * 0.41}" r="2.5" fill="#2b1d12"/><circle cx="${w * 0.56}" cy="${h * 0.41}" r="2.5" fill="#2b1d12"/>
+    <ellipse cx="${w * 0.45}" cy="${h * 0.38}" rx="${w * 0.07}" ry="${h * 0.07}" fill="#f0cfa8" opacity=".55"/>
+    <path d="M${w * 0.33} ${h * 0.38} Q${w * 0.34} ${h * 0.2} ${w / 2} ${h * 0.21} Q${w * 0.66} ${h * 0.2} ${w * 0.67} ${h * 0.38} Q${w * 0.62} ${h * 0.28} ${w / 2} ${h * 0.29} Q${w * 0.38} ${h * 0.28} ${w * 0.33} ${h * 0.38} Z" fill="#cfcac2"/>
+    <path d="M${w * 0.38} ${h * 0.36} L${w * 0.47} ${h * 0.35} M${w * 0.53} ${h * 0.35} L${w * 0.62} ${h * 0.36}" stroke="#8a8278" stroke-width="2.5"/>
+    <path d="M${w * 0.42} ${h * 0.5} Q${w / 2} ${h * 0.46} ${w * 0.58} ${h * 0.5} Q${w / 2} ${h * 0.49} ${w * 0.42} ${h * 0.5} Z" stroke="#8a8278" stroke-width="4" fill="#8a8278"/>
+    <path d="M${w / 2} ${h * 0.4} L${w * 0.48} ${h * 0.46} L${w * 0.52} ${h * 0.46}" stroke="#a8805c" stroke-width="1.5" fill="none"/>
+    <circle cx="${w * 0.44}" cy="${h * 0.4}" r="2.6" fill="#2b1d12"/><circle cx="${w * 0.56}" cy="${h * 0.4}" r="2.6" fill="#2b1d12"/>
+    <circle cx="${w * 0.445}" cy="${h * 0.395}" r=".9" fill="#fff"/><circle cx="${w * 0.565}" cy="${h * 0.395}" r=".9" fill="#fff"/>
     <rect width="${w}" height="${h}" fill="url(#gVinheta)"/>`;
 
-  const paisagemLago = (w, h, verde) => `<rect width="${w}" height="${h}" fill="#f2d9a8"/>
-    <rect y="${h * 0.45}" width="${w}" height="${h * 0.55}" fill="${verde ? '#6f9a5a' : '#6fa8c9'}"/>
-    <path d="M0 ${h * 0.5} Q${w * 0.3} ${h * 0.3} ${w * 0.55} ${h * 0.46} Q${w * 0.8} ${h * 0.32} ${w} ${h * 0.46} L${w} ${h * 0.5} Z" fill="#4f7a46"/>
-    <circle cx="${w * 0.78}" cy="${h * 0.2}" r="${h * 0.08}" fill="#fff3c4"/>
-    <path d="M${w * 0.1} ${h * 0.7} L${w * 0.25} ${h * 0.7} M${w * 0.5} ${h * 0.8} L${w * 0.7} ${h * 0.8}" stroke="#fff" stroke-opacity=".5" stroke-width="3"/>`;
+  const paisagemLago = (w, h, verde) => {
+    const P = PER();
+    let s = MI.ceuSVG ? MI.ceuSVG(w, h, D.periodo, { horizonte: 0.52, nuvens: 1, astroX: 0.78 }) : `<rect width="${w}" height="${h}" fill="#f2d9a8"/>`;
+    s += `<rect y="${h * 0.6}" width="${w}" height="${h * 0.4}" fill="${verde ? '#6f9a5a' : '#6fa8c9'}"/>
+      <path d="M${w * 0.1} ${h * 0.72} L${w * 0.25} ${h * 0.72} M${w * 0.5} ${h * 0.84} L${w * 0.7} ${h * 0.84}" stroke="#fff" stroke-opacity=".45" stroke-width="3"/>`;
+    (P.tinta || []).forEach(([cor, op]) => { s += `<rect y="${h * 0.6}" width="${w}" height="${h * 0.4}" fill="${cor}" opacity="${op}"/>`; });
+    return s;
+  };
 
   // =========================================================
   // CENA 1 — HALL DE ENTRADA
@@ -224,6 +337,8 @@
       deg += `<rect x="${x0}" y="${y0 - 8}" width="${W - x0}" height="8" fill="#4a2c16" opacity=".55"/>`;
     }
     s += `<path d="M1080 640 L1600 226 L1600 640 Z" fill="#3a2414"/>` + deg;
+    s += D.feixe([[680, 300], [920, 300], [1090, 900], [520, 900]]);
+    s += D.cantos(50, 640);
     // tapete
     s += `<ellipse cx="800" cy="770" rx="330" ry="80" fill="#7a2335" ${K}/><ellipse cx="800" cy="770" rx="290" ry="62" fill="none" stroke="#e2bd5a" stroke-width="4"/><ellipse cx="800" cy="770" rx="150" ry="30" fill="#5a1626" stroke="#e2bd5a" stroke-width="3"/>`;
     // pedestal com vaso
@@ -254,8 +369,7 @@
     let s = D.defs();
     s += `<linearGradient id="gCeu" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fc9e4"/><stop offset=".7" stop-color="#f6dcae"/><stop offset="1" stop-color="#f3c78e"/></linearGradient>
       <linearGradient id="gLago" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#86a868"/><stop offset=".5" stop-color="#5f8a4c"/><stop offset="1" stop-color="#3f6a3a"/></linearGradient>`;
-    s += `<rect width="${W}" height="420" fill="url(#gCeu)"/>
-      <circle cx="1180" cy="180" r="60" fill="#fff4cf"/><circle cx="1180" cy="180" r="140" fill="url(#gLuz)"/>
+    s += `<rect width="${W}" height="420" fill="url(#gCeu)"/>${D.vista(0, 0, W, 420, { horizonte: false, nuvens: 3, astroX: 0.74 })}
       <path d="M0 340 Q200 260 420 320 Q640 250 860 312 Q1100 240 1300 300 Q1460 260 1600 300 L1600 420 L0 420 Z" fill="#7a9a6a"/>
       <path d="M0 380 Q240 320 480 370 Q760 320 1000 372 Q1260 330 1600 360 L1600 420 L0 420 Z" fill="#4f7a46"/>`;
     // árvores distantes
@@ -338,6 +452,7 @@
     s += `<rect y="430" width="${W}" height="215" fill="url(#gMadeira)" ${K}/>`;
     for (let x = 30; x < W; x += 170) s += `<rect x="${x}" y="452" width="146" height="170" rx="3" fill="none" stroke="#3a2414" stroke-width="3"/>`;
     s += D.piso(640, 900, 900, 260, { tipo: 'tabuas', cols: 22, rows: 7, c1: '#7a4a24', c2: '#3a2414', seed: 11 });
+    s += D.feixe([[528, 440], [832, 440], [1120, 900], [300, 900]]);
     // tapete persa
     s += `<path d="M380 700 L1380 700 L1520 900 L240 900 Z" fill="#6b1f2a" ${K}/><path d="M420 716 L1350 716 L1470 892 L300 892 Z" fill="none" stroke="#e2bd5a" stroke-width="4"/><path d="M560 760 L1220 760 L1290 860 L480 860 Z" fill="#1f3a5a" stroke="#e2bd5a" stroke-width="3"/>`;
     // estante
@@ -349,6 +464,8 @@
       <rect x="520" y="110" width="320" height="330" fill="none" stroke="#efe6d2" stroke-width="12"/>
       <rect x="500" y="440" width="360" height="20" fill="#d8c9a8" ${K}/>`;
     s += D.cortina(460, 90, 90, 380, 'esq') + D.cortina(810, 90, 90, 380, 'dir');
+    s += D.cantos(44, 640);
+    s += D.quadro(1404, 96, 120, 150, `<rect width="120" height="150" fill="#f3ead2"/><path d="M60 140 Q56 90 64 40" stroke="#5a3a1c" stroke-width="3" fill="none"/><path d="M62 96 Q40 80 30 60 M63 70 Q86 56 94 36" stroke="#5a3a1c" stroke-width="2" fill="none"/>${[[30, 58], [40, 50], [26, 48], [94, 34], [84, 28], [98, 24], [64, 38], [56, 30], [70, 30]].map(([x, y], i) => `<circle cx="${x}" cy="${y}" r="${5 + (i % 3)}" fill="${['#f2c230', '#e0a81f', '#f7d54a'][i % 3]}" stroke="#a87a10" stroke-width=".8"/>`).join('')}<path d="M64 120 q14 -8 24 -2 q-12 8 -24 2 Z M60 108 q-14 -8 -22 0 q10 6 22 0 Z" fill="#6f9a5a" stroke="#3f6a34" stroke-width=".8"/><text x="60" y="146" font-size="9" text-anchor="middle" font-family="Georgia,serif" font-style="italic" fill="#5a3a1c">Handroanthus albus</text>`, '#5e3a1f');
     s += `<rect x="440" y="80" width="480" height="18" rx="8" fill="url(#gOuro)" ${K}/>`;
     // quadros: mapa do lago e gráfico antigo
     s += D.quadro(920, 130, 200, 140, `<rect width="200" height="140" fill="#efe2b8"/><path d="M20 30 Q60 70 90 80 Q110 90 100 130" stroke="#3f86c8" stroke-width="5" fill="none"/><ellipse cx="130" cy="78" rx="52" ry="34" fill="#7fb6df" stroke="#2b1d12" stroke-width="2"/><text x="136" y="96" font-size="13" text-anchor="middle" font-family="serif" fill="#1f3a5a">Lago do Ipê</text><circle cx="88" cy="70" r="5" fill="#c0392b"/><circle cx="130" cy="66" r="5" fill="#c0392b"/><circle cx="160" cy="76" r="5" fill="#c0392b"/>`, '#5e3a1f');
@@ -387,10 +504,11 @@
     s += D.estante(0, 40, 470, 620, 6, 101, { corte: { 2: 150, 4: 90 } });
     s += D.estante(1130, 40, 470, 620, 6, 211, { corte: { 3: 140, 5: 110 }, recuo: { 1: 60 } });
     // janela em arco com luar
-    s += `<path d="M580 600 L580 220 Q580 70 800 70 Q1020 70 1020 220 L1020 600 Z" fill="url(#gVidroNoite)" ${K}/>
-      <circle cx="900" cy="190" r="46" fill="#f4f0d8"/><circle cx="900" cy="190" r="120" fill="#f4f0d8" opacity=".12"/>
-      ${Array.from({ length: 24 }, (_, i) => { const r = U.semente(i + 3); return `<circle cx="${(600 + r() * 400).toFixed(0)}" cy="${(90 + r() * 300).toFixed(0)}" r="${(1 + r() * 2).toFixed(1)}" fill="#fff"/>`; }).join('')}
-      <path d="M580 470 Q700 420 800 450 Q900 410 1020 450 L1020 600 L580 600 Z" fill="#162a22"/>
+    const arco = 'M580 600 L580 220 Q580 70 800 70 Q1020 70 1020 220 L1020 600 Z';
+    s += `<path d="${arco}" fill="url(#gVidroNoite)" ${K}/>`;
+    s += MI.ceuEm ? MI.ceuEm(`<path d="${arco}"/>`, 580, 70, 440, 530, D.periodo, { horizonte: 0.8, astroX: 0.72, astroY: 0.22, nuvens: 1, semente: 29 }) : '';
+    s += `<path d="M580 520 Q700 480 800 500 Q900 470 1020 500 L1020 600 L580 600 Z" fill="${(PER().morros || ['#162a22', '#162a22'])[1]}"/>
+      <path d="${arco}" fill="url(#gReflexo)" opacity=".5"/>
       <path d="M800 70 L800 600 M580 330 L1020 330" stroke="#3a2414" stroke-width="10"/>
       <path d="M580 600 L580 220 Q580 70 800 70 Q1020 70 1020 220 L1020 600" fill="none" stroke="#5e3a1f" stroke-width="16"/>`;
     s += `<rect x="560" y="560" width="480" height="60" fill="#5e3a1f" ${K}/><rect x="570" y="540" width="460" height="24" rx="10" fill="#2f5d7a" ${K}/>`;
@@ -400,8 +518,10 @@
     // mesa de leitura
     s += `<rect x="470" y="640" width="660" height="28" rx="4" fill="#6e4524" ${K}/><rect x="480" y="612" width="640" height="30" fill="#2f5d3a" ${K}/>
       <path d="M500 668 L490 860 M1100 668 L1110 860 M560 668 L560 820 M1040 668 L1040 820" stroke="#3a2414" stroke-width="14" stroke-linecap="round"/>`;
+    s += D.feixe([[600, 340], [1000, 340], [1180, 900], [420, 900]]);
+    s += D.cantos(30, 660);
     // luz da vela sobre a mesa
-    s += `<circle cx="760" cy="560" r="520" fill="url(#gLuz)"/><circle cx="300" cy="380" r="380" fill="url(#gLuz)" opacity=".6"/><circle cx="1360" cy="380" r="380" fill="url(#gLuz)" opacity=".6"/>`;
+    s += `<circle cx="760" cy="580" r="340" fill="url(#gLuz)" opacity=".8"/><circle cx="300" cy="380" r="300" fill="url(#gLuz)" opacity=".4"/><circle cx="1360" cy="380" r="300" fill="url(#gLuz)" opacity=".4"/>`;
     // suporte do globo
     s += `<path d="M260 820 L300 740 L340 820 M300 740 L300 700" stroke="#5e3a1f" stroke-width="10" stroke-linecap="round" fill="none"/>`;
     return s;
@@ -426,10 +546,11 @@
       <path d="M0 96 L${W} 96" stroke="#b87333" stroke-width="12"/><path d="M0 120 L${W} 120" stroke="#8e9a98" stroke-width="8"/>
       ${[300, 700, 1100, 1500].map((x) => `<rect x="${x - 10}" y="86" width="20" height="44" fill="#9c5f26"/>`).join('')}`;
     // janela basculante (nível do chão lá fora)
-    s += `<rect x="660" y="150" width="280" height="110" fill="#6fa070" ${K}/><rect x="660" y="150" width="280" height="56" fill="#cfe6f2"/>
+    s += `<rect x="660" y="150" width="280" height="110" fill="#6fa070" ${K}/><rect x="660" y="150" width="280" height="56" fill="url(#gVidroDia)"/>${D.vista(660, 150, 280, 56, { horizonte: false, nuvens: 1, astroX: 0.72, astroY: 0.45 })}
       ${Array.from({ length: 14 }, (_, i) => `<path d="M${670 + i * 20} 206 l4 -18 l4 18" fill="#3f7a3a"/>`).join('')}
       <path d="M800 150 L800 260 M660 205 L940 205" stroke="#3a3f3e" stroke-width="7"/><rect x="660" y="150" width="280" height="110" fill="none" stroke="#3a3f3e" stroke-width="10"/>
-      <path d="M660 260 L560 900 L1060 900 L940 260 Z" fill="#fffbe0" opacity=".06"/>`;
+`;
+    s += D.feixe([[660, 260], [940, 260], [1060, 900], [560, 900]]);
     // quadro-negro
     s += `<rect x="60" y="170" width="380" height="230" fill="#24402f" stroke="#7a4a24" stroke-width="14"/>
       <g font-family="'Comic Sans MS','Segoe Print',cursive" fill="#eaf2e4" font-size="22"><text x="84" y="214">OD (P1) = 2,1 mg/L</text><text x="84" y="252">P total: P2 × P3</text><text x="84" y="290">C = m / V</text><text x="84" y="328" font-size="18">amostra ≠ solução ≠ laudo</text></g>
@@ -480,12 +601,17 @@
     let s = D.defs();
     s += `<rect width="${W}" height="${H}" fill="#efe0c4"/><rect width="${W}" height="620" fill="url(#pDamasco)" opacity=".7"/>`;
     s += `<rect width="${W}" height="60" fill="#e2cfa6"/><rect y="54" width="${W}" height="12" fill="url(#gOuro)"/>`;
+    s += D.cantos(66, 560);
     // pilastras
     [60, 440, 1160, 1540].forEach((x) => { s += `<rect x="${x - 22}" y="66" width="44" height="560" fill="#f6ead2" ${K}/><rect x="${x - 30}" y="66" width="60" height="26" fill="url(#gOuro)" ${K}/>`; });
     // janelões com cortinas
     [[110, 300], [1210, 300]].forEach(([x, w]) => {
-      s += `<path d="M${x} 600 L${x} 230 Q${x} 110 ${x + w / 2} 110 Q${x + w} 110 ${x + w} 230 L${x + w} 600 Z" fill="url(#gVidroDia)" ${K}/>
+      const arco = `M${x} 600 L${x} 230 Q${x} 110 ${x + w / 2} 110 Q${x + w} 110 ${x + w} 230 L${x + w} 600 Z`;
+      s += `<path d="${arco}" fill="url(#gVidroDia)" ${K}/>`;
+      if (MI.ceuEm) s += MI.ceuEm(`<path d="${arco}"/>`, x, 110, w, 490, D.periodo, { horizonte: 0.78, nuvens: 1, astroX: x < 800 ? 0.3 : 0.7, semente: x });
+      s += `<path d="${arco}" fill="url(#gReflexo)" opacity=".6"/>
         <path d="M${x + w / 2} 110 L${x + w / 2} 600 M${x} 360 L${x + w} 360" stroke="#efe6d2" stroke-width="10"/>`;
+      s += D.feixe([[x + 10, 600], [x + w - 10, 600], [x + w + 160, 900], [x - 160, 900]]);
       s += D.cortina(x - 50, 90, 110, 530, 'esq') + D.cortina(x + w - 60, 90, 110, 530, 'dir');
     });
     // palco
@@ -531,7 +657,7 @@
   // o: id do objeto · x,y: centro · s: escala · r: rotação · sb: sombra (raio)
   MI.CENAS = {
     hall: {
-      nome: 'Hall de Entrada', bg: hallBg, fg: hallFg, alvos: 10,
+      nome: 'Hall de Entrada', bg: hallBg, fg: hallFg, alvos: 10, luzes: [[800, 90, 380], [470, 420, 120]],
       slots: [
         { o: 'guardaChuva', x: 214, y: 520, s: 0.72, r: 12 },
         { o: 'chapeu', x: 140, y: 252, s: 0.6, r: -6 },
@@ -554,7 +680,7 @@
       ],
     },
     pier: {
-      nome: 'Varanda e Píer', bg: pierBg, fg: pierFg, alvos: 10,
+      nome: 'Varanda e Píer', bg: pierBg, fg: pierFg, alvos: 10, luzes: [[300, 120, 260]],
       slots: [
         { o: 'oximetro', x: 432, y: 608, s: 0.5, r: -8 },
         { o: 'termometro', x: 852, y: 652, s: 0.5, r: 62 },
@@ -578,7 +704,7 @@
       ],
     },
     escritorio: {
-      nome: 'Escritório', bg: escritorioBg, fg: escritorioFg, alvos: 10,
+      nome: 'Escritório', bg: escritorioBg, fg: escritorioFg, alvos: 10, luzes: [[680, 280, 420], [1260, 190, 140]],
       slots: [
         { o: 'abajur', x: 740, y: 510, s: 0.62 },
         { o: 'maquinaEscrever', x: 880, y: 518, s: 0.6 },
@@ -601,7 +727,7 @@
       ],
     },
     biblioteca: {
-      nome: 'Biblioteca', bg: bibliotecaBg, fg: bibliotecaFg, alvos: 10,
+      nome: 'Biblioteca', bg: bibliotecaBg, fg: bibliotecaFg, alvos: 10, luzes: [[760, 560, 280], [1021, 300, 1]],
       slots: [
         { o: 'livro', x: 640, y: 600, s: 0.6, r: -6 },
         { o: 'globo', x: 300, y: 688, s: 0.85 },
@@ -624,7 +750,7 @@
       ],
     },
     laboratorio: {
-      nome: 'Laboratório', bg: laboratorioBg, fg: laboratorioFg, alvos: 10,
+      nome: 'Laboratório', bg: laboratorioBg, fg: laboratorioFg, alvos: 10, luzes: [[800, 300, 480]],
       slots: [
         { o: 'tuboEnsaio', x: 330, y: 494, s: 0.58 },
         { o: 'bequer', x: 690, y: 498, s: 0.48 },
@@ -647,7 +773,7 @@
       ],
     },
     salao: {
-      nome: 'Salão de Baile', bg: salaoBg, fg: salaoFg, alvos: 10,
+      nome: 'Salão de Baile', bg: salaoBg, fg: salaoFg, alvos: 10, luzes: [[560, 90, 420], [1040, 90, 420]],
       slots: [
         { o: 'microfone', x: 800, y: 436, s: 0.5 },
         { o: 'cartaz', x: 1520, y: 588, s: 0.82 },
