@@ -7,13 +7,6 @@
   "texto": "Chegamos ao Solar do Ipê. Esta mansão foi construída em 1928, e o lago nos fundos dá nome ao bairro inteiro."
  },
  {
-  "id": "36552d9b",
-  "voz": "pt-BR-FranciscaNeural",
-  "rate": "+0%",
-  "genero": "F",
-  "texto": "chegamos ao Solar do Ipê. Esta mansão foi construída em 1928, e o lago nos fundos dá nome ao bairro inteiro."
- },
- {
   "id": "93d28f89",
   "voz": "pt-BR-ThalitaNeural",
   "rate": "-8%",
@@ -41,13 +34,6 @@
   "rate": "+0%",
   "genero": "F",
   "texto": "O kit de campo ficou espalhado pelo hall. Encontre os objetos da lista tocando neles na cena."
- },
- {
-  "id": "18ca69a7",
-  "voz": "pt-BR-FranciscaNeural",
-  "rate": "+0%",
-  "genero": "F",
-  "texto": "o kit de campo ficou espalhado pelo hall. Encontre os objetos da lista tocando neles na cena."
  },
  {
   "id": "72501bb2",
@@ -484,13 +470,6 @@
   "rate": "+0%",
   "genero": "F",
   "texto": "Encontre o medidor de oxigênio, o disco de Secchi, o GPS e os outros itens espalhados pela varanda e pelo píer."
- },
- {
-  "id": "5d20ff45",
-  "voz": "pt-BR-FranciscaNeural",
-  "rate": "+0%",
-  "genero": "F",
-  "texto": "encontre o medidor de oxigênio, o disco de Secchi, o GPS e os outros itens espalhados pela varanda e pelo píer."
  },
  {
   "id": "63f3f73d",
@@ -955,13 +934,6 @@
   "rate": "+0%",
   "genero": "F",
   "texto": "Procure os cadernos antigos, a calculadora, o pluviômetro e o material para montar a tabela."
- },
- {
-  "id": "5aba3b0e",
-  "voz": "pt-BR-FranciscaNeural",
-  "rate": "+0%",
-  "genero": "F",
-  "texto": "procure os cadernos antigos, a calculadora, o pluviômetro e o material para montar a tabela."
  },
  {
   "id": "84bc3369",
@@ -1500,13 +1472,6 @@
   "texto": "A biblioteca guarda livros de limnologia e uma cópia da Resolução Conama. Encontre o material de pesquisa."
  },
  {
-  "id": "107ed049",
-  "voz": "pt-BR-FranciscaNeural",
-  "rate": "+0%",
-  "genero": "F",
-  "texto": "a biblioteca guarda livros de limnologia e uma cópia da Resolução Conama. Encontre o material de pesquisa."
- },
- {
   "id": "29a650b1",
   "voz": "pt-BR-AntonioNeural",
   "rate": "+4%",
@@ -2011,13 +1976,6 @@
   "rate": "+0%",
   "genero": "F",
   "texto": "Encontre a vidraria, a caixa térmica com as amostras e as fichas para a Dra. Lúcia."
- },
- {
-  "id": "13ab369a",
-  "voz": "pt-BR-FranciscaNeural",
-  "rate": "+0%",
-  "genero": "F",
-  "texto": "encontre a vidraria, a caixa térmica com as amostras e as fichas para a Dra. Lúcia."
  },
  {
   "id": "bcc7b674",
@@ -2574,20 +2532,6 @@
   "texto": "Rafael, os dados não dizem isso. Vamos preparar o salão e a apresentação. Encontre o microfone, o infográfico e o restante do material."
  },
  {
-  "id": "73b7937d",
-  "voz": "pt-BR-FranciscaNeural",
-  "rate": "+0%",
-  "genero": "F",
-  "texto": "Rafael, os dados não dizem isso."
- },
- {
-  "id": "7dc7c639",
-  "voz": "pt-BR-FranciscaNeural",
-  "rate": "+0%",
-  "genero": "F",
-  "texto": "vamos preparar o salão e a apresentação. Encontre o microfone, o infográfico e o restante do material."
- },
- {
   "id": "3482bab7",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
@@ -2637,20 +2581,6 @@
   "rate": "+0%",
   "genero": "F",
   "texto": "Observar, contextualizar, justificar e comunicar. Você fez tudo isso. O caso do Lago do Ipê está em boas mãos."
- },
- {
-  "id": "7e812ccd",
-  "voz": "pt-BR-FranciscaNeural",
-  "rate": "+0%",
-  "genero": "F",
-  "texto": "Observar, contextualizar, justificar e comunicar."
- },
- {
-  "id": "45cf04f8",
-  "voz": "pt-BR-FranciscaNeural",
-  "rate": "+0%",
-  "genero": "F",
-  "texto": "você fez tudo isso. O caso do Lago do Ipê está em boas mãos."
  },
  {
   "id": "c87d2de5",
@@ -3137,13 +3067,6 @@
   "texto": "Encontre o amostrador, as fitas de pH, a sonda e o restante do material de campo espalhado pela horta e pelas margens."
  },
  {
-  "id": "59b0fe18",
-  "voz": "pt-BR-FranciscaNeural",
-  "rate": "+0%",
-  "genero": "F",
-  "texto": "encontre o amostrador, as fitas de pH, a sonda e o restante do material de campo espalhado pela horta e pelas margens."
- },
- {
   "id": "9b391c00",
   "voz": "pt-BR-ThalitaNeural",
   "rate": "+0%",
@@ -3601,13 +3524,6 @@
   "rate": "+0%",
   "genero": "F",
   "texto": "Encontre o escalímetro, as fotos aéreas, o mapa topográfico e o restante do material de cartografia."
- },
- {
-  "id": "dabca73e",
-  "voz": "pt-BR-FranciscaNeural",
-  "rate": "+0%",
-  "genero": "F",
-  "texto": "encontre o escalímetro, as fotos aéreas, o mapa topográfico e o restante do material de cartografia."
  },
  {
   "id": "df5101fc",
@@ -4117,13 +4033,6 @@
   "texto": "Vamos organizar a mesa e os documentos: relatório, mapas, laudos, a agenda das próximas coletas e o restante do material."
  },
  {
-  "id": "5f0c2898",
-  "voz": "pt-BR-FranciscaNeural",
-  "rate": "+0%",
-  "genero": "F",
-  "texto": "vamos organizar a mesa e os documentos: relatório, mapas, laudos, a agenda das próximas coletas e o restante do material."
- },
- {
   "id": "b7aec6c9",
   "voz": "pt-BR-AntonioNeural",
   "rate": "+4%",
@@ -4174,13 +4083,6 @@
   "rate": "+0%",
   "genero": "F",
   "texto": "Do primeiro relato ao relatório final, você escolheu e justificou cada palavra. Caso encerrado, por enquanto!"
- },
- {
-  "id": "cf5156b0",
-  "voz": "pt-BR-FranciscaNeural",
-  "rate": "+0%",
-  "genero": "F",
-  "texto": "do primeiro relato ao relatório final, você escolheu e justificou cada palavra. Caso encerrado, por enquanto!"
  },
  {
   "id": "eaf42908",
@@ -4638,25 +4540,11 @@
   "texto": "Que bom ter você aqui! Prepare a lupa e o caderno de campo: a investigação no Solar do Ipê vai começar."
  },
  {
-  "id": "530498d0",
-  "voz": "pt-BR-FranciscaNeural",
-  "rate": "+0%",
-  "genero": "F",
-  "texto": "que bom ter você aqui! Prepare a lupa e o caderno de campo: a investigação no Solar do Ipê vai começar."
- },
- {
   "id": "28ae2dd5",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
   "genero": "F",
   "texto": "Que bom ver você de volta! Vamos continuar a investigação no Solar do Ipê."
- },
- {
-  "id": "64d3f075",
-  "voz": "pt-BR-FranciscaNeural",
-  "rate": "+0%",
-  "genero": "F",
-  "texto": "que bom ver você de volta! Vamos continuar a investigação no Solar do Ipê."
  },
  {
   "id": "06ca108f",
