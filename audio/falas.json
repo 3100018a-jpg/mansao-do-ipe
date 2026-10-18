@@ -3123,6 +3123,13 @@
   "texto": "Que ótima notícia, Seu Benedito! Hoje vamos coletar água em três pontos do córrego: antes da horta, depois da horta e depois da galeria pluvial do bairro."
  },
  {
+  "id": "f6e4a4e4",
+  "voz": "pt-BR-FranciscaNeural",
+  "rate": "+0%",
+  "genero": "F",
+  "texto": "Viemos ao amanhecer de propósito: é nessa hora que o oxigênio dissolvido costuma estar mais baixo, porque durante a noite as algas não fazem fotossíntese e só consomem oxigênio."
+ },
+ {
   "id": "1d08a078",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "+0%",
@@ -4095,11 +4102,11 @@
   "texto": "Pus a mesa de jantar para uma reunião importante: a analista da Secretaria de Meio Ambiente veio ler o nosso relatório."
  },
  {
-  "id": "ade38a2e",
+  "id": "f0695803",
   "voz": "pt-BR-FranciscaNeural",
   "rate": "-3%",
   "genero": "F",
-  "texto": "Boa tarde. Um relatório técnico precisa separar o que foi medido, o que se interpreta e o que se recomenda. É isso que vou avaliar.",
+  "texto": "Boa noite. Um relatório técnico precisa separar o que foi medido, o que se interpreta e o que se recomenda. É isso que vou avaliar.",
   "azure": "pt-BR-LeilaNeural"
  },
  {
