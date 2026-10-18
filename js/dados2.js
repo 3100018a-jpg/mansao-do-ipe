@@ -181,7 +181,7 @@
         { p: 'benedito', t: 'Bom dia, pessoal! Desde a reunião, passei a adubar a horta só com composto, e na medida certa.' },
         { p: 'marta', t: 'Que ótima notícia, Seu Benedito! Hoje vamos coletar água em três pontos do córrego: antes da horta, depois da horta e depois da galeria pluvial do bairro.' },
         { p: 'marta', t: 'Viemos ao amanhecer de propósito: é nessa hora que o oxigênio dissolvido costuma estar mais baixo, porque durante a noite as algas não fazem fotossíntese e só consomem oxigênio.' },
-        { p: 'marta', t: '{nome}, encontre o amostrador, as fitas de pH, a sonda e o restante do material de campo espalhado pela horta e pelas margens.' },
+        { p: 'marta', t: 'Encontre o amostrador, as fitas de pH, a sonda e o restante do material de campo espalhado pela horta e pelas margens.' },
       ],
       meio: [
         { p: 'lucia', t: 'Resultados da campanha de 14/11: fósforo total de 0,05 mg/L no C1, 0,07 mg/L no C2 e 0,21 mg/L no C3, logo depois da galeria pluvial.' },
@@ -289,7 +289,7 @@
       intro: [
         { p: 'helena', t: 'Na torre, meu pai guardava mapas e fotos aéreas da região. Ninguém sobe aqui há anos!' },
         { p: 'marta', t: 'Perfeito para a próxima etapa, Dona Helena: representar os pontos de coleta no mapa e entender a bacia do córrego.' },
-        { p: 'marta', t: '{nome}, encontre o escalímetro, as fotos aéreas, o mapa topográfico e o restante do material de cartografia.' },
+        { p: 'marta', t: 'Encontre o escalímetro, as fotos aéreas, o mapa topográfico e o restante do material de cartografia.' },
       ],
       meio: [
         { p: 'helena', t: 'Vejam esta foto de 1962: só havia sítios em volta do córrego.' },
@@ -405,7 +405,7 @@
       intro: [
         { p: 'helena', t: 'Pus a mesa de jantar para uma reunião importante: a analista da Secretaria de Meio Ambiente veio ler o nosso relatório.' },
         { p: 'joana', t: 'Boa noite. Um relatório técnico precisa separar o que foi medido, o que se interpreta e o que se recomenda. É isso que vou avaliar.' },
-        { p: 'marta', t: '{nome}, vamos organizar a mesa e os documentos: relatório, mapas, laudos, a agenda das próximas coletas e o restante do material.' },
+        { p: 'marta', t: 'Vamos organizar a mesa e os documentos: relatório, mapas, laudos, a agenda das próximas coletas e o restante do material.' },
       ],
       meio: [
         { p: 'tiago', t: 'Escrevi a conclusão: recomendamos multar os moradores do bairro imediatamente.' },
@@ -507,7 +507,7 @@
         { p: 'joana', t: 'Relatório aprovado para encaminhamento. A Secretaria vai vistoriar a galeria pluvial e acompanhar o monitoramento mensal com vocês.' },
         { p: 'helena', t: 'E o meu lago, Marta? Vai voltar a ser como antes?' },
         { p: 'marta', t: 'A recuperação é gradual, Dona Helena. Com o monitoramento, vamos saber se as medidas estão funcionando, e com dados, não com palpites.' },
-        { p: 'marta', t: '{nome}, do primeiro relato ao relatório final, você escolheu e justificou cada palavra. Caso encerrado, por enquanto!' },
+        { p: 'marta', t: 'Do primeiro relato ao relatório final, você escolheu e justificou cada palavra. Caso encerrado, por enquanto!' },
       ],
       cartoes: ['legislacao', 'educacao_ambiental'],
       glossario: ['relatorio_tecnico', 'parecer', 'recomendacao', 'orgao_ambiental', 'notificacao', 'ligacao_irregular'],

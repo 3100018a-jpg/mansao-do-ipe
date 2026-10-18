@@ -49,7 +49,7 @@ Cada alternativa errada traz uma explicação (cultura do erro). Só a resposta 
   - coleção de **18 cartões**: 12 das áreas da Formação Geral e 6 dos componentes técnicos do curso;
   - os personagens.
 - **Restauração da mansão** com as estrelas conquistadas: ipê florido, lampiões, fonte, vitrais, coreto, jardim de chuva, estação de monitoramento e mata ciliar. O lago fica mais limpo aos poucos.
-- **Certificado** com o nome do estudante, para imprimir ou salvar em PDF.
+- **Certificado** para imprimir ou salvar em PDF, com uma linha para o estudante escrever o próprio nome. O jogo não pede nem guarda o nome de ninguém.
 - Botão **Para o professor**, com o percurso, sugestões de condução (Virem e conversem, Cultura do erro, Certo é certo) e um modo demonstração que libera todos os capítulos.
 - O progresso fica salvo no navegador.
 
@@ -103,16 +103,6 @@ Cada lugar também tem sons próprios: marolas no píer, córrego e borbulhas na
 
 **Sem chiados no celular:** cada ambiente é sintetizado uma única vez, em segundo plano, num trecho de 32 segundos que emenda sem costura. Depois toca como um único som em laço. O aparelho não precisa calcular centenas de notas ao vivo, e o ruído do vento e das folhas é filtrado para não chiar. O volume fica igual em todos os ambientes, com margem para nunca saturar. Ele abaixa sozinho enquanto os personagens falam e pode ser ajustado em ⚙ Configurações.
 
-## O nome do jogador
-
-Na abertura, a Profa. Marta recebe o estudante pelo nome. O nome é falado com a mesma voz neural dela:
-
-- **Cerca de 450 nomes brasileiros comuns já vêm gravados** (`tools/nomes-brasileiros.txt`), inclusive nomes compostos como Ana Júlia, Maria Eduarda e João Pedro. O jogo reconhece o nome com ou sem acento, e também o nome completo, como em “Ana Júlia Souza”.
-- **Nomes da turma:** escreva-os no arquivo `nomes-turma.txt`, um por linha, com acentos. Na próxima publicação, o GitHub grava cada um deles com a voz da Profa. Marta.
-- Se o nome não estiver gravado, o jogo usa a voz natural em português do navegador (no Microsoft Edge, é a mesma voz da Profa. Marta). Se não houver nenhuma, o nome aparece só escrito.
-- O botão 🔊, ao lado do campo do nome, mostra como o nome será lido.
-- **Sem pausas:** o nome e o resto da frase são gravações separadas. O jogo apara o silêncio do começo e do fim de cada gravação e encadeia os trechos no relógio do áudio, para que soem como uma frase só. Os nomes são gravados com vírgula (“Ana Júlia,”), na entonação de quem chama alguém. Se o nome não estiver gravado, a frase inteira é lida pela voz natural do navegador, sem emendas.
-
 ## Vozes em português do Brasil
 
 As falas são gravadas com **vozes neurais da Microsoft em português do Brasil** pelo fluxo automático do GitHub (biblioteca `edge-tts`, serviço gratuito, sem chave):
@@ -147,7 +137,7 @@ manifest.webmanifest  instalação como aplicativo (ícone e tela cheia)
 img/                  ícones do aplicativo
 css/estilo.css        visual
 js/nucleo.js          utilitários e armazenamento
-js/audio.js           vozes, nome do jogador e efeitos
+js/audio.js           vozes e efeitos
 js/musica.js          sons de cada ambiente (tons suaves e natureza)
 js/periodos.js        aurora, dia, entardecer e noite (céu, luz e período de cada capítulo)
 js/dados.js           capítulos 1 a 6, desafios, glossário, cartões e restauração
@@ -159,8 +149,7 @@ js/cenas2.js          cômodos das missões 7 a 9 e objetos extras
 js/retratos.js        retratos dos personagens
 js/mansao.js          fachada da mansão (mapa principal)
 js/jogo.js            telas, cenas, diálogos, desafios e diário
-tools/                exportação das falas, geração das vozes e lista de nomes
-nomes-turma.txt       nomes da turma que serão gravados com voz neural
+tools/                exportação das falas e geração das vozes
 ```
 
 ## Observação

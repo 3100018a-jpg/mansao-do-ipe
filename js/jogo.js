@@ -32,10 +32,9 @@
     const i = indiceCap(id);
     return i === 0 || completo(MI.CAPITULOS[i - 1].id);
   };
-  const nome = () => E.nome || 'investigador(a)';
   // a última missão encerra o caso e libera o certificado
   const ultimo = () => MI.CAPITULOS[MI.CAPITULOS.length - 1].id;
-  const fmt = (t) => String(t).replace(/\{nome\}/g, nome());
+  const fmt = (t) => String(t);
   // período do dia na fachada: o do próximo capítulo; com o caso encerrado, um novo dia amanhece
   const periodoMansao = () => { const prox = MI.CAPITULOS.find((c) => !completo(c.id)); return prox ? MI.periodoDe(prox.id) : 'aurora'; };
   const rotuloPeriodo = (p) => { const P = MI.PERIODOS[p]; return P ? `${P.icone} ${P.nome}` : ''; };
@@ -121,24 +120,8 @@
     trocarTela('tela-inicio');
     $('#inicio-fundo').innerHTML = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">${U.isolarIds(MI.desenharMansao({ feitos: {}, rest: { lampioes: true }, periodo: 'noite' }), 'ini')}</svg>`;
     const temJogo = Object.keys(E.caps).length > 0;
-    $('#inicio-nome').value = E.nome || '';
     $('#btn-continuar').hidden = !temJogo;
     $('#btn-comecar').textContent = temJogo ? 'Novo jogo' : 'Começar a investigação';
-  }
-  function definirNomeFalado() {
-    A.nomeJogador = E.nome && E.nome !== 'Investigador(a)' ? E.nome : '';
-  }
-  async function ouvirNome() {
-    iniciarAudioUmaVez();
-    const n = $('#inicio-nome').value.trim();
-    const info = $('#inicio-nome-info');
-    if (!n) { info.className = 'inicio-nome-info'; info.textContent = 'Digite o seu nome para ouvir como ele será lido.'; return; }
-    info.className = 'inicio-nome-info';
-    info.textContent = 'Ouvindo…';
-    const modo = await A.ouvirNome(n, MI.PERSONAGENS.marta.voz);
-    if (modo === 'gravado') { info.className = 'inicio-nome-info ok'; info.textContent = 'Seu nome foi gravado com a voz neural da Profa. Marta.'; }
-    else if (modo === 'navegador') info.textContent = 'Seu nome será lido pela voz natural em português do navegador. Para gravá-lo com a voz da Profa. Marta, peça ao professor que o inclua em nomes-turma.txt.';
-    else info.textContent = 'Seu nome aparecerá escrito nas falas. Para ouvi-lo, peça ao professor que o inclua em nomes-turma.txt, ou use o Microsoft Edge.';
   }
   function iniciarAudioUmaVez() {
     A.iniciarAudio();
@@ -147,16 +130,12 @@
   function comecar(novo) {
     iniciarAudioUmaVez();
     telaCheiaAutomatica();
-    const n = $('#inicio-nome').value.trim().slice(0, 30);
     if (novo && Object.keys(E.caps).length && !confirm('Começar um novo jogo apaga o progresso atual. Deseja continuar?')) return;
     if (novo) { const prof = E.professor; E = ESTADO_PADRAO(); E.professor = prof; }
-    if (n) E.nome = n;
-    if (!E.nome) E.nome = 'Investigador(a)';
     salvar();
-    definirNomeFalado();
     const primeiro = novo || !E.caps.hall;
     telaMansao();
-    // a Profa. Marta recebe o jogador chamando-o pelo nome
+    // a Profa. Marta recebe o investigador
     dialogo([primeiro ? MI.SAUDACAO.novo : MI.SAUDACAO.volta], {}, () => { if (primeiro) setTimeout(() => abrirCapitulo('hall'), 250); });
   }
 
@@ -188,7 +167,6 @@
       b.onclick = () => { A.sfx('clique'); abrirCapitulo(c.id); };
       box.appendChild(b);
     });
-    $('#mansao-nome').textContent = nome();
     atualizarContadores();
     const fim = completo(ultimo());
     $('#btn-certificado').hidden = !fim;
@@ -1097,7 +1075,6 @@
     const vn = A.vozes.length, mp3 = window.MI_VOZES ? Object.keys(window.MI_VOZES).length : 0;
     const infoVoz = mp3 ? `Vozes neurais gravadas em português do Brasil: ${mp3} falas.` : vn ? `Usando ${vn} voz(es) natural(is) do navegador em português do Brasil.` : 'Nenhuma voz natural em português do Brasil disponível neste navegador; as falas aparecem só em texto.';
     const { el } = abrirModal(`<div class="config"><h2>Configurações</h2>
-      <label class="linha"><span>Nome do investigador</span><input id="cfg-nome" maxlength="30" value="${esc(E.nome)}"></label>
       <label class="linha chk"><input type="checkbox" id="cfg-voz" ${A.vozLigada ? 'checked' : ''}><span>Vozes dos personagens</span></label>
       <label class="linha chk"><input type="checkbox" id="cfg-alt" ${A.lerAlternativas ? 'checked' : ''}><span>Ler as alternativas dos desafios</span></label>
       <label class="linha"><span>Volume das vozes</span><input type="range" id="cfg-vv" min="0" max="1" step="0.05" value="${A.volVoz}"></label>
@@ -1108,7 +1085,6 @@
       ${telaCheiaPossivel() ? `<label class="linha chk"><input type="checkbox" id="cfg-tc" ${MI.S.get('telaCheia', true) ? 'checked' : ''}><span>Abrir em tela cheia no celular e no tablet</span></label>` : ''}
       <div class="cfg-acoes"><button class="btn perigo" id="cfg-reset">Apagar progresso</button></div></div>`, { caixa: 'caixa-media' });
     const sv = () => { A.salvar(); A.atualizarVolumes(); };
-    $('#cfg-nome', el).onchange = (e) => { E.nome = e.target.value.trim() || 'Investigador(a)'; salvar(); definirNomeFalado(); $('#mansao-nome').textContent = nome(); };
     $('#cfg-voz', el).onchange = (e) => { A.vozLigada = e.target.checked; if (!A.vozLigada) A.parar(); sv(); };
     $('#cfg-alt', el).onchange = (e) => { A.lerAlternativas = e.target.checked; sv(); };
     const tc = $('#cfg-tc', el);
@@ -1164,7 +1140,7 @@
           <p class="cert-sup">Solar do Ipê · Técnico em Meio Ambiente</p>
           <h2>Certificado de Investigação</h2>
           <p>Certificamos que</p>
-          <p class="cert-nome">${esc(nome())}</p>
+          <p class="cert-nome cert-linha" aria-label="Espaço para escrever o nome do estudante"></p>
           <p>concluiu o caso <b>Mistério na Mansão do Ipê</b>, demonstrando rigor no uso do vocabulário técnico ambiental: <b>observar, contextualizar, justificar e comunicar</b>.</p>
           <div class="cert-dados"><span>${est} de ${MI.CAPITULOS.length * 3} ★ nas cenas</span><span>${acertos}/${totais} decisões certas de primeira</span><span>${Object.keys(E.cartoes).length} cartões interdisciplinares</span></div>
           <p class="cert-data">${data}</p>
@@ -1196,10 +1172,7 @@
   function ligar() {
     $('#btn-comecar').onclick = () => { A.sfx('clique'); comecar(true); };
     $('#btn-continuar').onclick = () => { A.sfx('clique'); comecar(false); };
-    $('#inicio-nome').onkeydown = (e) => { if (e.key === 'Enter') comecar(!Object.keys(E.caps).length); };
     $('#btn-prof-inicio').onclick = () => { iniciarAudioUmaVez(); professor(); };
-    $('#btn-ouvir-nome').onclick = () => ouvirNome();
-    definirNomeFalado();
     $('#btn-diario').onclick = () => { A.sfx('pagina'); diario(); };
     $('#btn-restaurar').onclick = () => { A.sfx('clique'); restaurar(); };
     $('#btn-config').onclick = () => { A.sfx('clique'); configuracoes(); };

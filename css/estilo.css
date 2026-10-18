@@ -428,6 +428,7 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px s
 .cert-nome { font-family: var(--fonte-tit); font-size: 36px; font-style: italic; color: var(--ouro2); margin: 6px 0; border-bottom: 2px solid var(--papel3); display: inline-block; padding: 0 24px 4px; }
 .cert-dados { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px 16px; margin: 14px 0; font-weight: 800; color: var(--verde); }
 .cert-data { color: var(--tinta2); }
+.cert-linha { min-width: min(420px, 80%); min-height: 48px; }
 .cert-ass { display: flex; justify-content: center; gap: 40px; margin-top: 10px; }
 .cert-ass div { display: flex; flex-direction: column; align-items: center; font-size: 13px; font-weight: 700; }
 .cert-ass svg.retrato-svg { width: 70px; }

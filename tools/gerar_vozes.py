@@ -16,7 +16,7 @@ Uso:
     pip install edge-tts
     python tools/gerar_vozes.py
 """
-import asyncio, json, os, sys, random
+import asyncio, json, os, sys, random, shutil
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FALAS = os.path.join(RAIZ, 'audio', 'falas.json')
@@ -105,79 +105,15 @@ def salvar_estado(falas, motores):
     return validos, ids
 
 
-NOMES = os.path.join(RAIZ, 'audio', 'nomes.json')
-PASTA_NOMES = os.path.join(RAIZ, 'audio', 'nomes')
-
-
-def destino_nome(item):
-    return os.path.join(PASTA_NOMES, item['id'] + '.mp3')
-
-
-def nome_ok(item):
-    d = destino_nome(item)
-    return os.path.exists(d) and os.path.getsize(d) >= 2000
-
-
-async def gerar_nome(item, edge_tts, ok, sem):
-    voz = resolver(item, ok)
-    if not voz:
-        return None
-    async with sem:
-        for tentativa in range(4):
-            tmp = destino_nome(item) + '.tmp'
-            try:
-                await edge_tts.Communicate(item['texto'], voz, rate='+0%').save(tmp)
-                if os.path.getsize(tmp) < 2000:
-                    raise RuntimeError('áudio incompleto')
-                os.replace(tmp, destino_nome(item))
-                return voz
-            except Exception as e:
-                if os.path.exists(tmp):
-                    os.remove(tmp)
-                await asyncio.sleep(2 ** tentativa + random.random())
-    return None
-
-
-async def gravar_nomes(edge_tts, ok):
-    if not os.path.exists(NOMES):
-        return
-    os.makedirs(PASTA_NOMES, exist_ok=True)
-    nomes = json.load(open(NOMES, encoding='utf-8'))
-    arq_motores = os.path.join(PASTA_NOMES, 'motores.json')
-    try:
-        motores = json.load(open(arq_motores, encoding='utf-8'))
-    except Exception:
-        motores = {}
-    pendentes = [n for n in nomes if not nome_ok(n) or motores.get(n['id']) != resolver(n, ok) or motores.get(n['id'] + ':t') != n['texto']]
-    print(f'{len(pendentes)} nomes para gravar.')
-    sem = asyncio.Semaphore(int(os.environ.get('PARALELO', '4')))
-
-    async def rodar(n):
-        return n, await gerar_nome(n, edge_tts, ok, sem)
-
-    for t in asyncio.as_completed([rodar(n) for n in pendentes]):
-        n, voz = await t
-        if voz:
-            motores[n['id']] = voz
-            motores[n['id'] + ':t'] = n['texto']
-    validos = {n['id'] for n in nomes}
-    for arq in os.listdir(PASTA_NOMES):
-        if arq.endswith('.mp3') and arq[:-4] not in validos:
-            os.remove(os.path.join(PASTA_NOMES, arq))
-    # trava final: só vozes pt-BR monolíngues
-    for n in nomes:
-        v = motores.get(n['id'])
-        if v and not voz_permitida(v):
-            if os.path.exists(destino_nome(n)):
-                os.remove(destino_nome(n))
-            motores.pop(n['id'], None)
-    with open(arq_motores, 'w', encoding='utf-8') as fh:
-        json.dump(motores, fh, separators=(',', ':'), sort_keys=True)
-    gravados = sorted(n['id'] for n in nomes if nome_ok(n) and n['id'] in motores)
-    with open(os.path.join(PASTA_NOMES, 'manifest.js'), 'w', encoding='utf-8') as fh:
-        fh.write('/* Gerado por tools/gerar_vozes.py — nomes gravados com a voz neural da Profa. Marta. */\n')
-        fh.write('window.MI_NOMES = ' + json.dumps({i: 1 for i in gravados}, separators=(',', ':')) + ';\n')
-    print(f'Nomes com áudio neural: {len(gravados)} de {len(nomes)}.')
+def apagar_nomes():
+    # o jogo não usa mais o nome do jogador: remove as gravações antigas de nomes
+    pasta = os.path.join(RAIZ, 'audio', 'nomes')
+    if os.path.isdir(pasta):
+        shutil.rmtree(pasta)
+        print('Gravações de nomes removidas.')
+    lista = os.path.join(RAIZ, 'audio', 'nomes.json')
+    if os.path.exists(lista):
+        os.remove(lista)
 
 
 async def main():
@@ -239,7 +175,7 @@ async def main():
             os.remove(os.path.join(PASTA, nome))
     motores, ids = salvar_estado(falas, motores)
     print(f'Concluído: {feitas} gravadas agora; {len(ids)} de {len(falas)} falas com áudio neural.')
-    await gravar_nomes(edge_tts, ok)
+    apagar_nomes()
 
 
 asyncio.run(main())

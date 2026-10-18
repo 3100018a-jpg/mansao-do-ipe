@@ -62,11 +62,11 @@
       cena: 'hall', musica: 'hall',
       resumo: 'Dona Helena jura que o lago foi envenenado. Antes de concluir qualquer coisa, reúna o kit de investigação e aprenda a separar relatos, observações e conclusões.',
       intro: [
-        { p: 'marta', t: '{nome}, chegamos ao Solar do Ipê. Esta mansão foi construída em 1928, e o lago nos fundos dá nome ao bairro inteiro.' },
+        { p: 'marta', t: 'Chegamos ao Solar do Ipê. Esta mansão foi construída em 1928, e o lago nos fundos dá nome ao bairro inteiro.' },
         { p: 'helena', t: 'Que alívio ver vocês! Meu lago está envenenado, tenho certeza. Os peixes sumiram e o cheiro chega até a varanda.' },
         { p: 'benedito', t: 'Com todo o respeito, Dona Helena, pra mim a culpa é da fábrica do outro lado da estrada.' },
         { p: 'marta', t: 'Cada relato é importante, mas relato ainda não é evidência. Antes de qualquer conclusão, precisamos do nosso material de investigação.' },
-        { p: 'marta', t: '{nome}, o kit de campo ficou espalhado pelo hall. Encontre os objetos da lista tocando neles na cena.' },
+        { p: 'marta', t: 'O kit de campo ficou espalhado pelo hall. Encontre os objetos da lista tocando neles na cena.' },
       ],
       meio: [
         { p: 'tiago', t: 'Cheguei! Desculpem o atraso. Achei o mapa da propriedade: o lago recebe água de um córrego que passa pela horta e pelo bairro.' },
@@ -145,7 +145,7 @@
       intro: [
         { p: 'benedito', t: 'Foi aqui no píer que senti o cheiro mais forte. A água ficou verde que nem sopa de ervilha!' },
         { p: 'marta', t: 'No campo, a regra é observar, medir e registrar, sem antecipar conclusões. Para isso, precisamos dos equipamentos certos.' },
-        { p: 'marta', t: '{nome}, encontre o medidor de oxigênio, o disco de Secchi, o GPS e os outros itens espalhados pela varanda e pelo píer.' },
+        { p: 'marta', t: 'Encontre o medidor de oxigênio, o disco de Secchi, o GPS e os outros itens espalhados pela varanda e pelo píer.' },
       ],
       meio: [
         { p: 'marta', t: 'Medição feita no ponto P1, junto ao píer, às 9h15: 2,1 mg/L de oxigênio dissolvido. As coordenadas ficaram registradas no GPS.' },
@@ -235,7 +235,7 @@
       intro: [
         { p: 'helena', t: 'Este era o escritório do meu pai. Ele anotava tudo: a chuva, a temperatura e até a cor do lago!' },
         { p: 'marta', t: 'Que tesouro, Dona Helena! No escritório, organizamos as informações e separamos os dados das interpretações.' },
-        { p: 'marta', t: '{nome}, procure os cadernos antigos, a calculadora, o pluviômetro e o material para montar a tabela.' },
+        { p: 'marta', t: 'Procure os cadernos antigos, a calculadora, o pluviômetro e o material para montar a tabela.' },
       ],
       meio: [
         { p: 'helena', t: 'Achei! Nos cadernos do papai está escrito água verde em vários verões, desde 1958.' },
@@ -330,7 +330,7 @@
       intro: [
         { p: 'benedito', t: 'Preciso confessar uma coisa: eu uso adubo na horta, perto da margem. Será que fui eu que estraguei o lago?' },
         { p: 'marta', t: 'Calma, Seu Benedito. Isso pode virar uma hipótese, e hipótese não é acusação. Na pesquisa, a gente formula hipóteses e diz o que ainda precisa ser investigado.' },
-        { p: 'marta', t: '{nome}, a biblioteca guarda livros de limnologia e uma cópia da Resolução CONAMA. Encontre o material de pesquisa.' },
+        { p: 'marta', t: 'A biblioteca guarda livros de limnologia e uma cópia da Resolução CONAMA. Encontre o material de pesquisa.' },
       ],
       meio: [
         { p: 'tiago', t: 'Este livro explica que o excesso de nutrientes favorece o crescimento de algas. Pronto, escrevi: a eutrofização é a causa comprovada das alterações, mesmo sem resultados laboratoriais.' },
@@ -421,7 +421,7 @@
       intro: [
         { p: 'lucia', t: 'Bem na hora! Antes de qualquer análise, preciso conferir a etiqueta, a ficha de coleta e a cadeia de custódia de cada frasco.' },
         { p: 'marta', t: 'No laboratório, palavras do dia a dia ganham sentido preciso: solução, concentração, amostra. Vamos ver isso de perto.' },
-        { p: 'marta', t: '{nome}, encontre a vidraria, a caixa térmica com as amostras e as fichas para a Dra. Lúcia.' },
+        { p: 'marta', t: 'Encontre a vidraria, a caixa térmica com as amostras e as fichas para a Dra. Lúcia.' },
       ],
       meio: [
         { p: 'lucia', t: 'Resultados prontos. Fósforo total: 0,15 mg/L no ponto P2, perto da foz do córrego, e 0,04 mg/L no ponto P3, no centro do lago.' },
@@ -526,7 +526,7 @@
       intro: [
         { p: 'helena', t: 'Convidei os moradores do entorno para uma reunião aqui no salão. Eles querem saber o que está acontecendo com o lago.' },
         { p: 'rafael', t: 'E eu já tenho a manchete do jornal: Lago do Ipê envenenado, fábrica é a culpada! Vai vender muito!' },
-        { p: 'marta', t: 'Rafael, os dados não dizem isso. {nome}, vamos preparar o salão e a apresentação. Encontre o microfone, o infográfico e o restante do material.' },
+        { p: 'marta', t: 'Rafael, os dados não dizem isso. Vamos preparar o salão e a apresentação. Encontre o microfone, o infográfico e o restante do material.' },
       ],
       meio: [
         { p: 'marta', t: 'Salão pronto. Agora, o relatório técnico precisa virar uma comunicação para os moradores.' },
@@ -600,7 +600,7 @@
         { p: 'rafael', t: 'Tudo bem, vocês venceram: técnicos investigam as causas. Menos explosivo, mas é a verdade. E verdade também vende jornal.' },
         { p: 'helena', t: 'Pela primeira vez eu entendi o que está acontecendo com o meu lago. E sem ninguém ser acusado à toa.' },
         { p: 'marta', t: 'Próximos passos: medir o oxigênio todo mês em três pontos, coletar no córrego antes e depois da horta e do bairro, e só então concluir.' },
-        { p: 'marta', t: 'Observar, contextualizar, justificar e comunicar. {nome}, você fez tudo isso. O caso do Lago do Ipê está em boas mãos.' },
+        { p: 'marta', t: 'Observar, contextualizar, justificar e comunicar. Você fez tudo isso. O caso do Lago do Ipê está em boas mãos.' },
       ],
       cartoes: ['artes', 'educacao_fisica'],
       glossario: ['destinatario', 'linguagem_acessivel', 'incerteza', 'limites', 'monitoramento', 'mata_ciliar'],
@@ -710,8 +710,8 @@
   };
   // saudação na abertura do jogo: o nome do jogador é falado pela Profa. Marta
   MI.SAUDACAO = {
-    novo: { p: 'marta', t: '{nome}, que bom ter você aqui! Prepare a lupa e o caderno de campo: a investigação no Solar do Ipê vai começar.' },
-    volta: { p: 'marta', t: '{nome}, que bom ver você de volta! Vamos continuar a investigação no Solar do Ipê.' },
+    novo: { p: 'marta', t: 'Que bom ter você aqui! Prepare a lupa e o caderno de campo: a investigação no Solar do Ipê vai começar.' },
+    volta: { p: 'marta', t: 'Que bom ver você de volta! Vamos continuar a investigação no Solar do Ipê.' },
   };
   // falas curtas do sistema (narradora)
   MI.FALAS_EXTRA = [
